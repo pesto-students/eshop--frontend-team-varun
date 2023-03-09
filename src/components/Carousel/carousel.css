@@ -1,0 +1,56 @@
+.app {
+  background-color: #f2f4f7;
+  padding: 0 40px 64px 40px;
+  margin: 0;
+}
+
+.carousel-item {
+  position: relative;
+  text-align: start;
+  font-family: "Work Sans", sans-serif;
+}
+
+.text-i {
+  position: absolute;
+  top: 28%;
+  left: 15%;
+  color: white;
+}
+
+.price {
+  font-size: 48px;
+}
+
+.desc {
+  font-size: 24px;
+  width: 252px;
+  margin-top: 16px;
+}
+
+.carousel-inner .btn {
+  margin-top: 32px;
+}
+
+.carousel-indicators{
+  visibility: hidden;
+}
+
+.next-icon {
+  height: 32px;
+  width: 32px;
+  color: white;
+  background-color: white;
+  padding: 8px;
+  border-radius: 50%;
+  border: 1.5px solid #52057b;
+}
+
+.prev-icon {
+  height: 32px;
+  width: 32px;
+  color: white;
+  background-color: white;
+  padding: 8px;
+  border-radius: 50%;
+  border: 1.5px solid #52057b;
+}

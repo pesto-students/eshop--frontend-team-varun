@@ -1,0 +1,46 @@
+.category {
+  background-color: #f2f4f7;
+  margin: 0;
+  padding: 64px 0;
+  width: 100%;
+}
+
+.brand_title {
+  font-size: 24px;
+  font-weight: 600;
+  margin-left: 40px;
+}
+
+.brands_row {
+  display: flex;
+  gap: 50px;
+  overflow-x: auto;
+  padding: 0 40px;
+}
+
+.brands_row::-webkit-scrollbar {
+  display: none;
+}
+
+.brands {
+  margin-top: 40px;
+  display: flex;
+  flex: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brands img {
+  background: #f9f9f9;
+  border-radius: 50%;
+  padding: 30px;
+  margin-bottom: 16px;
+}
+
+.brands p {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 500;
+  text-align: center;
+}
