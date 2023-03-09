@@ -105,7 +105,7 @@ const SignIn = () => {
                       >
                         <button
                           type="button"
-                          class="btn text-nowrap btn-lg px-5"
+                          class="btn text-nowrap btn-lg px-5 mb-5"
                           style={{
                             backgroundColor: "#52057B",
                             color: "white",
