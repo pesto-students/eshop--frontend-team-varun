@@ -1,14 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Cart.css";
+import { cartProducts } from "../../localFiles/cartProduct";
 
 const Cart = () => {
   return (
-    <div class="row cart" style={{ backgroundColor: "#f5f5f5" }}>
-      <div class="col-md-8 cart">
+    <div class="row cart" style={{ backgroundColor: "#f2f4f7" }}>
+      <div class="col-md-8 cart bg-light">
         <section class="">
           <div class="row d-flex justify-content-start align-items-start h-100">
-            <div class="col-lg-12  col-xl-10">
+            <div class="col-lg-12 col-xl-12">
               <div class="card-body p-md-4 p-sm-4">
                 <div class="row justify-content-center">
                   <div class="col-md-10 col-lg-10 col-xl-10 order-2 order-lg-1">
@@ -34,136 +35,69 @@ const Cart = () => {
                               </div>
                             </th>
                             <th scope="col" class="border-1">
-                              <div class="py-2 text-uppercasetext-center">
+                              <div class="py-2 text-uppercase text-center">
                                 Quantity
+                              </div>
+                            </th>
+                            <th scope="col" class="border-1">
+                              <div class="py-2 text-uppercase text-center">
+                                Sub Total
                               </div>
                             </th>
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
-                            <td class="border-0 align-middle text-center">
-                              <a href="..." class="text-dark">
-                                <i class="fa fa-trash"></i>
-                              </a>
-                            </td>
-                            <th scope="row" class="border-0 text-center">
-                              <div class="py-2 d-flex justify-content-evenly align-items-center">
-                                <img
-                                  src="https://bootstrapious.com/i/snippets/sn-cart/product-1.jpg"
-                                  alt=""
-                                  width="70"
-                                  class="img-fluid rounded shadow-sm"
-                                />
-                                <div class="d-inline-block align-middle">
-                                  <h5 class="mb-0">
-                                    <a
-                                      href="..."
-                                      class="text-dark d-inline-block align-middle"
-                                    >
-                                      Timex Unisex Originals
-                                    </a>
-                                  </h5>
-                                  <span class="text-muted font-weight-normal font-italic d-block">
-                                    Category: Watches
-                                  </span>
+                          {cartProducts?.map((product) => (
+                            <tr>
+                              <td class="border-0 align-middle text-center">
+                                <a href="..." class="text-dark">
+                                  <i class="fa fa-trash"></i>
+                                </a>
+                              </td>
+                              <th scope="row" class=" border-0 text-center">
+                                <div class="py-2 d-flex justify-content-evenly align-items-center">
+                                  <img
+                                    src={product.imgURL}
+                                    alt="Not Found"
+                                    width="70"
+                                    class="img-fluid rounded shadow-sm"
+                                  />
+                                  <div class=" d-inline-block align-middle">
+                                    <h5 class="mb-0">
+                                      <a
+                                        href="..."
+                                        class="text-dark d-inline-block align-middle"
+                                      >
+                                        {product.name}
+                                      </a>
+                                    </h5>
+                                    <span class="text-muted font-weight-normal font-italic d-block">
+                                      Category: {product.category}
+                                    </span>
+                                  </div>
                                 </div>
-                              </div>
-                            </th>
-                            <td class="border-0 align-middle text-center">
-                              <strong>$79.00</strong>
-                            </td>
-                            <td class="border-0 align-middle text-center">
-                              <i class="fa fa-plus me-3" aria-hidden="true"></i>
-                              <strong>3</strong>
-                              <i
-                                class="fa fa-minus ms-3"
-                                aria-hidden="true"
-                              ></i>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td class="border-0 align-middle text-center">
-                              <a href="..." class="text-dark">
-                                <i class="fa fa-trash"></i>
-                              </a>
-                            </td>
-                            <th scope="row" class="border-0 text-center">
-                              <div class="py-2 d-flex justify-content-evenly align-items-center">
-                                <img
-                                  src="https://bootstrapious.com/i/snippets/sn-cart/product-2.jpg"
-                                  alt=""
-                                  width="70"
-                                  class="img-fluid rounded shadow-sm"
-                                />
-                                <div class="d-inline-block align-middle">
-                                  <h5 class="mb-0">
-                                    <a
-                                      href="..."
-                                      class="text-dark d-inline-block align-middle"
-                                    >
-                                      Lumix camera lense
-                                    </a>
-                                  </h5>
-                                  <span class="text-muted font-weight-normal font-italic d-block">
-                                    Category: Electronics
-                                  </span>
-                                </div>
-                              </div>
-                            </th>
-                            <td class="border-0 align-middle text-center">
-                              <strong>$79.00</strong>
-                            </td>
-                            <td class="border-0 align-middle text-center">
-                              <i class="fa fa-plus me-3" aria-hidden="true"></i>
-                              <strong>3</strong>
-                              <i
-                                class="fa fa-minus ms-3"
-                                aria-hidden="true"
-                              ></i>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td class="border-0 align-middle text-center">
-                              <a href="..." class="text-dark">
-                                <i class="fa fa-trash"></i>
-                              </a>
-                            </td>
-                            <th scope="row" class="border-0 text-center">
-                              <div class="py-2 d-flex justify-content-evenly align-items-center">
-                                <img
-                                  src="https://bootstrapious.com/i/snippets/sn-cart/product-3.jpg"
-                                  alt=""
-                                  width="70"
-                                  class="img-fluid rounded shadow-sm"
-                                />
-                                <div class="d-inline-block align-middle">
-                                  <h5 class="mb-0">
-                                    <a
-                                      href="..."
-                                      class="text-dark d-inline-block align-middle"
-                                    >
-                                      Gray Nike running shoe
-                                    </a>
-                                  </h5>
-                                  <span class="text-muted font-weight-normal font-italic d-block">
-                                    Category: Fashion
-                                  </span>
-                                </div>
-                              </div>
-                            </th>
-                            <td class="border-0 align-middle text-center">
-                              <strong>$79.00</strong>
-                            </td>
-                            <td class="border-0 align-middle text-center">
-                              <i class="fa fa-plus me-3" aria-hidden="true"></i>
-                              <strong>3</strong>
-                              <i
-                                class="fa fa-minus ms-3"
-                                aria-hidden="true"
-                              ></i>
-                            </td>
-                          </tr>
+                              </th>
+                              <td class="border-0 align-middle text-center">
+                                <strong>${product.price}</strong>
+                              </td>
+                              <td class="border-0 align-middle text-center">
+                                <i
+                                  class="fa fa-plus me-3"
+                                  aria-hidden="true"
+                                ></i>
+                                <strong>{product.quantity}</strong>
+                                <i
+                                  class="fa fa-minus ms-3"
+                                  aria-hidden="true"
+                                ></i>
+                              </td>
+                              <td class="border-0 align-middle text-center">
+                                <strong>
+                                  ${product.price * product.quantity}
+                                </strong>
+                              </td>
+                            </tr>
+                          ))}
                         </tbody>
                       </table>
                     </div>
@@ -195,7 +129,7 @@ const Cart = () => {
       <div class="col-md-4">
         <section class="">
           <div class="row d-flex justify-content-left align-items-left h-100">
-            <div class="col-lg-12 col-xl-10 ">
+            <div class="col-lg-12 col-xl-12 ">
               <div class="card-body p-md-5 p-sm-5">
                 <div class="row justify-content-left">
                   <div class="col-md-10 col-lg-10 col-xl-10 order-2 order-lg-1">
@@ -234,7 +168,7 @@ const Cart = () => {
                       >
                         <button
                           type="button"
-                          class="btn text-nowrap btn-lg px-5"
+                          class="btn text-nowrap btn-lg px-5 mb-5"
                           style={{
                             backgroundColor: "#52057B",
                             color: "white",

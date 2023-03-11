@@ -2,7 +2,7 @@ import React from "react";
 
 const ForgotPassword = () => {
   return (
-    <div class="row signIn" style={{ backgroundColor: "#f5f5f5" }}>
+    <div class="row signIn" style={{ backgroundColor: "#f2f4f7" }}>
       <div class="col-md-6">
         <section class="">
           <div class="row d-flex justify-content-end align-items-end h-100">
@@ -30,10 +30,10 @@ const ForgotPassword = () => {
                           />
                         </div>
                       </div>
-                      <div class="d-flex justify-content-left mb-3 mb-lg-4">
+                      <div class="d-flex justify-content-left pb-3 mb-lg-4">
                         <button
                           type="button"
-                          class="btn text-nowrap btn-lg px-5"
+                          class="btn text-nowrap btn-lg px-5 mt-3 mb-5"
                           style={{
                             backgroundColor: "#52057B",
                             color: "white",

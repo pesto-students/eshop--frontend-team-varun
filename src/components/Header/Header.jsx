@@ -41,6 +41,15 @@ const Header = () => {
             </li>
             <li className="nav-item">
               <Link
+                to="/admin/products"
+                className="nav-link text-white"
+                style={{ textDecoration: "none" }}
+              >
+                Dashboard
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link
                 to="/products"
                 className="nav-link text-white"
                 style={{ textDecoration: "none" }}

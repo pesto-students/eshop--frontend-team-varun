@@ -1,14 +1,24 @@
 import React from "react";
-import "./Home.css";
+import Carousel from "../../components/Carousel/Carousel";
+import Category from "../../components/ChoiceCategory/Category";
+import { data } from "../../components/constants";
+import Recommends from "../../components/Recommends/Recommends";
+import Services from "../../components/Services/Services";
+import TodaysDeal from "../../components/TodaysDeal/TodaysDeal";
+import TopBrands from "../../components/TopBrands/TopBrands";
 
 const Home = () => {
   return (
-    <div className="row home">
-      {/* <div className="row"> */}
-        <div class="col-md-6">div 1 </div>
-        <div class="col-md-6">div 2</div>
-      {/* </div> */}
-    </div>
+    <>
+      <Carousel />
+      <TodaysDeal title="Today's Deals" isEnd="true" deals={data.dailyDeals} />
+      <Category cates={data.cates} />
+      <TodaysDeal title="Deals of the Month" deals={data.monthlyDeals} />
+      <Services />
+      <TopBrands />
+      <Recommends />
+      home
+    </>
   );
 };
 

@@ -201,14 +201,14 @@ const Footer = () => {
             </div>
             <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
               <h6 class="text-uppercase fw-bold">Others</h6>
-              {/* <hr
+              <hr
                 class="mb-4 mt-0 d-inline-block mx-auto"
                 style={{
                   width: "60px",
                   backgroundColor: "#52057B",
                   height: "2px",
                 }}
-              /> */}
+              />
               <p>
                 <a
                   href="#!"

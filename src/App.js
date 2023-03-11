@@ -10,6 +10,8 @@ import Footer from "./components/Footer/Footer";
 import CreateAccount from "./pages/CreateAccount/CreateAccount";
 import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
 import Checkout from "./pages/Checkout/Checkout";
+import ProductDetail from "./pages/ProductDetail/ProductDetail";
+import Dashboard from "./pages/Admin/Dashboard/Dashboard";
 
 function App() {
   return (
@@ -25,6 +27,23 @@ function App() {
           <Route path="/createAccount" element={<CreateAccount />} />
           <Route path="/forgotPassword" element={<ForgotPassword />} />
           <Route path="/checkout" element={<Checkout />} />
+          <Route path="/product/:id" element={<ProductDetail />} />
+          <Route
+            path="/admin/products"
+            element={<Dashboard currentPage="products" />}
+          />
+          <Route
+            path="/admin/users"
+            element={<Dashboard currentPage="users" />}
+          />
+          <Route
+            path="/admin/orders"
+            element={<Dashboard currentPage="orders" />}
+          />
+          <Route
+            path="/admin/reviews"
+            element={<Dashboard currentPage="reviews" />}
+          />
         </Routes>
         <Footer />
       </Router>

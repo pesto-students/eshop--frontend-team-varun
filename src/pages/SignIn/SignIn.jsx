@@ -4,7 +4,7 @@ import "./SignIn.css";
 
 const SignIn = () => {
   return (
-    <div class="row signIn" style={{ backgroundColor: "#f5f5f5" }}>
+    <div class="row signIn" style={{ backgroundColor: "#f2f4f7" }}>
       <div class="col-md-6">
         <section class="">
           <div class="row d-flex justify-content-end align-items-end h-100">
@@ -28,6 +28,7 @@ const SignIn = () => {
                             type="email"
                             id="form3Example3c"
                             class="form-control"
+                            required
                           />
                         </div>
                       </div>

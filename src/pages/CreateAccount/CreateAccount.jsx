@@ -3,11 +3,11 @@ import "./CreateAccount.css";
 
 const CreateAccount = () => {
   return (
-    <div class="row createAccount" style={{ backgroundColor: "#f5f5f5" }}>
+    <div class="row createAccount" style={{ backgroundColor: "#f2f4f7" }}>
       <div class="d-flex flex-column">
-        <div className="card-body px-md-4 px-sm-4 pt-sm-5 pt-md-5">
-          <div class="row justify-content-end">
-            <div class="col-md-10 col-lg-10 col-xl-10 order-2 order-lg-1">
+        <div className="card-body px-md-0 px-sm-5 pt-sm-5 pt-md-5 ">
+          <div class="row justify-content-end ">
+            <div class="col-md-11 col-xl-10 px-md-3 order-2 order-lg-1">
               <h1 class="text-left fw-bold mt-4 mb-0">Create An Account</h1>
             </div>
           </div>
