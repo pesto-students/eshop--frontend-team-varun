@@ -5,47 +5,47 @@ import "./Footer.css";
 const Footer = () => {
   return (
     <footer
-      className="text-center text-lg-start text-white"
+      class="text-center text-lg-start text-white"
       style={{ backgroundColor: "#000000" }}
     >
       <section
-        className="d-flex justify-content-between p-4"
+        class="d-flex justify-content-between p-4"
         style={{
           backgroundColor: "#000000",
           borderBottom: "1px solid #6351ce",
         }}
       >
-        <div className="me-5">
+        <div class="me-5">
           <span>Get connected with us on social networks</span>
         </div>
         <div>
-          <a href="..." className="text-white me-4">
-            <i className="fab fa-facebook-f"></i>
+          <a href="..." class="text-white me-4">
+            <i class="fab fa-facebook-f"></i>
           </a>
-          <a href="..." className="text-white me-4">
-            <i className="fab fa-twitter"></i>
+          <a href="..." class="text-white me-4">
+            <i class="fab fa-twitter"></i>
           </a>
-          <a href="..." className="text-white me-4">
-            <i className="fab fa-google"></i>
+          <a href="..." class="text-white me-4">
+            <i class="fab fa-google"></i>
           </a>
-          <a href="..." className="text-white me-4">
-            <i className="fab fa-instagram"></i>
+          <a href="..." class="text-white me-4">
+            <i class="fab fa-instagram"></i>
           </a>
-          <a href="..." className="text-white me-4">
-            <i className="fab fa-linkedin"></i>
+          <a href="..." class="text-white me-4">
+            <i class="fab fa-linkedin"></i>
           </a>
-          <a href="..." className="text-white me-4">
-            <i className="fab fa-github"></i>
+          <a href="..." class="text-white me-4">
+            <i class="fab fa-github"></i>
           </a>
         </div>
       </section>
-      <section className="">
-        <div className="container text-center text-md-start mt-5">
-          <div className="row mt-3">
-            <div className="col-md-4 col-lg-4 col-xl-3 mx-auto mb-4">
-              <h6 className="text-uppercase fw-bold">E-Shop</h6>
+      <section class="">
+        <div class="container text-center text-md-start mt-5">
+          <div class="row mt-3">
+            <div class="col-md-4 col-lg-4 col-xl-3 mx-auto mb-4">
+              <h6 class="text-uppercase fw-bold">E-Shop</h6>
               <hr
-                className="mb-4 mt-0 d-inline-block mx-auto"
+                class="mb-4 mt-0 d-inline-block mx-auto"
                 style={{
                   width: "60px",
                   backgroundColor: "#52057B",
@@ -58,10 +58,10 @@ const Footer = () => {
                 elit.
               </p>
             </div>
-            <div className="col-md-2 col-lg-2 col-xl-2 mx-auto mb-md-0 mb-4">
-              <h6 className="text-uppercase fw-bold">Contact</h6>
+            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-md-0 mb-4">
+              <h6 class="text-uppercase fw-bold">Contact</h6>
               <hr
-                className="mb-4 mt-0 d-inline-block mx-auto"
+                class="mb-4 mt-0 d-inline-block mx-auto"
                 style={{
                   width: "60px",
                   backgroundColor: "#52057B",
@@ -70,25 +70,25 @@ const Footer = () => {
               />
               {/* <p>e-shop Co., Ltd</p> */}
               <p>
-                <i className="fas fa-home mr-3"></i>
+                <i class="fas fa-home mr-3"></i>
                 1658 Rosewood Lane
                 <br />
                 New York city, NY
               </p>
               <p>
-                <i className="fas fa-envelope mr-3"></i> admin@e-shope.com
+                <i class="fas fa-envelope mr-3"></i> admin@e-shope.com
               </p>
               <p>
-                <i className="fas fa-phone mr-3"></i> 212 929 9953
+                <i class="fas fa-phone mr-3"></i> 212 929 9953
               </p>
               <p>
-                <i className="fas fa-print mr-3"></i> +01 234 567 89
+                <i class="fas fa-print mr-3"></i> +01 234 567 89
               </p>
             </div>
-            <div className="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-              <h6 className="text-uppercase fw-bold">Co-operation - Association</h6>
+            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+              <h6 class="text-uppercase fw-bold">Co-operation - Association</h6>
               <hr
-                className="mb-4 mt-0 d-inline-block mx-auto"
+                class="mb-4 mt-0 d-inline-block mx-auto"
                 style={{
                   width: "60px",
                   backgroundColor: "#52057B",
@@ -98,7 +98,7 @@ const Footer = () => {
               <p>
                 <a
                   href="#!"
-                  className="text-white"
+                  class="text-white"
                   style={{ textDecoration: "none" }}
                 >
                   Operation Regulation of EC-Exchange
@@ -107,7 +107,7 @@ const Footer = () => {
               <p>
                 <a
                   href="#!"
-                  className="text-white"
+                  class="text-white"
                   style={{ textDecoration: "none" }}
                 >
                   Return Policy
@@ -116,7 +116,7 @@ const Footer = () => {
               <p>
                 <a
                   href="#!"
-                  className="text-white"
+                  class="text-white"
                   style={{ textDecoration: "none" }}
                 >
                   Privacy Policy
@@ -125,7 +125,7 @@ const Footer = () => {
               <p>
                 <a
                   href="#!"
-                  className="text-white"
+                  class="text-white"
                   style={{ textDecoration: "none" }}
                 >
                   Selling With e-shope
@@ -134,17 +134,17 @@ const Footer = () => {
               <p>
                 <a
                   href="#!"
-                  className="text-white"
+                  class="text-white"
                   style={{ textDecoration: "none" }}
                 >
                   Help
                 </a>
               </p>
             </div>
-            <div className="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-              <h6 className="text-uppercase fw-bold">Customer Support</h6>
+            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+              <h6 class="text-uppercase fw-bold">Customer Support</h6>
               <hr
-                className="mb-4 mt-0 d-inline-block mx-auto"
+                class="mb-4 mt-0 d-inline-block mx-auto"
                 style={{
                   width: "60px",
                   backgroundColor: "#52057B",
@@ -154,7 +154,7 @@ const Footer = () => {
               <p>
                 <a
                   href="#!"
-                  className="text-white"
+                  class="text-white"
                   style={{ textDecoration: "none" }}
                 >
                   Hotline Customer Service
@@ -165,7 +165,7 @@ const Footer = () => {
               <p>
                 <a
                   href="#!"
-                  className="text-white"
+                  class="text-white"
                   style={{ textDecoration: "none" }}
                 >
                   Frequently asked Questions
@@ -174,7 +174,7 @@ const Footer = () => {
               <p>
                 <a
                   href="#!"
-                  className="text-white"
+                  class="text-white"
                   style={{ textDecoration: "none" }}
                 >
                   Submit Support Request
@@ -183,7 +183,7 @@ const Footer = () => {
               <p>
                 <a
                   href="#!"
-                  className="text-white"
+                  class="text-white"
                   style={{ textDecoration: "none" }}
                 >
                   Ordering Guide
@@ -192,27 +192,27 @@ const Footer = () => {
               <p>
                 <a
                   href="#!"
-                  className="text-white"
+                  class="text-white"
                   style={{ textDecoration: "none" }}
                 >
                   Shipping Methods
                 </a>
               </p>
             </div>
-            <div className="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-              <h6 className="text-uppercase fw-bold">Others</h6>
-              {/* <hr
-                className="mb-4 mt-0 d-inline-block mx-auto"
+            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+              <h6 class="text-uppercase fw-bold">Others</h6>
+              <hr
+                class="mb-4 mt-0 d-inline-block mx-auto"
                 style={{
                   width: "60px",
                   backgroundColor: "#52057B",
                   height: "2px",
                 }}
-              /> */}
+              />
               <p>
                 <a
                   href="#!"
-                  className="text-white"
+                  class="text-white"
                   style={{ textDecoration: "none" }}
                 >
                   Installment Purchase Guide
@@ -221,7 +221,7 @@ const Footer = () => {
               <p>
                 <a
                   href="#!"
-                  className="text-white"
+                  class="text-white"
                   style={{ textDecoration: "none" }}
                 >
                   Import Policy
@@ -230,7 +230,7 @@ const Footer = () => {
               <p>
                 <a
                   href="#!"
-                  className="text-white"
+                  class="text-white"
                   style={{ textDecoration: "none" }}
                 >
                   Customer Support <br />
@@ -240,7 +240,7 @@ const Footer = () => {
               <p>
                 <a
                   href="#!"
-                  className="text-white"
+                  class="text-white"
                   style={{ textDecoration: "none" }}
                 >
                   Security Error Report:
@@ -253,8 +253,8 @@ const Footer = () => {
         </div>
       </section>
 
-      <div className="text-left p-3" style={{ backgroundColor: "white" }}>
-        <a className="text-black" href="..." style={{ textDecoration: "none" }}>
+      <div class="text-left p-3" style={{ backgroundColor: "white" }}>
+        <a class="text-black" href="..." style={{ textDecoration: "none" }}>
           Copyright 2023 © E-Shop
         </a>
       </div>
