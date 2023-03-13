@@ -6,9 +6,9 @@ import BookData from "../../Data.json";
 import "./products.css";
 import map from "lodash/map";
 import range from "lodash/range";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faAngleLeft } from "@fortawesome/free-solid-svg-icons";
-// import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAngleLeft } from "@fortawesome/free-solid-svg-icons";
+import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 
 const Products = () => {
   return (
@@ -32,7 +32,7 @@ const Products = () => {
           <nav aria-label="Page navigation example">
             <ul className="pagination">
               <li className="page-item">
-                {/* <FontAwesomeIcon icon={faAngleLeft} /> */}
+                <FontAwesomeIcon icon={faAngleLeft} />
               </li>
               {map(range(5), (index) => (
                 <li className="page-item">
@@ -40,7 +40,7 @@ const Products = () => {
                 </li>
               ))}
               <li className="page-item">
-                {/* <FontAwesomeIcon icon={faAngleRight} /> */}
+                <FontAwesomeIcon icon={faAngleRight} />
               </li>
             </ul>
           </nav>

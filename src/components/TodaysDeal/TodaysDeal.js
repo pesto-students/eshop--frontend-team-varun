@@ -67,9 +67,8 @@ const TodaysDeal = (props) => {
       </div>
       <div className="deal-cards">
         {props.deals?.map((deal) => (
-          <Dealcards deall={deal} />
-        ))}
-        ;
+          <Dealcards deall={deal}/>
+        ))};
       </div>
     </>
   );
