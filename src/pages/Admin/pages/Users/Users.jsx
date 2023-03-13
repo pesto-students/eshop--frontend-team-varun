@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 
 const Users = () => {
   return (
@@ -23,7 +23,7 @@ const Users = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Users
+export default Users;

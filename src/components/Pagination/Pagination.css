@@ -1,0 +1,10 @@
+.active{
+    background-color: #52057B;
+    color: white;
+    font-weight: bold;
+}
+
+.unActive{
+    background-color: white;
+    color: #52057B;
+}

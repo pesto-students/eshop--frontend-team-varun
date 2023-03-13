@@ -1,10 +1,15 @@
 import React from "react";
 import Sidebar from "../components/Sidebar";
-import Users from "../pages/Users/Users";
-import Orders from "../pages/Orders/Orders";
+// import Users from "../pages/Users/Users";
 import Products from "../pages/Products/Products";
 import Reviews from "../pages/Reviews/Reviews";
+import { products } from "../../../localFiles/ProductsFile";
+import { Orders } from "../../../localFiles/OrdersFile";
+import { Users } from "../../../localFiles/UsersFile";
+import { Comments } from "../../../localFiles/CommentsFile";
+
 import "./Dashboard.css";
+import ListView from "../pages/ListView/ListView";
 
 const Dashboard = ({ currentPage }) => {
   const pageName = currentPage.charAt(0).toUpperCase() + currentPage.slice(1);
@@ -14,12 +19,14 @@ const Dashboard = ({ currentPage }) => {
         <div class="col-3">
           <section class="">
             <div class="row d-flex justify-content-start align-items-start h-100">
-              <div class="col-lg-12  col-xl-10">
+              <div class="col-lg-11  col-xl-11">
                 <div class="card-body">
                   <div class="row justify-content-start mx-md-4">
-                    <div class="col-md-10 col-lg-10 col-xl-10 order-2 order-lg-1">
-                      <p class="text-left h1 fw-bold mb-5 mt-4">{pageName}</p>
-                      <div>
+                    <div class="col-md-12 col-lg-12 col-xl-12 order-2 order-lg-1">
+                      <p class="text-left h1 fw-bold mb-5 mt-4 mx-4">
+                        {pageName}
+                      </p>
+                      <div class="mx-2">
                         <Sidebar currentPage={currentPage} />
                       </div>
                     </div>
@@ -43,14 +50,18 @@ const Dashboard = ({ currentPage }) => {
                             <div class="input-group mb-3 bg-light border border-1 rounded">
                               <input
                                 type="text"
-                                class="form-control input-text border border-0"
-                                placeholder={`Search  ${currentPage}... `}
+                                class="form-control input-text border border-0 shadow-none"
+                                placeholder={`Search  ${currentPage.slice(
+                                  0,
+                                  currentPage.length - 1
+                                )}... `}
                                 aria-label="Recipient's username"
                                 aria-describedby="basic-addon2"
                               />
+
                               <div class="input-group-append">
                                 <button
-                                  class="btn btn-lg border border-0"
+                                  class="btn btn-lg border border-0 bg-light"
                                   style={{
                                     outline: "#52057B",
                                     backgroundColor: "white",
@@ -64,19 +75,24 @@ const Dashboard = ({ currentPage }) => {
                                 </button>
                               </div>
                             </div>
-                            <div class="mx-4">
-                              <button
-                                class="btn border border-0 "
-                                style={{
-                                  backgroundColor: "#52057B",
-                                  color: "white",
-                                  width: "110px",
-                                  height: "2.8rem",
-                                }}
-                              >
-                                {`Add ${currentPage}`}
-                              </button>
-                            </div>
+                            {currentPage === "products" && (
+                              <div class="mx-4">
+                                <button
+                                  class="btn border border-0 "
+                                  style={{
+                                    backgroundColor: "#52057B",
+                                    color: "white",
+                                    width: "110px",
+                                    height: "2.8rem",
+                                  }}
+                                >
+                                  {`Add ${currentPage.slice(
+                                    0,
+                                    currentPage.length - 1
+                                  )}`}
+                                </button>
+                              </div>
+                            )}
                           </div>
                         </div>
                       </div>
@@ -85,10 +101,18 @@ const Dashboard = ({ currentPage }) => {
                 </div>
               </div>
               <div class="col-lg-12  col-xl-12">
-                {(pageName === "Products" && <Products />) ||
-                  (pageName === "Users" && <Users />) ||
-                  (pageName === "Orders" && <Orders />) ||
-                  (pageName === "Reviews" && <Reviews />)}
+                {(pageName === "Products" && (
+                  <Products products={products} page="Products" />
+                )) ||
+                  (pageName === "Orders" && (
+                    <ListView rawData={Orders} page="Orders" />
+                  )) ||
+                  (pageName === "Users" && (
+                    <ListView rawData={Users} page="Users" />
+                  )) ||
+                  (pageName === "Reviews" && (
+                    <ListView rawData={Comments} page="Reviews" />
+                  ))}
               </div>
             </div>
           </section>
