@@ -20,31 +20,31 @@ function App() {
         <Header />
         <Routes>
           <Route path="/">
-            <Route index element={<Home />} />
-            <Route path="products" element={<Product />} />
-            <Route path="contact" element={<Contact />} />
-            <Route path="cart" element={<Cart />} />
-            <Route path="signIn" element={<SignIn />} />
-            <Route path="createAccount" element={<CreateAccount />} />
-            <Route path="forgotPassword" element={<ForgotPassword />} />
-            <Route path="checkout" element={<Checkout />} />
-            <Route path="products/:id" element={<ProductDetail />} />
-            <Route path="admin">
-              <Route
-                path="products"
-                element={<Dashboard currentPage="products" />}
-              />
-              <Route path="users" element={<Dashboard currentPage="users" />} />
-              <Route
-                path="orders"
-                element={<Dashboard currentPage="orders" />}
-              />
-              <Route
-                path="reviews"
-                element={<Dashboard currentPage="reviews" />}
-              />
-            </Route>
-          </Route>
+             <Route index element={<Home />} />
+             <Route path="products" element={<Product />} />
+             <Route path="contact" element={<Contact />} />
+             <Route path="cart" element={<Cart />} />
+             <Route path="signIn" element={<SignIn />} />
+             <Route path="createAccount" element={<CreateAccount />} />
+             <Route path="forgotPassword" element={<ForgotPassword />} />
+             <Route path="checkout" element={<Checkout />} />
+             <Route path="products/:id" element={<ProductDetail />} />
+             <Route path="admin">
+               <Route
+                 path="products"
+                 element={<Dashboard currentPage="products" />}
+               />
+               <Route path="users" element={<Dashboard currentPage="users" />} />
+               <Route
+                 path="orders"
+                 element={<Dashboard currentPage="orders" />}
+               />
+               <Route
+                 path="reviews"
+                 element={<Dashboard currentPage="reviews" />}
+               />
+             </Route>
+           </Route>
         </Routes>
         <Footer />
       </Router>
