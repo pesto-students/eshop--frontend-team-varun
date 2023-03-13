@@ -1,0 +1,30 @@
+.top_brands {
+    background-color: #f2f4f7;
+    margin: 0;
+    padding: 64px 0 64px 0;
+    width: 100%;
+}
+
+.title_brand {
+    font-size: 24px;
+    font-weight: 600;
+    margin-left: 42px;
+}
+
+.brands_img {
+    display: flex;
+    gap: 50px;
+    flex: 0;
+    overflow-x: auto;
+    padding: 0 42px;
+    margin-top: 40px;
+}
+
+.brands_img::-webkit-scrollbar {
+    display: none;
+}
+
+.brands_img img{
+    height: 150px;
+    width: 150px; 
+}
