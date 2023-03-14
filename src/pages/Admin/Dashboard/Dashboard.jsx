@@ -2,7 +2,7 @@ import React from "react";
 import Sidebar from "../components/Sidebar";
 // import Users from "../pages/Users/Users";
 import Products from "../pages/Products/Products";
-import Reviews from "../pages/Reviews/Reviews";
+
 import { products } from "../../../localFiles/ProductsFile";
 import { Orders } from "../../../localFiles/OrdersFile";
 import { Users } from "../../../localFiles/UsersFile";
@@ -10,9 +10,12 @@ import { Comments } from "../../../localFiles/CommentsFile";
 
 import "./Dashboard.css";
 import ListView from "../pages/ListView/ListView";
+import { Link } from "react-router-dom";
+import AddProduct from "../pages/AddProduct/AddProduct";
 
 const Dashboard = ({ currentPage }) => {
   const pageName = currentPage.charAt(0).toUpperCase() + currentPage.slice(1);
+
   return (
     <div class="row dashboard" style={{ backgroundColor: "#f2f4f7" }}>
       <div class="row">
@@ -43,60 +46,66 @@ const Dashboard = ({ currentPage }) => {
                 <div class="card-body" style={{ width: "100%" }}>
                   <div class="row justify-content-start mx-1">
                     {/* SearchBar and Add button implementation */}
-                    <div class="col-md-10 col-lg-10 col-xl-10 order-2 order-lg-1">
-                      <div class="container justify-content-center mt-4">
-                        <div class="row">
-                          <div class="col-md-10 d-flex justify-content-start ">
-                            <div class="input-group mb-3 bg-light border border-1 rounded">
-                              <input
-                                type="text"
-                                class="form-control input-text border border-0 shadow-none"
-                                placeholder={`Search  ${currentPage.slice(
-                                  0,
-                                  currentPage.length - 1
-                                )}... `}
-                                aria-label="Recipient's username"
-                                aria-describedby="basic-addon2"
-                              />
-
-                              <div class="input-group-append">
-                                <button
-                                  class="btn btn-lg border border-0 bg-light"
-                                  style={{
-                                    outline: "#52057B",
-                                    backgroundColor: "white",
-                                  }}
-                                  type="button"
-                                >
-                                  <i
-                                    class="fa fa-search"
-                                    style={{ color: "#52057B" }}
-                                  ></i>
-                                </button>
-                              </div>
-                            </div>
-                            {currentPage === "products" && (
-                              <div class="mx-4">
-                                <button
-                                  class="btn border border-0 "
-                                  style={{
-                                    backgroundColor: "#52057B",
-                                    color: "white",
-                                    width: "110px",
-                                    height: "2.8rem",
-                                  }}
-                                >
-                                  {`Add ${currentPage.slice(
+                    {currentPage !== "addProduct" ? (
+                      <div class="col-md-10 col-lg-10 col-xl-10 order-2 order-lg-1">
+                        <div class="container justify-content-center mt-4">
+                          <div class="row">
+                            <div class="col-md-10 d-flex justify-content-start ">
+                              <div class="input-group mb-3 bg-light border border-1 rounded">
+                                <input
+                                  type="text"
+                                  class="form-control input-text border border-0 shadow-none"
+                                  placeholder={`Search  ${currentPage.slice(
                                     0,
                                     currentPage.length - 1
-                                  )}`}
-                                </button>
+                                  )}... `}
+                                  aria-label="Recipient's username"
+                                  aria-describedby="basic-addon2"
+                                />
+
+                                <div class="input-group-append">
+                                  <button
+                                    class="btn btn-lg border border-0 bg-light"
+                                    style={{
+                                      outline: "#52057B",
+                                      backgroundColor: "white",
+                                    }}
+                                    type="button"
+                                  >
+                                    <i
+                                      class="fa fa-search"
+                                      style={{ color: "#52057B" }}
+                                    ></i>
+                                  </button>
+                                </div>
                               </div>
-                            )}
+                              {currentPage === "products" && (
+                                <div class="mx-4">
+                                  <Link to="/admin/addProduct">
+                                    <button
+                                      class="btn border border-0 "
+                                      style={{
+                                        backgroundColor: "#52057B",
+                                        color: "white",
+                                        width: "110px",
+                                        height: "2.8rem",
+                                      }}
+                                    >
+                                      {`Add ${currentPage.slice(
+                                        0,
+                                        currentPage.length - 1
+                                      )}`}
+                                    </button>
+                                  </Link>
+                                </div>
+                              )}
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
+                    ) : (
+                      <div class="col-md-10 col-lg-10 col-xl-10 order-2 order-lg-1 py-4 my-4"></div>
+                    )}
                   </div>
                 </div>
               </div>
@@ -112,7 +121,8 @@ const Dashboard = ({ currentPage }) => {
                   )) ||
                   (pageName === "Reviews" && (
                     <ListView rawData={Comments} page="Reviews" />
-                  ))}
+                  )) ||
+                  (pageName === "Add Product" && <AddProduct />)}
               </div>
             </div>
           </section>
