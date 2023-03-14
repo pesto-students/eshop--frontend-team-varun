@@ -1,4 +1,4 @@
-const cates = [
+export const cates = [
   {
     icon: "../assets/new1.png",
     title: "What's New",
@@ -37,7 +37,7 @@ const cates = [
   },
 ];
 
-const monthlyDeals = [
+export const monthlyDeals = [
   {
     icon: "../assets/camera.png",
     title: "Canon EOS 1500D 24.1 Digital SLR Camera (Black)...",
@@ -82,7 +82,7 @@ const monthlyDeals = [
   },
 ];
 
-const dailyDeals = [
+export const dailyDeals = [
   {
     icon: "../assets/laptop.png",
     title: "HP 14s, 11th Gen Intel Core i3-1115G4, 8GB RAM/....",
@@ -127,7 +127,7 @@ const dailyDeals = [
   },
 ];
 
-const brands = [
+export const brands = [
   "../assets/intel.png",
   "../assets/boat.png",
   "../assets/hp.png",
@@ -140,6 +140,4 @@ const brands = [
   "../assets/lg.png",
 ];
 
-const data = [];
-
-export { data, cates, monthlyDeals, dailyDeals, brands };
+export const data = [];

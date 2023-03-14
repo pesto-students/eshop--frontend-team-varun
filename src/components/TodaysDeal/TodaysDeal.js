@@ -57,8 +57,8 @@ const TodaysDeal = (props) => {
         <p className="todaysdeal">{props.title}</p>
         {props.isEnd ? (
           <p className="endsin">
-            Ends in <span>{hours > 9 ? hours : "0" + hours}</span> :{" "}
-            <span>{minutes > 9 ? minutes : "0" + minutes}</span> :{" "}
+            Ends in <span>{hours > 9 ? hours : "0" + hours}</span>
+            <span>{minutes > 9 ? minutes : "0" + minutes}</span>
             <span>{seconds > 9 ? seconds : "0" + seconds}</span>
           </p>
         ) : (
@@ -67,8 +67,8 @@ const TodaysDeal = (props) => {
       </div>
       <div className="deal-cards">
         {props.deals?.map((deal) => (
-          <Dealcards deall={deal}/>
-        ))};
+          <Dealcards deall={deal} />
+        ))}
       </div>
     </>
   );

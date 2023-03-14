@@ -314,7 +314,7 @@ const AddProduct = () => {
             <div class="row">
               <div class="col-12">
                 <form>
-                  <div class="d-flex gap-1 p-2 flex-wrap col-12 form-group multi-preview">
+                  <div class="d-flex gap-1 p-2 flex-wrap justify-content-evenly col-12 form-group multi-preview">
                     {(images || []).map((url, index) => (
                       <img
                         class="my-2"
