@@ -1,0 +1,53 @@
+.recommend{
+    margin: 64px 0 0 0;
+}
+
+.recommend .rec_title{
+    font-size: 24px;
+    font-weight: 600;
+    padding: 0 0 0 40px;
+}
+
+.recommend .btn{
+    width: 100%;
+    background: #52057B;
+    border-radius: 8px;
+    border: none;
+}
+
+.card-text{
+    color: black;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.card-title{
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.rows_recom{
+    display: flex;
+    overflow-x: auto;
+    padding: 0 40px 0 40px;
+}
+
+.rows_recom::-webkit-scrollbar {
+    display: none;
+}
+
+.rec_rows{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.rec_rows .card{
+    border: none;
+    margin: 0;
+}
+
+.card-img-top {
+    border: none;
+    background-color: white;
+}
