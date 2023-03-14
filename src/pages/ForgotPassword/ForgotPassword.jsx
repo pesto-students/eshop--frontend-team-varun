@@ -2,7 +2,7 @@ import React from "react";
 
 const ForgotPassword = () => {
   return (
-    <div className="row signIn" style={{ backgroundColor: "#f5f5f5" }}>
+    <div className="row signIn" style={{ backgroundColor: "#f2f4f7" }}>
       <div className="col-md-6">
         <section className="">
           <div className="row d-flex justify-content-end align-items-end h-100">

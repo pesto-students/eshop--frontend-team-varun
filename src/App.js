@@ -45,7 +45,7 @@ function App() {
               />
               <Route
                 path="addProduct"
-                element={<Dashboard currentPage={"add Product"} />}
+                element={<Dashboard currentPage={"Add Product"} />}
               />
             </Route>
           </Route>

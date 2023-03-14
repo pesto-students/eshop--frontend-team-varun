@@ -73,9 +73,9 @@ const AddProduct = () => {
   //   }
 
   return (
-    <div class="row">
+    <div class="row mb-3">
       <div
-        class="col-9 mt-4 my-5 border border-0 rounded-3"
+        class="col-9 mt-4 mb-5 border border-0 rounded-3"
         style={{ backgroundColor: "white" }}
       >
         <section class="">

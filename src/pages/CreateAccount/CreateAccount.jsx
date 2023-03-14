@@ -3,7 +3,7 @@ import "./CreateAccount.css";
 
 const CreateAccount = () => {
   return (
-    <div className="row createAccount" style={{ backgroundColor: "#f5f5f5" }}>
+    <div className="row createAccount" style={{ backgroundColor: "#f2f4f7" }}>
       <div className="d-flex flex-column">
         <div className="card-body px-md-4 px-sm-4 pt-sm-5 pt-md-5">
           <div className="row justify-content-end">
