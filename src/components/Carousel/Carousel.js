@@ -80,7 +80,6 @@ const Carousel = () => {
           <img className="next-icon" src="../assets/next.svg" alt="" />
         </button>
       </div>
-
     </div>
   );
 };
