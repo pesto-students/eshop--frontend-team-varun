@@ -43,6 +43,10 @@ function App() {
                 path="reviews"
                 element={<Dashboard currentPage="reviews" />}
               />
+              <Route
+                path="addProduct"
+                element={<Dashboard currentPage={"add Product"} />}
+              />
             </Route>
           </Route>
         </Routes>
