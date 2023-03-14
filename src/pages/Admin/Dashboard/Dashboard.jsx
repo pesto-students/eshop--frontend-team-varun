@@ -87,7 +87,7 @@ const Dashboard = ({ currentPage }) => {
                                       style={{
                                         backgroundColor: "#52057B",
                                         color: "white",
-                                        width: "110px",
+                                        width: "120px",
                                         height: "2.8rem",
                                       }}
                                     >

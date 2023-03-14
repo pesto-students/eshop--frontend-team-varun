@@ -282,11 +282,11 @@ const AddProduct = () => {
         <section class="">
           <div
             class="row d-flex py-2 justify-content-center align-items-center border border-0 rounded-3"
-            style={{ height: "200px", backgroundColor: "white" }}
+            style={{ height: "220px", backgroundColor: "white" }}
           >
             <p>Product Images:</p>
             <div
-              class="mb-3 p-0"
+              class="mb-5 p-0"
               style={{
                 height: "150px",
                 width: "180px",
@@ -359,7 +359,7 @@ const AddProduct = () => {
               style={{
                 backgroundColor: "#52057B",
                 color: "white",
-                width: "110px",
+                width: "120px",
                 height: "2.8rem",
               }}
               onClick={handleClick}
