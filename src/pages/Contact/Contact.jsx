@@ -3,7 +3,7 @@ import "./Contact.css";
 
 const Contact = () => {
   return (
-    <div className="row contact" style={{ background: "#f2f4f7" }}>
+    <div className="row contact" style={{ backgroundColor: "#f2f4f7" }}>
       <div class="col">
         <div class="row d-flex justify-content-center align-items-center m-lg-5 m-md-5 mx-md-0 m-sm-5 pt-md-3 px-lg-5 px-md-0 px-sm-5">
           <div class="col-lg-12 col-md-10 col-sm-12 border border-1 rounded-2">

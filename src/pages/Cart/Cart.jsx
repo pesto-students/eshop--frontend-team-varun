@@ -5,7 +5,7 @@ import { cartProducts } from "../../localFiles/cartProduct";
 
 const Cart = () => {
   return (
-    <div className="row cart" style={{ backgroundColor: "#f5f5f5" }}>
+    <div className="row cart">
       <div className="col-md-8 cart">
         <section className="">
           <div className="row d-flex justify-content-start align-items-start h-100">
@@ -202,7 +202,7 @@ const Cart = () => {
           </div>
         </section>
       </div>
-      <div className="col-md-4">
+      <div className="col-md-4" style={{ backgroundColor: "#f2f4f7" }}>
         <section className="">
           <div className="row d-flex justify-content-left align-items-left h-100">
             <div className="col-lg-12 col-xl-10 ">

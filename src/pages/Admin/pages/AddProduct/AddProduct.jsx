@@ -73,9 +73,9 @@ const AddProduct = () => {
   //   }
 
   return (
-    <div class="row">
+    <div class="row mb-3">
       <div
-        class="col-9 mt-4 my-5 border border-0 rounded-3"
+        class="col-9 mt-4 mb-5 border border-0 rounded-3"
         style={{ backgroundColor: "white" }}
       >
         <section class="">
@@ -314,7 +314,7 @@ const AddProduct = () => {
             <div class="row">
               <div class="col-12">
                 <form>
-                  <div class="d-flex gap-1 p-2 flex-wrap col-12 form-group multi-preview">
+                  <div class="d-flex gap-1 p-2 flex-wrap justify-content-evenly col-12 form-group multi-preview">
                     {(images || []).map((url, index) => (
                       <img
                         class="my-2"

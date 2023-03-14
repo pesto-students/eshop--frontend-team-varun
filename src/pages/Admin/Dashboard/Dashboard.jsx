@@ -1,6 +1,5 @@
 import React from "react";
 import Sidebar from "../components/Sidebar";
-// import Users from "../pages/Users/Users";
 import Products from "../pages/Products/Products";
 
 import { products } from "../../../localFiles/ProductsFile";
@@ -26,9 +25,7 @@ const Dashboard = ({ currentPage }) => {
                 <div class="card-body">
                   <div class="row justify-content-start mx-md-4">
                     <div class="col-md-12 col-lg-12 col-xl-12 order-2 order-lg-1">
-                      <p class="text-left h1 fw-bold mb-5 mt-4 mx-4">
-                        {pageName}
-                      </p>
+                      <p class="text-left h1 fw-bold mb-5 mt-4 ">{pageName}</p>
                       <div class="mx-2">
                         <Sidebar currentPage={currentPage} />
                       </div>
@@ -44,11 +41,11 @@ const Dashboard = ({ currentPage }) => {
             <div class="row d-flex justify-content-start align-items-start h-100">
               <div class="col-lg-12  col-xl-12">
                 <div class="card-body" style={{ width: "100%" }}>
-                  <div class="row justify-content-start mx-1">
+                  <div class="row justify-content-start mx-2">
                     {/* SearchBar and Add button implementation */}
-                    {currentPage !== "addProduct" ? (
+                    {currentPage !== "Add Product" ? (
                       <div class="col-md-10 col-lg-10 col-xl-10 order-2 order-lg-1">
-                        <div class="container justify-content-center mt-4">
+                        <div class="container justify-content-center mt-4 mb-3">
                           <div class="row">
                             <div class="col-md-10 d-flex justify-content-start ">
                               <div class="input-group mb-3 bg-light border border-1 rounded">

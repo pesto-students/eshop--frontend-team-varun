@@ -1,7 +1,11 @@
 import React from "react";
 import Carousel from "../../components/Carousel/Carousel";
 import Category from "../../components/ChoiceCategory/Category";
-import { data } from "../../components/constants";
+import {
+  cates,
+  dailyDeals,
+  monthlyDeals,
+} from "../../components/Constants/constants";
 import Recommends from "../../components/Recommends/Recommends";
 import Services from "../../components/Services/Services";
 import TodaysDeal from "../../components/TodaysDeal/TodaysDeal";
@@ -11,13 +15,12 @@ const Home = () => {
   return (
     <>
       <Carousel />
-      <TodaysDeal title="Today's Deals" isEnd="true" deals={data.dailyDeals} />
-      <Category cates={data.cates} />
-      <TodaysDeal title="Deals of the Month" deals={data.monthlyDeals} />
+      <TodaysDeal title="Today's Deals" isEnd="true" deals={dailyDeals} />
+      <Category cates={cates} />
+      <TodaysDeal title="Deals of the Month" deals={monthlyDeals} />
       <Services />
       <TopBrands />
       <Recommends />
-      home
     </>
   );
 };
