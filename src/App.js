@@ -1,12 +1,12 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home/Home";
-import Product from "./pages/Product/Product";
 import Contact from "./pages/Contact/Contact";
 import Cart from "./pages/Cart/Cart";
 import SignIn from "./pages/SignIn/SignIn";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
+import Product from "./pages/Product/Product";
 import CreateAccount from "./pages/CreateAccount/CreateAccount";
 import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
 import Checkout from "./pages/Checkout/Checkout";
@@ -15,7 +15,7 @@ import Dashboard from "./pages/Admin/Dashboard/Dashboard";
 
 function App() {
   return (
-    <div className="container-fluid-sm p-md-0 body">
+    <div>
       <Router>
         <Header />
         <Routes>

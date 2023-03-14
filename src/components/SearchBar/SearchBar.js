@@ -33,7 +33,6 @@ function SearchBar({ placeholder, data }) {
         <img src="../assets/location.svg" alt="" />
         <p>Surat, Gujarat</p>
       </div>
-
       <div className="searchInputs">
         <input
           type="text"
@@ -46,11 +45,11 @@ function SearchBar({ placeholder, data }) {
         ) : (
           // <CloseIcon id="clearBtn" onClick={clearInput} />
           // <CloseIcon id="clearBtn" />
-          <>d</>
+          <></>
         )}
       </div>
       <button className="cat_btn">Category</button>
-      {filteredData.length != 0 && (
+      {filteredData.length !== 0 && (
         <div className="dataResult">
           {filteredData.slice(0, 15).map((value, key) => {
             return (

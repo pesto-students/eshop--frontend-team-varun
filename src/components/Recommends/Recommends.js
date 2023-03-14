@@ -13,7 +13,7 @@ const Recommends = () => {
             <div className="card" style={{ width: "18rem" }}>
               <img src="../assets/c2.png" className="card-img-top" alt="..." />
               <div className="card-body">
-                <a href="..." className="btn btn-primary">
+                <a href="!#" className="btn btn-primary">
                   Add to cart
                 </a>
                 <p className="card-text mt-3">
@@ -26,7 +26,7 @@ const Recommends = () => {
             <div className="card" style={{ width: "18rem" }}>
               <img src="../assets/c2.png" className="card-img-top" alt="..." />
               <div className="card-body">
-                <a href="..." className="btn btn-primary">
+                <a href="!#" className="btn btn-primary">
                   Add to cart
                 </a>
                 <p className="card-text mt-3">

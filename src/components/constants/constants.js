@@ -140,4 +140,6 @@ const brands = [
   "../assets/lg.png",
 ];
 
-export default { cates, monthlyDeals, dailyDeals, brands };
+const data = [];
+
+export { data, cates, monthlyDeals, dailyDeals, brands };
