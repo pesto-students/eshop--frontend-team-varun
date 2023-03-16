@@ -160,6 +160,26 @@ const AddProduct = () => {
               <div class="form-outline m-4 d-flex align-items-center">
                 <div class="col-3">
                   <label class="form-label" for="form3Example3">
+                    Stock :
+                  </label>
+                </div>
+                <div className="col-9 d-flex justify-content-between ">
+                  <div class="col-6 bg-light border border-1 rounded-3">
+                    <input
+                      type="number"
+                      id="form3Example3"
+                      placeholder="Normal Price"
+                      onChange={(e) => setNormalPrice(e.target.value)}
+                      class="form-control input-text rounded-2 shadow-none"
+                      style={{ border: "none" }}
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-outline m-4 d-flex align-items-center">
+                <div class="col-3">
+                  <label class="form-label" for="form3Example3">
                     Brand :
                   </label>
                 </div>
