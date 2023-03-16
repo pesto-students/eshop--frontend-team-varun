@@ -168,7 +168,7 @@ const AddProduct = () => {
                     <input
                       type="number"
                       id="form3Example3"
-                      placeholder="Normal Price"
+                      placeholder="Stock"
                       onChange={(e) => setNormalPrice(e.target.value)}
                       class="form-control input-text rounded-2 shadow-none"
                       style={{ border: "none" }}
