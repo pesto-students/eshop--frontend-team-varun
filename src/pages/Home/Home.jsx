@@ -1,5 +1,5 @@
 import React from "react";
-import Carousel from "../../components/Carousel/Carousel";
+import CarouselSlider from "../../components/Carousel/Carousel";
 import Category from "../../components/ChoiceCategory/Category";
 import {
   cates,
@@ -14,7 +14,7 @@ import TopBrands from "../../components/TopBrands/TopBrands";
 const Home = () => {
   return (
     <>
-      <Carousel />
+      <CarouselSlider />
       <TodaysDeal title="Today's Deals" isEnd="true" deals={dailyDeals} />
       <Category cates={cates} />
       <TodaysDeal title="Deals of the Month" deals={monthlyDeals} />

@@ -12,6 +12,7 @@ import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
 import Checkout from "./pages/Checkout/Checkout";
 import ProductDetail from "./pages/ProductDetail/ProductDetail";
 import Dashboard from "./pages/Admin/Dashboard/Dashboard";
+import CreatePassword from "./pages/CreatePassword/CreatePassword";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
             <Route path="forgotPassword" element={<ForgotPassword />} />
             <Route path="checkout" element={<Checkout />} />
             <Route path="products/:id" element={<ProductDetail />} />
+            <Route path="createPassword" element={<CreatePassword />} />
             <Route path="admin">
               <Route
                 path="products"

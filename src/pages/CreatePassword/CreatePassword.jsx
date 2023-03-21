@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const ForgotPassword = () => {
+const CreatePassword = () => {
   return (
     <div className="row signIn" style={{ backgroundColor: "#f2f4f7" }}>
       <div className="col-md-6">
@@ -12,23 +12,32 @@ const ForgotPassword = () => {
                 <div className="row justify-content-end ">
                   <div className="col-md-10 col-lg-10 col-xl-10 order-2 order-lg-1">
                     <p className="text-left h1 fw-bold mb-5 mt-4">
-                      Forgot Password
+                      Create New Password
                     </p>
-                    <p className="text-left mt-4">
-                      Type your registered email and we will send you a reset
-                      link for your password.
-                    </p>
+                    <p className="text-left mt-4">Type your new password</p>
                     <form>
                       <div className="d-flex flex-row align-items-center mb-4">
-                        <div className="form-outline flex-fill mb-0">
-                          <label className="form-label" for="form3Example3c">
-                            Your Email
-                          </label>
-                          <input
-                            type="email"
-                            id="form3Example3c"
-                            className="form-control"
-                          />
+                        <div className="d-flex flex-column form-outline flex-fill mb-0 gap-4">
+                          <div>
+                            <label className="form-label" for="form3Example3c">
+                              Password
+                            </label>
+                            <input
+                              type="password"
+                              id="form3Example3c"
+                              className="form-control"
+                            />
+                          </div>
+                          <div>
+                            <label className="form-label" for="form3Example3c">
+                              Confirm Password
+                            </label>
+                            <input
+                              type="password"
+                              id="form3Example3c"
+                              className="form-control"
+                            />
+                          </div>
                         </div>
                       </div>
                       <div className="d-flex justify-content-left mb-3 mb-lg-4">
@@ -47,7 +56,7 @@ const ForgotPassword = () => {
                               color: "white",
                             }}
                           >
-                            Send Mail
+                            Set Password
                           </button>
                         </Link>
                       </div>
@@ -64,4 +73,4 @@ const ForgotPassword = () => {
   );
 };
 
-export default ForgotPassword;
+export default CreatePassword;

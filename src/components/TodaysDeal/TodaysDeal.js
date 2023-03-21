@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./todaysDeal.css";
 import Dealcards from "../Dealcards/Dealcards";
+import { products, Products } from "../../localFiles/ProductsFile";
 
 const TodaysDeal = (props) => {
   const Ref = useRef(null);
@@ -69,6 +70,16 @@ const TodaysDeal = (props) => {
         {props.deals?.map((deal) => (
           <Dealcards deall={deal} />
         ))}
+        {/* {products.map((product) => {
+          <Dealcards
+            deall={{
+              icon: product.icon,
+              title: product.title,
+              price: product.price,
+              ratings: product.rating,
+            }}
+          />;
+        })} */}
       </div>
     </>
   );
