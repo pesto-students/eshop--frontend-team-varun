@@ -1,8 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
 import { Link } from "react-router-dom";
 import "./SignIn.css";
 
 const SignIn = () => {
+  const [credentials, setCredentials] = useState({
+    email: undefined,
+    password: undefined,
+  });
+
+  const handleChange = (e) => {
+    setCredentials((prev) => ({ ...prev, [e.target.id]: e.target.value }));
+  };
+
+  console.log(credentials);
+
   return (
     <div className="row signIn" style={{ backgroundColor: "#f2f4f7" }}>
       <div className="col-md-6">
@@ -21,25 +33,27 @@ const SignIn = () => {
                     <form>
                       <div className="d-flex flex-row align-items-center mb-4">
                         <div className="form-outline flex-fill mb-0">
-                          <label className="form-label" for="form3Example3c">
+                          <label className="form-label" for="email">
                             Your Email
                           </label>
                           <input
                             type="email"
-                            id="form3Example3c"
+                            id="email"
                             className="form-control"
+                            onChange={handleChange}
                           />
                         </div>
                       </div>
                       <div className="d-flex flex-row align-items-center mb-4">
                         <div className="form-outline flex-fill mb-0">
-                          <label className="form-label" for="form3Example4c">
+                          <label className="form-label" for="password">
                             Password
                           </label>
                           <input
                             type="password"
-                            id="form3Example4c"
+                            id="password"
                             className="form-control"
+                            onChange={handleChange}
                           />
                         </div>
                       </div>

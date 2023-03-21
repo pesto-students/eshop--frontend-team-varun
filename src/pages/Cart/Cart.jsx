@@ -1,12 +1,15 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import "./Cart.css";
-import { cartProducts } from "../../localFiles/cartProduct";
+// import { cartProducts } from "../../localFiles/cartProduct";
 
 const Cart = () => {
+  const cart = useSelector((state) => state.cart);
+
   return (
-    <div className="row cart">
-      <div className="col-md-8 cart">
+    <div className="row cart m-0">
+      <div className="col-md-8">
         <section className="">
           <div className="row d-flex justify-content-start align-items-start h-100">
             <div className="col-lg-12  col-xl-10">
@@ -15,168 +18,177 @@ const Cart = () => {
                   <div className="col-md-10 col-lg-10 col-xl-10 order-2 order-lg-1">
                     <p className="text-left h1 fw-bold mb-5 mt-4">Cart</p>
                     {/* <!-- Shopping cart table --> */}
-                    <div className="table-responsive">
-                      <table className="table">
-                        <thead>
-                          <tr>
-                            <th scope="col" className="border-1">
-                              <div className="py-2 text-uppercase text-center">
-                                Remove
-                              </div>
-                            </th>
-                            <th scope="col" className="border-1">
-                              <div className="p-2 text-uppercase text-center">
-                                Product
-                              </div>
-                            </th>
-                            <th scope="col" className="border-1">
-                              <div className="py-2 text-uppercase text-center">
-                                Price
-                              </div>
-                            </th>
-                            <th scope="col" className="border-1">
-                              <div className="py-2 text-uppercasetext-center">
-                                Quantity
-                              </div>
-                            </th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td className="border-0 align-middle text-center">
-                              <a href="..." className="text-dark">
-                                <i className="fa fa-trash"></i>
-                              </a>
-                            </td>
-                            <th scope="row" className="border-0 text-center">
-                              <div className="py-2 d-flex justify-content-evenly align-items-center">
-                                <img
-                                  src="https://bootstrapious.com/i/snippets/sn-cart/product-1.jpg"
-                                  alt=""
-                                  width="70"
-                                  className="img-fluid rounded shadow-sm"
-                                />
-                                <div className="d-inline-block align-middle">
-                                  <h5 className="mb-0">
-                                    <a
-                                      href="..."
-                                      className="text-dark d-inline-block align-middle"
-                                    >
-                                      Timex Unisex Originals
-                                    </a>
-                                  </h5>
-                                  <span className="text-muted font-weight-normal font-italic d-block">
-                                    Category: Watches
-                                  </span>
+                    {cart.products.length ? (
+                      <div className="table-responsive">
+                        <table className="table">
+                          <thead>
+                            <tr>
+                              <th scope="col" className="border-1">
+                                <div className="py-2 text-uppercase text-center">
+                                  Remove
                                 </div>
-                              </div>
-                            </th>
-                            <td className="border-0 align-middle text-center">
-                              <strong>$79.00</strong>
-                            </td>
-                            <td className="border-0 align-middle text-center">
-                              <i
-                                className="fa fa-plus me-3"
-                                aria-hidden="true"
-                              ></i>
-                              <strong>3</strong>
-                              <i
-                                className="fa fa-minus ms-3"
-                                aria-hidden="true"
-                              ></i>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td className="border-0 align-middle text-center">
-                              <a href="..." className="text-dark">
-                                <i className="fa fa-trash"></i>
-                              </a>
-                            </td>
-                            <th scope="row" className="border-0 text-center">
-                              <div className="py-2 d-flex justify-content-evenly align-items-center">
-                                <img
-                                  src="https://bootstrapious.com/i/snippets/sn-cart/product-2.jpg"
-                                  alt=""
-                                  width="70"
-                                  className="img-fluid rounded shadow-sm"
-                                />
-                                <div className="d-inline-block align-middle">
-                                  <h5 className="mb-0">
-                                    <a
-                                      href="..."
-                                      className="text-dark d-inline-block align-middle"
-                                    >
-                                      Lumix camera lense
-                                    </a>
-                                  </h5>
-                                  <span className="text-muted font-weight-normal font-italic d-block">
-                                    Category: Electronics
-                                  </span>
+                              </th>
+                              <th scope="col" className="border-1">
+                                <div className="p-2 text-uppercase text-center">
+                                  Product
                                 </div>
-                              </div>
-                            </th>
-                            <td className="border-0 align-middle text-center">
-                              <strong>$79.00</strong>
-                            </td>
-                            <td className="border-0 align-middle text-center">
-                              <i
-                                className="fa fa-plus me-3"
-                                aria-hidden="true"
-                              ></i>
-                              <strong>3</strong>
-                              <i
-                                className="fa fa-minus ms-3"
-                                aria-hidden="true"
-                              ></i>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td className="border-0 align-middle text-center">
-                              <a href="..." className="text-dark">
-                                <i className="fa fa-trash"></i>
-                              </a>
-                            </td>
-                            <th scope="row" className="border-0 text-center">
-                              <div className="py-2 d-flex justify-content-evenly align-items-center">
-                                <img
-                                  src="https://bootstrapious.com/i/snippets/sn-cart/product-3.jpg"
-                                  alt=""
-                                  width="70"
-                                  className="img-fluid rounded shadow-sm"
-                                />
-                                <div className="d-inline-block align-middle">
-                                  <h5 className="mb-0">
-                                    <a
-                                      href="..."
-                                      className="text-dark d-inline-block align-middle"
-                                    >
-                                      Gray Nike running shoe
-                                    </a>
-                                  </h5>
-                                  <span className="text-muted font-weight-normal font-italic d-block">
-                                    Category: Fashion
-                                  </span>
+                              </th>
+                              <th scope="col" className="border-1">
+                                <div className="py-2 text-uppercase text-center">
+                                  Price
                                 </div>
-                              </div>
-                            </th>
-                            <td className="border-0 align-middle text-center">
-                              <strong>$79.00</strong>
-                            </td>
-                            <td className="border-0 align-middle text-center">
-                              <i
-                                className="fa fa-plus me-3"
-                                aria-hidden="true"
-                              ></i>
-                              <strong>3</strong>
-                              <i
-                                className="fa fa-minus ms-3"
-                                aria-hidden="true"
-                              ></i>
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
+                              </th>
+                              <th scope="col" className="border-1">
+                                <div className="py-2 text-uppercasetext-center">
+                                  Quantity
+                                </div>
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td className="border-0 align-middle text-center">
+                                <a href="..." className="text-dark">
+                                  <i className="fa fa-trash"></i>
+                                </a>
+                              </td>
+                              <th scope="row" className="border-0 text-center">
+                                <div className="py-2 d-flex justify-content-evenly align-items-center">
+                                  <img
+                                    src="https://bootstrapious.com/i/snippets/sn-cart/product-1.jpg"
+                                    alt=""
+                                    width="70"
+                                    className="img-fluid rounded shadow-sm"
+                                  />
+                                  <div className="d-inline-block align-middle">
+                                    <h5 className="mb-0">
+                                      <a
+                                        href="..."
+                                        className="text-dark d-inline-block align-middle"
+                                      >
+                                        Timex Unisex Originals
+                                      </a>
+                                    </h5>
+                                    <span className="text-muted font-weight-normal font-italic d-block">
+                                      Category: Watches
+                                    </span>
+                                  </div>
+                                </div>
+                              </th>
+                              <td className="border-0 align-middle text-center">
+                                <strong>$79.00</strong>
+                              </td>
+                              <td className="border-0 align-middle text-center">
+                                <i
+                                  className="fa fa-plus me-3"
+                                  aria-hidden="true"
+                                ></i>
+                                <strong>3</strong>
+                                <i
+                                  className="fa fa-minus ms-3"
+                                  aria-hidden="true"
+                                ></i>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td className="border-0 align-middle text-center">
+                                <a href="..." className="text-dark">
+                                  <i className="fa fa-trash"></i>
+                                </a>
+                              </td>
+                              <th scope="row" className="border-0 text-center">
+                                <div className="py-2 d-flex justify-content-evenly align-items-center">
+                                  <img
+                                    src="https://bootstrapious.com/i/snippets/sn-cart/product-2.jpg"
+                                    alt=""
+                                    width="70"
+                                    className="img-fluid rounded shadow-sm"
+                                  />
+                                  <div className="d-inline-block align-middle">
+                                    <h5 className="mb-0">
+                                      <a
+                                        href="..."
+                                        className="text-dark d-inline-block align-middle"
+                                      >
+                                        Lumix camera lense
+                                      </a>
+                                    </h5>
+                                    <span className="text-muted font-weight-normal font-italic d-block">
+                                      Category: Electronics
+                                    </span>
+                                  </div>
+                                </div>
+                              </th>
+                              <td className="border-0 align-middle text-center">
+                                <strong>$79.00</strong>
+                              </td>
+                              <td className="border-0 align-middle text-center">
+                                <i
+                                  className="fa fa-plus me-3"
+                                  aria-hidden="true"
+                                ></i>
+                                <strong>3</strong>
+                                <i
+                                  className="fa fa-minus ms-3"
+                                  aria-hidden="true"
+                                ></i>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td className="border-0 align-middle text-center">
+                                <a href="..." className="text-dark">
+                                  <i className="fa fa-trash"></i>
+                                </a>
+                              </td>
+                              <th scope="row" className="border-0 text-center">
+                                <div className="py-2 d-flex justify-content-evenly align-items-center">
+                                  <img
+                                    src="https://bootstrapious.com/i/snippets/sn-cart/product-3.jpg"
+                                    alt=""
+                                    width="70"
+                                    className="img-fluid rounded shadow-sm"
+                                  />
+                                  <div className="d-inline-block align-middle">
+                                    <h5 className="mb-0">
+                                      <a
+                                        href="..."
+                                        className="text-dark d-inline-block align-middle"
+                                      >
+                                        Gray Nike running shoe
+                                      </a>
+                                    </h5>
+                                    <span className="text-muted font-weight-normal font-italic d-block">
+                                      Category: Fashion
+                                    </span>
+                                  </div>
+                                </div>
+                              </th>
+                              <td className="border-0 align-middle text-center">
+                                <strong>$79.00</strong>
+                              </td>
+                              <td className="border-0 align-middle text-center">
+                                <i
+                                  className="fa fa-plus me-3"
+                                  aria-hidden="true"
+                                ></i>
+                                <strong>3</strong>
+                                <i
+                                  className="fa fa-minus ms-3"
+                                  aria-hidden="true"
+                                ></i>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    ) : (
+                      <>
+                        <h5 class="py-2 text-uppercase text-center">
+                          Your cart is Empty add Some Products
+                        </h5>
+                      </>
+                    )}
+
                     <div className="d-flex justify-content-left mb-lg-4 mt-5">
                       <Link
                         to="/products"
@@ -185,7 +197,7 @@ const Cart = () => {
                       >
                         <button
                           type="button"
-                          className="btn text-nowrap btn-lg px-5"
+                          className="btn text-nowrap px-5"
                           style={{
                             backgroundColor: "#52057B",
                             color: "white",
@@ -202,6 +214,7 @@ const Cart = () => {
           </div>
         </section>
       </div>
+
       <div className="col-md-4" style={{ backgroundColor: "#f2f4f7" }}>
         <section className="">
           <div className="row d-flex justify-content-left align-items-left h-100">
@@ -238,7 +251,7 @@ const Cart = () => {
                       </ul>
                     </div>
 
-                    <div className="d-flex justify-content-left mb-lg-4">
+                    <div className="d-flex justify-content-left mb-4">
                       <Link
                         to="/checkout"
                         className="nav-link text-white"
@@ -246,7 +259,7 @@ const Cart = () => {
                       >
                         <button
                           type="button"
-                          className="btn text-nowrap btn-lg px-5"
+                          className="btn text-nowrap px-3"
                           style={{
                             backgroundColor: "#52057B",
                             color: "white",

@@ -28,7 +28,7 @@ const Products = ({ products }) => {
                     deall={{
                       icon: product.icon,
                       title: product.title,
-                      price: product.price,
+                      price: `₹ ${product.price}`,
                       ratings: product.rating,
                     }}
                   />

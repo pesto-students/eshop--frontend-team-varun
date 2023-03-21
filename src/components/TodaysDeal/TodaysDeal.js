@@ -57,9 +57,11 @@ const TodaysDeal = (props) => {
       <div className="title">
         <p className="todaysdeal">{props.title}</p>
         {props.isEnd ? (
-          <p className="endsin">
+          <p className="endsin d-flex justify-content-center align-items-center gap-2">
             Ends in <span>{hours > 9 ? hours : "0" + hours}</span>
+            <>:</>
             <span>{minutes > 9 ? minutes : "0" + minutes}</span>
+            <>:</>
             <span>{seconds > 9 ? seconds : "0" + seconds}</span>
           </p>
         ) : (

@@ -17,7 +17,7 @@ const Dealcards = (props) => {
             <p className="card-title">{props.deall.title}</p>
 
             <div className="price-sec w-100">
-              <h5>${props.deall.price}</h5>
+              <h5>{props.deall.price}</h5>
               <span className="rating">
                 <img src="../assets/star.png" alt="" />
                 <p>{props.deall.ratings}</p>
