@@ -3,7 +3,7 @@ import "./Contact.css";
 
 const Contact = () => {
   return (
-    <div className="row contact" style={{ backgroundColor: "#f2f4f7" }}>
+    <div className="row contact m-0">
       <div class="col">
         <div class="row d-flex justify-content-center align-items-center m-lg-5 m-md-5 mx-md-0 m-sm-5 pt-md-3 px-lg-5 px-md-0 px-sm-5">
           <div class="col-lg-12 col-md-10 col-sm-12 border border-1 rounded-2">
@@ -30,13 +30,13 @@ const Contact = () => {
                 <div class="card-body p-lg-0 m-lg-0 py-md-5 px-sm-5 px-md-5 mx-md-5 py-sm-3 mx-sm-5 ">
                   <div class="row justify-content-start">
                     <div class="col-md-10 col-lg-12 col-xl-10 order-2 order-lg-1">
-                      <p class="text-left h1 fw-bold mb-5">Company Details</p>
-                      <p class="text-left fw-bold mb-3 mt-4">Location</p>
+                      <p class="text-left h1 fw-bold my-5">Company Details</p>
+                      <p class="text-left fw-bold mb-2">Location</p>
                       <p class="text-left">
                         844 Vivianne Apt. 182,Cedar Rapids, Michigan, 18969
                       </p>
-                      <p class="text-left fw-bold mt-5 mb-3 ">Contact</p>
-                      <p class="text-left mb-5 gap-1">
+                      <p class="text-left fw-bold mt-5 mb-2">Contact</p>
+                      <p class="text-left mb-4 gap-1">
                         (607) 439-9021
                         <br />
                         Meredith_Jones@hotmail.com
@@ -109,11 +109,11 @@ const Contact = () => {
           <section class="">
             <div class="row d-flex justify-content-end align-items-end h-100">
               <div class="col-lg-10  col-xl-10">
-                <div class="card-body p-lg-0 m-lg-0 mb-lg-5 py-md-5 px-sm-5 px-md-5 mx-md-5 py-sm-3 mx-sm-5 mb-sm-5 ">
+                <div class="card-body p-lg-0 m-lg-0 mb-lg-5 py-md-5 px-sm-5 px-md-5 mx-md-5 py-sm-3 mx-sm-5 mb-sm-5">
                   <div class="row justify-content-start">
                     <div class="col-md-10 col-lg-12 col-xl-10 order-2 order-lg-1">
-                      <p class="text-left h1 fw-bold">Drop Us A Line</p>
-                      <p class="text-left mb-3 mt-1 mb-5">
+                      <p class="text-left h1 fw-bold my-5">Drop Us A Line</p>
+                      <p class="text-left mb-3 mt-1 mb-3">
                         Required fields are marked
                         <span style={{ color: "red" }}>*</span>
                       </p>
