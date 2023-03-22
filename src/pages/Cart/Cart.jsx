@@ -9,16 +9,16 @@ const Cart = () => {
 
   return (
     <div className="row cart m-0">
-      <div className="col-md-8">
+      <div className="col-md-8 cart">
         <section className="">
           <div className="row d-flex justify-content-start align-items-start h-100">
-            <div className="col-lg-12  col-xl-10">
+            <div className="col-lg-11  col-xl-10">
               <div className="card-body p-md-4 p-sm-4">
                 <div className="row justify-content-center">
-                  <div className="col-md-10 col-lg-10 col-xl-10 order-2 order-lg-1">
+                  <div className="col-md-12 col-lg-12 col-xl-12 order-2 order-lg-1">
                     <p className="text-left h1 fw-bold mb-5 mt-4">Cart</p>
                     {/* <!-- Shopping cart table --> */}
-                    {cart.products.length ? (
+                    {cart.products.length === 0 ? (
                       <div className="table-responsive">
                         <table className="table">
                           <thead>
@@ -43,8 +43,14 @@ const Cart = () => {
                                   Quantity
                                 </div>
                               </th>
+                              <th scope="col" className="border-1">
+                                <div className="py-2 text-uppercasetext-center">
+                                  Total Price
+                                </div>
+                              </th>
                             </tr>
                           </thead>
+
                           <tbody>
                             <tr>
                               <td className="border-0 align-middle text-center">
@@ -79,17 +85,23 @@ const Cart = () => {
                                 <strong>$79.00</strong>
                               </td>
                               <td className="border-0 align-middle text-center">
-                                <i
-                                  className="fa fa-plus me-3"
-                                  aria-hidden="true"
-                                ></i>
-                                <strong>3</strong>
-                                <i
-                                  className="fa fa-minus ms-3"
-                                  aria-hidden="true"
-                                ></i>
+                                <div className="col d-flex align-items-center justify-content-center gap-3">
+                                  <i
+                                    className="fa fa-plus"
+                                    aria-hidden="true"
+                                  ></i>
+                                  <strong>3</strong>
+                                  <i
+                                    className="fa fa-minus"
+                                    aria-hidden="true"
+                                  ></i>
+                                </div>
+                              </td>
+                              <td className="border-0 align-middle text-center">
+                                <strong>{3 * 79.0}</strong>
                               </td>
                             </tr>
+
                             <tr>
                               <td className="border-0 align-middle text-center">
                                 <a href="..." className="text-dark">
@@ -99,7 +111,7 @@ const Cart = () => {
                               <th scope="row" className="border-0 text-center">
                                 <div className="py-2 d-flex justify-content-evenly align-items-center">
                                   <img
-                                    src="https://bootstrapious.com/i/snippets/sn-cart/product-2.jpg"
+                                    src="https://bootstrapious.com/i/snippets/sn-cart/product-1.jpg"
                                     alt=""
                                     width="70"
                                     className="img-fluid rounded shadow-sm"
@@ -110,11 +122,11 @@ const Cart = () => {
                                         href="..."
                                         className="text-dark d-inline-block align-middle"
                                       >
-                                        Lumix camera lense
+                                        Timex Unisex Originals
                                       </a>
                                     </h5>
                                     <span className="text-muted font-weight-normal font-italic d-block">
-                                      Category: Electronics
+                                      Category: Watches
                                     </span>
                                   </div>
                                 </div>
@@ -123,17 +135,23 @@ const Cart = () => {
                                 <strong>$79.00</strong>
                               </td>
                               <td className="border-0 align-middle text-center">
-                                <i
-                                  className="fa fa-plus me-3"
-                                  aria-hidden="true"
-                                ></i>
-                                <strong>3</strong>
-                                <i
-                                  className="fa fa-minus ms-3"
-                                  aria-hidden="true"
-                                ></i>
+                                <div className="col d-flex align-items-center justify-content-center gap-3">
+                                  <i
+                                    className="fa fa-plus"
+                                    aria-hidden="true"
+                                  ></i>
+                                  <strong>3</strong>
+                                  <i
+                                    className="fa fa-minus"
+                                    aria-hidden="true"
+                                  ></i>
+                                </div>
+                              </td>
+                              <td className="border-0 align-middle text-center">
+                                <strong>{3 * 79.0}</strong>
                               </td>
                             </tr>
+
                             <tr>
                               <td className="border-0 align-middle text-center">
                                 <a href="..." className="text-dark">
@@ -143,7 +161,7 @@ const Cart = () => {
                               <th scope="row" className="border-0 text-center">
                                 <div className="py-2 d-flex justify-content-evenly align-items-center">
                                   <img
-                                    src="https://bootstrapious.com/i/snippets/sn-cart/product-3.jpg"
+                                    src="https://bootstrapious.com/i/snippets/sn-cart/product-1.jpg"
                                     alt=""
                                     width="70"
                                     className="img-fluid rounded shadow-sm"
@@ -154,11 +172,11 @@ const Cart = () => {
                                         href="..."
                                         className="text-dark d-inline-block align-middle"
                                       >
-                                        Gray Nike running shoe
+                                        Timex Unisex Originals
                                       </a>
                                     </h5>
                                     <span className="text-muted font-weight-normal font-italic d-block">
-                                      Category: Fashion
+                                      Category: Watches
                                     </span>
                                   </div>
                                 </div>
@@ -167,15 +185,20 @@ const Cart = () => {
                                 <strong>$79.00</strong>
                               </td>
                               <td className="border-0 align-middle text-center">
-                                <i
-                                  className="fa fa-plus me-3"
-                                  aria-hidden="true"
-                                ></i>
-                                <strong>3</strong>
-                                <i
-                                  className="fa fa-minus ms-3"
-                                  aria-hidden="true"
-                                ></i>
+                                <div className="col d-flex align-items-center justify-content-center gap-3">
+                                  <i
+                                    className="fa fa-plus"
+                                    aria-hidden="true"
+                                  ></i>
+                                  <strong>3</strong>
+                                  <i
+                                    className="fa fa-minus"
+                                    aria-hidden="true"
+                                  ></i>
+                                </div>
+                              </td>
+                              <td className="border-0 align-middle text-center">
+                                <strong>{3 * 79.0}</strong>
                               </td>
                             </tr>
                           </tbody>
@@ -183,9 +206,9 @@ const Cart = () => {
                       </div>
                     ) : (
                       <>
-                        <h5 class="py-2 text-uppercase text-center">
+                        <h4 class="py-2 text-uppercase text-center">
                           Your cart is Empty add Some Products
-                        </h5>
+                        </h4>
                       </>
                     )}
 
@@ -197,7 +220,7 @@ const Cart = () => {
                       >
                         <button
                           type="button"
-                          className="btn text-nowrap px-5"
+                          className="btn text-nowrap btn-lg px-5"
                           style={{
                             backgroundColor: "#52057B",
                             color: "white",
@@ -214,7 +237,6 @@ const Cart = () => {
           </div>
         </section>
       </div>
-
       <div className="col-md-4" style={{ backgroundColor: "#f2f4f7" }}>
         <section className="">
           <div className="row d-flex justify-content-left align-items-left h-100">
@@ -251,7 +273,7 @@ const Cart = () => {
                       </ul>
                     </div>
 
-                    <div className="d-flex justify-content-left mb-4">
+                    <div className="d-flex justify-content-left mb-lg-4">
                       <Link
                         to="/checkout"
                         className="nav-link text-white"
@@ -259,7 +281,7 @@ const Cart = () => {
                       >
                         <button
                           type="button"
-                          className="btn text-nowrap px-3"
+                          className="btn text-nowrap btn-lg px-5"
                           style={{
                             backgroundColor: "#52057B",
                             color: "white",

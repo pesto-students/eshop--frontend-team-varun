@@ -16,7 +16,7 @@ const Dashboard = ({ currentPage }) => {
   const pageName = currentPage.charAt(0).toUpperCase() + currentPage.slice(1);
 
   return (
-    <div class="row dashboard" style={{ backgroundColor: "#f2f4f7" }}>
+    <div class="row dashboard m-0" style={{ backgroundColor: "#f2f4f7" }}>
       <div class="row">
         <div class="col-3">
           <section class="">
