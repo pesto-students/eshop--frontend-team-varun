@@ -64,10 +64,13 @@
 @media only screen and (max-width: 460px){
   .deal-card,
   .deal-content{
-      width: 95%;
+      width: 90%;
   }
 
-  .deal-card{
-      text-align: center;
+  .deal-body{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 130px;
   }
 }

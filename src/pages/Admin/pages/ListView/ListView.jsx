@@ -3,7 +3,7 @@ import "./ListView.css";
 import Pagination from "../../../../components/Pagination/Pagination";
 
 const ListView = ({ rawData, page }) => {
-  const [showPerPage, setShowPerPage] = useState(12);
+  const [showPerPage, ] = useState(12);
   const [pagination, setPagination] = useState({
     start: 0,
     end: showPerPage,
@@ -19,9 +19,9 @@ const ListView = ({ rawData, page }) => {
       <div className="mt-2">
         <div className="row">
           <div className="col-md-12">
-            <table class="table">
-              <thead class="">
-                <tr class="border border-1 bg-light">
+            <table className="table">
+              <thead className="">
+                <tr className="border border-1 bg-light">
                   <th scope="col">
                     {page === "Orders"
                       ? "#Order Id"
@@ -67,7 +67,7 @@ const ListView = ({ rawData, page }) => {
                   <th scope="col"></th>
                 </tr>
                 <div
-                  class="row"
+                  className="row"
                   style={{
                     height: "10px",
                   }}
@@ -78,11 +78,11 @@ const ListView = ({ rawData, page }) => {
                   ?.slice(pagination.start, pagination.end)
                   .map((data) => (
                     <>
-                      <tr class="bg-light border border-1">
+                      <tr className="bg-light border border-1">
                         <td>
                           {page === "Orders" ? (
                             <i
-                              class="fa fa-clipboard"
+                              className="fa fa-clipboard"
                               style={{
                                 margin: "5px",
                                 color:
@@ -95,7 +95,7 @@ const ListView = ({ rawData, page }) => {
                             ></i>
                           ) : page === "Users" ? (
                             <i
-                              class="fa fa-user"
+                              className="fa fa-user"
                               aria-hidden="true"
                               style={{
                                 margin: "5px",
@@ -105,7 +105,7 @@ const ListView = ({ rawData, page }) => {
                             ></i>
                           ) : (
                             <i
-                              class="fa fa-comment"
+                              className="fa fa-comment"
                               aria-hidden="true"
                               style={{
                                 margin: "5px",
@@ -176,11 +176,11 @@ const ListView = ({ rawData, page }) => {
                           <td>{data.rating}</td>
                         )}
                         <td style={{ cursor: "pointer" }}>
-                          <i class="fa fa-trash"></i>
+                          <i className="fa fa-trash"></i>
                         </td>
                       </tr>
                       <div
-                        class="row"
+                        className="row"
                         style={{
                           height: "10px",
                         }}

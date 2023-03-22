@@ -1,0 +1,10 @@
+@import url("../../mediaQuery.css");
+
+.choose-color .color-box,
+.choose-memory .memory-box{
+    margin: 20px;
+}
+
+.quantity .quantity-box{
+    margin: 20px;
+}

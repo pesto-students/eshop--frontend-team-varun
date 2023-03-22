@@ -206,7 +206,7 @@ const Cart = () => {
                       </div>
                     ) : (
                       <>
-                        <h4 class="py-2 text-uppercase text-center">
+                        <h4 className="py-2 text-uppercase text-center">
                           Your cart is Empty add Some Products
                         </h4>
                       </>
