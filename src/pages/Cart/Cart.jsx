@@ -16,7 +16,7 @@ const Cart = () => {
               <div className="card-body p-md-4 p-sm-4">
                 <div className="row justify-content-center">
                   <div className="col-md-12 col-lg-12 col-xl-12 order-2 order-lg-1">
-                    <p className="text-left h1 fw-bold mb-5 mt-4">Cart</p>
+                    <p className="text-left h3 fw-semibold mb-5 mt-4">Cart</p>
                     {/* <!-- Shopping cart table --> */}
                     {cart.products.length === 0 ? (
                       <div className="table-responsive">
@@ -39,12 +39,12 @@ const Cart = () => {
                                 </div>
                               </th>
                               <th scope="col" className="border-1">
-                                <div className="py-2 text-uppercasetext-center">
+                                <div className="py-2 text-uppercase text-center">
                                   Quantity
                                 </div>
                               </th>
                               <th scope="col" className="border-1">
-                                <div className="py-2 text-uppercasetext-center">
+                                <div className="py-2 text-uppercase text-center">
                                   Total Price
                                 </div>
                               </th>
@@ -66,11 +66,11 @@ const Cart = () => {
                                     width="70"
                                     className="img-fluid rounded shadow-sm"
                                   />
-                                  <div className="d-inline-block align-middle">
+                                  <div className="text-start">
                                     <h5 className="mb-0">
                                       <a
                                         href="..."
-                                        className="text-dark d-inline-block align-middle"
+                                        className="text-dark d-inline-block align-middle text-decoration-none"
                                       >
                                         Timex Unisex Originals
                                       </a>
@@ -82,7 +82,7 @@ const Cart = () => {
                                 </div>
                               </th>
                               <td className="border-0 align-middle text-center">
-                                <strong>$79.00</strong>
+                                <strong>₹79.00</strong>
                               </td>
                               <td className="border-0 align-middle text-center">
                                 <div className="col d-flex align-items-center justify-content-center gap-3">
@@ -116,11 +116,11 @@ const Cart = () => {
                                     width="70"
                                     className="img-fluid rounded shadow-sm"
                                   />
-                                  <div className="d-inline-block align-middle">
+                                  <div className="text-start">
                                     <h5 className="mb-0">
                                       <a
                                         href="..."
-                                        className="text-dark d-inline-block align-middle"
+                                        className="text-dark d-inline-block align-middle text-decoration-none"
                                       >
                                         Timex Unisex Originals
                                       </a>
@@ -132,7 +132,7 @@ const Cart = () => {
                                 </div>
                               </th>
                               <td className="border-0 align-middle text-center">
-                                <strong>$79.00</strong>
+                                <strong>₹79.00</strong>
                               </td>
                               <td className="border-0 align-middle text-center">
                                 <div className="col d-flex align-items-center justify-content-center gap-3">
@@ -166,11 +166,11 @@ const Cart = () => {
                                     width="70"
                                     className="img-fluid rounded shadow-sm"
                                   />
-                                  <div className="d-inline-block align-middle">
+                                  <div className="text-start">
                                     <h5 className="mb-0">
                                       <a
                                         href="..."
-                                        className="text-dark d-inline-block align-middle"
+                                        className="text-dark d-inline-block align-middle text-decoration-none"
                                       >
                                         Timex Unisex Originals
                                       </a>
@@ -182,7 +182,7 @@ const Cart = () => {
                                 </div>
                               </th>
                               <td className="border-0 align-middle text-center">
-                                <strong>$79.00</strong>
+                                <strong>₹79.00</strong>
                               </td>
                               <td className="border-0 align-middle text-center">
                                 <div className="col d-flex align-items-center justify-content-center gap-3">
@@ -220,7 +220,7 @@ const Cart = () => {
                       >
                         <button
                           type="button"
-                          className="btn text-nowrap btn-lg px-5"
+                          className="btn text-nowrap btn-md px-5"
                           style={{
                             backgroundColor: "#52057B",
                             color: "white",
@@ -254,21 +254,21 @@ const Cart = () => {
                           <strong className="text-muted">
                             Order Subtotal{" "}
                           </strong>
-                          <strong>$390.00</strong>
+                          <strong>₹390.00</strong>
                         </li>
                         <li className="d-flex justify-content-between py-3 border-bottom">
                           <strong className="text-muted">
                             Shipping and handling
                           </strong>
-                          <strong>$10.00</strong>
+                          <strong>₹10.00</strong>
                         </li>
                         <li className="d-flex justify-content-between py-3 border-bottom">
                           <strong className="text-muted">Tax</strong>
-                          <strong>$0.00</strong>
+                          <strong>₹0.00</strong>
                         </li>
                         <li className="d-flex justify-content-between py-3 border-bottom">
                           <strong className="text-muted">Total</strong>
-                          <h5 className="font-weight-bold">$400.00</h5>
+                          <h5 className="font-weight-bold">₹400.00</h5>
                         </li>
                       </ul>
                     </div>
@@ -281,7 +281,7 @@ const Cart = () => {
                       >
                         <button
                           type="button"
-                          className="btn text-nowrap btn-lg px-5"
+                          className="btn text-nowrap btn-md px-5"
                           style={{
                             backgroundColor: "#52057B",
                             color: "white",

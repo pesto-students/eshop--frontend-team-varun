@@ -23,7 +23,7 @@ const SignIn = () => {
               <div className="card-body p-md-5 p-sm-5 ">
                 <div className="row justify-content-end ">
                   <div className="col-md-10 col-lg-10 col-xl-10 order-2 order-lg-1">
-                    <p className="text-left h1 fw-bold mb-5 mt-4">
+                    <p className="text-left h3 fw-semibold mb-5 mt-4">
                       Registered Customers
                     </p>
                     <p className="text-left mt-4">
@@ -56,14 +56,14 @@ const SignIn = () => {
                           />
                         </div>
                       </div>
-                      <div className="form-check d-flex flex-wrap justify-content-left mb-5">
+                      <div className="form-check d-flex justify-content-left mb-5 align-items-start">
                         <input
                           className="form-check-input me-2"
                           type="checkbox"
                           value=""
                           id="form2Example3c"
                         />
-                        <label className="form-check-label" for="form2Example3">
+                        <label className="form-check-label ms-2" for="form2Example3">
                           By using this form you agree with the storage and
                           handling of your data by this website.
                         </label>
@@ -71,7 +71,7 @@ const SignIn = () => {
                       <div className="d-flex justify-content-left mb-3 mb-lg-4">
                         <button
                           type="button"
-                          className="btn text-nowrap btn-lg px-5"
+                          className="btn text-nowrap btn-md px-5"
                           style={{
                             backgroundColor: "#52057B",
                             color: "white",
@@ -81,7 +81,7 @@ const SignIn = () => {
                         </button>
                         <Link
                           to="/forgotPassword"
-                          className="d-flex align-items-center fw-bold mx-4"
+                          className="d-flex align-items-center fw-semibold mx-4"
                           style={{
                             color: "#52057B",
                             textDecoration: "none",
@@ -105,7 +105,7 @@ const SignIn = () => {
               <div className="card-body p-md-5 p-sm-5">
                 <div className="row justify-content-left">
                   <div className="col-md-10 col-lg-10 col-xl-10 order-2 order-lg-1">
-                    <p className="text-left h1 fw-bold mb-5 mt-4">
+                    <p className="text-left h3 fw-semibold mb-5 mt-4">
                       New Customer
                     </p>
                     <p className="text-left mb-5 mt-4">
@@ -120,7 +120,7 @@ const SignIn = () => {
                       >
                         <button
                           type="button"
-                          className="btn text-nowrap btn-lg px-5 mb-5"
+                          className="btn text-nowrap btn-md px-5 mb-5"
                           style={{
                             backgroundColor: "#52057B",
                             color: "white",
