@@ -1,12 +1,12 @@
 import React from "react";
 import "./carousel.css";
 
-const Carousel = () => {
+const CarouselSlider = () => {
   return (
-    <div className="app">
+    <div className="carousel-slider">
       <div
         id="carouselExampleIndicators"
-        className="carousel slide pt-5"
+        className="carousel slide"
         data-bs-ride="true"
       >
         <div className="carousel-indicators">
@@ -33,34 +33,13 @@ const Carousel = () => {
         </div>
         <div className="carousel-inner">
           <div className="carousel-item active">
-            <div className="text-i">
-              <h2 className="price">Under $1,999</h2>
-              <p className="desc">Top rated Electronics & accessories</p>
-              <button type="button" className="btn btn-light">
-                Buy Now
-              </button>
-            </div>
-            <img src="../assets/image1.png" className="d-block w-100" alt="" />
+            <img src="../assets/slider4.png" className="d-block w-100" alt="" />
           </div>
           <div className="carousel-item">
-            <div className="text-i">
-              <h2 className="price">Under $1,999</h2>
-              <p className="desc">Top rated Electronics & accessories</p>
-              <button type="button" className="btn btn-light">
-                Buy Now
-              </button>
-            </div>
-            <img src="../assets/image1.png" className="d-block w-100" alt="" />
+            <img src="../assets/slider4.png" className="d-block w-100" alt="" />
           </div>
           <div className="carousel-item">
-            <div className="text-i">
-              <h2 className="price">Under $1,999</h2>
-              <p className="desc">Top rated Electronics & accessories</p>
-              <button type="button" className="btn btn-light">
-                Buy Now
-              </button>
-            </div>
-            <img src="../assets/image1.png" className="d-block w-100" alt="" />
+            <img src="../assets/slider4.png" className="d-block w-100" alt="" />
           </div>
         </div>
         <button
@@ -69,7 +48,6 @@ const Carousel = () => {
           data-bs-target="#carouselExampleIndicators"
           data-bs-slide="prev"
         >
-          <img className="prev-icon" src="../assets/prev.svg" alt="" />
         </button>
         <button
           className="carousel-control-next"
@@ -77,11 +55,10 @@ const Carousel = () => {
           data-bs-target="#carouselExampleIndicators"
           data-bs-slide="next"
         >
-          <img className="next-icon" src="../assets/next.svg" alt="" />
         </button>
       </div>
     </div>
   );
 };
 
-export default Carousel;
+export default CarouselSlider;

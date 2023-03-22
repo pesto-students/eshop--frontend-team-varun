@@ -1,7 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./todaysDeal.css";
 import Dealcards from "../Dealcards/Dealcards";
+<<<<<<< HEAD
 // import { products, Products } from "../../localFiles/ProductsFile";
+=======
+import SectionHeader from "../SectionHeader/SectionHeader";
+import { products } from "../../localFiles/ProductsFile";
+>>>>>>> 4d61efe2e173e39aa1eef724b9d7cec74cffaf2f
 
 const TodaysDeal = (props) => {
   const Ref = useRef(null);
@@ -24,7 +29,7 @@ const TodaysDeal = (props) => {
   };
 
   const startTimer = (e) => {
-    let { total, hours, minutes, seconds } = getTimeRemaining(e);
+    getTimeRemaining(e);
   };
 
   const clearTimer = (e) => {
@@ -35,7 +40,6 @@ const TodaysDeal = (props) => {
   };
 
   const getDeadTime = () => {
-    const today = new Date();
     let deadline = new Date();
     deadline.setHours(deadline.getHours() + (23 - deadline.getHours()));
     deadline.setMinutes(deadline.getMinutes() + (60 - deadline.getMinutes()));
@@ -53,37 +57,25 @@ const TodaysDeal = (props) => {
   };
 
   return (
-    <>
-      <div className="title">
-        <p className="todaysdeal">{props.title}</p>
-        {props.isEnd ? (
-          <p className="endsin d-flex justify-content-center align-items-center gap-2">
-            Ends in <span>{hours > 9 ? hours : "0" + hours}</span>
-            <>:</>
-            <span>{minutes > 9 ? minutes : "0" + minutes}</span>
-            <>:</>
+    <div className="todays-deal">
+      <div className="todays-deal-header d-flex align-items-center justify-content-between mt-5 mb-4">
+        <SectionHeader title={props.title}/>
+        {props.isEnd ? (          
+          <p className="todays-deal-endsin">
+            Ends in <span>{hours > 9 ? hours : "0" + hours}</span> :
+            <span>{minutes > 9 ? minutes : "0" + minutes}</span> :
             <span>{seconds > 9 ? seconds : "0" + seconds}</span>
-          </p>
+          </p>                  
         ) : (
           <></>
         )}
       </div>
-      <div className="deal-cards">
-        {props.deals?.map((deal) => (
+      <div className="deal-cards px-5">
+        {products.map((deal) => (
           <Dealcards deall={deal} />
         ))}
-        {/* {products.map((product) => {
-          <Dealcards
-            deall={{
-              icon: product.icon,
-              title: product.title,
-              price: product.price,
-              ratings: product.rating,
-            }}
-          />;
-        })} */}
       </div>
-    </>
+    </div>
   );
 };
 

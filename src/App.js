@@ -13,11 +13,13 @@ import Checkout from "./pages/Checkout/Checkout";
 import ProductDetail from "./pages/ProductDetail/ProductDetail";
 import Dashboard from "./pages/Admin/Dashboard/Dashboard";
 import CreatePassword from "./pages/CreatePassword/CreatePassword";
+import ScrollToTop from "./ScrollToTop";
 
 function App() {
   return (
     <div>
       <Router>
+        <ScrollToTop />
         <Header />
         <Routes>
           <Route path="/">
@@ -29,7 +31,10 @@ function App() {
             <Route path="createAccount" element={<CreateAccount />} />
             <Route path="forgotPassword" element={<ForgotPassword />} />
             <Route path="checkout" element={<Checkout />} />
-            <Route path="products/:id" element={<ProductDetail />} />
+            <Route path="product">
+              <Route path=":id" element={<ProductDetail currentPage="productDetails"/>} />
+              <Route path="allReviews" element={<ProductDetail currentPage="reviews"/>} />
+            </Route>
             <Route path="createPassword" element={<CreatePassword />} />
             <Route path="admin">
               <Route
