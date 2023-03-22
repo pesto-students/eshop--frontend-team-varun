@@ -25,11 +25,8 @@
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.8.1",
     "react-scripts": "5.0.1",
-<<<<<<< HEAD
     "redux-persist": "^6.0.0",
-=======
     "react-share": "^4.4.1",
->>>>>>> 4d61efe2e173e39aa1eef724b9d7cec74cffaf2f
     "web-vitals": "^2.1.4"
   },
   "scripts": {
