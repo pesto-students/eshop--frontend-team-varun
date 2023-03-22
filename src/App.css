@@ -1,3 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+*{
+  font-family: 'Inter', sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body{
+  overflow-x: hidden;
+}
+
+.btn:hover{
+  text-decoration: none;
+  background-color: #52057B !important;
+}
+
 .body{
     position: relative;
     display: flex;
