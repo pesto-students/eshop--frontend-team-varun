@@ -3,7 +3,7 @@ import "../Pagination/Pagination.css";
 
 const Pagination = ({ showPerPage, onPaginationChange, total }) => {
   const [counter, setCounter] = useState(1);
-  const [numberOfButtons, setNumberOfButtons] = useState(
+  const [numberOfButtons, ] = useState(
     Math.ceil(total / showPerPage)
   );
 
@@ -29,12 +29,12 @@ const Pagination = ({ showPerPage, onPaginationChange, total }) => {
   };
 
   return (
-    <div className="d-flex justify-content-center mb-4">
+    <div className="d-flex justify-content-center pb-4 mt-5">
       <nav aria-label="Page navigation example">
-        <div class="pagination d-flex gap-3">
-          <div class="col">
+        <div className="pagination d-flex gap-3">
+          <div className="col">
             <div
-              class="py-2 px-3 border border-1 rounded"
+              className="py-2 px-3 border border-1 rounded"
               style={{ color: "#52057B", cursor: "pointer" }}
               onClick={() => onButtonClick("Prev")}
             >
@@ -42,11 +42,11 @@ const Pagination = ({ showPerPage, onPaginationChange, total }) => {
             </div>
           </div>
 
-          <div class="row">
+          <div className="row">
             {new Array(numberOfButtons).fill("").map((element, index) => (
-              <div class="col mx-2 p-0">
+              <div className="col mx-2 p-0">
                 <div
-                  class={`py-2 px-3 border border-1 rounded ${
+                  className={`py-2 px-3 border border-1 rounded ${
                     index + 1 === counter ? "active" : "unActive"
                   }`}
                   style={{ cursor: "pointer" }}
@@ -58,9 +58,9 @@ const Pagination = ({ showPerPage, onPaginationChange, total }) => {
             ))}
           </div>
 
-          <div class="col">
+          <div className="col">
             <div
-              class=" py-2 px-3 border border-1 rounded"
+              className=" py-2 px-3 border border-1 rounded"
               style={{ color: "#52057B", cursor: "pointer" }}
               onClick={() => onButtonClick("Next")}
             >

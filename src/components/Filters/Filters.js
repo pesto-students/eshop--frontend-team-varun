@@ -3,13 +3,15 @@ import "./filters.css";
 
 const Filters = () => {
   return (
-    <div className="filter_card">
-      <p>Filters</p>
+    <div className="filter-card text-start px-3 pb-4">
+      <div className="filter-card-title mt-4 mb-3">
+        <p className="mb-0 p-0 fw-semibold fs-5">Filters</p>
+      </div>
       <div className="divider" />
-      <div className="filter-cat">
-        <p>Category</p>
+      <div className="filters-category d-flex flex-column">
+        <p className="m-0 my-3 fw-semibold fs-6">Category</p>
         <label>
-          <input
+          <input className="me-2 mb-3"
             type="radio"
             name="bestSeller"
             id="bestSeller"
@@ -18,7 +20,7 @@ const Filters = () => {
           Best Seller
         </label>
         <label>
-          <input
+          <input className="me-2 mb-3"
             type="radio"
             name="latestUploads"
             id="latestUploads"
@@ -27,7 +29,7 @@ const Filters = () => {
           latestUploads
         </label>
         <label>
-          <input
+          <input className="me-2 mb-3"
             type="radio"
             name="recommendations"
             id="recommendations"
@@ -37,41 +39,43 @@ const Filters = () => {
         </label>
       </div>
       <div className="divider" />
-      <div className="filter-cat">
-        <p>Condition</p>
+      <div className="filters-condition d-flex flex-column">
+        <p className="m-0 my-3 fw-semibold fs-6">Condition</p>
         <label>
-          <input type="radio" name="new" id="new" checked={false} />
+          <input className="me-2 mb-3" type="radio" name="new" id="new" checked={false} />
           New
         </label>
         <label>
-          <input type="radio" name="seconds" id="seconds" checked={false} />
+          <input className="me-2 mb-3" type="radio" name="seconds" id="seconds" checked={false} />
           Seconds
         </label>
       </div>
       <div className="divider" />
-      <div className="filter-price">
-        <p>Price</p>
+      <div className="filters-price d-flex flex-column">
+        <p className="m-0 my-3 fw-semibold fs-6">Price</p>
         <input
           type="number"
           className="form-control"
           id="exampleFormControlInput1"
           placeholder="Min"
+          style={{marginBottom: "12px"}}
         />
         <input
           type="number"
           className="form-control"
           id="exampleFormControlInput1"
           placeholder="Max"
+          style={{marginBottom: "12px"}}
         />
-        <a href="#" className="btn btn-primary">
+        <a href="/" className="btn btn-primary border-0 mb-4" style={{ backgroundColor: "#52057B" }}>
           Submit
         </a>
       </div>
       <div className="divider" />
-      <div className="filter-cat">
-        <p>Other</p>
+      <div className="filters-condition d-flex flex-column">
+        <p className="m-0 my-3 fw-semibold fs-6">Other</p>
         <label>
-          <input
+          <input className="me-2 mb-3"
             type="radio"
             name="readystock"
             id="readystock"
@@ -80,7 +84,7 @@ const Filters = () => {
           Ready Stock
         </label>
         <label>
-          <input type="radio" name="preorder" id="preorder" checked={false} />
+          <input className="me-2" type="radio" name="preorder" id="preorder" checked={false} />
           Pre Order
         </label>
       </div>

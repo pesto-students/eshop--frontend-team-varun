@@ -73,38 +73,38 @@ const AddProduct = () => {
   //   }
 
   return (
-    <div class="row mb-3">
+    <div className="row mb-3">
       <div
-        class="col-9 mt-4 mb-5 border border-0 rounded-3"
+        className="col-9 mt-4 mb-5 border border-0 rounded-3"
         style={{ backgroundColor: "white" }}
       >
-        <section class="">
-          <div class="row d-flex justify-content-start align-items-start h-100">
-            <form class=" border border-0 rounded-3">
-              <div class="form-outline m-4 d-flex align-items-center">
-                <div class="col-3">
-                  <label class="form-label" for="form3Example3">
+        <section className="">
+          <div className="row d-flex justify-content-start align-items-start h-100">
+            <form className=" border border-0 rounded-3">
+              <div className="form-outline m-4 d-flex align-items-center">
+                <div className="col-3">
+                  <label className="form-label" for="form3Example3">
                     Product Name :
                   </label>
                 </div>
-                <div class="col-9 border border-0">
+                <div className="col-9 border border-0">
                   <input
                     type="text"
                     placeholder="Product Name"
                     id="form3Example3"
                     onChange={(e) => setProductName(e.target.value)}
-                    class="form-control input-text rounded-2 shadow-none"
+                    className="form-control input-text rounded-2 shadow-none"
                   />
                 </div>
               </div>
 
-              <div class="form-outline m-4 d-flex align-items-start ">
-                <div class="col-3">
-                  <label class="form-label" for="form3Example3">
+              <div className="form-outline m-4 d-flex align-items-start ">
+                <div className="col-3">
+                  <label className="form-label" for="form3Example3">
                     Product Descriptions :
                   </label>
                 </div>
-                <div class="col-9 border border-0">
+                <div className="col-9 border border-0">
                   <div
                     style={{
                       height: "250px",
@@ -127,99 +127,99 @@ const AddProduct = () => {
                 </div>
               </div>
 
-              <div class="form-outline m-4 d-flex align-items-center">
-                <div class="col-3">
-                  <label class="form-label" for="form3Example3">
+              <div className="form-outline m-4 d-flex align-items-center">
+                <div className="col-3">
+                  <label className="form-label" for="form3Example3">
                     Product Price :
                   </label>
                 </div>
                 <div className="col-9 d-flex justify-content-between bg-light border border-1 rounded-3">
-                  <div class="col-6 ">
+                  <div className="col-6 ">
                     <input
                       type="number"
                       id="form3Example3"
                       placeholder="Normal Price"
                       onChange={(e) => setNormalPrice(e.target.value)}
-                      class="form-control input-text rounded-2 shadow-none"
+                      className="form-control input-text rounded-2 shadow-none"
                       style={{ border: "none" }}
                     />
                   </div>
-                  <div class="col-6 ">
+                  <div className="col-6 ">
                     <input
                       type="number"
                       id="form3Example3"
                       placeholder="Sale Price"
                       onChange={(e) => setSalesPrice(e.target.value)}
-                      class="form-control input-text rounded-2 shadow-none"
+                      className="form-control input-text rounded-2 shadow-none"
                       style={{ border: "none" }}
                     />
                   </div>
                 </div>
               </div>
 
-              <div class="form-outline m-4 d-flex align-items-center">
-                <div class="col-3">
-                  <label class="form-label" for="form3Example3">
+              <div className="form-outline m-4 d-flex align-items-center">
+                <div className="col-3">
+                  <label className="form-label" for="form3Example3">
                     Stock :
                   </label>
                 </div>
                 <div className="col-9 d-flex justify-content-between ">
-                  <div class="col-6 bg-light border border-1 rounded-3">
+                  <div className="col-6 bg-light border border-1 rounded-3">
                     <input
                       type="number"
                       id="form3Example3"
                       placeholder="Stock"
                       onChange={(e) => setNormalPrice(e.target.value)}
-                      class="form-control input-text rounded-2 shadow-none"
+                      className="form-control input-text rounded-2 shadow-none"
                       style={{ border: "none" }}
                     />
                   </div>
                 </div>
               </div>
 
-              <div class="form-outline m-4 d-flex align-items-center">
-                <div class="col-3">
-                  <label class="form-label" for="form3Example3">
+              <div className="form-outline m-4 d-flex align-items-center">
+                <div className="col-3">
+                  <label className="form-label" for="form3Example3">
                     Brand :
                   </label>
                 </div>
-                <div class="col-9 border border-0">
+                <div className="col-9 border border-0">
                   <input
                     type="text"
                     placeholder="Brand"
                     id="form3Example3"
                     onChange={(e) => setBrand(e.target.value)}
-                    class="form-control input-text rounded-2 shadow-none"
+                    className="form-control input-text rounded-2 shadow-none"
                   />
                 </div>
               </div>
 
-              <div class="form-outline m-4 d-flex align-items-center">
-                <div class="col-3">
-                  <label class="form-label" for="form3Example3">
+              <div className="form-outline m-4 d-flex align-items-center">
+                <div className="col-3">
+                  <label className="form-label" for="form3Example3">
                     Category :
                   </label>
                 </div>
-                <div class="col-9 border border-0">
+                <div className="col-9 border border-0">
                   <input
                     type="text"
                     placeholder="Category"
                     id="form3Example3"
                     onChange={(e) => setCategory(e.target.value)}
-                    class="form-control input-text rounded-2 shadow-none"
+                    className="form-control input-text rounded-2 shadow-none"
                   />
                 </div>
               </div>
 
-              <div class="form-outline m-4 d-flex align-items-center">
-                <div class="col-3">
-                  <label class="form-label" for="form3Example3">
+              <div className="form-outline m-4 d-flex align-items-center">
+                <div className="col-3">
+                  <label className="form-label" for="form3Example3">
                     Tags :
                   </label>
                 </div>
-                <div class="col-9 border border-0">
+                <div className="col-9 border border-0">
                   <div
-                    class="d-flex flex-column"
+                    className="d-flex flex-column"
                     style={{
                       border: "1.3px solid lightgray",
                       padding: ".5em",
@@ -231,7 +231,7 @@ const AddProduct = () => {
                       gap: ".5em",
                     }}
                   >
-                    <div class="d-flex flex-wrap gap-2 mb-2">
+                    <div className="d-flex flex-wrap gap-2 mb-2">
                       {tags.map((tag, index) => (
                         <div
                           style={{
@@ -242,7 +242,7 @@ const AddProduct = () => {
                           }}
                           key={index}
                         >
-                          <span class="text">{tag}</span>
+                          <span className="text">{tag}</span>
 
                           <span
                             style={{
@@ -269,7 +269,7 @@ const AddProduct = () => {
                       type="text"
                       onKeyDown={handleKeyDown}
                       placeholder="Type some tags...."
-                      class="form-control input-text rounded-2 shadow-none"
+                      className="form-control input-text rounded-2 shadow-none"
                       style={{
                         flexGrow: "1",
                         outline: "none",
@@ -279,9 +279,9 @@ const AddProduct = () => {
                 </div>
               </div>
 
-              {/* <div class="col-12 my-5 d-flex justify-content-center">
+              {/* <div className="col-12 my-5 d-flex justify-content-center">
                 <button
-                  class="btn border border-0 "
+                  className="btn border border-0 "
                   style={{
                     backgroundColor: "#52057B",
                     color: "white",
@@ -298,15 +298,15 @@ const AddProduct = () => {
         </section>
       </div>
 
-      <div class="col-3 mt-4 px-4 pt-0 my-5" style={{ height: "300px" }}>
-        <section class="">
+      <div className="col-3 mt-4 px-4 pt-0 my-5" style={{ height: "300px" }}>
+        <section className="">
           <div
-            class="row d-flex py-2 justify-content-center align-items-center border border-0 rounded-3"
+            className="row d-flex py-2 justify-content-center align-items-center border border-0 rounded-3"
             style={{ height: "220px", backgroundColor: "white" }}
           >
             <p>Product Images:</p>
             <div
-              class="mb-5 p-0"
+              className="mb-5 p-0"
               style={{
                 height: "150px",
                 width: "180px",
@@ -315,7 +315,7 @@ const AddProduct = () => {
             >
               {selectedImage && (
                 <img
-                  class="m-0"
+                  className="m-0"
                   style={{
                     height: "100%",
                     width: "100%",
@@ -328,16 +328,16 @@ const AddProduct = () => {
             </div>
           </div>
           <div
-            class="row d-flex mt-2 justify-content-center align-items-start border border-0 rounded-3"
+            className="row d-flex mt-2 justify-content-center align-items-start border border-0 rounded-3"
             style={{ backgroundColor: "white" }}
           >
-            <div class="row">
-              <div class="col-12">
+            <div className="row">
+              <div className="col-12">
                 <form>
-                  <div class="d-flex gap-1 p-2 flex-wrap justify-content-evenly col-12 form-group multi-preview">
+                  <div className="d-flex gap-1 p-2 flex-wrap justify-content-evenly col-12 form-group multi-preview">
                     {(images || []).map((url, index) => (
                       <img
-                        class="my-2"
+                        className="my-2"
                         style={{
                           width: "45.84px",
                           height: "32.67px",
@@ -352,17 +352,17 @@ const AddProduct = () => {
                       />
                     ))}
                   </div>
-                  <div class="form-group my-1">
+                  <div className="form-group my-1">
                     <input
                       type="file"
-                      class="form-control mb-3"
+                      className="form-control mb-3"
                       onChange={uploadMultipleFiles}
                       multiple
                     />
                   </div>
                   {/* <button
                     type="button"
-                    class="btn btn-block my-2 border border-1"
+                    className="btn btn-block my-2 border border-1"
                     style={{ backgroundColor: "#52057B", color: "white" }}
                     onClick={uploadFiles}
                   >
@@ -373,9 +373,9 @@ const AddProduct = () => {
               {/* make upload button here to upload only four images */}
             </div>
           </div>
-          <div class="col-12 my-5 d-flex justify-content-center">
+          <div className="col-12 my-5 d-flex justify-content-center">
             <button
-              class="btn border border-0 "
+              className="btn border border-0 "
               style={{
                 backgroundColor: "#52057B",
                 color: "white",

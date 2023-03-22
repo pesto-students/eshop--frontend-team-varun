@@ -25,7 +25,7 @@ const TodaysDeal = (props) => {
   };
 
   const startTimer = (e) => {
-    let { total, hours, minutes, seconds } = getTimeRemaining(e);
+    getTimeRemaining(e);
   };
 
   const clearTimer = (e) => {
@@ -36,7 +36,6 @@ const TodaysDeal = (props) => {
   };
 
   const getDeadTime = () => {
-    const today = new Date();
     let deadline = new Date();
     deadline.setHours(deadline.getHours() + (23 - deadline.getHours()));
     deadline.setMinutes(deadline.getMinutes() + (60 - deadline.getMinutes()));
