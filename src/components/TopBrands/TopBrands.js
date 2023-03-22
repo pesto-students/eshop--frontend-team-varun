@@ -1,6 +1,7 @@
 import React from "react";
 import "./topBrands.css";
-import { brands } from "../Constants/constants";
+import { brands } from "../constants/constants";
+import Marquee from "react-fast-marquee";
 
 const TopBrands = () => {
   return (
@@ -8,11 +9,13 @@ const TopBrands = () => {
       <div className="title_brand">
         <p>Top Brands</p>
       </div>
-      <div className="brands_img">
+      <Marquee className="brands_img" gradient={false}>
         {brands.map((b) => (
-          <img src={b} alt="" />
+          <div className="mx-4">
+            <img src={b} alt="" />
+          </div>
         ))}
-      </div>
+      </Marquee>
     </div>
   );
 };

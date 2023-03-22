@@ -1,24 +1,11 @@
-.category {
+.choice-category {
   background-color: #f2f4f7;
   margin: 0;
   padding: 64px 0;
   width: 100%;
 }
 
-.brand_title {
-  font-size: 24px;
-  font-weight: 600;
-  margin-left: 40px;
-}
-
-.brands_row {
-  display: flex;
-  gap: 50px;
-  overflow-x: auto;
-  padding: 0 40px;
-}
-
-.brands_row::-webkit-scrollbar {
+.choice-category-brands::-webkit-scrollbar {
   display: none;
 }
 
@@ -34,8 +21,10 @@
 .brands img {
   background: #f9f9f9;
   border-radius: 50%;
-  padding: 30px;
   margin-bottom: 16px;
+  width: 106px;
+  height: 106px;
+  padding: 30px;
 }
 
 .brands p {

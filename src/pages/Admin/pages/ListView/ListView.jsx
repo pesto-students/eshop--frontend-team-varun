@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./ListView.css";
-import { products } from "../../../../localFiles/ProductsFile";
 import Pagination from "../../../../components/Pagination/Pagination";
 
 const ListView = ({ rawData, page }) => {
