@@ -53,31 +53,31 @@ const ProductDetail = ({ currentPage }) => {
         <div className="product-details">
           <section className="container-fluid p-0 m-0">
             <div className="row m-0">
-              <div className="product-images col-lg-4 col-xs-12 my-4">
+              <div className="product-images col-lg-4 col-xs-12 my-4" style={{width: "493px"}}>
                 <img
                   src="../assets/productDetails/laptop.png"
                   alt=""
                   className="img-fluid border"
                 />
-                <div className="img-row d-flex align-items-center my-3">
+                <div className="img-row d-flex align-items-center my-3 justify-content-between">
                   <img
                     src="../assets/productDetails/laptop1.png"
                     alt=""
-                    className="img-fluid col-4"
+                    className="img-fluid col-3"
                   />
                   <img
                     src="../assets/productDetails/laptop2.png"
                     alt=""
-                    className="img-fluid col-4"
+                    className="img-fluid col-3"
                   />
                   <img
                     src="../assets/productDetails/laptop3.png"
                     alt=""
-                    className="img-fluid col-4"
+                    className="img-fluid col-3"
                   />
                 </div>
               </div>
-              <div className="col-lg-7 col-xs-12 mt-3">
+              <div className="col-lg-6 col-xs-12 mt-3">
                 <ProductInfo />
               </div>
             </div>
@@ -88,9 +88,9 @@ const ProductDetail = ({ currentPage }) => {
                 <Description />
                 <ProductReview allReviews={false} />
               </div>
-              <div className="col-lg-3 mt-4">
+              <div className="recommend-cards col-lg-2 mt-4">
                 {map(range(5), (_) => (
-                  <div className="mb-3">
+                  <div className="mb-3 mx-auto">
                     <Dealcards
                       deall={{
                         icon: "../assets/productDetails/laptop.png",
