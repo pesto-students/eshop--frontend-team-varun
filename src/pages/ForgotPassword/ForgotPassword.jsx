@@ -11,7 +11,7 @@ const ForgotPassword = () => {
               <div className="card-body p-md-5 p-sm-5 ">
                 <div className="row justify-content-end ">
                   <div className="col-md-10 col-lg-10 col-xl-10 order-2 order-lg-1">
-                    <p className="text-left h1 fw-bold mb-5 mt-4">
+                    <p className="text-left h2 fw-semibold mb-5 mt-4">
                       Forgot Password
                     </p>
                     <p className="text-left mt-4">
@@ -41,7 +41,7 @@ const ForgotPassword = () => {
                         >
                           <button
                             type="button"
-                            className="btn text-nowrap btn-lg px-5"
+                            className="btn text-nowrap btn-md px-5"
                             style={{
                               backgroundColor: "#52057B",
                               color: "white",

@@ -50,7 +50,7 @@ const CreatePassword = () => {
                         >
                           <button
                             type="button"
-                            className="btn text-nowrap btn-lg px-5"
+                            className="btn text-nowrap btn-md px-5"
                             style={{
                               backgroundColor: "#52057B",
                               color: "white",
