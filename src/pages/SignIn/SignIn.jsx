@@ -1,18 +1,32 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
 import "./SignIn.css";
+import { useDispatch } from "react-redux";
+import { loginFailure, loginStart, loginSuccess } from "../../Redux/userSlice";
 
 const SignIn = () => {
-  const [credentials, setCredentials] = useState({
-    email: undefined,
-    password: undefined,
-  });
+  const [email, setEmail] = useState(null);
+  const [password, setPassword] = useState(null);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const handleChange = (e) => {
-    setCredentials((prev) => ({ ...prev, [e.target.id]: e.target.value }));
+  const handleClick = async (e) => {
+    e.preventDefault();
+
+    dispatch(loginStart());
+    try {
+      const res = await axios.post("http://localhost:4000/api/v1/login", {
+        email,
+        password,
+      });
+
+      dispatch(loginSuccess(res.data.user));
+      navigate("/");
+    } catch (err) {
+      dispatch(loginFailure());
+    }
   };
-
-  console.log(credentials);
 
   return (
     <div className="row signIn m-0" style={{ backgroundColor: "#f2f4f7" }}>
@@ -36,10 +50,11 @@ const SignIn = () => {
                             Your Email
                           </label>
                           <input
+                            name="email"
                             type="email"
                             id="email"
                             className="form-control"
-                            onChange={handleChange}
+                            onChange={(e) => setEmail(e.target.value)}
                           />
                         </div>
                       </div>
@@ -49,10 +64,11 @@ const SignIn = () => {
                             Password
                           </label>
                           <input
+                            name="password"
                             type="password"
                             id="password"
                             className="form-control"
-                            onChange={handleChange}
+                            onChange={(e) => setPassword(e.target.value)}
                           />
                         </div>
                       </div>
@@ -76,6 +92,7 @@ const SignIn = () => {
                             backgroundColor: "#52057B",
                             color: "white",
                           }}
+                          onClick={handleClick}
                         >
                           Sign In
                         </button>

@@ -4,7 +4,14 @@ import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { faMinus } from "@fortawesome/free-solid-svg-icons";
 import "./productInfo.css";
 import { Link } from "react-router-dom";
-import { FacebookShareButton, TwitterShareButton, WhatsappShareButton, FacebookIcon, TwitterIcon, WhatsappIcon } from "react-share";
+import {
+  FacebookShareButton,
+  TwitterShareButton,
+  WhatsappShareButton,
+  FacebookIcon,
+  TwitterIcon,
+  WhatsappIcon,
+} from "react-share";
 
 const ProductInfo = () => {
   return (
@@ -123,11 +130,11 @@ const ProductInfo = () => {
           <WhatsappIcon size={32} round />
         </WhatsappShareButton>
         <Link to="instagram://user?username='_darshil_shah_'">
-        <img
-          src="../assets/productDetails/insta.png"
-          alt=""
-          style={{ width: "32px", marginRight: "8px" }}
-        />
+          <img
+            src="../assets/productDetails/insta.png"
+            alt=""
+            style={{ width: "32px", marginRight: "8px" }}
+          />
         </Link>
       </div>
     </div>

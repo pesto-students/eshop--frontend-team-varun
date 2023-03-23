@@ -5,7 +5,7 @@ import "./Cart.css";
 // import { cartProducts } from "../../localFiles/cartProduct";
 
 const Cart = () => {
-  const cart = useSelector((state) => state.cart);
+  const { cart } = useSelector((state) => state.cart);
 
   return (
     <div className="row cart m-0">
@@ -18,7 +18,7 @@ const Cart = () => {
                   <div className="col-md-12 col-lg-12 col-xl-12 order-2 order-lg-1">
                     <p className="text-left h3 fw-semibold mb-5 mt-4">Cart</p>
                     {/* <!-- Shopping cart table --> */}
-                    {cart.products.length === 0 ? (
+                    {cart ? (
                       <div className="table-responsive">
                         <table className="table">
                           <thead>

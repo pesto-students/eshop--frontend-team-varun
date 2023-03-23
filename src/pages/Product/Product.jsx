@@ -1,25 +1,26 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Dealcards from "../../components/Dealcards/Dealcards";
 import Filters from "../../components/Filters/Filters";
 import "./Product.css";
-import { products } from "../../localFiles/ProductsFile";
+// import { products } from "../../localFiles/ProductsFile";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import Pagination from "../../components/Pagination/Pagination";
+import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  addProductsFailure,
+  addProductsRequest,
+  addProductsSuccess,
+} from "../../Redux/productSlice";
 
 const Product = () => {
-  const [showPerPage, setShowPerPage] = useState(12);
-  const [pagination, setPagination] = useState({
-    start: 0,
-    end: showPerPage,
-  });
+  const dispatch = useDispatch();
 
-  const onPaginationChange = (start, end) => {
-    console.log(pagination);
-    setShowPerPage(12);
-    setPagination({ start: start, end: end });
-  };
+  const { products } = useSelector((state) => state.products);
+  const { error } = useSelector((state) => state.products);
+
   return (
     <section className="product-list">
       <div className="product-list-header">
@@ -28,15 +29,38 @@ const Product = () => {
           <p className="m-0 p-0">Surat, Gujarat</p>
         </div>
         <div className="input-group border rounded-2">
-          <input type="text" className="form-control border-0" placeholder="Search Product" aria-label="Recipient's username" aria-describedby="basic-addon2" />
-          <span className="input-group-text bg-white border-0" id="basic-addon2"><img src="../assets/search.svg" alt="" /></span>
+          <input
+            type="text"
+            className="form-control border-0"
+            placeholder="Search Product"
+            aria-label="Recipient's username"
+            aria-describedby="basic-addon2"
+          />
+          <span
+            className="input-group-text bg-white border-0"
+            id="basic-addon2"
+          >
+            <img src="../assets/search.svg" alt="" />
+          </span>
         </div>
       </div>
       <div className="product-list-body">
         <div className="product-filter-mobile">
           <p>
-            <a className="text-dark text-decoration-none" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-              <p className="fw-semibold mb-0">Filters <span><FontAwesomeIcon icon={faAngleDown} /></span></p>
+            <a
+              className="text-dark text-decoration-none"
+              data-bs-toggle="collapse"
+              href="#collapseExample"
+              role="button"
+              aria-expanded="false"
+              aria-controls="collapseExample"
+            >
+              <p className="fw-semibold mb-0">
+                Filters{" "}
+                <span>
+                  <FontAwesomeIcon icon={faAngleDown} />
+                </span>
+              </p>
             </a>
           </p>
           <div className="collapse" id="collapseExample">
@@ -48,22 +72,22 @@ const Product = () => {
         </div>
         <div className="container-fluid m-0 p-0">
           <div className="row">
-            {products.map((deal) => (
-              <Link to={`/product/${deal.id}`} className="col-xxl-3 col-xl-3 col-lg-4 col-md-4 col-sm-6 col mb-2 p-0 text-decoration-none text-dark">
-                <Dealcards
-                  deall={deal}
-                />
-              </Link>
-            ))}
+            {error
+              ? console.log(`${error.message}. Please try sometime later.`)
+              : products?.map((product) => (
+                  <div className="col-xxl-3 col-xl-3 col-lg-4 col-md-4 col-sm-6 mb-4 p-0 text-dark">
+                    <Dealcards deall={product} />
+                  </div>
+                ))}
           </div>
         </div>
       </div>
-      <Pagination
-          showPerPage={showPerPage}
-          onPaginationChange={onPaginationChange}
-          total={products.length}
-        />
-    </section >
+      {/* <Pagination
+        showPerPage={showPerPage}
+        onPaginationChange={onPaginationChange}
+        total={products.length}
+      /> */}
+    </section>
   );
 };
 

@@ -1,10 +1,13 @@
 import React from "react";
-import { features } from "../constants/constants"
-import { otherFeatures } from "../constants/constants"
+import { features } from "../Constants/constants";
+import { otherFeatures } from "../Constants/constants";
 
 const Description = () => {
   return (
-    <div className="border border-secondary-subtle rounded my-4 px-4 py-4" style={{background: "white"}}>
+    <div
+      className="border border-secondary-subtle rounded my-4 px-4 py-4"
+      style={{ background: "white" }}
+    >
       <p className="fw-semibold fs-6">Description</p>
       {features.map((f) => (
         <div className="row">

@@ -2,7 +2,7 @@ import React from "react";
 import Sidebar from "../components/Sidebar";
 import Products from "../pages/Products/Products";
 
-import { products } from "../../../localFiles/ProductsFile";
+// import { products } from "../../../localFiles/ProductsFile";
 import { Orders } from "../../../localFiles/OrdersFile";
 import { Users } from "../../../localFiles/UsersFile";
 import { Comments } from "../../../localFiles/CommentsFile";
@@ -11,9 +11,11 @@ import "./Dashboard.css";
 import ListView from "../pages/ListView/ListView";
 import { Link } from "react-router-dom";
 import AddProduct from "../pages/AddProduct/AddProduct";
+import { useSelector } from "react-redux";
 
 const Dashboard = ({ currentPage }) => {
   const pageName = currentPage.charAt(0).toUpperCase() + currentPage.slice(1);
+  const { products } = useSelector((state) => state.products);
 
   return (
     <div className="row dashboard m-0" style={{ backgroundColor: "#f2f4f7" }}>
@@ -25,7 +27,9 @@ const Dashboard = ({ currentPage }) => {
                 <div className="card-body">
                   <div className="row justify-content-start mx-md-4">
                     <div className="col-md-12 col-lg-12 col-xl-12 order-2 order-lg-1">
-                      <p className="text-left h3 fw-semibold mb-5 mt-4 ">{pageName}</p>
+                      <p className="text-left h3 fw-semibold mb-5 mt-4 ">
+                        {pageName}
+                      </p>
                       <div className="mx-2">
                         <Sidebar currentPage={currentPage} />
                       </div>
