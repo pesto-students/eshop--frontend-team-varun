@@ -25,7 +25,7 @@ const Dashboard = ({ currentPage }) => {
                 <div className="card-body">
                   <div className="row justify-content-start mx-md-4">
                     <div className="col-md-12 col-lg-12 col-xl-12 order-2 order-lg-1">
-                      <p className="text-left h1 fw-bold mb-5 mt-4 ">{pageName}</p>
+                      <p className="text-left h3 fw-semibold mb-5 mt-4 ">{pageName}</p>
                       <div className="mx-2">
                         <Sidebar currentPage={currentPage} />
                       </div>

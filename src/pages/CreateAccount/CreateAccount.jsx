@@ -11,7 +11,7 @@ const CreateAccount = () => {
         <div className="card-body px-md-4 px-sm-4 pt-sm-5 pt-md-5">
           <div className="row justify-content-end">
             <div className="col-md-10 col-lg-10 col-xl-10 order-2 order-lg-1">
-              <h1 className="text-left fw-bold mt-4 mb-0">Create An Account</h1>
+              <h2 className="text-left fw-semibold mt-4 mb-0">Create An Account</h2>
             </div>
           </div>
         </div>
@@ -116,26 +116,18 @@ const CreateAccount = () => {
                               />
                             </div>
                           </div>
-                          <div className="form-check d-flex flex-wrap mb-5">
-                            <input
-                              className="form-check-input me-2"
-                              type="checkbox"
-                              value=""
-                              id="form2Example3c"
-                            />
-                            <label
-                              className="form-check-label"
-                              for="form2Example3"
-                            >
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" />
+                            <label class="form-check-label" for="flexCheckChecked">
                               By using this form you agree with the storage and
                               handling of your data by this website.
-                              <a href="#!">Terms of service</a>
                             </label>
                           </div>
-                          <div className="d-flex justify-content-left mb-3 mb-lg-4">
+
+                          <div className="d-flex justify-content-left mb-3 mb-lg-4 mt-4">
                             <button
                               type="button"
-                              className="btn text-nowrap btn-lg px-5"
+                              className="btn text-nowrap btn-md px-5"
                               style={{
                                 backgroundColor: "#52057B",
                                 color: "white",

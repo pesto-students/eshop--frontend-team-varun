@@ -30,12 +30,12 @@ const Contact = () => {
                 <div className="card-body p-lg-0 m-lg-0 py-md-5 px-sm-5 px-md-5 mx-md-5 py-sm-3 mx-sm-5 ">
                   <div className="row justify-content-start">
                     <div className="col-md-10 col-lg-12 col-xl-10 order-2 order-lg-1">
-                      <p className="text-left h1 fw-bold my-5">Company Details</p>
-                      <p className="text-left fw-bold mb-2">Location</p>
+                      <p className="text-left h2 fw-semibold my-5">Company Details</p>
+                      <p className="text-left fw-semibold mb-2">Location</p>
                       <p className="text-left">
                         844 Vivianne Apt. 182,Cedar Rapids, Michigan, 18969
                       </p>
-                      <p className="text-left fw-bold mt-5 mb-2">Contact</p>
+                      <p className="text-left fw-semibold mt-5 mb-2">Contact</p>
                       <p className="text-left mb-4 gap-1">
                         (607) 439-9021
                         <br />
@@ -112,7 +112,7 @@ const Contact = () => {
                 <div className="card-body p-lg-0 m-lg-0 mb-lg-5 py-md-5 px-sm-5 px-md-5 mx-md-5 py-sm-3 mx-sm-5 mb-sm-5">
                   <div className="row justify-content-start">
                     <div className="col-md-10 col-lg-12 col-xl-10 order-2 order-lg-1">
-                      <p className="text-left h1 fw-bold my-5">Drop Us A Line</p>
+                      <p className="text-left h2 fw-semibold my-5">Drop Us A Line</p>
                       <p className="text-left mb-3 mt-1 mb-3">
                         Required fields are marked
                         <span style={{ color: "red" }}>*</span>
