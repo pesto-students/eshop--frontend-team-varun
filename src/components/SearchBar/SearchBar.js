@@ -1,8 +1,5 @@
 import React, { useState } from "react";
 import "./searchBar.css";
-// import SearchIcon from "@mui/icons-material/Search";
-// import CloseIcon from "@mui/icons-material/Close";
-// import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 function SearchBar({ placeholder, data }) {
   const [filteredData, setFilteredData] = useState([]);

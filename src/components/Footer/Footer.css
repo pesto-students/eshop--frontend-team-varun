@@ -1,6 +1,29 @@
-.footer{
-    /* position: absolute; */
-    /* bottom: 0;
-    left: 0;
-    right: 0; */
+footer {
+    background-color: black;
+}
+
+footer:not(:first-child) {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+footer .input-group-text {
+    background-color: white;
+    color: white;
+    padding: 8px 17px;
+}
+
+.footer-section{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 24px;
+}
+
+@media only screen and (max-width: 600px){
+    .footer-section{
+        flex-direction: column;
+        gap: 24px;
+        align-items: flex-start;
+        justify-content: flex-start;
+    }
 }
