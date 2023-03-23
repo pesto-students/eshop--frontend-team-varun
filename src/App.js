@@ -32,8 +32,14 @@ function App() {
             <Route path="forgotPassword" element={<ForgotPassword />} />
             <Route path="checkout" element={<Checkout />} />
             <Route path="product">
-              <Route path=":id" element={<ProductDetail currentPage="productDetails"/>} />
-              <Route path="allReviews" element={<ProductDetail currentPage="reviews"/>} />
+              <Route
+                path=":id"
+                element={<ProductDetail currentPage="productDetails" />}
+              />
+              <Route
+                path="allReviews"
+                element={<ProductDetail currentPage="reviews" />}
+              />
             </Route>
             <Route path="createPassword" element={<CreatePassword />} />
             <Route path="admin">

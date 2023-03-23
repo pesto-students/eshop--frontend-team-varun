@@ -37,16 +37,36 @@
 // };
 
 // export default ProductDetail;
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ProductInfo from "../../components/ProductInfo/ProductInfo";
 import Description from "../../components/Description/Description";
 import ProductReview from "../../components/ProductReview/ProductReview";
 import Dealcards from "../../components/Dealcards/Dealcards";
 import map from "lodash/map";
 import range from "lodash/range";
-import "./productDetail.css";
+import "./ProductDetail.css";
+import { useLocation } from "react-router-dom";
+import axios from "axios";
 
 const ProductDetail = ({ currentPage }) => {
+  const location = useLocation();
+  const id = location.pathname.split("/")[2];
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    const fetchProductDetails = async () => {
+      try {
+        const res = await axios.get(
+          `http://localhost:4000/api/v1/product/${id}`
+        );
+        setData(res.data.product);
+      } catch (error) {}
+    };
+    fetchProductDetails();
+  }, []);
+
+  console.log("This is written in Product Detail page", data);
+
   return (
     <>
       {currentPage === "productDetails" ? (
@@ -78,6 +98,7 @@ const ProductDetail = ({ currentPage }) => {
                 </div>
               </div>
               <div className="col-lg-7 col-xs-12 mt-3">
+                {/* Send data and update productInfo */}
                 <ProductInfo />
               </div>
             </div>
@@ -85,10 +106,11 @@ const ProductDetail = ({ currentPage }) => {
           <section className="container-fluid p-0 m-0">
             <div className="row m-0">
               <div className="col-lg-9 col-sm-12">
+                {/* Send data and update descriptiona and productReview */}
                 <Description />
                 <ProductReview allReviews={false} />
               </div>
-              <div className="col-lg-3 mt-4">
+              {/* <div className="col-lg-3 mt-4">
                 {map(range(5), (_) => (
                   <div className="mb-3">
                     <Dealcards
@@ -102,7 +124,7 @@ const ProductDetail = ({ currentPage }) => {
                     />
                   </div>
                 ))}
-              </div>
+              </div> */}
             </div>
           </section>
         </div>

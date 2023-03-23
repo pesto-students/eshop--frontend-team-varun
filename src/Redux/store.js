@@ -15,6 +15,7 @@ import { PersistGate } from "redux-persist/integration/react";
 import cartSlice from "./cartSlice";
 import userReducer from "./userSlice";
 import cartReducer from "./cartSlice";
+import productsReducer from "./productSlice";
 
 const persistConfig = {
   key: "root",
@@ -22,7 +23,11 @@ const persistConfig = {
   storage,
 };
 
-const rootReducer = combineReducers({ user: userReducer, cart: cartReducer });
+const rootReducer = combineReducers({
+  user: userReducer,
+  products: productsReducer,
+  cart: cartReducer,
+});
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = configureStore({

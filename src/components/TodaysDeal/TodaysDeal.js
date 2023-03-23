@@ -1,15 +1,14 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./todaysDeal.css";
 import Dealcards from "../Dealcards/Dealcards";
-<<<<<<< HEAD
-// import { products, Products } from "../../localFiles/ProductsFile";
-=======
 import SectionHeader from "../SectionHeader/SectionHeader";
-import { products } from "../../localFiles/ProductsFile";
->>>>>>> 4d61efe2e173e39aa1eef724b9d7cec74cffaf2f
+// import { products } from "../../localFiles/ProductsFile";
+import { useSelector } from "react-redux";
 
 const TodaysDeal = (props) => {
   const Ref = useRef(null);
+
+  const { products } = useSelector((state) => state.products);
 
   const [hours, setHours] = useState(0);
   const [minutes, setMinutes] = useState(0);
@@ -59,19 +58,19 @@ const TodaysDeal = (props) => {
   return (
     <div className="todays-deal">
       <div className="todays-deal-header d-flex align-items-center justify-content-between mt-5 mb-4">
-        <SectionHeader title={props.title}/>
-        {props.isEnd ? (          
+        <SectionHeader title={props.title} />
+        {props.isEnd ? (
           <p className="todays-deal-endsin">
             Ends in <span>{hours > 9 ? hours : "0" + hours}</span> :
             <span>{minutes > 9 ? minutes : "0" + minutes}</span> :
             <span>{seconds > 9 ? seconds : "0" + seconds}</span>
-          </p>                  
+          </p>
         ) : (
           <></>
         )}
       </div>
       <div className="deal-cards px-5">
-        {products.map((deal) => (
+        {products?.map((deal) => (
           <Dealcards deall={deal} />
         ))}
       </div>
