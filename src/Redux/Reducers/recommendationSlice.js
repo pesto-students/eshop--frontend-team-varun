@@ -24,7 +24,7 @@ const recommendationsSlice = createSlice({
     addRecommendationsFailure: (state, action) => {
       state.loading = false;
       state.recommendations = [];
-      state.error = action.payload;
+      state.error = action.payload.message;
     },
     addRecommendationsClearError: (state, action) => {
       state.error = null;

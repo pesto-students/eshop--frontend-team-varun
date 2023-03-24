@@ -2,35 +2,17 @@ import React, { useEffect, useState } from "react";
 import Dealcards from "../../components/Dealcards/Dealcards";
 import Filters from "../../components/Filters/Filters";
 import "./Product.css";
-// import { products } from "../../localFiles/ProductsFile";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
-import Pagination from "../../components/Pagination/Pagination";
-import axios from "axios";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  addProductsFailure,
-  addProductsRequest,
-  addProductsSuccess,
-} from "../../Redux/productSlice";
+import { useSelector, useDispatch } from "react-redux";
+import { getProducts } from "../../Redux/Actions/productActions";
 
 const Product = () => {
   const dispatch = useDispatch();
-  // Fetch all products from api
-  useEffect(() => {
-    const fetchTopDeals = async () => {
-      dispatch(addProductsRequest());
-      try {
-        const res = await axios.get(`http://localhost:4000/api/v1/products`);
 
-        dispatch(addProductsSuccess(res.data));
-      } catch (error) {
-        dispatch(addProductsFailure(error));
-      }
-    };
-    fetchTopDeals();
-  }, []);
+  useEffect(() => {
+    dispatch(getProducts());
+  }, [dispatch]);
 
   const { products } = useSelector((state) => state.products);
   // If error is present then show the error.

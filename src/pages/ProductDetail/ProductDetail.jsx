@@ -51,7 +51,7 @@ import {
   getCurrentProductFailure,
   getCurrentProductRequestStart,
   getCurrentProductSuccess,
-} from "../../Redux/currentProductSlice";
+} from "../../Redux/Reducers/currentProductSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 const ProductDetail = ({ currentPage }) => {

@@ -5,8 +5,6 @@ import "./recommends.css";
 // import range from "lodash/range";
 
 const Recommends = ({ products }) => {
-  console.log("af", products);
-
   return (
     <div className="recommend">
       <p className="rec_title">Our Recommendation For You</p>

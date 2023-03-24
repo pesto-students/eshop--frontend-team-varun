@@ -12,13 +12,13 @@ import {
 import storage from "redux-persist/lib/storage";
 import { PersistGate } from "redux-persist/integration/react";
 
-import userReducer from "./userSlice";
-import cartReducer from "./cartSlice";
-import productsReducer from "./productSlice";
-import topDealsReducer from "./topDealsSlice";
-import dealsOfMonthsReducer from "./dealsOfMonthSlice";
-import recommendationReducer from "./recommendationSlice";
-import currentProductReducer from "./currentProductSlice";
+import userReducer from "./Reducers/userSlice";
+import cartReducer from "./Reducers/cartSlice";
+import productsReducer from "./Reducers/productSlice";
+import topDealsReducer from "./Reducers/topDealsSlice";
+import dealsOfMonthsReducer from "./Reducers/dealsOfMonthSlice";
+import recommendationReducer from "./Reducers/recommendationSlice";
+import currentProductReducer from "./Reducers/currentProductSlice";
 
 const persistConfig = {
   key: "root",
