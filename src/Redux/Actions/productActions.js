@@ -1,5 +1,10 @@
 import axios from "axios";
 import {
+  getCurrentProductFailure,
+  getCurrentProductRequestStart,
+  getCurrentProductSuccess,
+} from "../Reducers/currentProductSlice";
+import {
   dealsOfMonthFailure,
   dealsOfMonthRequest,
   dealsOfMonthSuccess,
@@ -23,7 +28,6 @@ import {
 
 // Get All Products
 export const getProducts = () => async (dispatch) => {
-  console.log("products");
   try {
     dispatch(addProductsRequest());
     const res = await axios.get(`http://localhost:4000/api/v1/products`);
@@ -40,7 +44,6 @@ export const clearErrors = () => async (dispatch) => {
 
 // Fetch all TopDeals products { products above 4.0 rating }
 export const getTopDeals = () => async (dispatch) => {
-  console.log("top deals");
   try {
     dispatch(addTopDealsRequest());
     const res = await axios.get(`http://localhost:4000/api/v1/products`);
@@ -53,8 +56,6 @@ export const getTopDeals = () => async (dispatch) => {
 
 // Fetch all Deals of the month products { product above 4.0 of currently added month}
 export const getDealsOfMonth = () => async (dispatch) => {
-  console.log("deals of month");
-
   try {
     dispatch(dealsOfMonthRequest());
     const res = await axios.get(`http://localhost:4000/api/v1/products`);
@@ -66,9 +67,7 @@ export const getDealsOfMonth = () => async (dispatch) => {
 };
 
 // Fetch recommandation products
-export const getRecommandations = () => async (dispatch) => {
-  console.log("recommandations");
-
+export const getRecommendations = () => async (dispatch) => {
   try {
     dispatch(addRecommendationsRequest());
     const res = await axios.get(`http://localhost:4000/api/v1/products`);
@@ -76,5 +75,17 @@ export const getRecommandations = () => async (dispatch) => {
     dispatch(addRecommendationsSuccess(res.data));
   } catch (error) {
     dispatch(addRecommendationsFailure(error));
+  }
+};
+
+// Get Product Details
+
+export const getProductDetails = (id) => async (dispatch) => {
+  try {
+    dispatch(getCurrentProductRequestStart());
+    const res = await axios.get(`http://localhost:4000/api/v1/product/${id}`);
+    dispatch(getCurrentProductSuccess(res.data));
+  } catch (error) {
+    dispatch(getCurrentProductFailure(error));
   }
 };
