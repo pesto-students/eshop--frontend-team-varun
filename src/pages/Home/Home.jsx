@@ -4,13 +4,14 @@ import { useDispatch, useSelector } from "react-redux";
 import CarouselSlider from "../../components/Carousel/Carousel";
 import Category from "../../components/ChoiceCategory/Category";
 import { cates, monthlyDeals } from "../../components/Constants/constants";
+import Loader from "../../components/Loader/Loader";
 import Recommends from "../../components/Recommends/Recommends";
 import Services from "../../components/Services/Services";
 import TodaysDeal from "../../components/TodaysDeal/TodaysDeal";
 import TopBrands from "../../components/TopBrands/TopBrands";
 import {
   getDealsOfMonth,
-  getRecommandations,
+  getRecommendations,
   getTopDeals,
 } from "../../Redux/Actions/productActions";
 import {
@@ -32,77 +33,67 @@ import {
 const Home = () => {
   const dispatch = useDispatch();
 
-  // Fetch all TopDeals products { products above 4.0 rating }
-
-  // useEffect(() => {
-  //   const fetchTopDeals = async () => {
-  //     dispatch(addTopDealsRequest());
-  //     try {
-  //       const res = await axios.get(`http://localhost:4000/api/v1/products`);
-
-  //       dispatch(addTopDealsSuccess(res.data));
-  //     } catch (error) {
-  //       dispatch(addTopDealsFailure(error));
-  //     }
-  //   };
-  //   fetchTopDeals();
-  // }, []);
-
   useEffect(() => {
+    // Fetch TopDeals products { products above 4.0 rating }
     dispatch(getTopDeals());
-    dispatch(getTopDeals());
+    // Fetch deals of month products { products above 4.0 rating and current month }
     dispatch(getDealsOfMonth());
-    dispatch(getRecommandations());
+    // Fetch recommendations products { products above 4.0 rating }
+    dispatch(getRecommendations());
   }, [dispatch]);
 
-  // Fetch all Deals of the month products { product above 4.0 of currently added month}
-
-  // useEffect(() => {
-  //   const fetchDealsOfMonth = async () => {
-  //     dispatch(dealsOfMonthRequest());
-  //     try {
-  //       const res = await axios.get(`http://localhost:4000/api/v1/products`);
-
-  //       dispatch(dealsOfMonthSuccess(res.data));
-  //     } catch (error) {
-  //       dispatch(dealsOfMonthFailure(error));
-  //     }
-  //   };
-  //   fetchDealsOfMonth();
-  // }, []);
-
-  // Fetch recommandation products
-  useEffect(() => {
-    const fetchRecommendation = async () => {
-      dispatch(addRecommendationsRequest());
-      try {
-        const res = await axios.get(`http://localhost:4000/api/v1/products`);
-
-        dispatch(addRecommendationsSuccess(res.data));
-      } catch (error) {
-        dispatch(addRecommendationsFailure(error));
-      }
-    };
-    fetchRecommendation();
-  }, []);
-
   // Get top Deals from store
-  const { topDeals } = useSelector((state) => state.topDeals);
+  const { topDeals, topDealsLoading, topDealsError } = useSelector(
+    (state) => state.topDeals
+  );
 
   // Get deals of month from store
-  const { dealsOfMonth } = useSelector((state) => state.dealsOfMonth);
+  const { dealsOfMonth, dealsOfMonthLoading, dealsOfMonthError } = useSelector(
+    (state) => state.dealsOfMonth
+  );
 
   // get recommandation products from store
-  const { recommendations } = useSelector((state) => state.recommendations);
+  const { recommendations, recommendationsLoading, recommendationsError } =
+    useSelector((state) => state.recommendations);
   return (
     <>
       <CarouselSlider />
-      <TodaysDeal title="Today's Deals" isEnd="true" products={topDeals} />
+
+      {topDealsLoading ? (
+        <Loader />
+      ) : (
+        // <></>
+        <TodaysDeal
+          title="Today's Deals"
+          isEnd="true"
+          products={topDeals}
+          loading={topDealsLoading}
+          error={topDealsError}
+        />
+      )}
       <Category cates={cates} />
-      <TodaysDeal title="Deals of the Month" products={dealsOfMonth} />
+      {dealsOfMonthLoading ? (
+        <Loader />
+      ) : (
+        <TodaysDeal
+          title="Deals of the Month"
+          isEnd="false"
+          products={dealsOfMonth}
+          loading={dealsOfMonthLoading}
+          error={dealsOfMonthError}
+        />
+      )}
       <Services />
       <TopBrands />
-      <Recommends products={recommendations} />
+      {recommendationsLoading ? (
+        <Loader />
+      ) : (
+        <Recommends
+          products={recommendations}
+          loading={recommendationsLoading}
+          error={recommendationsError}
+        />
+      )}
     </>
   );
 };

@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 import { useSelector, useDispatch } from "react-redux";
 import { getProducts } from "../../Redux/Actions/productActions";
+import Loader from "../../components/Loader/Loader";
 
 const Product = () => {
   const dispatch = useDispatch();
@@ -14,9 +15,9 @@ const Product = () => {
     dispatch(getProducts());
   }, [dispatch]);
 
-  const { products } = useSelector((state) => state.products);
-  // If error is present then show the error.
-  const { error } = useSelector((state) => state.products);
+  const { products, productsError, productsLoading } = useSelector(
+    (state) => state.products
+  );
 
   return (
     <section className="product-list">
@@ -53,7 +54,7 @@ const Product = () => {
               aria-controls="collapseExample"
             >
               <p className="fw-semibold mb-0">
-                Filters{" "}
+                Filters
                 <span>
                   <FontAwesomeIcon icon={faAngleDown} />
                 </span>
@@ -69,13 +70,18 @@ const Product = () => {
         </div>
         <div className="container-fluid m-0 p-0">
           <div className="row">
-            {error
-              ? console.log(`${error.message}. Please try sometime later.`)
-              : products?.map((product) => (
-                  <div className="col-xxl-3 col-xl-3 col-lg-4 col-md-4 col-sm-6 mb-4 p-0 text-dark">
-                    <Dealcards deall={product} />
-                  </div>
-                ))}
+            {productsLoading ? (
+              <>
+                {/* Add Loadding component  */}
+                <Loader />
+              </>
+            ) : (
+              products?.map((product) => (
+                <div className="col-xxl-3 col-xl-3 col-lg-4 col-md-4 col-sm-6 mb-4 p-0 text-dark">
+                  <Dealcards deall={product} />
+                </div>
+              ))
+            )}
           </div>
         </div>
       </div>

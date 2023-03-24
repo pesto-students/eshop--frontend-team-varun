@@ -5,7 +5,7 @@ import SectionHeader from "../SectionHeader/SectionHeader";
 // import { products } from "../../localFiles/ProductsFile";
 // import { useSelector } from "react-redux";
 
-const TodaysDeal = (props) => {
+const TodaysDeal = ({ title, isEnd, products, error, loading }) => {
   const Ref = useRef(null);
   const [hours, setHours] = useState(0);
   const [minutes, setMinutes] = useState(0);
@@ -55,22 +55,27 @@ const TodaysDeal = (props) => {
   return (
     <div className="todays-deal mb-2">
       <div className="todays-deal-header d-flex align-items-center justify-content-between mt-5 mb-4">
-        <SectionHeader title={props.title} />
-        {props.isEnd ? (
-          <p className="todays-deal-endsin">
-            Ends in <span>{hours > 9 ? hours : "0" + hours}</span> :
-            <span>{minutes > 9 ? minutes : "0" + minutes}</span> :
-            <span>{seconds > 9 ? seconds : "0" + seconds}</span>
-          </p>
-        ) : (
-          <></>
+        <SectionHeader title={title} />
+        {isEnd === "true" && (
+          <>
+            <p className="todays-deal-endsin">
+              Ends in <span>{hours > 9 ? hours : "0" + hours}</span> :
+              <span>{minutes > 9 ? minutes : "0" + minutes}</span> :
+              <span>{seconds > 9 ? seconds : "0" + seconds}</span>
+            </p>
+          </>
         )}
       </div>
-      <div className="deal-cards pb-3 px-5">
-        {props.products?.map((deal) => (
-          <Dealcards deall={deal} />
-        ))}
-      </div>
+
+      {loading ? (
+        <>{/* Make loading component here */}Loading....</>
+      ) : (
+        <div className="deal-cards pb-3 px-5">
+          {products?.map((deal) => (
+            <Dealcards deall={deal} />
+          ))}
+        </div>
+      )}
     </div>
   );
 };

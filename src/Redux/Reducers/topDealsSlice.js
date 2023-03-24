@@ -2,8 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   topDeals: null,
-  loading: false,
-  error: null,
+  topDealsLoading: false,
+  topDealError: null,
 };
 
 const topDealsSlice = createSlice({
@@ -12,22 +12,22 @@ const topDealsSlice = createSlice({
 
   reducers: {
     addTopDealsRequest: (state, action) => {
-      state.loading = true;
+      state.topDealsLoading = true;
       state.topDeals = [];
-      state.error = null;
+      state.topDealError = null;
     },
     addTopDealsSuccess: (state, action) => {
-      state.loading = false;
+      state.topDealsLoading = false;
       state.topDeals = action.payload.products;
-      state.error = null;
+      state.topDealError = null;
     },
     addTopDealsFailure: (state, action) => {
-      state.loading = false;
+      state.topDealsLoading = false;
       state.topDeals = [];
-      state.error = action.payload.message;
+      state.topDealError = action.payload.message;
     },
     addTopDealsClearError: (state, action) => {
-      state.error = null;
+      state.topDealError = null;
     },
   },
 });
