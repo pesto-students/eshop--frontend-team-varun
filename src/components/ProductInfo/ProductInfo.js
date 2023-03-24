@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { faMinus } from "@fortawesome/free-solid-svg-icons";
@@ -13,20 +13,22 @@ import {
   WhatsappIcon,
 } from "react-share";
 
-const ProductInfo = () => {
+const ProductInfo = ({ currentProduct }) => {
+  const [color, chooseColor] = useState("");
+  const [memory, chooseMemory] = useState("");
+  const [qty, setQty] = useState(1);
+
   return (
     <div>
-      <p className="fw-semibold fs-5 m-0">
-        Lenovo IdeaPad Slim 5 Intel Core i5 11th Gen 15.6" (39.62cm) FHD IPS
-        Thin & Light Laptop (16GB/512GB SSD/Windows 11/Office
-        2021/Backlit/FPR/3months Game Pass/Graphite Grey/1.66Kg), 82FG01B5IN
-      </p>
+      <p className="fw-semibold fs-5 m-0">{currentProduct.name}</p>
       <section className="d-flex align-items-center mt-2">
         <img src="../assets/productDetails/ratings.png" alt="" />
-        <p className="m-0 ms-2 p-0">(4.7) - 81 ratings</p>
+        <p className="m-0 ms-2 p-0">
+          ({currentProduct.ratings}) - {currentProduct.numOfReviews} ratings
+        </p>
       </section>
       <section>
-        <h2 className="mt-3 fw-bold">₹59,490</h2>
+        <h2 className="mt-3 fw-bold">₹{currentProduct.price}</h2>
         <p className="m-0 text-secondary mt-1">Inclusive of all taxes</p>
         <p className="m-0 text-secondary">
           EMI starts at ₹2,842. No Cost EMI available EMI options
@@ -35,19 +37,107 @@ const ProductInfo = () => {
       <div className="choose-color d-flex align-items-center border-top mt-3 me-3">
         <p className="m-0 p-0 me-auto">Choose Color</p>
         <div className="color-box d-flex gap-2">
-          <p className="border rounded px-3 py-1 mb-0">Black</p>
-          <p className="border rounded px-3 py-1 mb-0">Gray</p>
-          <p className="border rounded px-3 py-1 mb-0">White</p>
-          <p className="border rounded px-3 py-1 mb-0">Red</p>
+          <p
+            className="px-3 py-1 mb-0"
+            onClick={() => chooseColor("Black")}
+            style={{
+              border:
+                color === "Black" ? "2px solid #52057B" : "2px solid #E2E2E2",
+              borderRadius: "4px",
+              cursor: "Pointer",
+            }}
+          >
+            Black
+          </p>
+          <p
+            className="px-3 py-1 mb-0"
+            onClick={() => chooseColor("Gray")}
+            style={{
+              border:
+                color === "Gray" ? "2px solid #52057B" : "2px solid #E2E2E2",
+              borderRadius: "4px",
+              cursor: "Pointer",
+            }}
+          >
+            Gray
+          </p>
+          <p
+            className="px-3 py-1 mb-0"
+            onClick={() => chooseColor("White")}
+            style={{
+              border:
+                color === "White" ? "2px solid #52057B" : "2px solid #E2E2E2",
+              borderRadius: "4px",
+              cursor: "Pointer",
+            }}
+          >
+            White
+          </p>
+          <p
+            className="px-3 py-1 mb-0"
+            onClick={() => chooseColor("Red")}
+            style={{
+              border:
+                color === "Red" ? "2px solid #52057B" : "2px solid #E2E2E2",
+              borderRadius: "4px",
+              cursor: "Pointer",
+            }}
+          >
+            Red
+          </p>
         </div>
       </div>
       <div className="choose-memory d-flex align-items-center border-top border-bottom me-3">
         <p className="m-0 p-0 me-auto">Memory (RAM)</p>
         <div className="memory-box d-flex gap-2">
-          <p className="border rounded px-3 py-1 mb-0">4GB</p>
-          <p className="border rounded px-3 py-1 mb-0">8GB</p>
-          <p className="border rounded px-3 py-1 mb-0">12GB</p>
-          <p className="border rounded px-3 py-1 mb-0">16GB</p>
+          <p
+            className="px-3 py-1 mb-0"
+            onClick={() => chooseMemory("4GB")}
+            style={{
+              border:
+                memory === "4GB" ? "2px solid #52057B" : "2px solid #E2E2E2",
+              borderRadius: "4px",
+              cursor: "Pointer",
+            }}
+          >
+            4GB
+          </p>
+          <p
+            className="px-3 py-1 mb-0"
+            onClick={() => chooseMemory("8GB")}
+            style={{
+              border:
+                memory === "8GB" ? "2px solid #52057B" : "2px solid #E2E2E2",
+              borderRadius: "4px",
+              cursor: "Pointer",
+            }}
+          >
+            8GB
+          </p>
+          <p
+            className="px-3 py-1 mb-0"
+            onClick={() => chooseMemory("12GB")}
+            style={{
+              border:
+                memory === "12GB" ? "2px solid #52057B" : "2px solid #E2E2E2",
+              borderRadius: "4px",
+              cursor: "Pointer",
+            }}
+          >
+            12GB
+          </p>
+          <p
+            className="px-3 py-1 mb-0"
+            onClick={() => chooseMemory("16GB")}
+            style={{
+              border:
+                memory === "16GB" ? "2px solid #52057B" : "2px solid #E2E2E2",
+              borderRadius: "4px",
+              cursor: "Pointer",
+            }}
+          >
+            16GB
+          </p>
         </div>
       </div>
       <div className="quantity d-flex align-items-center border-bottom me-3">
@@ -55,12 +145,14 @@ const ProductInfo = () => {
         <div className="quantity-box d-flex gap-3 align-items-center">
           <FontAwesomeIcon
             icon={faPlus}
-            style={{ backgroundColor: "#DEDEDE", padding: "5px" }}
+            style={{ backgroundColor: "#DEDEDE", padding: "5px", cursor: "Pointer"}}
+            onClick={() => setQty(qty + 1)}
           />
-          <p className="m-0 p-0">1</p>
+          <p className="m-0 p-0">{qty}</p>
           <FontAwesomeIcon
             icon={faMinus}
-            style={{ backgroundColor: "#DEDEDE", padding: "5px" }}
+            style={{ backgroundColor: "#DEDEDE", padding: "5px", cursor: "Pointer"}}
+            onClick={() => setQty(qty - 1)}
           />
         </div>
       </div>

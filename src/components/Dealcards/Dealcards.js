@@ -19,7 +19,7 @@ const Dealcards = (props) => {
         <div className="deal-content">
           <p className="deal-title">{props.deall.name}</p>
           <div className="deal-body">
-            <h5 className="deal-price mb-0">{`₹ ${props.deall.normalPrice}`}</h5>
+            <h5 className="deal-price mb-0">{`₹ ${props.deall.price}`}</h5>
             <div className="deal-rating d-flex gap-1 align-items-center">
               <img src="../assets/star.png" alt="" />
               <p className="m-0">{props.deall.rating}</p>

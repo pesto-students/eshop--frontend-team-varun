@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import Dealcards from "../../components/Dealcards/Dealcards";
 import Filters from "../../components/Filters/Filters";
 import "./Product.css";
-// import { products } from "../../localFiles/ProductsFile";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
@@ -17,24 +16,49 @@ import {
 
 const Product = () => {
   const dispatch = useDispatch();
-  // Fetch all products from api
-  useEffect(() => {
-    const fetchTopDeals = async () => {
-      dispatch(addProductsRequest());
-      try {
-        const res = await axios.get(`http://localhost:4000/api/v1/products`);
+  const [keyword, setKeyword] = useState("");
 
+  // Fetch all products from api
+
+  const fetchTopDeals = async (keyword = "", category = "") => {
+    dispatch(addProductsRequest());
+    try {
+      if (category) {
+        const res = await axios.get(
+          `http://localhost:4000/api/v1/products?keyword=${keyword}&category=${category}`
+        );
         dispatch(addProductsSuccess(res.data));
-      } catch (error) {
-        dispatch(addProductsFailure(error));
+      } else {
+        const res = await axios.get(
+          `http://localhost:4000/api/v1/products?keyword=${keyword}`
+        );
+        dispatch(addProductsSuccess(res.data));
       }
-    };
+    } catch (error) {
+      console.log(error);
+      dispatch(addProductsFailure(error));
+    }
+  };
+
+  useEffect(() => {
     fetchTopDeals();
   }, []);
 
   const { products } = useSelector((state) => state.products);
   // If error is present then show the error.
   const { error } = useSelector((state) => state.products);
+
+  const searchSubmitHandler = (e) => {
+    if (keyword.trim()) {
+      fetchTopDeals(keyword);
+    } else {
+      fetchTopDeals("");
+    }
+  };
+
+  const childToParent = (childdata) => {
+    fetchTopDeals("", childdata);
+  };
 
   return (
     <section className="product-list">
@@ -46,16 +70,26 @@ const Product = () => {
         <div className="input-group border rounded-2">
           <input
             type="text"
-            className="form-control border-0"
+            className="form-control border-0 shadow-none"
             placeholder="Search Product"
             aria-label="Recipient's username"
             aria-describedby="basic-addon2"
+            onChange={(e) => {
+              if (e.target.value === "") {
+                fetchTopDeals("");
+              }
+              return setKeyword(e.target.value);
+            }}
           />
           <span
             className="input-group-text bg-white border-0"
             id="basic-addon2"
           >
-            <img src="../assets/search.svg" alt="" />
+            <img
+              src="../assets/search.svg"
+              alt=""
+              onClick={searchSubmitHandler}
+            />
           </span>
         </div>
       </div>
@@ -71,7 +105,7 @@ const Product = () => {
               aria-controls="collapseExample"
             >
               <p className="fw-semibold mb-0">
-                Filters{" "}
+                Filters
                 <span>
                   <FontAwesomeIcon icon={faAngleDown} />
                 </span>
@@ -83,7 +117,7 @@ const Product = () => {
           </div>
         </div>
         <div className="product-filters">
-          <Filters />
+          <Filters childToParent={childToParent} />
         </div>
         <div className="container-fluid m-0 p-0">
           <div className="row">

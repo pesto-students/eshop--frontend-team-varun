@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import "./filters.css";
 
-const Filters = () => {
+const Filters = ({childToParent}) => {
+  const [category, setCategory] = useState("");
+
   return (
     <div className="filter-card text-start px-3 pb-4">
       <div className="filter-card-title mt-4 mb-3">
@@ -15,27 +17,39 @@ const Filters = () => {
             type="radio"
             name="bestSeller"
             id="bestSeller"
-            checked={false}
+            checked={category === "Mobile"}
+            onClick={()=> {
+              setCategory("Mobile");
+              childToParent("Mobile");
+            }}
           />
-          Best Seller
+          Mobile
         </label>
         <label>
           <input className="me-2 mb-3"
             type="radio"
             name="latestUploads"
             id="latestUploads"
-            checked={false}
+            checked={category === "Television"}
+            onClick={()=> {
+              setCategory("Television");
+              childToParent("Television");
+            }}
           />
-          latestUploads
+          Television
         </label>
         <label>
           <input className="me-2 mb-3"
             type="radio"
             name="recommendations"
             id="recommendations"
-            checked={false}
+            checked={category === "Laptop"}
+            onClick={()=> {
+              setCategory("Laptop");
+              childToParent("Laptop");
+            }}
           />
-          Recommendations
+          Laptop
         </label>
       </div>
       <div className="divider" />

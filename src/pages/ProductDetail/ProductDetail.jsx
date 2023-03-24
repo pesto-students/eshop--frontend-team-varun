@@ -1,42 +1,3 @@
-// import React from "react";
-// import "./ProductDetail.css";
-// import { paths } from "../../localFiles/bredcrumPath";
-// const ProductDetail = () => {
-//   console.log(paths);
-//   return (
-//     <div className="productDetail" style={{ backgroundColor: "#f5f5f5" }}>
-//       <div className="row">
-//         {/* BreadCrum Section */}
-//         <div className="col-12">
-//           <div className="card border-0" style={{ backgroundColor: "#f5f5f5" }}>
-//             <div className="card-block mt-5 mx-md-5 mx-sm-5">
-//               <div className="page-header-breadcrumb">
-//                 <ul className="breadcrumb">
-//                   <li className="breadcrumb-item">
-//                     <a href="#!" data-abc="true">
-//                       <i className="fa fa-home"></i>
-//                     </a>
-//                   </li>
-//                   {paths?.map((path) => (
-//                     <li className="breadcrumb-item">
-//                       <a href="#!" data-abc="true">
-//                         {path.name}
-//                       </a>
-//                     </li>
-//                   ))}
-//                 </ul>
-//               </div>
-//             </div>
-//           </div>
-//         </div>
-
-//         {/* other section */}
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default ProductDetail;
 import React, { useEffect, useState } from "react";
 import ProductInfo from "../../components/ProductInfo/ProductInfo";
 import Description from "../../components/Description/Description";
@@ -112,7 +73,7 @@ const ProductDetail = ({ currentPage }) => {
               </div>
               <div className="col-lg-6 col-xs-12 mt-3">
                 {/* Send currentProduct and update productInfo */}
-                <ProductInfo />
+                <ProductInfo currentProduct={currentProduct}/>
               </div>
             </div>
           </section>
@@ -120,7 +81,7 @@ const ProductDetail = ({ currentPage }) => {
             <div className="row m-0">
               <div className="col-lg-9 col-sm-12">
                 {/* Send currentProduct and update descriptiona and productReview */}
-                <Description />
+                <Description desc={currentProduct.description}/>
                 <ProductReview allReviews={false} />
               </div>
               {/* <div className="recommend-cards col-lg-2 mt-4">
