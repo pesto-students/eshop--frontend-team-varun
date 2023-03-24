@@ -1,43 +1,6 @@
-// import React from "react";
-// import "./ProductDetail.css";
-// import { paths } from "../../localFiles/bredcrumPath";
-// const ProductDetail = () => {
-//   console.log(paths);
-//   return (
-//     <div className="productDetail" style={{ backgroundColor: "#f5f5f5" }}>
-//       <div className="row">
-//         {/* BreadCrum Section */}
-//         <div className="col-12">
-//           <div className="card border-0" style={{ backgroundColor: "#f5f5f5" }}>
-//             <div className="card-block mt-5 mx-md-5 mx-sm-5">
-//               <div className="page-header-breadcrumb">
-//                 <ul className="breadcrumb">
-//                   <li className="breadcrumb-item">
-//                     <a href="#!" data-abc="true">
-//                       <i className="fa fa-home"></i>
-//                     </a>
-//                   </li>
-//                   {paths?.map((path) => (
-//                     <li className="breadcrumb-item">
-//                       <a href="#!" data-abc="true">
-//                         {path.name}
-//                       </a>
-//                     </li>
-//                   ))}
-//                 </ul>
-//               </div>
-//             </div>
-//           </div>
-//         </div>
 
-//         {/* other section */}
-//       </div>
-//     </div>
-//   );
-// };
+import React, { useEffect, useState } from "react";
 
-// export default ProductDetail;
-import React, { useEffect } from "react";
 import ProductInfo from "../../components/ProductInfo/ProductInfo";
 import Description from "../../components/Description/Description";
 import ProductReview from "../../components/ProductReview/ProductReview";
@@ -101,15 +64,24 @@ const ProductDetail = ({ currentPage }) => {
                   <ProductInfo />
                 </div>
               </div>
-            </section>
-            <section className="container-fluid p-0 m-0">
-              <div className="row m-0">
-                <div className="col-lg-9 col-sm-12">
-                  {/* Send currentProduct and update descriptiona and productReview */}
-                  <Description />
-                  <ProductReview allReviews={false} />
-                </div>
+              <div className="col-lg-6 col-xs-12 mt-3">
+                {/* Send currentProduct and update productInfo */}
+                <ProductInfo currentProduct={currentProduct}/>
+              </div>
+            </div>
+          </section>
+          <section className="container-fluid p-0 m-0">
+            <div className="row m-0">
+              <div className="col-lg-9 col-sm-12">
+                {/* Send currentProduct and update descriptiona and productReview */}
+                <Description desc={currentProduct.description}/>
+                <ProductReview allReviews={false} />
+              </div>
+              {/* <div className="recommend-cards col-lg-2 mt-4">
+
+         
                 {/* <div className="recommend-cards col-lg-2 mt-4">
+
                 {map(range(5), (_) => (
                   <div className="mb-3 mx-auto">
                     <Dealcards
