@@ -9,53 +9,67 @@ import Services from "../../components/Services/Services";
 import TodaysDeal from "../../components/TodaysDeal/TodaysDeal";
 import TopBrands from "../../components/TopBrands/TopBrands";
 import {
+  getDealsOfMonth,
+  getRecommandations,
+  getTopDeals,
+} from "../../Redux/Actions/productActions";
+import {
   dealsOfMonthFailure,
   dealsOfMonthRequest,
   dealsOfMonthSuccess,
-} from "../../Redux/dealsOfMonthSlice";
+} from "../../Redux/Reducers/dealsOfMonthSlice";
 import {
   addRecommendationsFailure,
   addRecommendationsRequest,
   addRecommendationsSuccess,
-} from "../../Redux/recommendationSlice";
+} from "../../Redux/Reducers/recommendationSlice";
 import {
   addTopDealsFailure,
   addTopDealsRequest,
   addTopDealsSuccess,
-} from "../../Redux/topDealsSlice";
+} from "../../Redux/Reducers/topDealsSlice";
 
 const Home = () => {
   const dispatch = useDispatch();
 
   // Fetch all TopDeals products { products above 4.0 rating }
-  useEffect(() => {
-    const fetchTopDeals = async () => {
-      dispatch(addTopDealsRequest());
-      try {
-        const res = await axios.get(`http://localhost:4000/api/v1/products`);
 
-        dispatch(addTopDealsSuccess(res.data));
-      } catch (error) {
-        dispatch(addTopDealsFailure(error));
-      }
-    };
-    fetchTopDeals();
-  }, []);
+  // useEffect(() => {
+  //   const fetchTopDeals = async () => {
+  //     dispatch(addTopDealsRequest());
+  //     try {
+  //       const res = await axios.get(`http://localhost:4000/api/v1/products`);
+
+  //       dispatch(addTopDealsSuccess(res.data));
+  //     } catch (error) {
+  //       dispatch(addTopDealsFailure(error));
+  //     }
+  //   };
+  //   fetchTopDeals();
+  // }, []);
+
+  useEffect(() => {
+    dispatch(getTopDeals());
+    dispatch(getTopDeals());
+    dispatch(getDealsOfMonth());
+    dispatch(getRecommandations());
+  }, [dispatch]);
 
   // Fetch all Deals of the month products { product above 4.0 of currently added month}
-  useEffect(() => {
-    const fetchDealsOfMonth = async () => {
-      dispatch(dealsOfMonthRequest());
-      try {
-        const res = await axios.get(`http://localhost:4000/api/v1/products`);
 
-        dispatch(dealsOfMonthSuccess(res.data));
-      } catch (error) {
-        dispatch(dealsOfMonthFailure(error));
-      }
-    };
-    fetchDealsOfMonth();
-  }, []);
+  // useEffect(() => {
+  //   const fetchDealsOfMonth = async () => {
+  //     dispatch(dealsOfMonthRequest());
+  //     try {
+  //       const res = await axios.get(`http://localhost:4000/api/v1/products`);
+
+  //       dispatch(dealsOfMonthSuccess(res.data));
+  //     } catch (error) {
+  //       dispatch(dealsOfMonthFailure(error));
+  //     }
+  //   };
+  //   fetchDealsOfMonth();
+  // }, []);
 
   // Fetch recommandation products
   useEffect(() => {

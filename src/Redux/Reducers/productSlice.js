@@ -27,7 +27,7 @@ const productSlice = createSlice({
     addProductsFailure: (state, action) => {
       state.loading = false;
       state.products = [];
-      state.error = action.payload;
+      state.error = action.payload.message;
       state.productsCount = 0;
     },
     addProductsClearError: (state, action) => {

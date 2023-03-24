@@ -24,7 +24,7 @@ const topDealsSlice = createSlice({
     addTopDealsFailure: (state, action) => {
       state.loading = false;
       state.topDeals = [];
-      state.error = action.payload;
+      state.error = action.payload.message;
     },
     addTopDealsClearError: (state, action) => {
       state.error = null;

@@ -13,7 +13,7 @@ const dealsOfMonthsSlice = createSlice({
   reducers: {
     dealsOfMonthRequest: (state, action) => {
       state.loading = true;
-      state.dealsOfMonth = [];
+      state.dealsOfMonth = null;
       state.error = null;
     },
     dealsOfMonthSuccess: (state, action) => {
@@ -23,8 +23,8 @@ const dealsOfMonthsSlice = createSlice({
     },
     dealsOfMonthFailure: (state, action) => {
       state.loading = false;
-      state.dealsOfMonth = [];
-      state.error = action.payload;
+      state.dealsOfMonth = null;
+      state.error = action.payload.message;
     },
     dealsOfMonthClearError: (state, action) => {
       state.error = null;
