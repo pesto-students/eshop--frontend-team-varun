@@ -2,8 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   dealsOfMonth: null,
-  loading: false,
-  error: null,
+  dealsOfMonthLoading: false,
+  dealsOfMonthError: null,
 };
 
 const dealsOfMonthsSlice = createSlice({
@@ -12,22 +12,22 @@ const dealsOfMonthsSlice = createSlice({
 
   reducers: {
     dealsOfMonthRequest: (state, action) => {
-      state.loading = true;
+      state.dealsOfMonthLoading = true;
       state.dealsOfMonth = [];
-      state.error = null;
+      state.dealsOfMonthError = null;
     },
     dealsOfMonthSuccess: (state, action) => {
-      state.loading = false;
+      state.dealsOfMonthLoading = false;
       state.dealsOfMonth = action.payload.products;
-      state.error = null;
+      state.dealsOfMonthError = null;
     },
     dealsOfMonthFailure: (state, action) => {
-      state.loading = false;
+      state.dealsOfMonthLoading = false;
       state.dealsOfMonth = [];
-      state.error = action.payload;
+      state.dealsOfMonthError = action.payload.message;
     },
     dealsOfMonthClearError: (state, action) => {
-      state.error = null;
+      state.dealsOfMonthError = null;
     },
   },
 });

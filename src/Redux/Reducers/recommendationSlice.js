@@ -2,8 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   recommendations: null,
-  loading: false,
-  error: null,
+  recommendationsLoading: false,
+  recommendationsError: null,
 };
 
 const recommendationsSlice = createSlice({
@@ -12,22 +12,22 @@ const recommendationsSlice = createSlice({
 
   reducers: {
     addRecommendationsRequest: (state, action) => {
-      state.loading = true;
+      state.recommendationsLoading = true;
       state.recommendations = [];
-      state.error = null;
+      state.recommendationsError = null;
     },
     addRecommendationsSuccess: (state, action) => {
-      state.loading = false;
+      state.recommendationsLoading = false;
       state.recommendations = action.payload.products;
-      state.error = null;
+      state.recommendationsError = null;
     },
     addRecommendationsFailure: (state, action) => {
-      state.loading = false;
+      state.recommendationsLoading = false;
       state.recommendations = [];
-      state.error = action.payload;
+      state.recommendationsError = action.payload.message;
     },
     addRecommendationsClearError: (state, action) => {
-      state.error = null;
+      state.recommendationsError = null;
     },
   },
 });

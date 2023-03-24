@@ -1,0 +1,22 @@
+.LoaderComponent{
+    width: 100%;
+    height: 100%;
+    background-color: #f2f4f7;
+    display: grid;
+    place-items: center;
+    max-width: 100%;
+}
+
+.LoaderComponent > div{
+    width: 12vmax;
+    height: 12vmax;
+    border-bottom: 3px solid rgb(110 , 110 , 110);
+    border-radius: 50%;
+    animation: loadingRotate 800ms linear infinite;
+}
+
+@keyframes loadingRotate{
+    to{
+        transform: rotateZ(-360deg);
+    }
+}

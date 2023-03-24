@@ -3,8 +3,8 @@ import { act } from "react-dom/test-utils";
 
 const initialState = {
   currentProduct: null,
-  loading: false,
-  error: false,
+  currentProductLoading: false,
+  currentProductError: false,
 };
 
 export const currentProductSlice = createSlice({
@@ -13,15 +13,19 @@ export const currentProductSlice = createSlice({
 
   reducers: {
     getCurrentProductRequestStart: (state) => {
-      state.loading = true;
+      state.currentProductLoading = true;
+      state.currentProduct = [];
+      state.currentProductError = false;
     },
     getCurrentProductSuccess: (state, action) => {
-      state.loading = false;
+      state.currentProductLoading = false;
       state.currentProduct = action.payload.product;
+      state.currentProductError = false;
     },
     getCurrentProductFailure: (state) => {
-      state.loading = false;
-      state.error = true;
+      state.currentProductLoading = false;
+      state.currentProduct = [];
+      state.currentProductError = true;
     },
   },
 });

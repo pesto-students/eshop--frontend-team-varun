@@ -3,7 +3,11 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import "./SignIn.css";
 import { useDispatch } from "react-redux";
-import { loginFailure, loginStart, loginSuccess } from "../../Redux/userSlice";
+import {
+  loginFailure,
+  loginStart,
+  loginSuccess,
+} from "../../Redux/Reducers/userSlice";
 
 const SignIn = () => {
   const [email, setEmail] = useState(null);
@@ -79,7 +83,10 @@ const SignIn = () => {
                           value=""
                           id="form2Example3c"
                         />
-                        <label className="form-check-label ms-2" for="form2Example3">
+                        <label
+                          className="form-check-label ms-2"
+                          for="form2Example3"
+                        >
                           By using this form you agree with the storage and
                           handling of your data by this website.
                         </label>

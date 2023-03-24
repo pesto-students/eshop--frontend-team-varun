@@ -4,18 +4,13 @@ import Filters from "../../components/Filters/Filters";
 import "./Product.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
-import Pagination from "../../components/Pagination/Pagination";
-import axios from "axios";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  addProductsFailure,
-  addProductsRequest,
-  addProductsSuccess,
-} from "../../Redux/productSlice";
+import { useSelector, useDispatch } from "react-redux";
+import { getProducts } from "../../Redux/Actions/productActions";
+import Loader from "../../components/Loader/Loader";
 
 const Product = () => {
   const dispatch = useDispatch();
+
   const [keyword, setKeyword] = useState("");
 
   // Fetch all products from api
@@ -44,9 +39,10 @@ const Product = () => {
     fetchTopDeals();
   }, []);
 
-  const { products } = useSelector((state) => state.products);
-  // If error is present then show the error.
-  const { error } = useSelector((state) => state.products);
+
+  const { products, productsError, productsLoading } = useSelector(
+    (state) => state.products
+  );
 
   const searchSubmitHandler = (e) => {
     if (keyword.trim()) {
@@ -121,13 +117,18 @@ const Product = () => {
         </div>
         <div className="container-fluid m-0 p-0">
           <div className="row">
-            {error
-              ? console.log(`${error.message}. Please try sometime later.`)
-              : products?.map((product) => (
-                  <div className="col-xxl-3 col-xl-3 col-lg-4 col-md-4 col-sm-6 mb-4 p-0 text-dark">
-                    <Dealcards deall={product} />
-                  </div>
-                ))}
+            {productsLoading ? (
+              <>
+                {/* Add Loadding component  */}
+                <Loader />
+              </>
+            ) : (
+              products?.map((product) => (
+                <div className="col-xxl-3 col-xl-3 col-lg-4 col-md-4 col-sm-6 mb-4 p-0 text-dark">
+                  <Dealcards deall={product} />
+                </div>
+              ))
+            )}
           </div>
         </div>
       </div>
