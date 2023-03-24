@@ -9,11 +9,11 @@ const Dealcards = (props) => {
         to={`/product/${props.deall._id}`}
         className="text-decoration-none text-dark"
       >
-        <div className="deal-image">
+        <div className="deal-image p-2">
           <img
             src={props.deall.images[0].url}
             alt="Not found"
-            className="img-fluid"
+            className="img-fluid "
           />
         </div>
         <div className="deal-content">

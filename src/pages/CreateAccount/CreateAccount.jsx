@@ -1,7 +1,64 @@
-import React from "react";
+import React, { useState } from "react";
 import "./CreateAccount.css";
 
 const CreateAccount = () => {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [error, setError] = useState(null);
+
+  // console.log("first", firstName);
+  // console.log("last", lastName);
+  // console.log("email", email);
+  // console.log("password", password);
+  // console.log("confirm ", confirmPassword);
+
+  const handleValidation = () => {
+    var regName = /^[A-Za-z]+$/;
+    var regEmail =
+      /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+
+    if (!regName.test(firstName)) {
+      if (firstName === "") {
+        setError("*First Name should not be empty.");
+        return;
+      }
+      setError("*First Name should contains only Alphabets.");
+      return;
+    } else if (!regName.test(lastName)) {
+      if (lastName === "") {
+        setError("*Last Name should not be empty.");
+        return;
+      }
+      setError("*Last Name should contains only Alphabets.");
+      return;
+    } else if (!regEmail.test(email)) {
+      if (email === "") {
+        setError("*Email should not be empty.");
+        return;
+      }
+      setError("*Enter valid Email.");
+      return;
+    } else if (password === "") {
+      setError("*Enter password.");
+    } else if (confirmPassword === "") {
+      setError("*Enter confirm password.");
+    } else if (password !== confirmPassword) {
+      setError("*Password does not match.");
+    } else {
+      setError(null);
+      handleCreateAccount();
+    }
+  };
+
+  
+
+  const handleCreateAccount = () => {
+    alert("succcess");
+  };
+
   return (
     <div
       className="row createAccount m-0"
@@ -11,7 +68,9 @@ const CreateAccount = () => {
         <div className="card-body px-md-4 px-sm-4 pt-sm-5 pt-md-5">
           <div className="row justify-content-end">
             <div className="col-md-10 col-lg-10 col-xl-10 order-2 order-lg-1">
-              <h2 className="text-left fw-semibold mt-4 mb-0">Create An Account</h2>
+              <h2 className="text-left fw-semibold mt-4 mb-0">
+                Create An Account
+              </h2>
             </div>
           </div>
         </div>
@@ -34,8 +93,9 @@ const CreateAccount = () => {
                               </label>
                               <input
                                 type="text"
-                                id="firstNamea"
-                                className="form-control"
+                                id="firstName"
+                                className="form-control shadow-none"
+                                onChange={(e) => setFirstName(e.target.value)}
                               />
                             </div>
                           </div>
@@ -47,7 +107,8 @@ const CreateAccount = () => {
                               <input
                                 type="text"
                                 id="lastName"
-                                className="form-control"
+                                className="form-control shadow-none"
+                                onChange={(e) => setLastName(e.target.value)}
                               />
                             </div>
                           </div>
@@ -81,7 +142,8 @@ const CreateAccount = () => {
                               <input
                                 type="email"
                                 id="form3Example3c"
-                                className="form-control"
+                                className="form-control shadow-none"
+                                onChange={(e) => setEmail(e.target.value)}
                               />
                             </div>
                           </div>
@@ -96,7 +158,8 @@ const CreateAccount = () => {
                               <input
                                 type="password"
                                 id="form3Example4c"
-                                className="form-control"
+                                className="form-control shadow-none"
+                                onChange={(e) => setPassword(e.target.value)}
                               />
                             </div>
                           </div>
@@ -112,18 +175,33 @@ const CreateAccount = () => {
                               <input
                                 type="password"
                                 id="form3Example4cd"
-                                className="form-control"
+                                className="form-control shadow-none"
+                                onChange={(e) =>
+                                  setConfirmPassword(e.target.value)
+                                }
                               />
                             </div>
                           </div>
                           <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" />
-                            <label class="form-check-label" for="flexCheckChecked">
+                            <input
+                              class="form-check-input"
+                              type="checkbox"
+                              value=""
+                              id="flexCheckChecked"
+                            />
+                            <label
+                              class="form-check-label"
+                              for="flexCheckChecked"
+                            >
                               By using this form you agree with the storage and
                               handling of your data by this website.
                             </label>
                           </div>
-
+                          <div class="form-check">
+                            <label style={{ color: "red", fontSize: "14px" }}>
+                              {error}
+                            </label>
+                          </div>
                           <div className="d-flex justify-content-left mb-3 mb-lg-4 mt-4">
                             <button
                               type="button"
@@ -132,6 +210,7 @@ const CreateAccount = () => {
                                 backgroundColor: "#52057B",
                                 color: "white",
                               }}
+                              onClick={handleValidation}
                             >
                               Create An Account
                             </button>

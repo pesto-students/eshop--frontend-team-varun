@@ -47,25 +47,35 @@ import range from "lodash/range";
 import "./ProductDetail.css";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
+import {
+  getCurrentProductFailure,
+  getCurrentProductRequestStart,
+  getCurrentProductSuccess,
+} from "../../Redux/currentProductSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 const ProductDetail = ({ currentPage }) => {
   const location = useLocation();
   const id = location.pathname.split("/")[2];
-  const [data, setData] = useState(null);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchProductDetails = async () => {
+      dispatch(getCurrentProductRequestStart());
       try {
         const res = await axios.get(
           `http://localhost:4000/api/v1/product/${id}`
         );
-        setData(res.data.product);
-      } catch (error) {}
+
+        dispatch(getCurrentProductSuccess(res.data));
+      } catch (error) {
+        dispatch(getCurrentProductFailure(error));
+      }
     };
     fetchProductDetails();
   }, []);
 
-  console.log("This is written in Product Detail page", data);
+  const { currentProduct } = useSelector((state) => state.currentProduct);
 
   return (
     <>
@@ -73,7 +83,10 @@ const ProductDetail = ({ currentPage }) => {
         <div className="product-details">
           <section className="container-fluid p-0 m-0">
             <div className="row m-0">
-              <div className="product-images col-lg-4 col-xs-12 my-4" style={{width: "493px"}}>
+              <div
+                className="product-images col-lg-4 col-xs-12 my-4"
+                style={{ width: "493px" }}
+              >
                 <img
                   src="../assets/productDetails/laptop.png"
                   alt=""
@@ -98,7 +111,7 @@ const ProductDetail = ({ currentPage }) => {
                 </div>
               </div>
               <div className="col-lg-6 col-xs-12 mt-3">
-                {/* Send data and update productInfo */}
+                {/* Send currentProduct and update productInfo */}
                 <ProductInfo />
               </div>
             </div>
@@ -106,12 +119,11 @@ const ProductDetail = ({ currentPage }) => {
           <section className="container-fluid p-0 m-0">
             <div className="row m-0">
               <div className="col-lg-9 col-sm-12">
-                {/* Send data and update descriptiona and productReview */}
+                {/* Send currentProduct and update descriptiona and productReview */}
                 <Description />
                 <ProductReview allReviews={false} />
               </div>
-              <div className="recommend-cards col-lg-2 mt-4">
-
+              {/* <div className="recommend-cards col-lg-2 mt-4">
                 {map(range(5), (_) => (
                   <div className="mb-3 mx-auto">
                     <Dealcards
