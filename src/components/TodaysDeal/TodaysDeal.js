@@ -3,13 +3,10 @@ import "./todaysDeal.css";
 import Dealcards from "../Dealcards/Dealcards";
 import SectionHeader from "../SectionHeader/SectionHeader";
 // import { products } from "../../localFiles/ProductsFile";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 
 const TodaysDeal = (props) => {
   const Ref = useRef(null);
-
-  const { products } = useSelector((state) => state.products);
-
   const [hours, setHours] = useState(0);
   const [minutes, setMinutes] = useState(0);
   const [seconds, setSeconds] = useState(0);
@@ -56,7 +53,7 @@ const TodaysDeal = (props) => {
   };
 
   return (
-    <div className="todays-deal">
+    <div className="todays-deal mb-2">
       <div className="todays-deal-header d-flex align-items-center justify-content-between mt-5 mb-4">
         <SectionHeader title={props.title} />
         {props.isEnd ? (
@@ -69,8 +66,8 @@ const TodaysDeal = (props) => {
           <></>
         )}
       </div>
-      <div className="deal-cards px-5">
-        {products?.map((deal) => (
+      <div className="deal-cards pb-3 px-5">
+        {props.products?.map((deal) => (
           <Dealcards deall={deal} />
         ))}
       </div>

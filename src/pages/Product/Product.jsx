@@ -17,8 +17,23 @@ import {
 
 const Product = () => {
   const dispatch = useDispatch();
+  // Fetch all products from api
+  useEffect(() => {
+    const fetchTopDeals = async () => {
+      dispatch(addProductsRequest());
+      try {
+        const res = await axios.get(`http://localhost:4000/api/v1/products`);
+
+        dispatch(addProductsSuccess(res.data));
+      } catch (error) {
+        dispatch(addProductsFailure(error));
+      }
+    };
+    fetchTopDeals();
+  }, []);
 
   const { products } = useSelector((state) => state.products);
+  // If error is present then show the error.
   const { error } = useSelector((state) => state.products);
 
   return (

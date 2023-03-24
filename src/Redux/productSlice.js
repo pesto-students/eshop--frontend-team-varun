@@ -2,13 +2,12 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   products: null,
-  topDeals: null,
   loading: false,
   error: null,
   productsCount: 0,
 };
 
-const cartSlice = createSlice({
+const productSlice = createSlice({
   name: "products",
   initialState,
 
@@ -18,10 +17,6 @@ const cartSlice = createSlice({
       state.products = [];
       state.error = null;
       state.productsCount = 0;
-    },
-    addTopDeals: (state, action) => {
-      state.loading = true;
-      state.addTopDeals = action.payload;
     },
     addProductsSuccess: (state, action) => {
       state.loading = false;
@@ -46,6 +41,6 @@ export const {
   addProductsSuccess,
   addProductsFailure,
   addProductsClearError,
-} = cartSlice.actions;
+} = productSlice.actions;
 
-export default cartSlice.reducer;
+export default productSlice.reducer;
