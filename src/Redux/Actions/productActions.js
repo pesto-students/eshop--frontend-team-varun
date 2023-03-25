@@ -45,18 +45,23 @@ export const clearErrors = () => async (dispatch) => {
 
 // Get All Products using filters
 export const getProductsUsingFilters =
-  ({ keyword, category }) =>
+  (keyword = "", category = "", price = [0, 2500000], page, brand="") =>
   async (dispatch) => {
     try {
       dispatch(addProductsRequest());
       if (category) {
         const res = await axios.get(
-          `http://localhost:4000/api/v1/products?keyword=${keyword}&category=${category}`
+          `http://localhost:4000/api/v1/products?keyword=${keyword}&category=${category}&price[gte]=${price[0]}&price[lte]=${price[1]}&page=${page}&brand=${brand}`
+        );
+        dispatch(addProductsSuccess(res.data));
+      }else if(brand){
+        const res = await axios.get(
+          `http://localhost:4000/api/v1/products?brand=${brand}`
         );
         dispatch(addProductsSuccess(res.data));
       } else {
         const res = await axios.get(
-          `http://localhost:4000/api/v1/products?keyword=${keyword}`
+          `http://localhost:4000/api/v1/products?keyword=${keyword}&price[gte]=${price[0]}&price[lte]=${price[1]}&page=${page}`
         );
         dispatch(addProductsSuccess(res.data));
       }
@@ -111,5 +116,41 @@ export const getProductDetails = (id) => async (dispatch) => {
     dispatch(getCurrentProductSuccess(res.data));
   } catch (error) {
     dispatch(getCurrentProductFailure(error));
+  }
+};
+
+export const getUserCoordinates = () => {
+  const geolocationAPI = navigator.geolocation;
+  if (!geolocationAPI) {
+    console.log("Geolocation API is not available in your browser!");
+  } else {
+    geolocationAPI.getCurrentPosition(
+      (position) => {
+        const { latitude, longitude } = position.coords;
+        const options = {
+          method: "GET",
+          url: "https://weatherapi-com.p.rapidapi.com/current.json",
+          params: { q: `${latitude}, ${longitude}` },
+          headers: {
+            "X-RapidAPI-Key":
+              "1ed03d24b6msh0cffdeb65a12596p112460jsn2f800ae326cd",
+            "X-RapidAPI-Host": "weatherapi-com.p.rapidapi.com",
+          },
+        };
+
+        axios
+          .request(options)
+          .then(function (response) {
+            return `${response.data.location.name}, ${response.data.location.region}`;
+          })
+          .catch(function (error) {
+            console.error(error);
+          });
+        
+      },
+      (error) => {
+        console.log("Something went wrong getting your position!");
+      }
+    );
   }
 };

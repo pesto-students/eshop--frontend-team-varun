@@ -5,8 +5,9 @@ import { faClose } from "@fortawesome/free-solid-svg-icons";
 
 const Filters = ({ childToParent }) => {
   const [category, setCategory] = useState("");
-  const [minPrice, setMinPrice] = useState(0);
-  const [maxPrice, setMaxPrice] = useState(0);
+  const [brand, setBrand] = useState("");
+  const [minPrice, setMinPrice] = useState("");
+  const [maxPrice, setMaxPrice] = useState("");
 
   return (
     <div className="filter-card text-start px-3 pb-4 mb-3">
@@ -18,9 +19,10 @@ const Filters = ({ childToParent }) => {
             className="bg-secondary p-2 text-white"
             onClick={() => {
               setCategory("");
-              setMinPrice(0);
-              setMaxPrice(0);
-              childToParent("", 0, 9999999);
+              setMinPrice("");
+              setMaxPrice("");
+              setBrand("");
+              childToParent("", 0, 9999999, "");
             }}
           />
         ) : (
@@ -39,7 +41,7 @@ const Filters = ({ childToParent }) => {
             checked={category === "Mobile"}
             onClick={() => {
               setCategory("Mobile");
-              childToParent("Mobile", 0, 9999999);
+              childToParent("Mobile", 0, 9999999, "");
             }}
           />
           Mobile
@@ -53,7 +55,7 @@ const Filters = ({ childToParent }) => {
             checked={category === "Television"}
             onClick={() => {
               setCategory("Television");
-              childToParent("Television", 0, 9999999);
+              childToParent("Television", 0, 9999999, "");
             }}
           />
           Television
@@ -67,7 +69,7 @@ const Filters = ({ childToParent }) => {
             checked={category === "Laptop"}
             onClick={() => {
               setCategory("Laptop");
-              childToParent("Laptop", 0, 9999999);
+              childToParent("Laptop", 0, 9999999, "");
             }}
           />
           Laptop
@@ -75,16 +77,20 @@ const Filters = ({ childToParent }) => {
       </div>
       <div className="divider" />
       <div className="filters-condition d-flex flex-column">
-        <p className="m-0 my-3 fw-semibold fs-6">Condition</p>
+        <p className="m-0 my-3 fw-semibold fs-6">Brands</p>
         <label>
           <input
             className="me-2 mb-3"
             type="radio"
             name="new"
             id="new"
-            checked={false}
+            checked={brand === "Lenovo"}
+            onClick={() => {
+              setBrand("Lenovo");
+              childToParent("", 0, 9999999, "Lenovo");
+            }}
           />
-          New
+          Lenovo
         </label>
         <label>
           <input
@@ -92,9 +98,27 @@ const Filters = ({ childToParent }) => {
             type="radio"
             name="seconds"
             id="seconds"
-            checked={false}
+            checked={brand === "Samsung"}
+            onClick={() => {
+              setBrand("Samsung");
+              childToParent("", 0, 9999999, "Samsung");
+            }}
           />
-          Seconds
+          Samsung
+        </label>
+        <label>
+          <input
+            className="me-2 mb-3"
+            type="radio"
+            name="seconds"
+            id="seconds"
+            checked={brand === "LG"}
+            onClick={() => {
+              setBrand("LG");
+              childToParent("", 0, 9999999, "LG");
+            }}
+          />
+          LG
         </label>
       </div>
       <div className="divider" />
@@ -107,6 +131,7 @@ const Filters = ({ childToParent }) => {
           placeholder="Min"
           style={{ marginBottom: "12px" }}
           onChange={(e) => setMinPrice(e.target.value)}
+          value={minPrice}
         />
         <input
           type="number"
@@ -115,11 +140,12 @@ const Filters = ({ childToParent }) => {
           placeholder="Max"
           style={{ marginBottom: "12px" }}
           onChange={(e) => setMaxPrice(e.target.value)}
+          value={maxPrice}
         />
         <button
           className="btn btn-primary border-0 mb-4"
           style={{ backgroundColor: "#52057B" }}
-          onClick={() => childToParent(category, minPrice, maxPrice)}
+          onClick={() => childToParent(category, minPrice, maxPrice, brand)}
         >
           Submit
         </button>
