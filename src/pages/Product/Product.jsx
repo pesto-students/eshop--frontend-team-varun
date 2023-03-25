@@ -13,28 +13,43 @@ import {
   addProductsSuccess,
 } from "../../Redux/Reducers/productSlice";
 import axios from "axios";
+import Geocode from "react-geocode";
+
 import { toast } from "react-toastify";
 import { Pagination } from "react-bootstrap";
+
 
 const Product = () => {
   const dispatch = useDispatch();
 
   const [keyword, setKeyword] = useState("");
+
+  const [userAddress, setUserAddress] = useState("");
+  const geolocationAPI = navigator.geolocation;
+  Geocode.setApiKey("AIzaSyCZzjQKv4zcMZkeUCzze8iRlSYnPmrzXtI");
+
+  const fetchTopDeals = async (
+    keyword = "",
+    category = "",
+    price = [0, 2500000]
+  ) => {
+
   const [currentPage, setCurrentPage] = useState(1);
   
 
   // Fetch all products from api
   const fetchTopDeals = async (keyword = "", category = "") => {
+
     dispatch(addProductsRequest());
     try {
       if (category) {
         const res = await axios.get(
-          `http://localhost:4000/api/v1/products?keyword=${keyword}&category=${category}`
+          `http://localhost:4000/api/v1/products?keyword=${keyword}&category=${category}&price[gte]=${price[0]}&price[lte]=${price[1]}`
         );
         dispatch(addProductsSuccess(res.data));
       } else {
         const res = await axios.get(
-          `http://localhost:4000/api/v1/products?keyword=${keyword}`
+          `http://localhost:4000/api/v1/products?keyword=${keyword}&price[gte]=${price[0]}&price[lte]=${price[1]}`
         );
         dispatch(addProductsSuccess(res.data));
       }
@@ -45,9 +60,52 @@ const Product = () => {
     }
   };
 
+  const getUserCoordinates = () => {
+    if (!geolocationAPI) {
+      console.log("Geolocation API is not available in your browser!");
+    } else {
+      geolocationAPI.getCurrentPosition(
+        (position) => {
+          const { latitude, longitude } = position.coords;
+          // Geocode.fromLatLng(latitude, longitude).then(
+          //   (response) => {
+          //     const address = response.results[0].formatted_address;
+          //     console.log(address);
+          //   },
+          //   (error) => {
+          //     console.error(error);
+          //   }
+          // );
+          const options = {
+            method: 'GET',
+            url: 'https://weatherapi-com.p.rapidapi.com/current.json',
+            params: {q: `${latitude}, ${longitude}`},
+            headers: {
+              'X-RapidAPI-Key': '1ed03d24b6msh0cffdeb65a12596p112460jsn2f800ae326cd',
+              'X-RapidAPI-Host': 'weatherapi-com.p.rapidapi.com'
+            }
+          };
+          
+          axios.request(options).then(function (response) {
+            console.log(response.data);
+            setUserAddress(`${response.data.location.name}, ${response.data.location.region}`);
+          }).catch(function (error) {
+            console.error(error);
+          });
+          console.log(latitude, longitude);
+        },
+        (error) => {
+          console.log("Something went wrong getting your position!");
+        }
+      );
+    }
+  };
+
   useEffect(() => {
+    getUserCoordinates();
     fetchTopDeals();
   }, []);
+
 
   const {
     products,
@@ -57,6 +115,7 @@ const Product = () => {
     resultPerPage,
   } = useSelector((state) => state.products);
 
+
   const searchSubmitHandler = (e) => {
     if (keyword.trim()) {
       fetchTopDeals(keyword);
@@ -65,8 +124,8 @@ const Product = () => {
     }
   };
 
-  const childToParent = (childdata) => {
-    fetchTopDeals("", childdata);
+  const childToParent = (childdata, minPrice, maxPrice) => {
+    fetchTopDeals("", childdata, [minPrice, maxPrice]);
   };
 
   const setCurrentPageNo = (e) => {
@@ -78,7 +137,7 @@ const Product = () => {
       <div className="product-list-header">
         <div className="user-loc d-flex align-items-center gap-2">
           <img src="../assets/location.svg" alt="" />
-          <p className="m-0 p-0">Surat, Gujarat</p>
+          <p className="m-0 p-0">{userAddress}</p>
         </div>
         <div className="input-group border rounded-2">
           <input

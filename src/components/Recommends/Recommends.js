@@ -42,6 +42,7 @@ const Recommends = ({ products, loading, error }) => {
         ))} */}
 
         {loading ? (
+
           <>
             {/* Make loading component here */}
             <Loader />

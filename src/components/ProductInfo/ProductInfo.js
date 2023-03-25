@@ -42,74 +42,10 @@ const ProductInfo = ({ currentProduct }) => {
           {currentProduct.stock < 1 ? "OutOfStock" : "InStock"}
         </p>
       </section>
-      <div className="choose-color d-flex align-items-center border-top mt-3 me-3">
-        <p className="m-0 p-0 me-auto">Choose Color</p>
-        <div className="color-box d-flex gap-2">
-          <p
-            className="px-3 py-1 mb-0"
-            onClick={() => chooseColor("Black")}
-            style={{
-              border:
-                color === "Black" ? "2px solid #52057B" : "2px solid #E2E2E2",
-              borderRadius: "4px",
-              cursor: "Pointer",
-            }}
-          >
-            Black
-          </p>
-          <p
-            className="px-3 py-1 mb-0"
-            onClick={() => chooseColor("Gray")}
-            style={{
-              border:
-                color === "Gray" ? "2px solid #52057B" : "2px solid #E2E2E2",
-              borderRadius: "4px",
-              cursor: "Pointer",
-            }}
-          >
-            Gray
-          </p>
-          <p
-            className="px-3 py-1 mb-0"
-            onClick={() => chooseColor("White")}
-            style={{
-              border:
-                color === "White" ? "2px solid #52057B" : "2px solid #E2E2E2",
-              borderRadius: "4px",
-              cursor: "Pointer",
-            }}
-          >
-            White
-          </p>
-          <p
-            className="px-3 py-1 mb-0"
-            onClick={() => chooseColor("Red")}
-            style={{
-              border:
-                color === "Red" ? "2px solid #52057B" : "2px solid #E2E2E2",
-              borderRadius: "4px",
-              cursor: "Pointer",
-            }}
-          >
-            Red
-          </p>
-        </div>
-      </div>
-      <div className="choose-memory d-flex align-items-center border-top border-bottom me-3">
+
+      <div className="choose-memory d-flex align-items-center border-top border-bottom mt-3 me-3">
         <p className="m-0 p-0 me-auto">Memory (RAM)</p>
         <div className="memory-box d-flex gap-2">
-          <p
-            className="px-3 py-1 mb-0"
-            onClick={() => chooseMemory("4GB")}
-            style={{
-              border:
-                memory === "4GB" ? "2px solid #52057B" : "2px solid #E2E2E2",
-              borderRadius: "4px",
-              cursor: "Pointer",
-            }}
-          >
-            4GB
-          </p>
           <p
             className="px-3 py-1 mb-0"
             onClick={() => chooseMemory("8GB")}
@@ -122,18 +58,7 @@ const ProductInfo = ({ currentProduct }) => {
           >
             8GB
           </p>
-          <p
-            className="px-3 py-1 mb-0"
-            onClick={() => chooseMemory("12GB")}
-            style={{
-              border:
-                memory === "12GB" ? "2px solid #52057B" : "2px solid #E2E2E2",
-              borderRadius: "4px",
-              cursor: "Pointer",
-            }}
-          >
-            12GB
-          </p>
+          
           <p
             className="px-3 py-1 mb-0"
             onClick={() => chooseMemory("16GB")}
