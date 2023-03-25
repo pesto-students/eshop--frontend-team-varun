@@ -5,6 +5,7 @@ const initialState = {
   productsLoading: false,
   productsError: null,
   productsCount: 0,
+  resultPerPage: null,
 };
 
 const productSlice = createSlice({
@@ -17,21 +18,25 @@ const productSlice = createSlice({
       state.products = [];
       state.productsError = null;
       state.productsCount = 0;
+      state.resultPerPage = 0;
     },
     addProductsSuccess: (state, action) => {
       state.productsLoading = false;
       state.products = action.payload.products;
       state.productsError = null;
       state.productsCount = action.payload.productCount;
+      state.resultPerPage = action.payload.resultPerPage;
     },
     addProductsFailure: (state, action) => {
       state.productsLoading = false;
       state.products = [];
       state.productsError = action.payload.message;
       state.productsCount = 0;
+      state.resultPerPage = 0;
     },
     addProductsClearError: (state, action) => {
       state.productsError = null;
+      state.resultPerPage = 0;
     },
   },
 });

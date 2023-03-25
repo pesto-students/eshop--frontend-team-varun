@@ -7,14 +7,23 @@ import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 import { useSelector, useDispatch } from "react-redux";
 import { getProducts } from "../../Redux/Actions/productActions";
 import Loader from "../../components/Loader/Loader";
+import {
+  addProductsFailure,
+  addProductsRequest,
+  addProductsSuccess,
+} from "../../Redux/Reducers/productSlice";
+import axios from "axios";
+import { toast } from "react-toastify";
+import { Pagination } from "react-bootstrap";
 
 const Product = () => {
   const dispatch = useDispatch();
 
   const [keyword, setKeyword] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  
 
   // Fetch all products from api
-
   const fetchTopDeals = async (keyword = "", category = "") => {
     dispatch(addProductsRequest());
     try {
@@ -30,7 +39,8 @@ const Product = () => {
         dispatch(addProductsSuccess(res.data));
       }
     } catch (error) {
-      console.log(error);
+      // console.log(error);
+      toast.error(`${productsError}`);
       dispatch(addProductsFailure(error));
     }
   };
@@ -39,10 +49,13 @@ const Product = () => {
     fetchTopDeals();
   }, []);
 
-
-  const { products, productsError, productsLoading } = useSelector(
-    (state) => state.products
-  );
+  const {
+    products,
+    productsError,
+    productsLoading,
+    productsCount,
+    resultPerPage,
+  } = useSelector((state) => state.products);
 
   const searchSubmitHandler = (e) => {
     if (keyword.trim()) {
@@ -54,6 +67,10 @@ const Product = () => {
 
   const childToParent = (childdata) => {
     fetchTopDeals("", childdata);
+  };
+
+  const setCurrentPageNo = (e) => {
+    setCurrentPage(e);
   };
 
   return (
@@ -71,9 +88,9 @@ const Product = () => {
             aria-label="Recipient's username"
             aria-describedby="basic-addon2"
             onChange={(e) => {
-              if (e.target.value === "") {
-                fetchTopDeals("");
-              }
+              // if (e.target.value === "") {
+              //   fetchTopDeals("");
+              // }
               return setKeyword(e.target.value);
             }}
           />
@@ -129,6 +146,22 @@ const Product = () => {
                 </div>
               ))
             )}
+            <div className="paginationBox">
+              <Pagination
+                activePage={currentPage}
+                itemsCountPerPage={resultPerPage}
+                totalItemsCount={productsCount}
+                onChange={setCurrentPageNo}
+                nextpagetext="Next"
+                prevpagetext="Prev"
+                firstpagetext="1st"
+                lastpagetext="Last"
+                itemClass="page-item"
+                linkClass="page-link"
+                activeClass="pageItemActive"
+                activeLinkClass="pageLinkActive"
+              />
+            </div>
           </div>
         </div>
       </div>

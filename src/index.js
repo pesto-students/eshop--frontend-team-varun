@@ -7,8 +7,8 @@ import { Provider } from "react-redux";
 import { persistor, store } from "./Redux/store";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { PersistGate } from "redux-persist/lib/integration/react";
-
 const root = ReactDOM.createRoot(document.getElementById("root"));
+
 root.render(
   <React.StrictMode>
     <Provider store={store}>
