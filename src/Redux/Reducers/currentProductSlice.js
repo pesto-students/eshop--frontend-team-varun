@@ -4,7 +4,7 @@ import { act } from "react-dom/test-utils";
 const initialState = {
   currentProduct: null,
   currentProductLoading: false,
-  currentProductError: false,
+  currentProductError: null,
 };
 
 export const currentProductSlice = createSlice({
@@ -15,17 +15,17 @@ export const currentProductSlice = createSlice({
     getCurrentProductRequestStart: (state) => {
       state.currentProductLoading = true;
       state.currentProduct = [];
-      state.currentProductError = false;
+      state.currentProductError = null;
     },
     getCurrentProductSuccess: (state, action) => {
       state.currentProductLoading = false;
       state.currentProduct = action.payload.product;
-      state.currentProductError = false;
+      state.currentProductError = null;
     },
-    getCurrentProductFailure: (state) => {
+    getCurrentProductFailure: (state, action) => {
       state.currentProductLoading = false;
       state.currentProduct = [];
-      state.currentProductError = true;
+      state.currentProductError = action.payload.message;
     },
   },
 });

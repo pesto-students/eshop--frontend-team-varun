@@ -15,10 +15,15 @@ import {
 import axios from "axios";
 import Geocode from "react-geocode";
 
+import { toast } from "react-toastify";
+import { Pagination } from "react-bootstrap";
+
+
 const Product = () => {
   const dispatch = useDispatch();
 
   const [keyword, setKeyword] = useState("");
+
   const [userAddress, setUserAddress] = useState("");
   const geolocationAPI = navigator.geolocation;
   Geocode.setApiKey("AIzaSyCZzjQKv4zcMZkeUCzze8iRlSYnPmrzXtI");
@@ -28,6 +33,13 @@ const Product = () => {
     category = "",
     price = [0, 2500000]
   ) => {
+
+  const [currentPage, setCurrentPage] = useState(1);
+  
+
+  // Fetch all products from api
+  const fetchTopDeals = async (keyword = "", category = "") => {
+
     dispatch(addProductsRequest());
     try {
       if (category) {
@@ -42,7 +54,8 @@ const Product = () => {
         dispatch(addProductsSuccess(res.data));
       }
     } catch (error) {
-      console.log(error);
+      // console.log(error);
+      toast.error(`${productsError}`);
       dispatch(addProductsFailure(error));
     }
   };
@@ -93,9 +106,15 @@ const Product = () => {
     fetchTopDeals();
   }, []);
 
-  const { products, productsError, productsLoading } = useSelector(
-    (state) => state.products
-  );
+
+  const {
+    products,
+    productsError,
+    productsLoading,
+    productsCount,
+    resultPerPage,
+  } = useSelector((state) => state.products);
+
 
   const searchSubmitHandler = (e) => {
     if (keyword.trim()) {
@@ -107,6 +126,10 @@ const Product = () => {
 
   const childToParent = (childdata, minPrice, maxPrice) => {
     fetchTopDeals("", childdata, [minPrice, maxPrice]);
+  };
+
+  const setCurrentPageNo = (e) => {
+    setCurrentPage(e);
   };
 
   return (
@@ -124,9 +147,9 @@ const Product = () => {
             aria-label="Recipient's username"
             aria-describedby="basic-addon2"
             onChange={(e) => {
-              if (e.target.value === "") {
-                fetchTopDeals("");
-              }
+              // if (e.target.value === "") {
+              //   fetchTopDeals("");
+              // }
               return setKeyword(e.target.value);
             }}
           />
@@ -182,6 +205,22 @@ const Product = () => {
                 </div>
               ))
             )}
+            <div className="paginationBox">
+              <Pagination
+                activePage={currentPage}
+                itemsCountPerPage={resultPerPage}
+                totalItemsCount={productsCount}
+                onChange={setCurrentPageNo}
+                nextpagetext="Next"
+                prevpagetext="Prev"
+                firstpagetext="1st"
+                lastpagetext="Last"
+                itemClass="page-item"
+                linkClass="page-link"
+                activeClass="pageItemActive"
+                activeLinkClass="pageLinkActive"
+              />
+            </div>
           </div>
         </div>
       </div>

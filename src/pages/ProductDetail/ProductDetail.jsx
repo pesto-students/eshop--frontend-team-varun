@@ -8,6 +8,7 @@ import { useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getProductDetails } from "../../Redux/Actions/productActions";
 import Loader from "../../components/Loader/Loader";
+import { toast } from "react-toastify";
 
 const ProductDetail = ({ currentPage }) => {
   const location = useLocation();
@@ -16,6 +17,10 @@ const ProductDetail = ({ currentPage }) => {
   const [url, setUrl] = useState("../assets/productDetails/laptop.png");
 
   useEffect(() => {
+    if (currentProductError) {
+      toast.error(`${currentProductError}`);
+    }
+
     // Fetch Product Details
     dispatch(getProductDetails(id));
   }, [dispatch]);
@@ -61,7 +66,9 @@ const ProductDetail = ({ currentPage }) => {
                 </div>
                 <div className="col-lg-6 col-xs-12 mt-3">
                   {/* Send currentProduct and update productInfo */}
-                  <ProductInfo currentProduct={currentProduct}/>
+
+                  <ProductInfo currentProduct={currentProduct} />
+
                 </div>
               </div>
             </section>
@@ -69,9 +76,11 @@ const ProductDetail = ({ currentPage }) => {
               <div className="row m-0">
                 <div className="col-lg-9 col-sm-12">
                   {/* Send currentProduct and update descriptiona and productReview */}
+
                    <Description desc={currentProduct.description} />
                    <ProductReview allReviews={false} />
               
+
                 </div>
                 {/* <div className="recommend-cards col-lg-2 mt-4">
 

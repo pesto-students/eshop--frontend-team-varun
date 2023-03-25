@@ -42,8 +42,11 @@ const Recommends = ({ products, loading, error }) => {
         ))} */}
 
         {loading ? (
-          <>{/* Make loading component here */}
-          <Loader/></>
+
+          <>
+            {/* Make loading component here */}
+            <Loader />
+          </>
         ) : (
           products?.map((product) => (
             <div className="rec_rows">

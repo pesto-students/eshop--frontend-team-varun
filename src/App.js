@@ -14,7 +14,8 @@ import ProductDetail from "./pages/ProductDetail/ProductDetail";
 import Dashboard from "./pages/Admin/Dashboard/Dashboard";
 import CreatePassword from "./pages/CreatePassword/CreatePassword";
 import ScrollToTop from "./ScrollToTop";
-import Loader from "./components/Loader/Loader";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
@@ -32,7 +33,6 @@ function App() {
             <Route path="createAccount" element={<CreateAccount />} />
             <Route path="forgotPassword" element={<ForgotPassword />} />
             <Route path="checkout" element={<Checkout />} />
-            {/* <Route path="loader" element={<Loader />} /> */}
             <Route path="product">
               <Route
                 path=":id"
@@ -67,6 +67,7 @@ function App() {
         </Routes>
         <Footer />
       </Router>
+      <ToastContainer autoClose={3000} theme="colored" newestOnTop={true} />
     </div>
   );
 }
