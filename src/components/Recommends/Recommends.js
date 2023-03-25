@@ -1,5 +1,6 @@
 import React from "react";
 import Dealcards from "../Dealcards/Dealcards";
+import Loader from "../Loader/Loader";
 import "./recommends.css";
 // import map from "lodash/map";
 // import range from "lodash/range";
@@ -41,7 +42,8 @@ const Recommends = ({ products, loading, error }) => {
         ))} */}
 
         {loading ? (
-          <>{/* Make loading component here */}Loading....</>
+          <>{/* Make loading component here */}
+          <Loader/></>
         ) : (
           products?.map((product) => (
             <div className="rec_rows">
