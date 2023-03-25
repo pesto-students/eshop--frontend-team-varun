@@ -1,4 +1,5 @@
 import axios from "axios";
+import { toast } from "react-toastify";
 import {
   getCurrentProductFailure,
   getCurrentProductRequestStart,
@@ -42,6 +43,29 @@ export const clearErrors = () => async (dispatch) => {
   dispatch(addProductsClearError());
 };
 
+// Get All Products using filters
+export const getProductsUsingFilters =
+  ({ keyword, category }) =>
+  async (dispatch) => {
+    try {
+      dispatch(addProductsRequest());
+      if (category) {
+        const res = await axios.get(
+          `http://localhost:4000/api/v1/products?keyword=${keyword}&category=${category}`
+        );
+        dispatch(addProductsSuccess(res.data));
+      } else {
+        const res = await axios.get(
+          `http://localhost:4000/api/v1/products?keyword=${keyword}`
+        );
+        dispatch(addProductsSuccess(res.data));
+      }
+    } catch (error) {
+      toast.error(`${error.message}`);
+      dispatch(addProductsFailure(error));
+    }
+  };
+
 // Fetch all TopDeals products { products above 4.0 rating }
 export const getTopDeals = () => async (dispatch) => {
   try {
@@ -78,7 +102,7 @@ export const getRecommendations = () => async (dispatch) => {
   }
 };
 
-// Get Product Details
+// Get current Product Details
 
 export const getProductDetails = (id) => async (dispatch) => {
   try {

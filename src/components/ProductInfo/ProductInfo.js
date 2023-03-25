@@ -28,10 +28,18 @@ const ProductInfo = ({ currentProduct }) => {
         </p>
       </section>
       <section>
-        <h2 className="mt-3 fw-bold">₹{currentProduct.price}</h2>
+        <h2 className="mt-3 fw-bold">₹{currentProduct.normalPrice}</h2>
         <p className="m-0 text-secondary mt-1">Inclusive of all taxes</p>
         <p className="m-0 text-secondary">
           EMI starts at ₹2,842. No Cost EMI available EMI options
+        </p>
+        <p
+          style={{
+            marginTop: "15px",
+            color: currentProduct.stock < 1 ? "red" : "green",
+          }}
+        >
+          {currentProduct.stock < 1 ? "OutOfStock" : "InStock"}
         </p>
       </section>
       <div className="choose-color d-flex align-items-center border-top mt-3 me-3">
@@ -145,13 +153,21 @@ const ProductInfo = ({ currentProduct }) => {
         <div className="quantity-box d-flex gap-3 align-items-center">
           <FontAwesomeIcon
             icon={faPlus}
-            style={{ backgroundColor: "#DEDEDE", padding: "5px", cursor: "Pointer"}}
+            style={{
+              backgroundColor: "#DEDEDE",
+              padding: "5px",
+              cursor: "Pointer",
+            }}
             onClick={() => setQty(qty + 1)}
           />
           <p className="m-0 p-0">{qty}</p>
           <FontAwesomeIcon
             icon={faMinus}
-            style={{ backgroundColor: "#DEDEDE", padding: "5px", cursor: "Pointer"}}
+            style={{
+              backgroundColor: "#DEDEDE",
+              padding: "5px",
+              cursor: "Pointer",
+            }}
             onClick={() => setQty(qty - 1)}
           />
         </div>
