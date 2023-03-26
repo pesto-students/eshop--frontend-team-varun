@@ -10,7 +10,6 @@ import {
   REGISTER,
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
-import { PersistGate } from "redux-persist/integration/react";
 
 import userReducer from "./Reducers/userSlice";
 import cartReducer from "./Reducers/cartSlice";
@@ -19,6 +18,7 @@ import topDealsReducer from "./Reducers/topDealsSlice";
 import dealsOfMonthsReducer from "./Reducers/dealsOfMonthSlice";
 import recommendationReducer from "./Reducers/recommendationSlice";
 import currentProductReducer from "./Reducers/currentProductSlice";
+import ordersReducers from "./Reducers/orderSlice";
 
 const persistConfig = {
   key: "root",
@@ -34,6 +34,7 @@ const rootReducer = combineReducers({
   dealsOfMonth: dealsOfMonthsReducer,
   recommendations: recommendationReducer,
   currentProduct: currentProductReducer,
+  orders: ordersReducers,
 });
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 

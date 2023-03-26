@@ -18,6 +18,7 @@ const Product = () => {
   const [userAddress, setUserAddress] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
 
+
   const paginate = (pageNumber) => {
     dispatch(getProductsUsingFilters("", "", [0, 9999999], pageNumber));
     setCurrentPage(pageNumber);
@@ -76,9 +77,11 @@ const Product = () => {
             aria-label="Recipient's username"
             aria-describedby="basic-addon2"
             onChange={(e) => {
+
               if (e.target.value === "") {
                 dispatch(getProductsUsingFilters());
               }
+
               return setKeyword(e.target.value);
             }}
           />
@@ -91,9 +94,19 @@ const Product = () => {
               alt=""
               onClick={searchSubmitHandler}
             />
-            <span
-              className="input-group-text bg-white border-0"
-              id="basic-addon2"
+          </span>
+        </div>
+      </div>
+      <div className="product-list-body">
+        <div className="product-filter-mobile">
+          <p>
+            <a
+              className="text-dark text-decoration-none"
+              data-bs-toggle="collapse"
+              href="#collapseExample"
+              role="button"
+              aria-expanded="false"
+              aria-controls="collapseExample"
             >
               <p className="fw-semibold mb-0">
                 Filters
@@ -110,7 +123,9 @@ const Product = () => {
         <div className="product-filters">
           <Filters childToParent={childToParent} />
         </div>
+
         <div className="container-fluid m-0 p-0 d-flex flex-column justify-content-between">
+
           <div className="row">
             {productsLoading ? (
               <>
@@ -138,6 +153,7 @@ const Product = () => {
           }
         </div>
       </div>
+
     </section>
   );
 };

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Sidebar from "../components/Sidebar";
 import Products from "../pages/Products/Products";
 
@@ -11,11 +11,17 @@ import "./Dashboard.css";
 import ListView from "../pages/ListView/ListView";
 import { Link } from "react-router-dom";
 import AddProduct from "../pages/AddProduct/AddProduct";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllOrders } from "../../../Redux/Actions/orderActions";
 
 const Dashboard = ({ currentPage }) => {
   const pageName = currentPage.charAt(0).toUpperCase() + currentPage.slice(1);
   const { products } = useSelector((state) => state.products);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    // dispatch(getAllOrders());
+  });
 
   return (
     <div className="row dashboard m-0" style={{ backgroundColor: "#f2f4f7" }}>
