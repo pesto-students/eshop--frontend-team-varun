@@ -10,6 +10,7 @@ import axios from "axios";
 import Paginate from "../../components/Pagination/Pagination";
 import { getProductsUsingFilters, getUserCoordinates } from "../../Redux/Actions/productActions";
 
+
 const Product = () => {
   const dispatch = useDispatch();
 
@@ -90,19 +91,9 @@ const Product = () => {
               alt=""
               onClick={searchSubmitHandler}
             />
-          </span>
-        </div>
-      </div>
-      <div className="product-list-body">
-        <div className="product-filter-mobile">
-          <p>
-            <a
-              className="text-dark text-decoration-none"
-              data-bs-toggle="collapse"
-              href="#collapseExample"
-              role="button"
-              aria-expanded="false"
-              aria-controls="collapseExample"
+            <span
+              className="input-group-text bg-white border-0"
+              id="basic-addon2"
             >
               <p className="fw-semibold mb-0">
                 Filters
@@ -133,6 +124,7 @@ const Product = () => {
                 </div>
               ))
             )}
+
           </div>
           {(!productsLoading) && 
             <Paginate
