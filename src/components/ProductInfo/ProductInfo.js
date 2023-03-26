@@ -12,11 +12,20 @@ import {
   TwitterIcon,
   WhatsappIcon,
 } from "react-share";
+import { useDispatch } from "react-redux";
+import { AddItemsToCart } from "../../Redux/Actions/cartActions";
+import { toast } from "react-toastify";
 
 const ProductInfo = ({ currentProduct }) => {
+  const dispatch = useDispatch();
   const [color, chooseColor] = useState("");
   const [memory, chooseMemory] = useState("");
   const [qty, setQty] = useState(1);
+
+  const AddItemToCart = () => {
+    dispatch(AddItemsToCart(currentProduct._id, qty));
+    toast.success("Item Added to cart Successfully.");
+  };
 
   return (
     <div>
@@ -58,7 +67,7 @@ const ProductInfo = ({ currentProduct }) => {
           >
             8GB
           </p>
-          
+
           <p
             className="px-3 py-1 mb-0"
             onClick={() => chooseMemory("16GB")}
@@ -105,9 +114,13 @@ const ProductInfo = ({ currentProduct }) => {
         >
           Buy Now
         </button>
+
+        {/* change the text color to white when hover in below button */}
+
         <button
           type="button"
-          className="btn d-flex text-dark w-100 border-dark rounded-2 justify-content-center gap-1 m-0 p-3"
+          className="btn d-flex  w-100 border-dark rounded-2 justify-content-center gap-1 m-0 p-3"
+          onClick={AddItemToCart}
         >
           <img src="../assets/productDetails/cart.svg" alt="" /> Add to cart
         </button>

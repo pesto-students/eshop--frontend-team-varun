@@ -68,7 +68,6 @@ const ProductDetail = ({ currentPage }) => {
                   {/* Send currentProduct and update productInfo */}
 
                   <ProductInfo currentProduct={currentProduct} />
-
                 </div>
               </div>
             </section>
@@ -77,10 +76,8 @@ const ProductDetail = ({ currentPage }) => {
                 <div className="col-lg-9 col-sm-12">
                   {/* Send currentProduct and update descriptiona and productReview */}
 
-                   <Description desc={currentProduct.description} />
-                   <ProductReview allReviews={false} />
-              
-
+                  <Description desc={currentProduct.description} />
+                  <ProductReview allReviews={false} />
                 </div>
                 {/* <div className="recommend-cards col-lg-2 mt-4">
 
