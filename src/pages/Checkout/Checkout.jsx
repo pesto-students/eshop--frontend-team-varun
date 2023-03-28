@@ -25,8 +25,8 @@ const Checkout = () => {
   });
 
   return (
-    <div className="checkout-page">
-      <div className="container-xxl">
+    <div className="checkout-page mt-5">
+      <div className="container-xxl pt-4">
         <div className="checkout-page-1">
           <div className="shipping-data">
             <p className="p-0 mb-0 h4 fw-semibold">Shipping Address</p>

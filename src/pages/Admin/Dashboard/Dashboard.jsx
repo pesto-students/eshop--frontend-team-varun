@@ -12,8 +12,8 @@ const Dashboard = ({ currentPage }) => {
   const dispatch = useDispatch();
 
   return (
-    <div className="row dashboard m-0" style={{ backgroundColor: "#f2f4f7" }}>
-      <div className="row">
+    <div className="row dashboard mt-5" style={{ backgroundColor: "#f2f4f7" }}>
+      <div className="row pt-3">
         <div className="col-3">
           <section className="">
             <div className="row d-flex justify-content-start align-items-start h-100">

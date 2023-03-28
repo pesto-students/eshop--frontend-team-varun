@@ -3,10 +3,10 @@ import "./Loader.css";
 
 const Loader = () => {
   return (
-    <div className="LoaderComponent">
-      <div></div>
+    <div className="LoaderComponent mt-5">
+      <div className="mt-5"></div>
     </div>
   );
 };
- 
+
 export default Loader;

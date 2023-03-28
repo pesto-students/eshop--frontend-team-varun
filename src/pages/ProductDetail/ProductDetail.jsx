@@ -34,8 +34,8 @@ const ProductDetail = ({ currentPage }) => {
         currentProductLoading ? (
           <Loader />
         ) : (
-          <div className="product-details">
-            <section className="container-fluid p-0 m-0">
+          <div className="product-details mt-5">
+            <section className="container-fluid pt-3 m-0">
               <div className="row m-0">
                 <div
                   className="product-images col-lg-4 col-xs-12 my-4"

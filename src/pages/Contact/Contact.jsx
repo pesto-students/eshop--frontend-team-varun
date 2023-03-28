@@ -3,7 +3,10 @@ import "./Contact.css";
 
 const Contact = () => {
   return (
-    <div className="row contact m-0" style={{ backgroundColor: "#f2f4f7" }}>
+    <div
+      className="row contact m-0 mt-5"
+      style={{ backgroundColor: "#f2f4f7" }}
+    >
       <div className="col">
         <div className="row d-flex justify-content-center align-items-center m-lg-5 m-md-5 mx-md-0 m-sm-5 pt-md-3 px-lg-5 px-md-0 px-sm-5">
           <div className="col-lg-12 col-md-10 col-sm-12 border border-1 rounded-2">
@@ -30,7 +33,9 @@ const Contact = () => {
                 <div className="card-body p-lg-0 m-lg-0 py-md-5 px-sm-5 px-md-5 mx-md-5 py-sm-3 mx-sm-5 ">
                   <div className="row justify-content-start">
                     <div className="col-md-10 col-lg-12 col-xl-10 order-2 order-lg-1">
-                      <p className="text-left h2 fw-semibold my-5">Company Details</p>
+                      <p className="text-left h2 fw-semibold my-5">
+                        Company Details
+                      </p>
                       <p className="text-left fw-semibold mb-2">Location</p>
                       <p className="text-left">
                         844 Vivianne Apt. 182,Cedar Rapids, Michigan, 18969
@@ -112,7 +117,9 @@ const Contact = () => {
                 <div className="card-body p-lg-0 m-lg-0 mb-lg-5 py-md-5 px-sm-5 px-md-5 mx-md-5 py-sm-3 mx-sm-5 mb-sm-5">
                   <div className="row justify-content-start">
                     <div className="col-md-10 col-lg-12 col-xl-10 order-2 order-lg-1">
-                      <p className="text-left h2 fw-semibold my-5">Drop Us A Line</p>
+                      <p className="text-left h2 fw-semibold my-5">
+                        Drop Us A Line
+                      </p>
                       <p className="text-left mb-3 mt-1 mb-3">
                         Required fields are marked
                         <span style={{ color: "red" }}>*</span>

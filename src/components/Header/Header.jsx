@@ -94,27 +94,29 @@ const Header = () => {
               <div
                 className="col border border-2 rounded-4 px-3 d-flex justify-content-center align-items-center"
                 style={{ background: "#52057B", cursor: "pointer" }}
-                onClick={()=> setopen(!open)}
+                onClick={() => setopen(!open)}
               >
                 <div className="m-1" style={{ color: "white" }}>
                   {`Hello ${currentUser.firstname}`}
                 </div>
-                {open && <div className="menu-options">
-                  <Link
-                    className="link text-dark"
-                    to="/orders"
-                    style={{ textDecoration: "none" }}
-                  >
-                    My Orders
-                  </Link>
-                  <p
-                    className="link text-dark m-0"
-                    onClick={handelLogOut}
-                    style={{ textDecoration: "none" }}
-                  >
-                    Logout
-                  </p>
-                </div>}
+                {open && (
+                  <div className="menu-options">
+                    <Link
+                      className="link text-dark"
+                      to="/orders"
+                      style={{ textDecoration: "none" }}
+                    >
+                      My Orders
+                    </Link>
+                    <p
+                      className="link text-dark m-0"
+                      onClick={handelLogOut}
+                      style={{ textDecoration: "none" }}
+                    >
+                      Logout
+                    </p>
+                  </div>
+                )}
               </div>
             ) : (
               <Link
