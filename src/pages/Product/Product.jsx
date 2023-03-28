@@ -8,8 +8,10 @@ import { useSelector, useDispatch } from "react-redux";
 import Loader from "../../components/Loader/Loader";
 import axios from "axios";
 import Paginate from "../../components/Pagination/Pagination";
-import { getProductsUsingFilters, getUserCoordinates } from "../../Redux/Actions/productActions";
-
+import {
+  getProductsUsingFilters,
+  getUserCoordinates,
+} from "../../Redux/Actions/productActions";
 
 const Product = () => {
   const dispatch = useDispatch();
@@ -18,7 +20,6 @@ const Product = () => {
   const [userAddress, setUserAddress] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
 
-
   const paginate = (pageNumber) => {
     dispatch(getProductsUsingFilters("", "", [0, 9999999], pageNumber));
     setCurrentPage(pageNumber);
@@ -26,14 +27,14 @@ const Product = () => {
 
   const previousPage = () => {
     if (currentPage !== 1) {
-      dispatch(getProductsUsingFilters("", "", [0, 9999999], (currentPage-1)));
+      dispatch(getProductsUsingFilters("", "", [0, 9999999], currentPage - 1));
       setCurrentPage(currentPage - 1);
     }
   };
 
   const nextPage = () => {
     if (currentPage !== Math.ceil(productsCount / resultPerPage)) {
-      dispatch(getProductsUsingFilters("", "", [0, 9999999], (currentPage+1)));
+      dispatch(getProductsUsingFilters("", "", [0, 9999999], currentPage + 1));
       setCurrentPage(currentPage + 1);
     }
   };
@@ -59,7 +60,9 @@ const Product = () => {
 
   const childToParent = (category, minPrice, maxPrice, brand) => {
     console.log(brand);
-    dispatch(getProductsUsingFilters("", category, [minPrice, maxPrice], 0, brand));
+    dispatch(
+      getProductsUsingFilters("", category, [minPrice, maxPrice], 0, brand)
+    );
   };
 
   return (
@@ -77,7 +80,6 @@ const Product = () => {
             aria-label="Recipient's username"
             aria-describedby="basic-addon2"
             onChange={(e) => {
-
               if (e.target.value === "") {
                 dispatch(getProductsUsingFilters());
               }
@@ -117,7 +119,7 @@ const Product = () => {
             </a>
           </p>
           <div className="collapse" id="collapseExample">
-            <Filters childToParent={childToParent}/>
+            <Filters childToParent={childToParent} />
           </div>
         </div>
         <div className="product-filters">
@@ -125,11 +127,9 @@ const Product = () => {
         </div>
 
         <div className="container-fluid m-0 p-0 d-flex flex-column justify-content-between">
-
           <div className="row">
             {productsLoading ? (
               <>
-                {/* Add Loadding component  */}
                 <Loader />
               </>
             ) : (
@@ -139,21 +139,19 @@ const Product = () => {
                 </div>
               ))
             )}
-
           </div>
-          {(!productsLoading) && 
+          {!productsLoading && (
             <Paginate
-            postsPerPage={resultPerPage}
-            totalPosts={productsCount}
-            currentPage={currentPage}
-            paginate={paginate}
-            previousPage={previousPage}
-            nextPage={nextPage}
-          />
-          }
+              postsPerPage={resultPerPage}
+              totalPosts={productsCount}
+              currentPage={currentPage}
+              paginate={paginate}
+              previousPage={previousPage}
+              nextPage={nextPage}
+            />
+          )}
         </div>
       </div>
-
     </section>
   );
 };

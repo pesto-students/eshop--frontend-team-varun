@@ -18,6 +18,9 @@ export const SignInUser = (email, password) => async (dispatch) => {
       config,
     });
 
+    const { token } = res.data;
+    localStorage.setItem("token", token);
+
     dispatch(signInSuccess(res.data.user));
   } catch (error) {
     dispatch(signInFailure(error.response.data.message));

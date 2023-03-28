@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   currentUser: null,
   signInLoading: false,
-  signInError: false,
+  signInError: null,
   isAuthenthicated: false,
   registerError: false,
 };
@@ -16,7 +16,7 @@ export const userSlice = createSlice({
     signInStart: (state) => {
       state.SignInLoading = true;
       state.currentUser = null;
-      state.SignInError = false;
+      state.SignInError = null;
       state.isAuthenthicated = false;
       state.registerError = false;
     },
@@ -24,7 +24,8 @@ export const userSlice = createSlice({
     signInSuccess: (state, action) => {
       state.SignInLoading = false;
       state.currentUser = action.payload;
-      state.SignInError = false;
+
+      state.SignInError = null;
       state.isAuthenthicated = true;
       state.registerError = false;
     },
@@ -40,7 +41,7 @@ export const userSlice = createSlice({
     registerStart: (state) => {
       state.SignInLoading = true;
       state.currentUser = null;
-      state.SignInError = false;
+      state.SignInError = null;
       state.isAuthenthicated = false;
       state.registerError = false;
     },
@@ -48,7 +49,7 @@ export const userSlice = createSlice({
     registerSuccess: (state, action) => {
       state.SignInLoading = false;
       state.currentUser = action.payload;
-      state.SignInError = false;
+      state.SignInError = null;
       state.isAuthenthicated = true;
       state.registerError = false;
     },
@@ -56,7 +57,7 @@ export const userSlice = createSlice({
     registerFailure: (state, action) => {
       state.SignInLoading = false;
       state.currentUser = null;
-      state.SignInError = false;
+      state.SignInError = null;
       state.isAuthenthicated = false;
       state.registerError = action.payload;
     },
@@ -64,13 +65,13 @@ export const userSlice = createSlice({
     signOut: (state) => {
       state.SignInLoading = false;
       state.currentUser = null;
-      state.SignInError = false;
+      state.SignInError = null;
       state.isAuthenthicated = false;
       state.registerError = false;
     },
 
     signInClearError: (state, action) => {
-      state.SignInError = false;
+      state.SignInError = null;
       state.isAuthenthicated = false;
       state.registerError = false;
     },
