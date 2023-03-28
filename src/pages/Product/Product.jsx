@@ -66,8 +66,8 @@ const Product = () => {
   };
 
   return (
-    <section className="product-list">
-      <div className="product-list-header">
+    <section className="product-list mt-5">
+      <div className="product-list-header pt-5">
         <div className="user-loc d-flex align-items-center gap-2">
           <img src="../assets/location.svg" alt="" />
           <p className="m-0 p-0">{userAddress}</p>
