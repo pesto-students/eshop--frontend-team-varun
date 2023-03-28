@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Header.css";
 import { Link, useNavigate } from "react-router-dom";
 import Avatar from "../Avatar/Avatar";
@@ -9,6 +9,7 @@ const Header = () => {
   const { currentUser } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [open, setopen] = useState(false);
 
   const handelLogOut = () => {
     dispatch(logout());
@@ -16,7 +17,7 @@ const Header = () => {
   };
 
   return (
-    <nav className="navbar navbar-expand-lg bg-body-tertiary bg-black">
+    <nav className="navbar navbar-expand-lg bg-body-tertiary bg-black fixed-top">
       <div className="container-fluid">
         <Link
           to="/"
@@ -93,11 +94,27 @@ const Header = () => {
               <div
                 className="col border border-2 rounded-4 px-3 d-flex justify-content-center align-items-center"
                 style={{ background: "#52057B", cursor: "pointer" }}
-                onClick={handelLogOut}
+                onClick={()=> setopen(!open)}
               >
                 <div className="m-1" style={{ color: "white" }}>
                   {`Hello ${currentUser.name}`}
                 </div>
+                {open && <div className="menu-options">
+                  <Link
+                    className="link text-dark"
+                    to="/orders"
+                    style={{ textDecoration: "none" }}
+                  >
+                    My Orders
+                  </Link>
+                  <p
+                    className="link text-dark m-0"
+                    onClick={handelLogOut}
+                    style={{ textDecoration: "none" }}
+                  >
+                    Logout
+                  </p>
+                </div>}
               </div>
             ) : (
               <Link
