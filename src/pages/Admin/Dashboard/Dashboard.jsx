@@ -1,21 +1,15 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Sidebar from "../components/Sidebar";
 import Products from "../pages/Products/Products";
-
-// import { products } from "../../../localFiles/ProductsFile";
-import { Orders } from "../../../localFiles/OrdersFile";
-import { Users } from "../../../localFiles/UsersFile";
-import { Comments } from "../../../localFiles/CommentsFile";
-
 import "./Dashboard.css";
 import ListView from "../pages/ListView/ListView";
 import { Link } from "react-router-dom";
 import AddProduct from "../pages/AddProduct/AddProduct";
-import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 const Dashboard = ({ currentPage }) => {
   const pageName = currentPage.charAt(0).toUpperCase() + currentPage.slice(1);
-  const { products } = useSelector((state) => state.products);
+  const dispatch = useDispatch();
 
   return (
     <div className="row dashboard m-0" style={{ backgroundColor: "#f2f4f7" }}>
@@ -25,12 +19,12 @@ const Dashboard = ({ currentPage }) => {
             <div className="row d-flex justify-content-start align-items-start h-100">
               <div className="col-lg-11  col-xl-11">
                 <div className="card-body">
-                  <div className="row justify-content-start mx-md-4">
+                  <div className="row justify-content-start mx-md-3">
                     <div className="col-md-12 col-lg-12 col-xl-12 order-2 order-lg-1">
                       <p className="text-left h3 fw-semibold mb-5 mt-4 ">
                         {pageName}
                       </p>
-                      <div className="mx-2">
+                      <div className="me-4">
                         <Sidebar currentPage={currentPage} />
                       </div>
                     </div>
@@ -111,18 +105,9 @@ const Dashboard = ({ currentPage }) => {
                 </div>
               </div>
               <div className="col-lg-12  col-xl-12">
-                {(pageName === "Products" && (
-                  <Products products={products} page="Products" />
-                )) ||
-                  (pageName === "Orders" && (
-                    <ListView rawData={Orders} page="Orders" />
-                  )) ||
-                  (pageName === "Users" && (
-                    <ListView rawData={Users} page="Users" />
-                  )) ||
-                  (pageName === "Reviews" && (
-                    <ListView rawData={Comments} page="Reviews" />
-                  )) ||
+                {(pageName === "Products" && <Products page="Products" />) ||
+                  (pageName === "Orders" && <ListView page="orders" />) ||
+                  (pageName === "Users" && <ListView page="users" />) ||
                   (pageName === "Add Product" && <AddProduct />)}
               </div>
             </div>

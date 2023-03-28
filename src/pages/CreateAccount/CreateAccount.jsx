@@ -1,4 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { registerUser } from "../../Redux/Actions/userActions";
 import "./CreateAccount.css";
 
 const CreateAccount = () => {
@@ -8,12 +11,8 @@ const CreateAccount = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState(null);
-
-  // console.log("first", firstName);
-  // console.log("last", lastName);
-  // console.log("email", email);
-  // console.log("password", password);
-  // console.log("confirm ", confirmPassword);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleValidation = () => {
     var regName = /^[A-Za-z]+$/;
@@ -53,11 +52,17 @@ const CreateAccount = () => {
     }
   };
 
-  
-
   const handleCreateAccount = () => {
-    alert("succcess");
+    dispatch(registerUser(firstName, lastName, email, password));
   };
+
+  // get current signIn user from store
+  const { currentUser, signInLoading, registerError, isAuthenthicated } =
+    useSelector((state) => state.user);
+
+  useEffect(() => {
+    if (isAuthenthicated === true) navigate("/");
+  }, [isAuthenthicated]);
 
   return (
     <div
@@ -200,6 +205,9 @@ const CreateAccount = () => {
                           <div class="form-check">
                             <label style={{ color: "red", fontSize: "14px" }}>
                               {error}
+                            </label>
+                            <label style={{ color: "red", fontSize: "14px" }}>
+                              {registerError && <>Email already registered.</>}
                             </label>
                           </div>
                           <div className="d-flex justify-content-left mb-3 mb-lg-4 mt-4">

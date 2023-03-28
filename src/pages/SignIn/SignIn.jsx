@@ -1,13 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import "./SignIn.css";
-import { useDispatch } from "react-redux";
-import {
-  loginFailure,
-  loginStart,
-  loginSuccess,
-} from "../../Redux/Reducers/userSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { SignInUser } from "../../Redux/Actions/userActions";
+import Loader from "../../components/Loader/Loader";
 
 const SignIn = () => {
   const [email, setEmail] = useState(null);
@@ -15,152 +12,161 @@ const SignIn = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  // get current signIn user from store
+  const { currentUser, signInLoading, signInError, isAuthenthicated } =
+    useSelector((state) => state.user);
+
   const handleClick = async (e) => {
     e.preventDefault();
-
-    dispatch(loginStart());
-    try {
-      const res = await axios.post("http://localhost:4000/api/v1/login", {
-        email,
-        password,
-      });
-
-      dispatch(loginSuccess(res.data.user));
-      navigate("/");
-    } catch (err) {
-      dispatch(loginFailure());
-    }
+    dispatch(SignInUser(email, password));
   };
 
+  useEffect(() => {
+    if (isAuthenthicated === true) navigate("/");
+  }, [isAuthenthicated]);
+
+  console.log(signInError);
+
   return (
-    <div className="row signIn m-0 mt-5 " style={{ backgroundColor: "#f2f4f7" }}>
-      <div className="col-md-6">
-        <section className="">
-          <div className="row d-flex justify-content-end align-items-end h-100">
-            <div className="col-lg-12  col-xl-10">
-              <div className="card-body p-md-5 p-sm-5 ">
-                <div className="row justify-content-end ">
-                  <div className="col-md-10 col-lg-10 col-xl-10 order-2 order-lg-1">
-                    <p className="text-left h3 fw-semibold mb-5 mt-4">
-                      Registered Customers
-                    </p>
-                    <p className="text-left mt-4">
-                      If you have an account, sign in with your email address.
-                    </p>
-                    <form>
-                      <div className="d-flex flex-row align-items-center mb-4">
-                        <div className="form-outline flex-fill mb-0">
-                          <label className="form-label" for="email">
-                            Your Email
+    <div className="row signIn m-0" style={{ backgroundColor: "#f2f4f7" }}>
+      {signInLoading ? (
+        <Loader />
+      ) : (
+        <>
+          <div className="col-md-6">
+            <section className="">
+              <div className="row d-flex justify-content-end align-items-end h-100">
+                <div className="col-lg-12  col-xl-10">
+                  <div className="card-body p-md-5 p-sm-5 ">
+                    <div className="row justify-content-end ">
+                      <div className="col-md-10 col-lg-10 col-xl-10 order-2 order-lg-1">
+                        <p className="text-left h3 fw-semibold mb-5 mt-4">
+                          Registered Customers
+                        </p>
+                        <p className="text-left mt-4">
+                          If you have an account, sign in with your email
+                          address.
+                        </p>
+                        <form>
+                          <div className="d-flex flex-row align-items-center mb-4">
+                            <div className="form-outline flex-fill mb-0">
+                              <label className="form-label" for="email">
+                                Your Email
+                              </label>
+                              <input
+                                name="email"
+                                type="email"
+                                id="email"
+                                className="form-control"
+                                onChange={(e) => setEmail(e.target.value)}
+                              />
+                            </div>
+                          </div>
+                          <div className="d-flex flex-row align-items-center mb-4">
+                            <div className="form-outline flex-fill mb-0">
+                              <label className="form-label" for="password">
+                                Password
+                              </label>
+                              <input
+                                name="password"
+                                type="password"
+                                id="password"
+                                className="form-control"
+                                onChange={(e) => setPassword(e.target.value)}
+                              />
+                            </div>
+                          </div>
+                          <div className="form-check d-flex justify-content-left mb-5 align-items-start">
+                            <input
+                              className="form-check-input me-2"
+                              type="checkbox"
+                              value=""
+                              id="form2Example3c"
+                            />
+                            <label
+                              className="form-check-label ms-2"
+                              for="form2Example3"
+                            >
+                              By using this form you agree with the storage and
+                              handling of your data by this website.
+                            </label>
+                          </div>
+                          <label style={{ color: "red", fontSize: "14px" }}>
+                            {signInError}
                           </label>
-                          <input
-                            name="email"
-                            type="email"
-                            id="email"
-                            className="form-control"
-                            onChange={(e) => setEmail(e.target.value)}
-                          />
-                        </div>
+                          <div className="d-flex justify-content-left mb-3 mb-lg-4">
+                            <button
+                              type="button"
+                              className="btn text-nowrap btn-md px-5"
+                              style={{
+                                backgroundColor: "#52057B",
+                                color: "white",
+                              }}
+                              onClick={handleClick}
+                            >
+                              Sign In
+                            </button>
+                            <Link
+                              to="/forgotPassword"
+                              className="d-flex align-items-center fw-semibold mx-4"
+                              style={{
+                                color: "#52057B",
+                                textDecoration: "none",
+                              }}
+                            >
+                              <div>Forgot Password</div>
+                            </Link>
+                          </div>
+                        </form>
                       </div>
-                      <div className="d-flex flex-row align-items-center mb-4">
-                        <div className="form-outline flex-fill mb-0">
-                          <label className="form-label" for="password">
-                            Password
-                          </label>
-                          <input
-                            name="password"
-                            type="password"
-                            id="password"
-                            className="form-control"
-                            onChange={(e) => setPassword(e.target.value)}
-                          />
-                        </div>
-                      </div>
-                      <div className="form-check d-flex justify-content-left mb-5 align-items-start">
-                        <input
-                          className="form-check-input me-2"
-                          type="checkbox"
-                          value=""
-                          id="form2Example3c"
-                        />
-                        <label
-                          className="form-check-label ms-2"
-                          for="form2Example3"
-                        >
-                          By using this form you agree with the storage and
-                          handling of your data by this website.
-                        </label>
-                      </div>
-                      <div className="d-flex justify-content-left mb-3 mb-lg-4">
-                        <button
-                          type="button"
-                          className="btn text-nowrap btn-md px-5"
-                          style={{
-                            backgroundColor: "#52057B",
-                            color: "white",
-                          }}
-                          onClick={handleClick}
-                        >
-                          Sign In
-                        </button>
-                        <Link
-                          to="/forgotPassword"
-                          className="d-flex align-items-center fw-semibold mx-4"
-                          style={{
-                            color: "#52057B",
-                            textDecoration: "none",
-                          }}
-                        >
-                          <div>Forgot Password</div>
-                        </Link>
-                      </div>
-                    </form>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </div>
-      <div className="col-md-6">
-        <section className="">
-          <div className="row d-flex justify-content-left align-items-left h-100">
-            <div className="col-lg-12 col-xl-10 ">
-              <div className="card-body p-md-5 p-sm-5">
-                <div className="row justify-content-left">
-                  <div className="col-md-10 col-lg-10 col-xl-10 order-2 order-lg-1">
-                    <p className="text-left h3 fw-semibold mb-5 mt-4">
-                      New Customer
-                    </p>
-                    <p className="text-left mb-5 mt-4">
-                      Creating an account has many benefits: check out faster,
-                      keep more than one address, track orders and more.
-                    </p>
-                    <div className="d-flex justify-content-left mb-lg-4">
-                      <Link
-                        to="/createAccount"
-                        className="nav-link text-white"
-                        style={{ textDecoration: "none" }}
-                      >
-                        <button
-                          type="button"
-                          className="btn text-nowrap btn-md px-5 mb-5"
-                          style={{
-                            backgroundColor: "#52057B",
-                            color: "white",
-                          }}
-                        >
-                          Create An Account
-                        </button>
-                      </Link>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </section>
           </div>
-        </section>
-      </div>
+          <div className="col-md-6">
+            <section className="">
+              <div className="row d-flex justify-content-left align-items-left h-100">
+                <div className="col-lg-12 col-xl-10 ">
+                  <div className="card-body p-md-5 p-sm-5">
+                    <div className="row justify-content-left">
+                      <div className="col-md-10 col-lg-10 col-xl-10 order-2 order-lg-1">
+                        <p className="text-left h3 fw-semibold mb-5 mt-4">
+                          New Customer
+                        </p>
+                        <p className="text-left mb-5 mt-4">
+                          Creating an account has many benefits: check out
+                          faster, keep more than one address, track orders and
+                          more.
+                        </p>
+                        <div className="d-flex justify-content-left mb-lg-4">
+                          <Link
+                            to="/createAccount"
+                            className="nav-link text-white"
+                            style={{ textDecoration: "none" }}
+                          >
+                            <button
+                              type="button"
+                              className="btn text-nowrap btn-md px-5 mb-5"
+                              style={{
+                                backgroundColor: "#52057B",
+                                color: "white",
+                              }}
+                            >
+                              Create An Account
+                            </button>
+                          </Link>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </>
+      )}
     </div>
   );
 };

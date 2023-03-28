@@ -65,42 +65,33 @@ const ProductDetail = ({ currentPage }) => {
                   </div>
                 </div>
                 <div className="col-lg-6 col-xs-12 mt-3">
-                  {/* Send currentProduct and update productInfo */}
-
                   <ProductInfo currentProduct={currentProduct} />
-
                 </div>
               </div>
             </section>
             <section className="container-fluid p-0 m-0">
               <div className="row m-0">
                 <div className="col-lg-9 col-sm-12">
-                  {/* Send currentProduct and update descriptiona and productReview */}
-
-                   <Description desc={currentProduct.description} />
-                   <ProductReview allReviews={false} />
-              
-
+                  <Description desc={currentProduct.description} />
+                  <ProductReview allReviews={false} />
                 </div>
-                {/* <div className="recommend-cards col-lg-2 mt-4">
-
-         
-          //       {/* <div className="recommend-cards col-lg-2 mt-4">
-
-          //       {map(range(5), (_) => (
-          //         <div className="mb-3 mx-auto">
-          //           <Dealcards
-          //             deall={{
-          //               icon: "../assets/productDetails/laptop.png",
-          //               title:
-          //                 "Canon EOS 1500D 24.1 Digital SLR Camera (Black)...",
-          //               price: "₹36,990",
-          //               ratings: "4.9",
-          //             }}
-          //           />
-          //         </div>
-          //       ))}
-          //     </div> */}
+                <div className="recommend-cards col-lg-2 mt-4">
+                  <div className="recommend-cards col-lg-2 mt-4">
+                    {/* {map(range(5), (_) => (
+                      <div className="mb-3 mx-auto">
+                        <Dealcards
+                          deall={{
+                            icon: "../assets/productDetails/laptop.png",
+                            title:
+                              "Canon EOS 1500D 24.1 Digital SLR Camera (Black)...",
+                            price: "₹36,990",
+                            ratings: "4.9",
+                          }}
+                        />
+                      </div>
+                    ))} */}
+                  </div>
+                </div>
               </div>
             </section>
           </div>

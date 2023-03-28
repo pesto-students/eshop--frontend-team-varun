@@ -3,7 +3,7 @@ import "./Header.css";
 import { Link, useNavigate } from "react-router-dom";
 import Avatar from "../Avatar/Avatar";
 import { useDispatch, useSelector } from "react-redux";
-import { logout } from "../../Redux/Reducers/userSlice";
+import { signOut } from "../../Redux/Reducers/userSlice";
 
 const Header = () => {
   const { currentUser } = useSelector((state) => state.user);
@@ -12,7 +12,7 @@ const Header = () => {
   const [open, setopen] = useState(false);
 
   const handelLogOut = () => {
-    dispatch(logout());
+    dispatch(signOut());
     navigate("/");
   };
 
@@ -97,7 +97,7 @@ const Header = () => {
                 onClick={()=> setopen(!open)}
               >
                 <div className="m-1" style={{ color: "white" }}>
-                  {`Hello ${currentUser.name}`}
+                  {`Hello ${currentUser.firstname}`}
                 </div>
                 {open && <div className="menu-options">
                   <Link

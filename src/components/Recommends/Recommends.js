@@ -15,7 +15,7 @@ const Recommends = ({ products, loading, error }) => {
           </>
         ) : (
           products?.map((product, index) => {
-            console.log(products[index + 1]);
+            // console.log(products[index + 1]);
             return (
               <div className="rec_rows">
                 {index < products.length / 2 && (
