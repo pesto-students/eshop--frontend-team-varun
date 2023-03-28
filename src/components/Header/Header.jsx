@@ -96,7 +96,7 @@ const Header = () => {
                 onClick={handelLogOut}
               >
                 <div className="m-1" style={{ color: "white" }}>
-                  {`Hello ${currentUser.name}`}
+                  {`Hello ${currentUser.firstname}`}
                 </div>
               </div>
             ) : (

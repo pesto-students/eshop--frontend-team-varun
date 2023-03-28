@@ -5,13 +5,26 @@ import {
   ordersSuccess,
 } from "../Reducers/orderSlice";
 
+// Get my Orders
+export const getMyOrders = () => async (dispatch) => {
+  try {
+    dispatch(ordersRequest());
+    const res = await axios.get(`http://localhost:4000/api/v1/orders/me`);
+
+    console.log(res.data);
+    dispatch(ordersSuccess(res.data));
+  } catch (error) {
+    console.log(error);
+    dispatch(ordersFailure(error));
+  }
+};
+
 // Get All Orders
 export const getAllOrders = () => async (dispatch) => {
   try {
-    dispatch(ordersRequest());
     const res = await axios.get(`http://localhost:4000/api/v1/admin/orders`);
 
-    dispatch(ordersSuccess(res.data));
+    return res.data;
   } catch (error) {
     console.log(error);
     dispatch(ordersFailure(error));

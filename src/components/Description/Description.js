@@ -1,6 +1,6 @@
 import React from "react";
-import { features } from "../constants/constants";
-import { otherFeatures } from "../constants/constants";
+import { features } from "../Constants/constants";
+import { otherFeatures } from "../Constants/constants";
 
 const Description = ({desc}) => {
   return (
