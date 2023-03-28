@@ -5,7 +5,7 @@ import "./recommends.css";
 
 const Recommends = ({ products, loading, error }) => {
   return (
-    <div className="recommend">
+    <div className="recommend mb-4">
       <p className="rec_title">Our Recommendation For You</p>
       <div className="rows_recom">
         {loading ? (

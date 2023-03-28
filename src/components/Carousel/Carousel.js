@@ -1,36 +1,13 @@
 import React from "react";
 import "./carousel.css";
+import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
+import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const CarouselSlider = () => {
+const CarouselSlider = () => { 
   return (
-    <div className="carousel-slider">
-      <div
-        id="carouselExampleIndicators"
-        className="carousel slide"
-        data-bs-ride="true"
-      >
-        <div className="carousel-indicators">
-          <button
-            type="button"
-            data-bs-target="#carouselExampleIndicators"
-            data-bs-slide-to="0"
-            className="active"
-            aria-current="true"
-            aria-label="Slide 1"
-          ></button>
-          <button
-            type="button"
-            data-bs-target="#carouselExampleIndicators"
-            data-bs-slide-to="1"
-            aria-label="Slide 2"
-          ></button>
-          <button
-            type="button"
-            data-bs-target="#carouselExampleIndicators"
-            data-bs-slide-to="2"
-            aria-label="Slide 3"
-          ></button>
-        </div>
+    <div className="carousel-slider mt-5">
+      <div id="carouselExample" className="carousel slide">
         <div className="carousel-inner">
           <div className="carousel-item active">
             <img src="../assets/slider4.png" className="d-block w-100" alt="" />
@@ -43,18 +20,30 @@ const CarouselSlider = () => {
           </div>
         </div>
         <button
-          className="carousel-control-prev"
+          className="carousel-control-prev pe-5"
           type="button"
-          data-bs-target="#carouselExampleIndicators"
+          data-bs-target="#carouselExample"
           data-bs-slide="prev"
         >
+          {/* <span
+            className="carousel-control-prev-icon prev-button"
+            aria-hidden="true"
+          ></span>
+          <span className="visually-hidden">Previous</span> */}
+          <FontAwesomeIcon icon={faChevronLeft} style={{height: "32px"}} className="left-icon"/>
         </button>
         <button
-          className="carousel-control-next"
+          className="carousel-control-next ps-5"
           type="button"
-          data-bs-target="#carouselExampleIndicators"
+          data-bs-target="#carouselExample"
           data-bs-slide="next"
         >
+          {/* <span
+            className="carousel-control-next-icon next-button"
+            aria-hidden="true"
+          ></span>
+          <span className="visually-hidden">Next</span> */}
+          <FontAwesomeIcon icon={faChevronRight} style={{height: "32px"}} className="right-icon"/>
         </button>
       </div>
     </div>

@@ -8,6 +8,18 @@
   visibility: hidden;
 }
 
+.left-icon, .right-icon{
+  display: none;
+}
+
+.carousel-control-prev:hover >.left-icon{
+  display: block;
+}
+
+.carousel-control-next:hover >.right-icon{
+  display: block;
+}
+
 @media only screen and (max-width: 400px){
   .carousel-slider {
     padding: 24px;
