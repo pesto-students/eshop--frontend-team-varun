@@ -10,12 +10,10 @@ const Recommends = ({ products, loading, error }) => {
       <div className="rows_recom">
         {loading ? (
           <>
-            {/* Make loading component here */}
             <Loader />
           </>
         ) : (
           products?.map((product, index) => {
-            // console.log(products[index + 1]);
             return (
               <div className="rec_rows">
                 {index < products.length / 2 && (
@@ -37,7 +35,7 @@ const Recommends = ({ products, loading, error }) => {
                         </button>
                         <p className="deal-title">{product.name}</p>
                         <div className="deal-body">
-                          <h5 className="deal-price mb-0">{`₹ ${product.Price}`}</h5>
+                          <h5 className="deal-price mb-0">{`₹ ${product.normalPrice}`}</h5>
                           <div className="deal-rating d-flex gap-1 align-items-center">
                             <img src="../assets/star.png" alt="" />
                             <p className="m-0">{product.ratings}</p>

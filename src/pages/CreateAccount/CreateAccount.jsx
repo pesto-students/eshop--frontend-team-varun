@@ -5,8 +5,8 @@ import { registerUser } from "../../Redux/Actions/userActions";
 import "./CreateAccount.css";
 
 const CreateAccount = () => {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
+  const [firstname, setFirstName] = useState("");
+  const [lastname, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -19,15 +19,15 @@ const CreateAccount = () => {
     var regEmail =
       /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
-    if (!regName.test(firstName)) {
-      if (firstName === "") {
+    if (!regName.test(firstname)) {
+      if (firstname === "") {
         setError("*First Name should not be empty.");
         return;
       }
       setError("*First Name should contains only Alphabets.");
       return;
-    } else if (!regName.test(lastName)) {
-      if (lastName === "") {
+    } else if (!regName.test(lastname)) {
+      if (lastname === "") {
         setError("*Last Name should not be empty.");
         return;
       }
@@ -53,7 +53,7 @@ const CreateAccount = () => {
   };
 
   const handleCreateAccount = () => {
-    dispatch(registerUser(firstName, lastName, email, password));
+    dispatch(registerUser(firstname, lastname, email, password));
   };
 
   // get current signIn user from store

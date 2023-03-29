@@ -25,7 +25,7 @@ const ListView = ({ page }) => {
   };
 
   return (
-    <div className="container-fluid mb-2">
+    <div className="container-fluid mb-5">
       <div className="m-0">
         <div className="row">
           <div className="col-md-12">
