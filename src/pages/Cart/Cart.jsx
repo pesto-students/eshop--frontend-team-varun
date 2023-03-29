@@ -40,7 +40,7 @@ const Cart = () => {
                   <div className="col-md-12 col-lg-12 col-xl-12 order-2 order-lg-1">
                     <p className="text-left h3 fw-semibold mb-5 mt-4">Cart</p>
                     {/* <!-- Shopping cart table --> */}
-                    {cartItems.length > 0 ? (
+                    {cartItems?.length > 0 ? (
                       <div className="table-responsive">
                         <table className="table">
                           <thead>
@@ -201,7 +201,7 @@ const Cart = () => {
                       <ul className="list-unstyled mb-4">
                         {/* <li className="d-flex justify-content-between py-3 border-bottom">
                           <strong className="text-muted">Order Subtotal</strong>
-                          <strong>{` ₹ ${cartItems.reduce(
+                          <strong>{` ₹ ${cartItems??.reduce(
                             (acc, item) => acc + item.quantity * item.price,
                             0
                           )}`}</strong>
@@ -221,7 +221,7 @@ const Cart = () => {
                           <h5
                             className="font-weight-bold"
                             style={{ color: "green" }}
-                          >{` ₹ ${cartItems.reduce(
+                          >{` ₹ ${cartItems?.reduce(
                             (acc, item) => acc + item.quantity * item.price,
                             0
                           )} `}</h5>

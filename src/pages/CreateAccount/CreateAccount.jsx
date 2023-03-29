@@ -53,6 +53,7 @@ const CreateAccount = () => {
   };
 
   const handleCreateAccount = () => {
+    // console.log(firstname , lastname , email , password);
     dispatch(registerUser(firstname, lastname, email, password));
   };
 

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import "./Checkout.css";
 
 const Checkout = () => {
@@ -19,10 +20,13 @@ const Checkout = () => {
     if (!isAuthenthicated) {
       navigate("/signIn");
     }
+
     setPrice(
-      cartItems.reduce((acc, item) => acc + item.quantity * item.price, 0)
+      cartItems?.reduce((acc, item) => acc + item.quantity * item.price, 0)
     );
-  });
+  }, [cartItems]);
+
+  console.log(cartItems);
 
   return (
     <div className="checkout-page mt-5">
@@ -131,22 +135,38 @@ const Checkout = () => {
             </div>
             <div className="delivery d-flex justify-content-between mx-4 mt-3">
               <p className="mb-0">Delivery:</p>
-              <p className="mb-0">{`₹ ${deliveryCharge}`}</p>
+              {cartItems?.length === 0 ? (
+                <p className="mb-0">{`₹ 0`}</p>
+              ) : (
+                <p className="mb-0">{`₹ ${deliveryCharge}`}</p>
+              )}
             </div>
             <div className="tax d-flex justify-content-between mx-4 mt-3">
               <p className="mb-0">Tax:</p>
-              <p className="mb-0">{`₹ ${tax}`}</p>
+              {cartItems?.length === 0 ? (
+                <p className="mb-0">{`₹ 0`}</p>
+              ) : (
+                <p className="mb-0">{`₹ ${tax}`}</p>
+              )}
             </div>
             <div className="discount d-flex justify-content-between mx-4 mt-3">
               <p className="mb-0">Discount:</p>
-              <p className="mb-0">{`₹ ${discount}`}</p>
+              {cartItems?.length === 0 ? (
+                <p className="mb-0">{`₹ 0`}</p>
+              ) : (
+                <p className="mb-0">{`₹ ${discount}`}</p>
+              )}
             </div>
             <hr className="mx-4" />
             <div className="total-pay d-flex justify-content-between align-items-center mx-4 mt-3">
               <p className="mb-0 fw-semibold">Total Payment:</p>
-              <p className="mb-0 fw-semibold">{`₹ ${
-                price + tax + deliveryCharge - discount
-              } `}</p>
+              {cartItems?.length === 0 ? (
+                <p className="mb-0 fw-semibold">{`₹ ${0} `}</p>
+              ) : (
+                <p className="mb-0 fw-semibold">{`₹ ${
+                  price + tax + deliveryCharge - discount
+                } `}</p>
+              )}
             </div>
             <div className="mx-4">
               <button

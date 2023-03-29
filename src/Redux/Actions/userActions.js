@@ -11,6 +11,8 @@ import {
 export const SignInUser = (email, password) => async (dispatch) => {
   try {
     dispatch(signInStart());
+    console.log(email, password);
+
     const config = { headers: { "Content-Type": "application/json" } };
     const res = await axios.post("http://localhost:4000/api/v1/login", {
       email,
@@ -19,10 +21,12 @@ export const SignInUser = (email, password) => async (dispatch) => {
     });
 
     const { token } = res.data;
+    console.log(token);
     localStorage.setItem("token", token);
 
     dispatch(signInSuccess(res.data.user));
   } catch (error) {
+    console.log(error);
     dispatch(signInFailure(error.response.data.message));
   }
 };
@@ -32,15 +36,15 @@ export const registerUser =
     try {
       dispatch(registerStart());
       let name = firstName + " " + lastName;
+
       const res = await axios.post("http://localhost:4000/api/v1/register", {
         name,
         email,
         password,
       });
-      console.log(res);
+
       dispatch(registerSuccess(res.data.user));
     } catch (error) {
-      console.log(error);
       dispatch(registerFailure(error.response.statusText));
     }
   };

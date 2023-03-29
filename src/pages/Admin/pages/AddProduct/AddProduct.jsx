@@ -1,12 +1,16 @@
+import axios from "axios";
 import React, { useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
+import { useSelector } from "react-redux";
+import { toast } from "react-toastify";
 
 const AddProduct = () => {
   const [description, setDescription] = useState("");
   const [productName, setProductName] = useState("");
   const [normalPrice, setNormalPrice] = useState("");
   const [salesPrice, setSalesPrice] = useState("");
+  const [stock, setStock] = useState("");
   const [brand, setBrand] = useState("");
   const [category, setCategory] = useState("");
   const [tags, setTags] = useState([]);
@@ -14,14 +18,15 @@ const AddProduct = () => {
   const [fileObj, setFileObj] = useState([]);
   const [fileArray, setFileArray] = useState([]);
   const [selectedImage, setSelectedImage] = useState("");
+  const [validationError, setValidationError] = useState("");
 
-  //   console.log("productName => " + productName);
-  //   console.log("description => " + description);
-  //   console.log("normalPrice => " + normalPrice);
-  //   console.log("salesPrice => " + salesPrice);
-  //   console.log("brand => " + brand);
-  //   console.log("category => " + category);
-  //   console.log("tags => " + tags);
+  // console.log("productName => " + productName);
+  // console.log("description => " + description);
+  // console.log("normalPrice => " + normalPrice);
+  // console.log("salesPrice => " + salesPrice);
+  // console.log("brand => " + brand);
+  // console.log("category => " + category);
+  // console.log("tags => " + tags);
 
   function handleKeyDown(e) {
     if (e.key !== "Enter") return;
@@ -50,32 +55,77 @@ const AddProduct = () => {
     setSelectedImage(fileArray[0]);
   }
 
-  const handleClick = (e) => {
+  const { currentUser } = useSelector((state) => state.user);
+  const handleClick = async (e) => {
     e.preventDefault();
 
-    if (images.length > 4) {
-      alert("You can upload max 4 photos. Please reselect your photos.");
-    } else if (images.length === 0) {
-      alert("Add atleast 1 photo");
-    } else {
-      alert("data submitted");
+    if (validateFields() === false) {
+      return;
     }
+
+    try {
+      const res = await axios.post(
+        "http://localhost:4000/api/v1/admin/product/new",
+        {
+          name: productName,
+          description,
+          price: normalPrice,
+          salesPrice,
+          stock,
+          brand,
+          category,
+          tags,
+          images,
+          user: currentUser,
+        }
+      );
+
+      toast.success("Product added successfully");
+    } catch (err) {
+      console.log(err);
+      toast.error("Something went wrong. Try later");
+    }
+
+    // if (images.length > 4) {
+    //   alert("You can upload max 4 photos. Please reselect your photos.");
+    //   return;
+    // } else if (images.length === 0) {
+    //   alert("Add atleast 1 photo");
+    //   return;
+    // } else {
+    //   alert("data submitted");
+    // }
   };
 
-  //   function uploadFiles(e) {
-  //     e.preventDefault();
-
-  //     if (images.length > 4) {
-  //       alert("You can upload max 4 photos. Please reselect your photos.");
-  //     } else {
-  //       alert("successfull");
-  //     }
-  //   }
+  const validateFields = () => {
+    if (productName === "") {
+      setValidationError("Please enter product name");
+      return false;
+    } else if (description === "") {
+      setValidationError("Please enter product description");
+      return false;
+    } else if (normalPrice === "") {
+      setValidationError("Please enter product price");
+      return false;
+    } else if (stock === "") {
+      setValidationError("Please enter product stock");
+      return false;
+    } else if (brand === "") {
+      setValidationError("Please enter product brand");
+      return false;
+    } else if (category === "") {
+      setValidationError("Please enter product categorg");
+      return false;
+    } else {
+      setValidationError("");
+      return true;
+    }
+  };
 
   return (
     <div className="row mb-3">
       <div
-        className="col-9 mt-4 mb-5 border border-0 rounded-3"
+        className="col-9 mt-2 mb-5 border border-0 rounded-3"
         style={{ backgroundColor: "white" }}
       >
         <section className="">
@@ -118,7 +168,7 @@ const AddProduct = () => {
                         width: "100%",
                         border: "none",
                       }}
-                      placeholder="Product Descriptions...."
+                      placeholder="Product Descriptions.... {give your description in key value pair seperated by '|' }"
                       theme="snow"
                       value={description}
                       onChange={setDescription}
@@ -169,7 +219,7 @@ const AddProduct = () => {
                       type="number"
                       id="form3Example3"
                       placeholder="Stock"
-                      onChange={(e) => setNormalPrice(e.target.value)}
+                      onChange={(e) => setStock(e.target.value)}
                       className="form-control input-text rounded-2 shadow-none"
                       style={{ border: "none" }}
                     />
@@ -278,27 +328,12 @@ const AddProduct = () => {
                   </div>
                 </div>
               </div>
-
-              {/* <div className="col-12 my-5 d-flex justify-content-center">
-                <button
-                  className="btn border border-0 "
-                  style={{
-                    backgroundColor: "#52057B",
-                    color: "white",
-                    width: "110px",
-                    height: "2.8rem",
-                  }}
-                  onClick={handleClick}
-                >
-                  Add Product
-                </button>
-              </div> */}
             </form>
           </div>
         </section>
       </div>
 
-      <div className="col-3 mt-4 px-4 pt-0 my-5" style={{ height: "300px" }}>
+      <div className="col-3 mt-2 px-4 pt-0 my-5" style={{ height: "300px" }}>
         <section className="">
           <div
             className="row d-flex py-2 justify-content-center align-items-center border border-0 rounded-3"
@@ -360,20 +395,15 @@ const AddProduct = () => {
                       multiple
                     />
                   </div>
-                  {/* <button
-                    type="button"
-                    className="btn btn-block my-2 border border-1"
-                    style={{ backgroundColor: "#52057B", color: "white" }}
-                    onClick={uploadFiles}
-                  >
-                    Upload
-                  </button> */}
                 </form>
               </div>
               {/* make upload button here to upload only four images */}
             </div>
           </div>
-          <div className="col-12 my-5 d-flex justify-content-center">
+          <div className="col-12 my-5 d-flex flex-column gap-2 justify-content-center">
+            <label style={{ fontSize: "14px", color: "red" }}>
+              {validationError}
+            </label>
             <button
               className="btn border border-0 "
               style={{

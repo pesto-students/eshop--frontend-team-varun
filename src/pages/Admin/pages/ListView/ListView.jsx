@@ -195,7 +195,7 @@ const ListView = ({ page }) => {
                           {page === "orders"
                             ? `${data.totalPrice}`
                             : page === "users"
-                            ? data.createdAt.substring(0, 10)
+                            ? data.createdAt?.substring(0, 10)
                             : `# ${data.postId.substring(0, 7)}...`}
                         </td>
 
