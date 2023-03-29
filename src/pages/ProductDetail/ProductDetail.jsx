@@ -11,22 +11,25 @@ import Loader from "../../components/Loader/Loader";
 import { toast } from "react-toastify";
 
 const ProductDetail = ({ currentPage }) => {
+  const { currentProduct, currentProductLoading, currentProductError } =
+    useSelector((state) => state.currentProduct);
   const location = useLocation();
   const id = location.pathname.split("/")[2];
   const dispatch = useDispatch();
-  const [url, setUrl] = useState("../assets/productDetails/laptop.png");
+  // const [allImages, setAllImages] = useState(
+  //   useSelector((state) => state.currentProduct.currentProduct.images)
+  // );
+
+  const [selectedImage, setSelectedImage] = useState("");
 
   useEffect(() => {
     if (currentProductError) {
       toast.error(`${currentProductError}`);
     }
 
-    // Fetch Product Details
     dispatch(getProductDetails(id));
+    // Fetch Product Details
   }, [dispatch]);
-
-  const { currentProduct, currentProductLoading, currentProductError } =
-    useSelector((state) => state.currentProduct);
 
   return (
     <>
@@ -38,30 +41,36 @@ const ProductDetail = ({ currentPage }) => {
             <section className="container-fluid pt-3 m-0">
               <div className="row m-0">
                 <div
-                  className="product-images col-lg-4 col-xs-12 my-4"
+                  className="product-images col-lg-4 col-xl-12 my-4 "
                   style={{ width: "493px" }}
                 >
-                  <img
-                    src="../assets/productDetails/laptop.png"
-                    alt=""
-                    className="img-fluid border"
-                  />
-                  <div className="img-row d-flex align-items-center my-3 justify-content-between">
+                  <div className="container p-3">
                     <img
-                      src="../assets/productDetails/laptop1.png"
+                      src={selectedImage || currentProduct.images[0]?.url}
                       alt=""
-                      className="img-fluid col-3"
+                      className="mainImg img-fluid border"
+                      style={{
+                        objectFit: "contain",
+                        width: "30rem",
+                        height: "30rem",
+                      }}
                     />
-                    <img
-                      src="../assets/productDetails/laptop2.png"
-                      alt=""
-                      className="img-fluid col-3"
-                    />
-                    <img
-                      src="../assets/productDetails/laptop3.png"
-                      alt=""
-                      className="img-fluid col-3"
-                    />
+                  </div>
+
+                  <div className=" img-row d-flex align-items-center my-3 justify-content-around">
+                    {currentProduct.images?.map((imageItem) => (
+                      <img
+                        src={imageItem?.url}
+                        alt=""
+                        className="img-fluid col-3 border border-1 rounded-2 p-1"
+                        style={{
+                          width: "5rem",
+                          height: "5rem",
+                          objectFit: "contain",
+                        }}
+                        onMouseOver={(e) => setSelectedImage(imageItem?.url)}
+                      />
+                    ))}
                   </div>
                 </div>
                 <div className="col-lg-6 col-xs-12 mt-3">

@@ -9,6 +9,7 @@ import Loader from "../../components/Loader/Loader";
 import axios from "axios";
 import Paginate from "../../components/Pagination/Pagination";
 import {
+  getProducts,
   getProductsUsingFilters,
   getUserCoordinates,
 } from "../../Redux/Actions/productActions";
@@ -42,6 +43,7 @@ const Product = () => {
   useEffect(() => {
     setUserAddress(getUserCoordinates());
     dispatch(getProductsUsingFilters());
+    dispatch(getProductsUsingFilters());
   }, []);
 
   const {
@@ -51,6 +53,7 @@ const Product = () => {
     productsCount,
     resultPerPage,
   } = useSelector((state) => state.products);
+  console.log(products);
 
   const searchSubmitHandler = (e) => {
     if (keyword.trim()) {
