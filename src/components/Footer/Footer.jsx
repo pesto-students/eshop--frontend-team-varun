@@ -267,7 +267,6 @@
 
 import React from "react";
 import { Link } from "react-router-dom";
-import { BsLinkedin, BsGithub, BsYoutube, BsInstagram } from "react-icons/bs";
 import "./Footer.css";
 
 const Footer = () => {
@@ -295,7 +294,7 @@ const Footer = () => {
                 >
                   eshop.ele@gmail.com
                 </a>
-                <div className="social_icons d-flex align-items-center gap-4 mt-4">
+                {/* <div className="social_icons d-flex align-items-center gap-4 mt-4">
                   <a className="text-white" href="">
                     <BsLinkedin className="fs-4" />
                   </a>
@@ -308,7 +307,7 @@ const Footer = () => {
                   <a className="text-white" href="">
                     <BsInstagram className="fs-4" />
                   </a>
-                </div>
+                </div> */}
               </div>
             </div>
             <div className="quick-links">

@@ -1,3 +1,8 @@
+.container-xxl{
+    min-width: 1500px;
+}
+
+
 @media only screen and (max-width: 990px){
     .recommend-cards{
         display: grid;

@@ -1,11 +1,10 @@
 import React from "react";
-import { features } from "../Constants/constants";
-import { otherFeatures } from "../Constants/constants";
+import { features } from "../constants/constants";
 
 const Description = ({desc}) => {
   return (
     <div
-      className="border border-secondary-subtle rounded my-4 px-4 py-4"
+      className="border border-secondary-subtle rounded my-4 px-4 py-4 mx-5"
       style={{ background: "white" }}
     >
       <p className="fw-semibold fs-6">Description</p>
@@ -18,7 +17,7 @@ const Description = ({desc}) => {
       <hr className="m-0 mt-4" />
       <p className="fw-semibold fs-6 mt-4">About this item</p>
       <p>
-        <span className="fw-semibold">{desc}</span>
+        <span className="">{desc}</span>
       </p>
       {/* <ul className="m-0">
         {otherFeatures.map((b) => (

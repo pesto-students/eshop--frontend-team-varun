@@ -14,9 +14,9 @@ const ProductDetail = ({ currentPage }) => {
   const location = useLocation();
   const id = location.pathname.split("/")[2];
   const dispatch = useDispatch();
-  const [url, setUrl] = useState("../assets/productDetails/laptop.png");
 
   useEffect(() => {
+    console.log(id);
     if (currentProductError) {
       toast.error(`${currentProductError}`);
     }
@@ -30,15 +30,16 @@ const ProductDetail = ({ currentPage }) => {
 
   return (
     <>
-      {currentPage === "productDetails" ? (
+      {currentPage === "productDetails" && currentProduct ? (
         currentProductLoading ? (
           <Loader />
         ) : (
-          <div className="product-details mt-5">
+
+          <div className="product-details container-xxl mt-5" style={{ backgroundColor: "#f2f4f7" }}>
             <section className="container-fluid pt-3 m-0">
-              <div className="row m-0">
+              <div className="row m-0 mx-5">
                 <div
-                  className="product-images col-lg-4 col-xs-12 my-4"
+                  className="product-images col-lg-4 col-xs-12 my-4 p-0"
                   style={{ width: "493px" }}
                 >
                   <img
@@ -64,33 +65,16 @@ const ProductDetail = ({ currentPage }) => {
                     />
                   </div>
                 </div>
-                <div className="col-lg-6 col-xs-12 mt-3">
+                <div className="col-lg-7 col-xs-12 mt-3 ">
                   <ProductInfo currentProduct={currentProduct} />
                 </div>
               </div>
             </section>
             <section className="container-fluid p-0 m-0">
-              <div className="row m-0">
-                <div className="col-lg-9 col-sm-12">
-                  <Description desc={currentProduct.description} />
+              <Description desc={currentProduct.description} />
+              <div className="row mt-4 mxP-1">
+                <div className="col-lg-12 col-sm-12">
                   <ProductReview allReviews={false} />
-                </div>
-                <div className="recommend-cards col-lg-2 mt-4">
-                  <div className="recommend-cards col-lg-2 mt-4">
-                    {/* {map(range(5), (_) => (
-                      <div className="mb-3 mx-auto">
-                        <Dealcards
-                          deall={{
-                            icon: "../assets/productDetails/laptop.png",
-                            title:
-                              "Canon EOS 1500D 24.1 Digital SLR Camera (Black)...",
-                            price: "₹36,990",
-                            ratings: "4.9",
-                          }}
-                        />
-                      </div>
-                    ))} */}
-                  </div>
                 </div>
               </div>
             </section>

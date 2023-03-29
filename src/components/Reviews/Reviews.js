@@ -4,8 +4,8 @@ import { faStar } from "@fortawesome/free-solid-svg-icons";
 
 const Reviews = () => {
   return (
-    <div className="border-top mt-5">
-      <div className="container pt-5 d-flex">
+    <div className="border-bottom py-4">
+      <div className="container d-flex m-0 p-0">
         <img
           src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
           className="rounded-circle"
@@ -25,7 +25,7 @@ const Reviews = () => {
           </div>
         </div>
       </div>
-      <p className="m-0 ms-3 mt-3" style={{ fontSize: "16px" }}>
+      <p className="m-0 mt-3" style={{ fontSize: "16px" }}>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae
         blanditiis repellendus nemo fugiat. Ipsum architecto pariatur
         exercitationem id nemo corporis!
