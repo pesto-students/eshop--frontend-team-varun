@@ -17,7 +17,7 @@ const Header = () => {
   };
 
   return (
-    <nav className="navbar navbar-expand-lg bg-body-tertiary bg-black fixed-top">
+    <nav className="navbar navbar-expand-lg bg-body-tertiary bg-black">
       <div className="container-fluid">
         <Link
           to="/"
@@ -97,6 +97,7 @@ const Header = () => {
                 onClick={() => setopen(!open)}
               >
                 <div className="m-1" style={{ color: "white" }}>
+
                   {`Hello  ${currentUser.name}`}
                 </div>
                 {open && (

@@ -39,7 +39,7 @@ function App() {
                 element={<ProductDetail currentPage="productDetails" />}
               />
               <Route
-                path="allReviews"
+                path=":id/allReviews"
                 element={<ProductDetail currentPage="reviews" />}
               />
             </Route>

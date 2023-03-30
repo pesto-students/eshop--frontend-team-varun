@@ -17,6 +17,7 @@ export const currentProductSlice = createSlice({
       state.currentProductError = null;
     },
     getCurrentProductSuccess: (state, action) => {
+      console.log(action.payload.product);
       state.currentProductLoading = false;
       state.currentProduct = action.payload.product;
       state.currentProductError = null;
