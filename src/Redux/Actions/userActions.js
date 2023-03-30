@@ -20,7 +20,7 @@ export const SignInUser = (email, password) => async (dispatch) => {
 
     const { token } = res.data;
     localStorage.setItem("token", token);
-
+    console.log(token);
     dispatch(signInSuccess(res.data.user));
   } catch (error) {
     dispatch(signInFailure(error.response.data.message));

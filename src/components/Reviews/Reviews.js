@@ -4,7 +4,7 @@ import { faStar } from "@fortawesome/free-solid-svg-icons";
 
 const Reviews = () => {
   return (
-    <div className="border-bottom py-4">
+    <div className="border-bottom py-4 mt-3">
       <div className="container d-flex m-0 p-0">
         <img
           src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"

@@ -26,6 +26,7 @@ import {
   addTopDealsRequest,
   addTopDealsSuccess,
 } from "../Reducers/topDealsSlice";
+import { addReview } from "./reviewActions";
 
 // Get All Products
 export const getProducts = () => async (dispatch) => {

@@ -5,15 +5,16 @@ import { faStarHalfStroke } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import "./AddReview.css"
 import TextField from './../TextField/TextField';
+import { addReview } from '../../Redux/Actions/reviewActions';
 
-const AddReview = () => {
+const AddReview = ({id}) => {
 
     const ratingChanged = (newRating) => {
         console.log(newRating);
     };
 
     return (
-        <div className='container ms-5'>
+        <div className='container ms-5 '>
             <p className="m-0 fw-semibold fs-4 p-0">Add Your Review</p>
             <form className='mb-3'>
                 <TextField label="Name" idfor="name" type="text" hint="Your Name"/>
@@ -30,13 +31,15 @@ const AddReview = () => {
                     activeColor="#ffd700"
                 /></p>
                 <button
-                    type="submit"
+                    type="button"
                     className="btn text-nowrap btn-md px-5 mt-4"
                     style={{
                         backgroundColor: "#52057B",
                         color: "white",
                     }}
-                // onClick={handleClick}
+                onClick={()=>{
+                    addReview(id, 4, "Very Nice Mobile");
+                }}
                 >
                     Submit
                 </button>

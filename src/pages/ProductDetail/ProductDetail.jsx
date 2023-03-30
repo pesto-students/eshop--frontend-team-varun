@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getProductDetails } from "../../Redux/Actions/productActions";
 import Loader from "../../components/Loader/Loader";
 import { toast } from "react-toastify";
+import { addReview } from "../../Redux/Actions/reviewActions";
 
 const ProductDetail = ({ currentPage }) => {
   const location = useLocation();
@@ -74,7 +75,7 @@ const ProductDetail = ({ currentPage }) => {
               <Description desc={currentProduct.description} />
               <div className="row mt-4 mxP-1">
                 <div className="col-lg-12 col-sm-12">
-                  <ProductReview allReviews={false} />
+                  <ProductReview allReviews={false} id={id}/>
                 </div>
               </div>
             </section>
