@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const addReview = async (productId, rating, comment) => {
   try {
-    console.log(localStorage.getItem("token")); 
+    // console.log(localStorage.getItem("token")); 
     const res = await axios.post(
       "http://localhost:4000/api/v1/review",
       {
@@ -12,7 +12,7 @@ export const addReview = async (productId, rating, comment) => {
       },
       {
         headers: {
-          Cookie: `token=${localStorage.getItem("token")}`,
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       }
     );

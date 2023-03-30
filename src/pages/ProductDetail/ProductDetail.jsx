@@ -17,25 +17,24 @@ const ProductDetail = ({ currentPage }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log(id);
     if (currentProductError) {
       toast.error(`${currentProductError}`);
     }
 
-    // Fetch Product Details
     dispatch(getProductDetails(id));
   }, [dispatch]);
 
   const { currentProduct, currentProductLoading, currentProductError } =
-    useSelector((state) => state.currentProduct);
+    useSelector((state) => {
+      return state.currentProduct;
+    });
 
   return (
     <>
-      {currentPage === "productDetails" && currentProduct ? (
+      {currentPage === "productDetails" ? (
         currentProductLoading ? (
           <Loader />
         ) : (
-
           <div className="product-details container-xxl mt-5" style={{ backgroundColor: "#f2f4f7" }}>
             <section className="container-fluid pt-3 m-0">
               <div className="row m-0 mx-5">
@@ -75,14 +74,18 @@ const ProductDetail = ({ currentPage }) => {
               <Description desc={currentProduct.description} />
               <div className="row mt-4 mxP-1">
                 <div className="col-lg-12 col-sm-12">
-                  <ProductReview allReviews={false} id={id}/>
+                  <ProductReview allReviews={false} id={id} currentProduct={currentProduct}/>
                 </div>
               </div>
             </section>
           </div>
         )
       ) : (
-        <ProductReview allReviews={true} />
+        <>
+          {currentProductLoading ? (
+          <Loader />
+        ) : <ProductReview allReviews={true} id={id} currentProduct={currentProduct}/>}
+        </>
       )}
     </>
   );
