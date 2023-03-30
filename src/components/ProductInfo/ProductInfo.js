@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { faMinus } from "@fortawesome/free-solid-svg-icons";
 import "./productInfo.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   FacebookShareButton,
   TwitterShareButton,
@@ -21,10 +21,16 @@ const ProductInfo = ({ currentProduct }) => {
   const [color, chooseColor] = useState("");
   const [memory, chooseMemory] = useState("");
   const [qty, setQty] = useState(1);
+  const navigate = useNavigate();
 
   const AddItemToCart = () => {
     dispatch(AddItemsToCart(currentProduct._id, qty));
     toast.success("Item Added to cart Successfully.");
+  };
+
+  const buyNowHandel = () => {
+    dispatch(AddItemsToCart(currentProduct._id, qty));
+    navigate("/checkout");
   };
 
   return (
@@ -111,6 +117,7 @@ const ProductInfo = ({ currentProduct }) => {
           type="button"
           className="btn text-light w-100 p-3"
           style={{ background: "#52057B" }}
+          onClick={buyNowHandel}
         >
           Buy Now
         </button>

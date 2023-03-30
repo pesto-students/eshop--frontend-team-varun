@@ -46,19 +46,21 @@ export const clearErrors = () => async (dispatch) => {
 
 // Get All Products using filters
 export const getProductsUsingFilters =
-  (keyword = "", category = "", price = [0, 2500000], page, brand="") =>
+  (keyword = "", category = "", price = [0, 2500000], page, brand = "") =>
   async (dispatch) => {
     try {
       dispatch(addProductsRequest());
+
       if (category) {
         const res = await axios.get(
           `http://localhost:4000/api/v1/products?keyword=${keyword}&category=${category}&price[gte]=${price[0]}&price[lte]=${price[1]}&page=${page}&brand=${brand}`
         );
         dispatch(addProductsSuccess(res.data));
-      }else if(brand){
+      } else if (brand) {
         const res = await axios.get(
           `http://localhost:4000/api/v1/products?brand=${brand}`
         );
+
         dispatch(addProductsSuccess(res.data));
       } else {
         const res = await axios.get(
@@ -147,7 +149,6 @@ export const getUserCoordinates = () => {
           .catch(function (error) {
             console.error(error);
           });
-        
       },
       (error) => {
         console.log("Something went wrong getting your position!");

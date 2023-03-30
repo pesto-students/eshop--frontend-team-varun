@@ -12,9 +12,17 @@ import { toast } from "react-toastify";
 import { addReview } from "../../Redux/Actions/reviewActions";
 
 const ProductDetail = ({ currentPage }) => {
+  const { currentProduct, currentProductLoading, currentProductError } =
+    useSelector((state) => state.currentProduct);
   const location = useLocation();
   const id = location.pathname.split("/")[2];
   const dispatch = useDispatch();
+
+  // const [allImages, setAllImages] = useState(
+  //   useSelector((state) => state.currentProduct.currentProduct.images)
+  // );
+
+  const [selectedImage, setSelectedImage] = useState("");
 
   useEffect(() => {
     if (currentProductError) {
@@ -22,7 +30,9 @@ const ProductDetail = ({ currentPage }) => {
     }
 
     dispatch(getProductDetails(id));
+    // Fetch Product Details
   }, [dispatch]);
+
 
   const { currentProduct, currentProductLoading, currentProductError } =
     useSelector((state) => {
@@ -42,27 +52,33 @@ const ProductDetail = ({ currentPage }) => {
                   className="product-images col-lg-4 col-xs-12 my-4 p-0"
                   style={{ width: "493px" }}
                 >
-                  <img
-                    src="../assets/productDetails/laptop.png"
-                    alt=""
-                    className="img-fluid border"
-                  />
-                  <div className="img-row d-flex align-items-center my-3 justify-content-between">
+                  <div className="container p-3">
                     <img
-                      src="../assets/productDetails/laptop1.png"
+                      src={selectedImage || currentProduct.images[0]?.url}
                       alt=""
-                      className="img-fluid col-3"
+                      className="mainImg img-fluid border"
+                      style={{
+                        objectFit: "contain",
+                        width: "30rem",
+                        height: "30rem",
+                      }}
                     />
-                    <img
-                      src="../assets/productDetails/laptop2.png"
-                      alt=""
-                      className="img-fluid col-3"
-                    />
-                    <img
-                      src="../assets/productDetails/laptop3.png"
-                      alt=""
-                      className="img-fluid col-3"
-                    />
+                  </div>
+
+                  <div className=" img-row d-flex align-items-center my-3 justify-content-around">
+                    {currentProduct.images?.map((imageItem) => (
+                      <img
+                        src={imageItem?.url}
+                        alt=""
+                        className="img-fluid col-3 border border-1 rounded-2 p-1"
+                        style={{
+                          width: "5rem",
+                          height: "5rem",
+                          objectFit: "contain",
+                        }}
+                        onMouseOver={(e) => setSelectedImage(imageItem?.url)}
+                      />
+                    ))}
                   </div>
                 </div>
                 <div className="col-lg-7 col-xs-12 mt-3 ">

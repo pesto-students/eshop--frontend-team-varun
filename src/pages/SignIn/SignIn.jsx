@@ -25,8 +25,6 @@ const SignIn = () => {
     if (isAuthenthicated === true) navigate("/");
   }, [isAuthenthicated]);
 
-  console.log(signInError);
-
   return (
     <div className="row signIn m-0 mt-5" style={{ backgroundColor: "#f2f4f7" }}>
       {signInLoading ? (

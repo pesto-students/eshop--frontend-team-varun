@@ -97,7 +97,8 @@ const Header = () => {
                 onClick={() => setopen(!open)}
               >
                 <div className="m-1" style={{ color: "white" }}>
-                  {`Hello ${currentUser.name}`}
+
+                  {`Hello  ${currentUser.name}`}
                 </div>
                 {open && (
                   <div className="menu-options">

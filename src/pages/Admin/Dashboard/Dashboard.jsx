@@ -12,7 +12,10 @@ const Dashboard = ({ currentPage }) => {
   const dispatch = useDispatch();
 
   return (
-    <div className="row dashboard mt-5" style={{ backgroundColor: "#f2f4f7" }}>
+    <div
+      className="row dashboard mt-5 m-0 p-0"
+      style={{ backgroundColor: "#f2f4f7" }}
+    >
       <div className="row pt-3">
         <div className="col-3">
           <section className="">

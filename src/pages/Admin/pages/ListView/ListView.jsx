@@ -25,7 +25,7 @@ const ListView = ({ page }) => {
   };
 
   return (
-    <div className="container-fluid mb-2">
+    <div className="container-fluid mb-5">
       <div className="m-0">
         <div className="row">
           <div className="col-md-12">
@@ -195,7 +195,7 @@ const ListView = ({ page }) => {
                           {page === "orders"
                             ? `${data.totalPrice}`
                             : page === "users"
-                            ? data.createdAt.substring(0, 10)
+                            ? data.createdAt?.substring(0, 10)
                             : `# ${data.postId.substring(0, 7)}...`}
                         </td>
 
