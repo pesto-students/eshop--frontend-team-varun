@@ -1,57 +1,45 @@
-import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import Loader from "../../components/Loader/Loader";
+import { forgotPassword } from "../../Redux/Actions/userActions";
+import { clearError } from "../../Redux/Reducers/userSlice";
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [reqdata, setReqData] = useState("");
-  const [mailSent, setMailSent] = useState(false);
+  const dispatch = useDispatch();
 
-  const validateEmail = async () => {
-    var regEmail =
-      /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+  const { forgetPasswordMessage, forgotPasswordLoading, forgetPasswordError } =
+    useSelector((state) => state.user);
 
-    if (!regEmail.test(email)) {
-      if (email === "") {
-        setError("*Email should not be empty.");
-        return;
-      }
-
-      setError("*Enter valid Email.");
+  const validateEmail = () => {
+    if (email === "") {
+      setError("*Email should not be empty.");
       return;
-    } else {
-      setLoading(true);
-      try {
-        const res = await axios.post(
-          "http://localhost:4000/api/v1/password/forgot",
-          {
-            email,
-          }
-        );
-
-        setLoading(false);
-        toast.success(res.data.message);
-        setReqData(res.data.message);
-        setMailSent(true);
-      } catch (error) {
-        setLoading(false);
-        toast.error(error.response.data.message);
-        setReqData(error.response.data.message);
-        setMailSent(false);
-      }
     }
+
+    dispatch(forgotPassword(email));
   };
+
+  useEffect(() => {
+    if (forgetPasswordError) {
+      toast.error(forgetPasswordError);
+      dispatch(clearError());
+    }
+
+    if (forgetPasswordMessage) {
+      toast.success(forgetPasswordMessage);
+    }
+  }, [dispatch, forgetPasswordError]);
 
   return (
     <div className="row signIn m-0 mt-5" style={{ backgroundColor: "#f2f4f7" }}>
-      <div className="col-md-6">
+      <div className="col-md-6 my-5">
         {/* {loading && <Loader />} */}
 
-        {loading ? (
+        {forgotPasswordLoading ? (
           <Loader />
         ) : (
           <section className="">
@@ -86,11 +74,12 @@ const ForgotPassword = () => {
                         </label>
                         <label
                           style={{
-                            color: mailSent === true ? "green" : "red",
+                            color:
+                              forgetPasswordMessage !== "" ? "green" : "red",
                             fontSize: "14px",
                           }}
                         >
-                          {reqdata}
+                          {forgetPasswordMessage || forgetPasswordError}
                         </label>
                         <div className="d-flex justify-content-left my-4 mb-lg-4">
                           {/* <Link

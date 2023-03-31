@@ -19,6 +19,7 @@ import dealsOfMonthsReducer from "./Reducers/dealsOfMonthSlice";
 import recommendationReducer from "./Reducers/recommendationSlice";
 import currentProductReducer from "./Reducers/currentProductSlice";
 import ordersReducers from "./Reducers/orderSlice";
+import resetPasswordReducer from "./Reducers/resetPasswordSlice";
 
 const persistConfig = {
   key: "root",
@@ -35,6 +36,7 @@ const rootReducer = combineReducers({
   recommendations: recommendationReducer,
   currentProduct: currentProductReducer,
   orders: ordersReducers,
+  resetPassword: resetPasswordReducer,
 });
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 

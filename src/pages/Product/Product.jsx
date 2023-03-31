@@ -43,7 +43,7 @@ const Product = () => {
   useEffect(() => {
     setUserAddress(getUserCoordinates());
     dispatch(getProductsUsingFilters());
-    dispatch(getProductsUsingFilters());
+    // dispatch(getProductsUsingFilters());
   }, []);
 
   const {
@@ -53,7 +53,6 @@ const Product = () => {
     productsCount,
     resultPerPage,
   } = useSelector((state) => state.products);
-  console.log(products);
 
   const searchSubmitHandler = (e) => {
     if (keyword.trim()) {

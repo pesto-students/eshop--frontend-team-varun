@@ -6,6 +6,9 @@ const initialState = {
   signInError: null,
   isAuthenthicated: false,
   registerError: false,
+  forgetPasswordMessage: "",
+  forgotPasswordLoading: false,
+  forgetPasswordError: null,
 };
 
 export const userSlice = createSlice({
@@ -62,18 +65,39 @@ export const userSlice = createSlice({
       state.registerError = action.payload;
     },
 
-    signOut: (state) => {
-      state.SignInLoading = false;
+    signOut: (state, action) => {
       state.currentUser = null;
+      state.SignInLoading = false;
       state.SignInError = null;
       state.isAuthenthicated = false;
       state.registerError = false;
     },
 
-    signInClearError: (state, action) => {
+    clearError: (state, action) => {
+      state.signInLoading = false;
       state.SignInError = null;
       state.isAuthenthicated = false;
       state.registerError = false;
+      state.passwordUpdateError = false;
+      state.forgotPasswordLoading = false;
+      state.forgetPasswordError = null;
+      state.forgetPasswordMessage = "";
+    },
+
+    forgotPasswordStart: (state, action) => {
+      state.forgotPasswordLoading = true;
+      state.forgetPasswordError = null;
+    },
+
+    forgotPasswordSuccess: (state, action) => {
+      state.forgotPasswordLoading = false;
+      state.forgetPasswordMessage = action.payload;
+    },
+
+    forgotPasswordFailure: (state, action) => {
+      state.forgotPasswordLoading = false;
+      state.forgetPasswordMessage = null;
+      state.forgetPasswordError = action.payload;
     },
   },
 });
@@ -86,7 +110,10 @@ export const {
   registerSuccess,
   registerFailure,
   signOut,
-  signInClearError,
+  clearError,
+  forgotPasswordStart,
+  forgotPasswordSuccess,
+  forgotPasswordFailure,
 } = userSlice.actions;
 
 export default userSlice.reducer;
