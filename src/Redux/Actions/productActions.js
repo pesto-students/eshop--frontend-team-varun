@@ -63,9 +63,11 @@ export const getProductsUsingFilters =
 
         dispatch(addProductsSuccess(res.data));
       } else {
+        console.log("calling => ", page);
         const res = await axios.get(
           `http://localhost:4000/api/v1/products?keyword=${keyword}&price[gte]=${price[0]}&price[lte]=${price[1]}&page=${page}`
         );
+        console.log(res);
         dispatch(addProductsSuccess(res.data));
       }
     } catch (error) {
@@ -78,8 +80,9 @@ export const getProductsUsingFilters =
 export const getTopDeals = () => async (dispatch) => {
   try {
     dispatch(addTopDealsRequest());
-    const res = await axios.get(`http://localhost:4000/api/v1/products`);
+    const res = await axios.get(`http://localhost:4000/api/v1/topdeals`);
 
+    console.log("topdeals => ", res);
     dispatch(addTopDealsSuccess(res.data));
   } catch (error) {
     dispatch(addTopDealsFailure(error));
@@ -90,7 +93,7 @@ export const getTopDeals = () => async (dispatch) => {
 export const getDealsOfMonth = () => async (dispatch) => {
   try {
     dispatch(dealsOfMonthRequest());
-    const res = await axios.get(`http://localhost:4000/api/v1/products`);
+    const res = await axios.get(`http://localhost:4000/api/v1/monthlytopdeals`);
 
     dispatch(dealsOfMonthSuccess(res.data));
   } catch (error) {
@@ -102,7 +105,7 @@ export const getDealsOfMonth = () => async (dispatch) => {
 export const getRecommendations = () => async (dispatch) => {
   try {
     dispatch(addRecommendationsRequest());
-    const res = await axios.get(`http://localhost:4000/api/v1/products`);
+    const res = await axios.get(`http://localhost:4000/api/v1/recommendations`);
 
     dispatch(addRecommendationsSuccess(res.data));
   } catch (error) {

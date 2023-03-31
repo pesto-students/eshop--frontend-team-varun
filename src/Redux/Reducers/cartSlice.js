@@ -32,7 +32,14 @@ const cartSlice = createSlice({
         (i) => i.productId !== action.payload
       );
     },
-    resetCart: (state, action) => {},
+
+    resetCart: (state, action) => {
+      state.cartItems = [];
+      state.cartLoading = false;
+      state.cartError = null;
+      state.cartError = null;
+    },
+
     cartFailure: (state, action) => {
       state.cartError = action.payload.message;
     },
@@ -42,3 +49,4 @@ const cartSlice = createSlice({
 export const { addToCart, removeItemFromCart, resetCart, cartFailure } =
   cartSlice.actions;
 export default cartSlice.reducer;
+

@@ -36,9 +36,6 @@ const Home = () => {
   useEffect(() => {
     if (topDealsError || dealsOfMonthError || recommendationsError) {
       toast.error(`${dealsOfMonthError}`);
-      // console.log("topDealsError", topDealsError);
-      // console.log("deals of month", dealsOfMonthError);
-      // console.log("recommendationsError", recommendationsError);
     }
 
     // Fetch TopDeals products { products above 4.0 rating }

@@ -43,7 +43,8 @@ function App() {
                 element={<ProductDetail currentPage="reviews" />}
               />
             </Route>
-            <Route path="createPassword" element={<CreatePassword />} />
+            {/* http://localhost:4000/api/v1/password/reset/21d4cdc8c3fcfede93d8664bcad398fd2d23e6c6 */}
+            <Route path="password/reset/:token" element={<CreatePassword />} />
             <Route path="admin">
               <Route
                 path="products"

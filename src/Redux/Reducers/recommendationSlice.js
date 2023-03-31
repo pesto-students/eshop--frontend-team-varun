@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  recommendations: null,
+  recommendations: [],
   recommendationsLoading: false,
   recommendationsError: null,
 };
@@ -18,7 +18,7 @@ const recommendationsSlice = createSlice({
     },
     addRecommendationsSuccess: (state, action) => {
       state.recommendationsLoading = false;
-      state.recommendations = action.payload.products;
+      state.recommendations = action.payload.product;
       state.recommendationsError = null;
     },
     addRecommendationsFailure: (state, action) => {
