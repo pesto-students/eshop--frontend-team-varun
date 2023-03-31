@@ -1,7 +1,7 @@
 import React from "react";
-import { features } from "../constants/constants";
+import { features } from "../Constants/constants";
 
-const Description = ({desc}) => {
+const Description = ({ desc }) => {
   return (
     <div
       className="border border-secondary-subtle rounded my-4 px-4 py-4 mx-5"

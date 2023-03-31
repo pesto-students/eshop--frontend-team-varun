@@ -14,6 +14,7 @@ import { addReview } from "../../Redux/Actions/reviewActions";
 const ProductDetail = ({ currentPage }) => {
   const { currentProduct, currentProductLoading, currentProductError } =
     useSelector((state) => state.currentProduct);
+
   const location = useLocation();
   const id = location.pathname.split("/")[2];
   const dispatch = useDispatch();
@@ -33,19 +34,16 @@ const ProductDetail = ({ currentPage }) => {
     // Fetch Product Details
   }, [dispatch]);
 
-
-  const { currentProduct, currentProductLoading, currentProductError } =
-    useSelector((state) => {
-      return state.currentProduct;
-    });
-
   return (
     <>
       {currentPage === "productDetails" ? (
         currentProductLoading ? (
           <Loader />
         ) : (
-          <div className="product-details container-xxl mt-5" style={{ backgroundColor: "#f2f4f7" }}>
+          <div
+            className="product-details container-xxl mt-5"
+            style={{ backgroundColor: "#f2f4f7" }}
+          >
             <section className="container-fluid pt-3 m-0">
               <div className="row m-0 mx-5">
                 <div
@@ -90,7 +88,11 @@ const ProductDetail = ({ currentPage }) => {
               <Description desc={currentProduct.description} />
               <div className="row mt-4 mxP-1">
                 <div className="col-lg-12 col-sm-12">
-                  <ProductReview allReviews={false} id={id} currentProduct={currentProduct}/>
+                  <ProductReview
+                    allReviews={false}
+                    id={id}
+                    currentProduct={currentProduct}
+                  />
                 </div>
               </div>
             </section>
@@ -99,8 +101,14 @@ const ProductDetail = ({ currentPage }) => {
       ) : (
         <>
           {currentProductLoading ? (
-          <Loader />
-        ) : <ProductReview allReviews={true} id={id} currentProduct={currentProduct}/>}
+            <Loader />
+          ) : (
+            <ProductReview
+              allReviews={true}
+              id={id}
+              currentProduct={currentProduct}
+            />
+          )}
         </>
       )}
     </>

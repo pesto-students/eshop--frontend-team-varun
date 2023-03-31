@@ -54,7 +54,7 @@ const CreatePassword = () => {
 
   return (
     <div
-      className="row createPassword m-0 mt-5"
+      className="row createPassword m-0"
       style={{ backgroundColor: "#f2f4f7" }}
     >
       <div className="col-md-6">

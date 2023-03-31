@@ -67,7 +67,7 @@ const CreateAccount = () => {
 
   return (
     <div
-      className="row createAccount m-0 mt-5"
+      className="row createAccount m-0"
       style={{ backgroundColor: "#f2f4f7" }}
     >
       <div className="d-flex flex-column">

@@ -35,7 +35,7 @@ const ForgotPassword = () => {
   }, [dispatch, forgetPasswordError]);
 
   return (
-    <div className="row signIn m-0 mt-5" style={{ backgroundColor: "#f2f4f7" }}>
+    <div className="row signIn m-0 " style={{ backgroundColor: "#f2f4f7" }}>
       <div className="col-md-6 my-5">
         {/* {loading && <Loader />} */}
 
