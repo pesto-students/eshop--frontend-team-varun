@@ -1,23 +1,49 @@
 import React from "react";
-import { features } from "../constants/constants";
+import { features, otherFeatures } from "../Constants/constants";
 
-const Description = ({ desc }) => {
+const Description = ({ currentProduct }) => {
   return (
     <div
       className="border border-secondary-subtle rounded my-4 px-4 py-4 mx-5"
       style={{ background: "white" }}
     >
       <p className="fw-semibold fs-6">Description</p>
-      {features.map((f) => (
+      <div className="col">
         <div className="row">
-          <div className="col-4 fw-semibold mt-2">{f.name}</div>
-          <div className="col-4 mt-2">{f.value}</div>
+          <div className="col-4 fw-semibold mt-2">Brand</div>
+          <div className="col-4 mt-2">{currentProduct.brand}</div>
         </div>
-      ))}
+        <div className="row">
+          <div className="col-4 fw-semibold mt-2">Category</div>
+          <div className="col-4 mt-2">{currentProduct.category}</div>
+        </div>
+        <div className="row">
+          <div className="col-4 fw-semibold mt-2">Price</div>
+          <div className="col-4 mt-2">{currentProduct.price}</div>
+        </div>
+        <div className="row">
+          <div className="col-4 fw-semibold mt-2">Rating</div>
+          <div className="col-4 mt-2">
+            {currentProduct.rating}
+            <span
+              className="fa fa-star ms-2"
+              style={{ color: "orange" }}
+            ></span>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-4 fw-semibold mt-2">Stock</div>
+          <div className="col-4 mt-2">{currentProduct.stock}</div>
+        </div>
+        <div className="row">
+          <div className="col-4 fw-semibold mt-2">Category</div>
+          <div className="col-4 mt-2">{currentProduct.category}</div>
+        </div>
+      </div>
       <hr className="m-0 mt-4" />
       <p className="fw-semibold fs-6 mt-4">About this item</p>
       <p>
-        <span className="">{desc}</span>
+        <span className="">{currentProduct.description}</span>
       </p>
       {/* <ul className="m-0">
         {otherFeatures.map((b) => (
