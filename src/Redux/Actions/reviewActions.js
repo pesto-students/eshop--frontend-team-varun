@@ -2,8 +2,8 @@ import axios from "axios";
 
 export const addReview = async (productId, rating, comment) => {
   try {
-    // console.log(localStorage.getItem("token")); 
-    const res = await axios.post(
+    console.log(localStorage.getItem("token")); 
+    const res = await axios.put(
       "http://localhost:4000/api/v1/review",
       {
         rating,
@@ -12,7 +12,7 @@ export const addReview = async (productId, rating, comment) => {
       },
       {
         headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
+          authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       }
     );

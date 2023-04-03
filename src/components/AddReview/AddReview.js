@@ -40,7 +40,7 @@ const AddReview = ({ id }) => {
           activeColor="#ffd700"
         />
         <button
-          type="Submit"
+          type="button"
           className="btn text-nowrap btn-md px-5 mt-4"
           style={{
             backgroundColor: "#52057B",

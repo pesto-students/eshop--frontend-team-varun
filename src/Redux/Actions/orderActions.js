@@ -9,9 +9,13 @@ import {
 export const getMyOrders = () => async (dispatch) => {
   try {
     dispatch(ordersRequest());
-    const res = await axios.get(`http://localhost:4000/api/v1/orders/me`);
+    const res = await axios.get(`http://localhost:4000/api/v1/orders/me`, {
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    });
 
-    console.log(res.data);
+    console.log(res.data);   
     dispatch(ordersSuccess(res.data));
   } catch (error) {
     console.log(error);

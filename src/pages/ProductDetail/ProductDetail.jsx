@@ -12,16 +12,9 @@ import { toast } from "react-toastify";
 import { addReview } from "../../Redux/Actions/reviewActions";
 
 const ProductDetail = ({ currentPage }) => {
-  const { currentProduct, currentProductLoading, currentProductError } =
-    useSelector((state) => state.currentProduct);
-
   const location = useLocation();
   const id = location.pathname.split("/")[2];
   const dispatch = useDispatch();
-
-  // const [allImages, setAllImages] = useState(
-  //   useSelector((state) => state.currentProduct.currentProduct.images)
-  // );
 
   const [selectedImage, setSelectedImage] = useState("");
 
@@ -33,6 +26,9 @@ const ProductDetail = ({ currentPage }) => {
     dispatch(getProductDetails(id));
     // Fetch Product Details
   }, [dispatch]);
+
+  const { currentProduct, currentProductLoading, currentProductError } =
+    useSelector((state) => state.currentProduct);
 
   return (
     <>
