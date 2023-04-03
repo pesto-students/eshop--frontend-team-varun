@@ -4,9 +4,9 @@ import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const CarouselSlider = () => { 
+const CarouselSlider = () => {
   return (
-    <div className="carousel-slider mt-5">
+    <div className="carousel-slider">
       <div id="carouselExample" className="carousel slide">
         <div className="carousel-inner">
           <div className="carousel-item active">
@@ -30,7 +30,11 @@ const CarouselSlider = () => {
             aria-hidden="true"
           ></span>
           <span className="visually-hidden">Previous</span> */}
-          <FontAwesomeIcon icon={faChevronLeft} style={{height: "32px"}} className="left-icon"/>
+          <FontAwesomeIcon
+            icon={faChevronLeft}
+            style={{ height: "32px" }}
+            className="left-icon"
+          />
         </button>
         <button
           className="carousel-control-next ps-5"
@@ -43,7 +47,11 @@ const CarouselSlider = () => {
             aria-hidden="true"
           ></span>
           <span className="visually-hidden">Next</span> */}
-          <FontAwesomeIcon icon={faChevronRight} style={{height: "32px"}} className="right-icon"/>
+          <FontAwesomeIcon
+            icon={faChevronRight}
+            style={{ height: "32px" }}
+            className="right-icon"
+          />
         </button>
       </div>
     </div>
