@@ -104,7 +104,7 @@ const Header = () => {
                   <div className="menu-options">
                     <Link
                       className="link text-dark"
-                      to="/orders"
+                      to="/myorders"
                       style={{ textDecoration: "none" }}
                     >
                       My Orders

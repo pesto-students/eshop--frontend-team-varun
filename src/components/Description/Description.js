@@ -1,5 +1,5 @@
 import React from "react";
-import { features } from "../Constants/constants";
+import { features } from "../constants/constants";
 
 const Description = ({ desc }) => {
   return (

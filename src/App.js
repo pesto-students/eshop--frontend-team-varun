@@ -16,6 +16,7 @@ import CreatePassword from "./pages/CreatePassword/CreatePassword";
 import ScrollToTop from "./ScrollToTop";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import MyOrders from "./pages/MyOrders/MyOrders";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
             <Route path="createAccount" element={<CreateAccount />} />
             <Route path="forgotPassword" element={<ForgotPassword />} />
             <Route path="checkout" element={<Checkout />} />
+            <Route path="myorders" element={<MyOrders />} />
             <Route path="product">
               <Route
                 path=":id"

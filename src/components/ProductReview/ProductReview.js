@@ -184,8 +184,8 @@ const ProductReview = ({ allReviews, id, currentProduct }) => {
                 </div>
               </div>
             </div>
-            {
-              [...Array(!allReviews ? 4 : currentProduct.reviews.length)].map((e, index) => {
+            {currentProduct.reviews.length > 0 &&
+              [...Array(!allReviews ? currentProduct.reviews.length : currentProduct.reviews.length)].map((e, index) => {
                 return (
                   <div key={index}>
                   <Reviews review={currentProduct.reviews[index]}/>
