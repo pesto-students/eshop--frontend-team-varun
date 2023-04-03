@@ -7,6 +7,7 @@ import { signOut } from "../../Redux/Reducers/userSlice";
 
 const Header = () => {
   const { currentUser } = useSelector((state) => state.user);
+  console.log(currentUser);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [open, setopen] = useState(false);
@@ -51,15 +52,17 @@ const Header = () => {
                 Home
               </Link>
             </li>
-            <li className="nav-item">
-              <Link
-                to="/admin/products"
-                className="nav-link text-white"
-                style={{ textDecoration: "none" }}
-              >
-                Dashboard
-              </Link>
-            </li>
+            {currentUser !== "null" && currentUser?.role === "admin" && (
+              <li className="nav-item">
+                <Link
+                  to="/admin/products"
+                  className="nav-link text-white"
+                  style={{ textDecoration: "none" }}
+                >
+                  Dashboard
+                </Link>
+              </li>
+            )}
             <li className="nav-item">
               <Link
                 to="/products"
@@ -97,7 +100,6 @@ const Header = () => {
                 onClick={() => setopen(!open)}
               >
                 <div className="m-1" style={{ color: "white" }}>
-
                   {`Hello  ${currentUser.name}`}
                 </div>
                 {open && (

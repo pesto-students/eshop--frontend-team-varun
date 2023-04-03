@@ -90,32 +90,6 @@ const Sidebar = ({ currentPage }) => {
               </span>
             </Link>
           </li>
-          <li className="nav-item">
-            <Link
-              to="/admin/reviews"
-              className="nav-link align-start"
-              style={{ textDecoration: "none" }}
-            >
-              <i
-                className="fas fa-comments mx-3"
-                style={
-                  currentPage === "reviews"
-                    ? { color: "#52057B", fontWeight: "bold" }
-                    : { color: "black" }
-                }
-              ></i>
-              <span
-                className="d-none d-sm-inline"
-                style={
-                  currentPage === "reviews"
-                    ? { color: "#52057B", fontWeight: "bold" }
-                    : { color: "black" }
-                }
-              >
-                Reviews
-              </span>
-            </Link>
-          </li>
         </ul>
         <hr />
       </div>

@@ -11,6 +11,7 @@ const SignIn = () => {
   const [password, setPassword] = useState(null);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [check, setCheck] = useState(false);
 
   // get current signIn user from store
   const { currentUser, signInLoading, signInError, isAuthenthicated } =
@@ -76,12 +77,13 @@ const SignIn = () => {
                               />
                             </div>
                           </div>
-                          <div className="form-check d-flex justify-content-left mb-5 align-items-start">
+                          <div className="form-check">
                             <input
-                              className="form-check-input me-2"
+                              className="form-check-input me-2 shadow-none"
                               type="checkbox"
                               value=""
                               id="form2Example3c"
+                              onClick={(e) => setCheck(e.target.checked)}
                             />
                             <label
                               className="form-check-label ms-2"
@@ -94,9 +96,10 @@ const SignIn = () => {
                           <label style={{ color: "red", fontSize: "14px" }}>
                             {signInError}
                           </label>
-                          <div className="d-flex justify-content-left mb-3 mb-lg-4">
+                          <div className="d-flex justify-content-left my-3 mb-lg-4">
                             <button
                               type="button"
+                              disabled={!check}
                               className="btn text-nowrap btn-md px-5"
                               style={{
                                 backgroundColor: "#52057B",

@@ -53,7 +53,6 @@ const Home = () => {
       {topDealsLoading ? (
         <Loader />
       ) : (
-        // <></>
         <TodaysDeal
           title="Today's Deals"
           isEnd="true"
