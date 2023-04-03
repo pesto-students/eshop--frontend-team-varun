@@ -24,26 +24,26 @@ const ProductInfo = ({ currentProduct }) => {
   const navigate = useNavigate();
 
   const AddItemToCart = () => {
-    dispatch(AddItemsToCart(currentProduct._id, qty));
+    dispatch(AddItemsToCart(currentProduct?._id, qty));
     toast.success("Item Added to cart Successfully.");
   };
 
   const buyNowHandel = () => {
-    dispatch(AddItemsToCart(currentProduct._id, qty));
+    dispatch(AddItemsToCart(currentProduct?._id, qty));
     navigate("/checkout");
   };
 
   return (
     <div className="ms-5">
-      <p className="fw-semibold fs-5 m-0">{currentProduct.name}</p>
+      <p className="fw-semibold fs-5 m-0">{currentProduct?.name}</p>
       <section className="d-flex align-items-center mt-2">
         <img src="../assets/productDetails/ratings.png" alt="" />
         <p className="m-0 ms-2 p-0">
-          ({currentProduct.ratings}) - {currentProduct.numOfReviews} ratings
+          ({currentProduct?.ratings}) - {currentProduct?.numOfReviews} ratings
         </p>
       </section>
       <section>
-        <h2 className="mt-3 fw-bold">₹{currentProduct.Price}</h2>
+        <h2 className="mt-3 fw-bold">₹{currentProduct?.Price}</h2>
         <p className="m-0 text-secondary mt-1">Inclusive of all taxes</p>
         <p className="m-0 text-secondary">
           EMI starts at ₹2,842. No Cost EMI available EMI options
@@ -51,10 +51,10 @@ const ProductInfo = ({ currentProduct }) => {
         <p
           style={{
             marginTop: "15px",
-            color: currentProduct.stock < 1 ? "red" : "green",
+            color: currentProduct?.stock < 1 ? "red" : "green",
           }}
         >
-          {currentProduct.stock < 1 ? "OutOfStock" : "InStock"}
+          {currentProduct?.stock < 1 ? "OutOfStock" : "InStock"}
         </p>
       </section>
 
