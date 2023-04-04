@@ -19,10 +19,10 @@ const MyOrders = () => {
   //     dispatch(
   //       getProductsUsingFilters("", category, [minPrice, maxPrice], 0, brand)
   //     );
-  //   };
+  //   };  
 
-  useEffect(() => {
-    dispatch(getMyOrders());
+  useEffect(() => { 
+    dispatch(getMyOrders());  
     // dispatch(getProductsUsingFilters());
   }, []);
 

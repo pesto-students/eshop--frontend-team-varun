@@ -4,6 +4,7 @@ import {
   ordersRequest,
   ordersSuccess,
 } from "../Reducers/orderSlice";
+import { toast } from "react-toastify";
 
 // Get my Orders
 export const getMyOrders = () => async (dispatch) => {
@@ -15,7 +16,7 @@ export const getMyOrders = () => async (dispatch) => {
       },
     });
 
-    console.log(res.data);   
+    console.log(res.data);
     dispatch(ordersSuccess(res.data));
   } catch (error) {
     console.log(error);
@@ -32,5 +33,29 @@ export const getAllOrders = () => async (dispatch) => {
   } catch (error) {
     console.log(error);
     dispatch(ordersFailure(error));
+  }
+};
+
+export const createOrder = async (order) => {
+  try {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    };
+    const { data } = await axios.post(
+      "http://localhost:4000/api/v1/order/new",
+      {...order},
+      {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("token")}`,
+        }
+      }
+    );
+
+    toast.success(data.message);
+  } catch (error) {
+    toast.error(error.response.data.message);
   }
 };
