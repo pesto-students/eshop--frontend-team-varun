@@ -30,7 +30,7 @@ const Cart = () => {
   };
 
   return (
-    <div className="row cart m-0 mt-5">
+    <div className="row cart m-0">
       <div className="col-md-8 cart">
         <section className="">
           <div className="row d-flex justify-content-start align-items-start h-100">

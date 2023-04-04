@@ -82,7 +82,6 @@ export const getTopDeals = () => async (dispatch) => {
     dispatch(addTopDealsRequest());
     const res = await axios.get(`http://localhost:4000/api/v1/topdeals`);
 
-    console.log("topdeals => ", res);
     dispatch(addTopDealsSuccess(res.data));
   } catch (error) {
     dispatch(addTopDealsFailure(error));

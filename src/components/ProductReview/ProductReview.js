@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import GradientSVG from "./gradientSVG";
 import { CircularProgressbarWithChildren } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
@@ -17,10 +17,10 @@ const ProductReview = ({ allReviews, id, currentProduct }) => {
   let [two, setTwo] = useState(0);
   let [one, setOne] = useState(0);
 
-  useEffect(()=>{
+  useEffect(() => {
     function starsPer() {
       const counts = {};
-      for(const num of currentProduct.reviews){
+      for (const num of currentProduct?.reviews) {
         counts[num.rating] = counts[num.rating] ? counts[num.rating] + 1 : 1;
       }
       setFive(counts[5] === undefined ? 0 : counts[5]);
@@ -31,7 +31,7 @@ const ProductReview = ({ allReviews, id, currentProduct }) => {
     }
 
     starsPer();
-  }, [])
+  }, []);
 
   return (
     <div
@@ -41,20 +41,21 @@ const ProductReview = ({ allReviews, id, currentProduct }) => {
       <div className="container w-100 p-0">
         <div className="row p-0">
           <div className="col-lg-7 col-sm-12">
-            <p
+            {/* <p
               className={`m-0 fw-semibold fs-4 p-0 ${allReviews ? "ms-4" : ""}`}
             >
-              Reviews ({currentProduct.numOfReviews})
-            </p>
+              Reviews ({currentProduct?.numOfReviews})
+            </p> */}
             <div className="row mt-3">
               <div
                 style={{ height: "150px", width: "150px", margin: "0" }}
                 className={`col-4 ${allReviews ? "ms-4" : ""}`}
               >
                 <GradientSVG />
-                <CircularProgressbarWithChildren
+                {/* <CircularProgressbarWithChildren
+
                   strokeWidth={15}
-                  value={(currentProduct.rating / 5) * 100}
+                  value={(currentProduct?.rating / 5) * 100}
                   styles={{
                     path: { stroke: `url(#${idCSS})`, strokeLinecap: "butt" },
                     trail: {
@@ -70,15 +71,16 @@ const ProductReview = ({ allReviews, id, currentProduct }) => {
                       fontWeight: "600",
                     }}
                   >
-                    <p>{currentProduct.rating.toFixed(1)}</p>
+                    <p>{currentProduct?.rating.toFixed(1)}</p>
                   </div>
-                </CircularProgressbarWithChildren>
+                
+                </CircularProgressbarWithChildren> */}
               </div>
               <div className="col-lg-8">
                 <div className="d-flex flex-column w-100 mt-4 gap-2 ms-1">
                   <div className="d-flex align-items-center">
                     <p className="m-0 me-3">5 Star</p>
-                    <div
+                    {/* <div
                       className="progress w-50 border rounded-0"
                       role="progressbar"
                       aria-label="Basic example"
@@ -91,13 +93,21 @@ const ProductReview = ({ allReviews, id, currentProduct }) => {
                         style={{
                           background:
                             "linear-gradient(90deg, #E65C00 0%, #F9D423 100%)",
-                            width: `${((five/currentProduct.reviews.length)*100).toFixed(0)}%`,
+                          width: `${(
+                            (five / currentProduct?.reviews.length) *
+                            100
+                          ).toFixed(0)}%`,
                         }}
                       ></div>
-                    </div>
-                    <p className="m-0 ms-3 text-secondary">{((five/currentProduct.reviews.length)*100).toFixed(2)}%</p>
+                    </div> */}
+                    {/* <p className="m-0 ms-3 text-secondary">
+                      {((five / currentProduct?.reviews.length) * 100).toFixed(
+                        2
+                      )}
+                      %
+                    </p> */}
                   </div>
-                  <div className="d-flex align-items-center">
+                  {/* <div className="d-flex align-items-center">
                     <p className="m-0 me-3">4 Star</p>
                     <div
                       className="progress w-50 border rounded-0"
@@ -112,13 +122,21 @@ const ProductReview = ({ allReviews, id, currentProduct }) => {
                         style={{
                           background:
                             "linear-gradient(90deg, #E65C00 0%, #F9D423 100%)",
-                            width: `${((four/currentProduct.reviews.length)*100).toFixed(0)}%`,
+                          width: `${(
+                            (four / currentProduct?.reviews.length) *
+                            100
+                          ).toFixed(0)}%`,
                         }}
                       ></div>
                     </div>
-                    <p className="m-0 ms-3 text-secondary">{((four/currentProduct.reviews.length)*100).toFixed(2)}%</p>
-                  </div>
-                  <div className="d-flex align-items-center">
+                    <p className="m-0 ms-3 text-secondary">
+                      {((four / currentProduct?.reviews.length) * 100).toFixed(
+                        2
+                      )}
+                      %
+                    </p>
+                  </div> */}
+                  {/* <div className="d-flex align-items-center">
                     <p className="m-0 me-3">3 Star</p>
                     <div
                       className="progress w-50 border rounded-0"
@@ -133,11 +151,19 @@ const ProductReview = ({ allReviews, id, currentProduct }) => {
                         style={{
                           background:
                             "linear-gradient(90deg, #E65C00 0%, #F9D423 100%)",
-                          width: `${((three/currentProduct.reviews.length)*100).toFixed(0)}%`,
+                          width: `${(
+                            (three / currentProduct?.reviews.length) *
+                            100
+                          ).toFixed(0)}%`,
                         }}
                       ></div>
                     </div>
-                    <p className="m-0 ms-3 text-secondary">{((three/currentProduct.reviews.length)*100).toFixed(2)}%</p>
+                    <p className="m-0 ms-3 text-secondary">
+                      {((three / currentProduct?.reviews.length) * 100).toFixed(
+                        2
+                      )}
+                      %
+                    </p>
                   </div>
                   <div className="d-flex align-items-center">
                     <p className="m-0 me-3">2 Star</p>
@@ -154,11 +180,19 @@ const ProductReview = ({ allReviews, id, currentProduct }) => {
                         style={{
                           background:
                             "linear-gradient(90deg, #E65C00 0%, #F9D423 100%)",
-                            width: `${((two/currentProduct.reviews.length)*100).toFixed(0)}%`,
+                          width: `${(
+                            (two / currentProduct?.reviews.length) *
+                            100
+                          ).toFixed(0)}%`,
                         }}
                       ></div>
                     </div>
-                    <p className="m-0 ms-3 text-secondary">{((two/currentProduct.reviews.length)*100).toFixed(2)}%</p>
+                    <p className="m-0 ms-3 text-secondary">
+                      {((two / currentProduct?.reviews.length) * 100).toFixed(
+                        2
+                      )}
+                      %
+                    </p>
                   </div>
                   <div className="d-flex align-items-center">
                     <p className="m-0 me-3">1 Star</p>
@@ -175,12 +209,20 @@ const ProductReview = ({ allReviews, id, currentProduct }) => {
                         style={{
                           background:
                             "linear-gradient(90deg, #E65C00 0%, #F9D423 100%)",
-                            width: `${((one/currentProduct.reviews.length)*100).toFixed(0)}%`,
+                          width: `${(
+                            (one / currentProduct?.reviews.length) *
+                            100
+                          ).toFixed(0)}%`,
                         }}
                       ></div>
                     </div>
-                    <p className="m-0 ms-3 text-secondary">{((one/currentProduct.reviews.length)*100).toFixed(2)}%</p>
-                  </div>
+                    <p className="m-0 ms-3 text-secondary">
+                      {((one / currentProduct?.reviews.length) * 100).toFixed(
+                        2
+                      )}
+                      %
+                    </p>
+                  </div> */}
                 </div>
               </div>
             </div>
@@ -188,13 +230,16 @@ const ProductReview = ({ allReviews, id, currentProduct }) => {
               [...Array(!allReviews ? currentProduct.reviews.length : currentProduct.reviews.length)].map((e, index) => {
                 return (
                   <div key={index}>
-                  <Reviews review={currentProduct.reviews[index]}/>
-                </div>
+                    <Reviews review={currentProduct?.reviews[index]} />
+                  </div>
                 );
-              })
-            }
-            {!allReviews && currentProduct.reviews.length > 4 ? (
-              <Link to={`/product/${id}/allReviews`} className="text-decoration-none">
+              }
+            )}
+            {!allReviews && currentProduct?.reviews.length > 4 ? (
+              <Link
+                to={`/product/${id}/allReviews`}
+                className="text-decoration-none"
+              >
                 <p className="text-center mt-5 mb-0 fw-semibold fs-6 text-dark">
                   See All
                   <span>
@@ -207,7 +252,7 @@ const ProductReview = ({ allReviews, id, currentProduct }) => {
             )}
           </div>
           <div className="col-lg-5 col-sm-12">
-            <AddReview id={id}/>
+            <AddReview id={id} />
           </div>
         </div>
       </div>

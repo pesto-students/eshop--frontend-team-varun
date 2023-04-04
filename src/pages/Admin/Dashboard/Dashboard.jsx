@@ -3,17 +3,25 @@ import Sidebar from "../components/Sidebar";
 import Products from "../pages/Products/Products";
 import "./Dashboard.css";
 import ListView from "../pages/ListView/ListView";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import AddProduct from "../pages/AddProduct/AddProduct";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const Dashboard = ({ currentPage }) => {
   const pageName = currentPage.charAt(0).toUpperCase() + currentPage.slice(1);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { currentUser } = useSelector((state) => state.user);
+
+  useEffect(() => {
+    if (currentUser === "null" || currentUser?.role !== "admin") {
+      navigate("/");
+    }
+  });
 
   return (
     <div
-      className="row dashboard mt-5 m-0 p-0"
+      className="row dashboard m-0 p-0"
       style={{ backgroundColor: "#f2f4f7" }}
     >
       <div className="row pt-3">

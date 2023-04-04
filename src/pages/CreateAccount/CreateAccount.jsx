@@ -11,6 +11,7 @@ const CreateAccount = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState(null);
+  const [check, setCheck] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -190,10 +191,11 @@ const CreateAccount = () => {
                           </div>
                           <div class="form-check">
                             <input
-                              class="form-check-input"
+                              class="form-check-input shadow-none"
                               type="checkbox"
                               value=""
                               id="flexCheckChecked"
+                              onClick={(e) => setCheck(e.target.checked)}
                             />
                             <label
                               class="form-check-label"
@@ -214,6 +216,7 @@ const CreateAccount = () => {
                           <div className="d-flex justify-content-left mb-3 mb-lg-4 mt-4">
                             <button
                               type="button"
+                              disabled={!check}
                               className="btn text-nowrap btn-md px-5"
                               style={{
                                 backgroundColor: "#52057B",

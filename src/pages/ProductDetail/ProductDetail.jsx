@@ -37,7 +37,7 @@ const ProductDetail = ({ currentPage }) => {
           <Loader />
         ) : (
           <div
-            className="product-details container-xxl mt-5"
+            className="product-details container-xxl"
             style={{ backgroundColor: "#f2f4f7" }}
           >
             <section className="container-fluid pt-3 m-0">
@@ -50,7 +50,7 @@ const ProductDetail = ({ currentPage }) => {
                     <img
                       src={selectedImage || currentProduct.images[0]?.url}
                       alt=""
-                      className="mainImg img-fluid border"
+                      className="mainImg img-fluid border bg-light"
                       style={{
                         objectFit: "contain",
                         width: "30rem",
@@ -60,7 +60,7 @@ const ProductDetail = ({ currentPage }) => {
                   </div>
 
                   <div className=" img-row d-flex align-items-center my-3 justify-content-around">
-                    {currentProduct.images?.map((imageItem) => (
+                    {currentProduct?.images?.map((imageItem) => (
                       <img
                         src={imageItem?.url}
                         alt=""
@@ -75,20 +75,21 @@ const ProductDetail = ({ currentPage }) => {
                     ))}
                   </div>
                 </div>
+
                 <div className="col-lg-7 col-xs-12 mt-3 ">
                   <ProductInfo currentProduct={currentProduct} />
                 </div>
               </div>
             </section>
-            <section className="container-fluid p-0 m-0">
-              <Description desc={currentProduct.description} />
+            <section className="container p-0 m-0">
+              <Description currentProduct={currentProduct} />
               <div className="row mt-4 mxP-1">
                 <div className="col-lg-12 col-sm-12">
-                  <ProductReview
+                  {/* <ProductReview
                     allReviews={false}
                     id={id}
                     currentProduct={currentProduct}
-                  />
+                  /> */}
                 </div>
               </div>
             </section>
@@ -96,15 +97,11 @@ const ProductDetail = ({ currentPage }) => {
         )
       ) : (
         <>
-          {currentProductLoading ? (
-            <Loader />
-          ) : (
-            <ProductReview
-              allReviews={true}
-              id={id}
-              currentProduct={currentProduct}
-            />
-          )}
+          {/* <ProductReview
+            allReviews={true}
+            id={id}
+            currentProduct={currentProduct}
+          /> */}
         </>
       )}
     </>
