@@ -9,13 +9,13 @@ import {
 export const AddItemsToCart = (id, quantity) => async (dispatch) => {
   try {
     const { data } = await axios.get(
-      `http://localhost:4000/api/v1/product/${id}`
+      `http://localhost:4000/api/v1/product/${id}`  
     );
 
     const product = {
       productId: data.product._id,
       name: data.product.name,
-      price: data.product.normalPrice,
+      price: data.product.Price,
       image: data.product.images[0].url,
       stock: data.product.stock,
       category: data.product.category,
@@ -36,3 +36,5 @@ export const RemoveItemsFromCart = (id) => async (dispatch) => {
     dispatch(cartFailure(error.response.data.message));
   }
 };
+
+

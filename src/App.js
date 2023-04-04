@@ -17,8 +17,32 @@ import ScrollToTop from "./ScrollToTop";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import MyOrders from "./pages/MyOrders/MyOrders";
+import Payment from "./pages/Payment/Payment";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+import axios from "axios";
+import { useState, useEffect } from "react";
 
 function App() {
+  const [stripeApiKey, setStripeApiKey] = useState("");
+  
+  async function getStripeApiKey() {
+    const { data } = await axios.get(
+      "http://localhost:4000/api/v1/stripeapikey",
+      {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      }
+    );
+    console.log(data);
+    setStripeApiKey(data.stripeApiKey);
+  }
+
+  useEffect(()=>{
+    getStripeApiKey();
+  })
+
   return (
     <div>
       <Router>
@@ -33,7 +57,20 @@ function App() {
             <Route path="signIn" element={<SignIn />} />
             <Route path="createAccount" element={<CreateAccount />} />
             <Route path="forgotPassword" element={<ForgotPassword />} />
-            <Route path="checkout" element={<Checkout />} />
+            <Route path="checkout">
+              <Route
+                path=""
+                element={<Elements stripe={loadStripe(stripeApiKey)}>
+                  <Checkout currentPage="checkout" />
+                </Elements>}
+              />
+              <Route
+                path="payment"
+                element={<Elements stripe={loadStripe(stripeApiKey)}>
+                <Checkout currentPage="payment" />
+              </Elements>}
+              />
+            </Route>
             <Route path="myorders" element={<MyOrders />} />
             <Route path="product">
               <Route
