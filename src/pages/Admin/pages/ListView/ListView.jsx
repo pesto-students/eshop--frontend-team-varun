@@ -9,19 +9,63 @@ const ListView = ({ page }) => {
   const { data, loading, error, reFetch } = useFetch(
     `http://localhost:4000/api/v1/admin/${page}`
   );
+
   const rawdata = page === "orders" ? data.orders : data.users;
 
   const handleDelete = (id) => {
     axios
-      .delete(`http://localhost:4000/api/v1/admin/${page.slice(0, -1)}/${id}`)
+      .delete(`http://localhost:4000/api/v1/admin/${page.slice(0, -1)}/${id}`, {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
       .then((res) => {
         toast.success("Record has been deleted");
+
         reFetch();
       })
       .catch((err) => {
-        console.log(err);
-        toast.error("Something went wrong. Try later");
+        toast.error("Something went wrong. Try Later.");
       });
+  };
+
+  const handleRoleChange = (id, role) => {
+    try {
+      axios.put(
+        `http://localhost:4000/api/v1/admin/${page.slice(0, -1)}/${id}`,
+        { role },
+        {
+          headers: {
+            authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
+
+      toast.success("Role changed Successfully.");
+
+      reFetch();
+    } catch (err) {
+      toast.error("Something went wrong. Try Later.");
+    }
+  };
+
+  const handleOrderStatusChange = (id, status) => {
+    try {
+      axios.put(
+        `http://localhost:4000/api/v1/admin/${page.slice(0, -1)}/${id}`,
+        { status },
+        {
+          headers: {
+            authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
+
+      toast.success("Status changed Successfully.");
+      reFetch();
+    } catch (err) {
+      toast.error("Something went wrong. Try Later.");
+    }
   };
 
   return (
@@ -35,49 +79,12 @@ const ListView = ({ page }) => {
               <table className="table">
                 <thead className="">
                   <tr className="border border-1 bg-light">
-                    <th>
-                      {page === "orders"
-                        ? "#OrderId"
-                        : page === "users"
-                        ? "#UserId"
-                        : "#ReviewId"}
-                    </th>
-                    <th>
-                      {page === "orders"
-                        ? "UserId"
-                        : page === "users"
-                        ? "Name"
-                        : "PostId"}
-                    </th>
-                    <th>
-                      {page === "orders"
-                        ? "Product Name"
-                        : page === "users"
-                        ? "E-mail"
-                        : "UserId"}
-                    </th>
-
-                    <th>
-                      {page === "orders"
-                        ? "Order Status"
-                        : page === "users"
-                        ? "Phone"
-                        : "Usernamae"}
-                    </th>
-                    <th>
-                      {page === "orders"
-                        ? "Payment Status"
-                        : page === "users"
-                        ? "Role"
-                        : "Comment"}
-                    </th>
-                    <th>
-                      {page === "orders"
-                        ? "Total"
-                        : page === "users"
-                        ? "Created At"
-                        : "Rating"}
-                    </th>
+                    <th>{page === "orders" ? "#OrderId" : "#UserId"}</th>
+                    <th>{page === "orders" ? "UserId" : "Name"}</th>
+                    <th>{page === "orders" ? "Product Name" : "E-mail"}</th>
+                    <th>{page === "orders" ? "Order Status" : "Phone"}</th>
+                    <th>{page === "orders" ? "Payment Status" : "Role"}</th>
+                    <th>{page === "orders" ? "Total" : "Created At"}</th>
                     <th></th>
                   </tr>
                   <div
@@ -98,29 +105,20 @@ const ListView = ({ page }) => {
                               className="fa fa-clipboard"
                               style={{
                                 color:
-                                  data.orderStatus === "Completed"
+                                  data.orderStatus === "Delivered"
                                     ? "#28C66F"
                                     : data.orderStatus === "Processing"
                                     ? "#FFAB00"
-                                    : "#EC5453",
+                                    : "#12b2f1",
                               }}
                             ></i>
-                          ) : page === "users" ? (
+                          ) : (
                             <i
                               className="fa fa-user"
                               aria-hidden="true"
                               style={{
                                 color:
                                   data.role === "admin" ? "#28C66F" : "#FFAB00",
-                              }}
-                            ></i>
-                          ) : (
-                            <i
-                              className="fa fa-comment"
-                              aria-hidden="true"
-                              style={{
-                                margin: "5px",
-                                color: "#FFAB00",
                               }}
                             ></i>
                           )}
@@ -130,9 +128,7 @@ const ListView = ({ page }) => {
                         <td>
                           {page === "orders"
                             ? `${data.user.substring(0, 7)}...`
-                            : page === "users"
-                            ? data.firstname + " " + data.lastname
-                            : `# ${data.postId.substring(0, 7)}...`}
+                            : data.firstname + " " + data.lastname}
                         </td>
 
                         {page === "orders" ? (
@@ -140,29 +136,45 @@ const ListView = ({ page }) => {
                             0,
                             10
                           )}...`}</td>
-                        ) : page === "users" ? (
-                          <td>{data.email}</td>
                         ) : (
-                          <td>{data.user.username}</td>
+                          <td>{data.email}</td>
                         )}
 
                         {page === "orders" ? (
-                          <td
-                            style={{
-                              color:
-                                data.orderStatus === "Completed"
-                                  ? "#28C66F"
-                                  : data.orderStatus === "Processing"
-                                  ? "#FFAB00"
-                                  : "#EC5453",
-                            }}
-                          >
-                            {data.orderStatus}
+                          <td>
+                            <select
+                              class="form-select form-select-sm shadow-none"
+                              aria-label=".form-select-sm example"
+                              style={{
+                                color:
+                                  data.orderStatus === "Delivered"
+                                    ? "#28C66F"
+                                    : data.orderStatus === "Processing"
+                                    ? "#FFAB00"
+                                    : "#12b2f1",
+                              }}
+                              onChange={(e) =>
+                                handleOrderStatusChange(
+                                  data._id,
+                                  e.target.value
+                                )
+                              }
+                            >
+                              <option selected>{data.orderStatus}</option>
+                              {data.orderStatus === "Processing" && (
+                                <>
+                                  <option value="Dispatched">Dispatched</option>
+                                  <option value="Delivered">Delivered</option>
+                                </>
+                              )}
+
+                              {data.orderStatus === "Dispatched" && (
+                                <option value="Delivered">Delivered</option>
+                              )}
+                            </select>
                           </td>
-                        ) : page === "users" ? (
-                          <td>Add phone no.</td>
                         ) : (
-                          <td>{data.body}</td>
+                          <td>{data.phoneNo}</td>
                         )}
 
                         {page === "orders" ? (
@@ -178,25 +190,36 @@ const ListView = ({ page }) => {
                           >
                             {data.paymentInfo.status}
                           </td>
-                        ) : page === "users" ? (
+                        ) : (
                           <td
                             style={{
                               color:
                                 data.role === "admin" ? "#28C66F" : "#FFAB00",
                             }}
                           >
-                            {data.role}
+                            <select
+                              class="form-select form-select-sm shadow-none"
+                              aria-label=".form-select-sm example"
+                              onChange={(e) =>
+                                handleRoleChange(data._id, e.target.value)
+                              }
+                            >
+                              <option selected>{data.role}</option>
+                              {data.role === "user" && (
+                                <option value="admin">admin</option>
+                              )}
+
+                              {data.role === "admin" && (
+                                <option value="user">user</option>
+                              )}
+                            </select>
                           </td>
-                        ) : (
-                          <td>{data.rating}</td>
                         )}
 
                         <td>
                           {page === "orders"
                             ? `${data.totalPrice}`
-                            : page === "users"
-                            ? data.createdAt?.substring(0, 10)
-                            : `# ${data.postId.substring(0, 7)}...`}
+                            : data.createdAt?.substring(0, 10)}
                         </td>
 
                         <td style={{ cursor: "pointer" }}>

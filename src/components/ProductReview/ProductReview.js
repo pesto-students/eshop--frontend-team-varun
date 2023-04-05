@@ -41,19 +41,18 @@ const ProductReview = ({ allReviews, id, currentProduct }) => {
       <div className="container w-100 p-0">
         <div className="row p-0">
           <div className="col-lg-7 col-sm-12">
-            {/* <p
+            <p
               className={`m-0 fw-semibold fs-4 p-0 ${allReviews ? "ms-4" : ""}`}
             >
               Reviews ({currentProduct?.numOfReviews})
-            </p> */}
+            </p>
             <div className="row mt-3">
               <div
                 style={{ height: "150px", width: "150px", margin: "0" }}
                 className={`col-4 ${allReviews ? "ms-4" : ""}`}
               >
                 <GradientSVG />
-                {/* <CircularProgressbarWithChildren
-
+                <CircularProgressbarWithChildren
                   strokeWidth={15}
                   value={(currentProduct?.rating / 5) * 100}
                   styles={{
@@ -73,14 +72,13 @@ const ProductReview = ({ allReviews, id, currentProduct }) => {
                   >
                     <p>{currentProduct?.rating.toFixed(1)}</p>
                   </div>
-                
-                </CircularProgressbarWithChildren> */}
+                </CircularProgressbarWithChildren>
               </div>
               <div className="col-lg-8">
                 <div className="d-flex flex-column w-100 mt-4 gap-2 ms-1">
                   <div className="d-flex align-items-center">
                     <p className="m-0 me-3">5 Star</p>
-                    {/* <div
+                    <div
                       className="progress w-50 border rounded-0"
                       role="progressbar"
                       aria-label="Basic example"
@@ -99,15 +97,19 @@ const ProductReview = ({ allReviews, id, currentProduct }) => {
                           ).toFixed(0)}%`,
                         }}
                       ></div>
-                    </div> */}
-                    {/* <p className="m-0 ms-3 text-secondary">
-                      {((five / currentProduct?.reviews.length) * 100).toFixed(
-                        2
-                      )}
+                    </div>
+
+                    <p className="m-0 ms-3 text-secondary">
+                      {five !== 0
+                        ? (
+                            (five / currentProduct?.reviews.length) *
+                            100
+                          ).toFixed(2)
+                        : 0}
                       %
-                    </p> */}
+                    </p>
                   </div>
-                  {/* <div className="d-flex align-items-center">
+                  <div className="d-flex align-items-center">
                     <p className="m-0 me-3">4 Star</p>
                     <div
                       className="progress w-50 border rounded-0"
@@ -130,13 +132,16 @@ const ProductReview = ({ allReviews, id, currentProduct }) => {
                       ></div>
                     </div>
                     <p className="m-0 ms-3 text-secondary">
-                      {((four / currentProduct?.reviews.length) * 100).toFixed(
-                        2
-                      )}
+                      {four !== 0
+                        ? (
+                            (four / currentProduct?.reviews.length) *
+                            100
+                          ).toFixed(2)
+                        : 0}
                       %
                     </p>
-                  </div> */}
-                  {/* <div className="d-flex align-items-center">
+                  </div>
+                  <div className="d-flex align-items-center">
                     <p className="m-0 me-3">3 Star</p>
                     <div
                       className="progress w-50 border rounded-0"
@@ -159,9 +164,12 @@ const ProductReview = ({ allReviews, id, currentProduct }) => {
                       ></div>
                     </div>
                     <p className="m-0 ms-3 text-secondary">
-                      {((three / currentProduct?.reviews.length) * 100).toFixed(
-                        2
-                      )}
+                      {three !== 0
+                        ? (
+                            (three / currentProduct?.reviews.length) *
+                            100
+                          ).toFixed(2)
+                        : 0}
                       %
                     </p>
                   </div>
@@ -188,9 +196,12 @@ const ProductReview = ({ allReviews, id, currentProduct }) => {
                       ></div>
                     </div>
                     <p className="m-0 ms-3 text-secondary">
-                      {((two / currentProduct?.reviews.length) * 100).toFixed(
-                        2
-                      )}
+                      {two !== 0
+                        ? (
+                            (two / currentProduct?.reviews.length) *
+                            100
+                          ).toFixed(2)
+                        : 0}
                       %
                     </p>
                   </div>
@@ -217,24 +228,32 @@ const ProductReview = ({ allReviews, id, currentProduct }) => {
                       ></div>
                     </div>
                     <p className="m-0 ms-3 text-secondary">
-                      {((one / currentProduct?.reviews.length) * 100).toFixed(
-                        2
-                      )}
+                      {one !== 0
+                        ? (
+                            (one / currentProduct?.reviews.length) *
+                            100
+                          ).toFixed(2)
+                        : 0}
                       %
                     </p>
-                  </div> */}
+                  </div>
                 </div>
               </div>
             </div>
             {currentProduct.reviews.length > 0 &&
-              [...Array(!allReviews ? currentProduct.reviews.length : currentProduct.reviews.length)].map((e, index) => {
+              [
+                ...Array(
+                  !allReviews
+                    ? currentProduct.reviews.length
+                    : currentProduct.reviews.length
+                ),
+              ].map((e, index) => {
                 return (
                   <div key={index}>
                     <Reviews review={currentProduct?.reviews[index]} />
                   </div>
                 );
-              }
-            )}
+              })}
             {!allReviews && currentProduct?.reviews.length > 4 ? (
               <Link
                 to={`/product/${id}/allReviews`}

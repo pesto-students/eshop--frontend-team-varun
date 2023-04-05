@@ -35,15 +35,23 @@ const ProductInfo = ({ currentProduct }) => {
 
   return (
     <div className="ms-5">
-      <p className="fw-semibold fs-5 m-0">{currentProduct?.name}</p>
+      <p className="fw-semibold fs-2 m-0">{currentProduct?.name}</p>
       <section className="d-flex align-items-center mt-2">
         <img src="../assets/productDetails/ratings.png" alt="" />
-        <p className="m-0 ms-2 p-0">
-          ({currentProduct?.ratings}) - {currentProduct?.numOfReviews} ratings
-        </p>
+        <div className="d-flex gap-4 align-items-center">
+          <p className="m-0 ms-2 p-0 d-flex gap-2">
+            ({currentProduct?.rating}) -
+            <span style={{ color: "green" }}>
+              {currentProduct?.numOfReviews} reviews
+            </span>
+          </p>
+          <p className="fw-bolder m-0" style={{ color: "#52057B" }}>
+            ~{currentProduct?.brand}
+          </p>
+        </div>
       </section>
       <section>
-        <h2 className="mt-3 fw-bold">₹{currentProduct?.Price}</h2>
+        <h2 className="mt-3 fw-bold">₹{currentProduct?.price}</h2>
         <p className="m-0 text-secondary mt-1">Inclusive of all taxes</p>
         <p className="m-0 text-secondary">
           EMI starts at ₹2,842. No Cost EMI available EMI options

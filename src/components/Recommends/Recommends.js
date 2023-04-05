@@ -50,10 +50,10 @@ const Recommends = ({ products, loading, error }) => {
 
                     <p className="deal-title">{product.name}</p>
                     <div className="deal-body">
-                      <h5 className="deal-price mb-0">{`₹ ${product.normalPrice}`}</h5>
+                      <h5 className="deal-price mb-0">{`₹ ${product.price}`}</h5>
                       <div className="deal-rating d-flex gap-1 align-items-center">
                         <img src="../assets/star.png" alt="" />
-                        <p className="m-0">{product.ratings}</p>
+                        <p className="m-0">{product.rating}</p>
                       </div>
                     </div>
                   </div>

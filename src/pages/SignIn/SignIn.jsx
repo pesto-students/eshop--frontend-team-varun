@@ -22,11 +22,10 @@ const SignIn = () => {
     dispatch(SignInUser(email, password));
   };
 
-  console.log(useSelector((state) => state.user));
-
   useEffect(() => {
     if (isAuthenthicated === true) navigate("/");
   }, [isAuthenthicated]);
+
 
   return (
     <div className="row signIn m-0" style={{ backgroundColor: "#f2f4f7" }}>

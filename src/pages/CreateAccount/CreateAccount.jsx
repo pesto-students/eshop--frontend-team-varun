@@ -10,6 +10,7 @@ const CreateAccount = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [phoneNo, setPhoneNo] = useState("");
   const [error, setError] = useState(null);
   const [check, setCheck] = useState(false);
   const dispatch = useDispatch();
@@ -34,6 +35,9 @@ const CreateAccount = () => {
       }
       setError("*Last Name should contains only Alphabets.");
       return;
+    } else if (phoneNo.length < 10 || phoneNo.length > 10) {
+      setError("*Please enter valid Phone number.");
+      return;
     } else if (!regEmail.test(email)) {
       if (email === "") {
         setError("*Email should not be empty.");
@@ -54,8 +58,7 @@ const CreateAccount = () => {
   };
 
   const handleCreateAccount = () => {
-    // console.log(firstname , lastname , email , password);
-    dispatch(registerUser(firstname, lastname, email, password));
+    dispatch(registerUser(firstname, lastname, phoneNo, email, password));
   };
 
   // get current signIn user from store
@@ -116,6 +119,19 @@ const CreateAccount = () => {
                                 id="lastName"
                                 className="form-control shadow-none"
                                 onChange={(e) => setLastName(e.target.value)}
+                              />
+                            </div>
+                          </div>
+                          <div className="d-flex flex-row align-items-center mb-4">
+                            <div className="form-outline flex-fill">
+                              <label className="form-label" for="phoneNo">
+                                Phone No.
+                              </label>
+                              <input
+                                type="number"
+                                id="phoneNo"
+                                className="form-control shadow-none"
+                                onChange={(e) => setPhoneNo(e.target.value)}
                               />
                             </div>
                           </div>
@@ -210,7 +226,7 @@ const CreateAccount = () => {
                               {error}
                             </label>
                             <label style={{ color: "red", fontSize: "14px" }}>
-                              {registerError && <>Email already registered.</>}
+                              {registerError}
                             </label>
                           </div>
                           <div className="d-flex justify-content-left mb-3 mb-lg-4 mt-4">

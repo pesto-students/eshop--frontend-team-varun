@@ -7,13 +7,13 @@ import { signOut } from "../../Redux/Reducers/userSlice";
 
 const Header = () => {
   const { currentUser } = useSelector((state) => state.user);
-  console.log(currentUser);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [open, setopen] = useState(false);
 
   const handelLogOut = () => {
     dispatch(signOut());
+    localStorage.removeItem("token");
     navigate("/");
   };
 
@@ -100,7 +100,7 @@ const Header = () => {
                 onClick={() => setopen(!open)}
               >
                 <div className="m-1" style={{ color: "white" }}>
-                  {`Hello  ${currentUser.name}`}
+                  {`Hello  ${currentUser.firstname}`}
                 </div>
                 {open && (
                   <div className="menu-options">
