@@ -39,17 +39,24 @@ const CreatePassword = () => {
   const handleResetPassword = (e) => {
     e.preventDefault();
 
-    if (password !== confirmPassword) {
-      setError("Password mismatch");
-    } else {
-      const passwords = {
-        password,
-        confirmPassword,
-      };
+    const passwords = {
+      password,
+      confirmPassword,
+    };
 
-      dispatch(resetPassword(token, passwords));
-      setError();
-    }
+    dispatch(resetPassword(token, passwords));
+
+    // if (password !== confirmPassword) {
+    //   setError("Password mismatch");
+    // } else {
+    //   const passwords = {
+    //     password,
+    //     confirmPassword,
+    //   };
+
+    //   dispatch(resetPassword(token, passwords));
+    //   setError();
+    // }
   };
 
   return (

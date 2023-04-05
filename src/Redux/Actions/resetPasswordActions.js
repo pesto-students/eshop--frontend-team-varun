@@ -10,13 +10,12 @@ import {
 export const resetPassword = (token, passwords) => async (dispatch) => {
   try {
     dispatch(resetPasswordStart());
+    console.log(token);
 
-    const config = { headers: { "Content-Type": "application/json" } };
     const res = await axios.put(
       `http://localhost:4000/api/v1/password/reset/${token}`,
       {
         passwords,
-        config,
       }
     );
 
@@ -24,7 +23,6 @@ export const resetPassword = (token, passwords) => async (dispatch) => {
     toast.success();
     dispatch(clearError);
   } catch (error) {
-    console.log(error);
     dispatch(resetPasswordFailure(error.response.data.message));
   }
 };

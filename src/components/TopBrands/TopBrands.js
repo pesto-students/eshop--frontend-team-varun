@@ -1,6 +1,6 @@
 import React from "react";
 import "./topBrands.css";
-import { brands } from "../constants/constants";
+import { brands } from "../Constants/constants";
 import Marquee from "react-fast-marquee";
 
 const TopBrands = () => {

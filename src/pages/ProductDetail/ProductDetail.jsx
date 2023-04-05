@@ -48,7 +48,7 @@ const ProductDetail = ({ currentPage }) => {
                 >
                   <div className="container p-3">
                     <img
-                      src={selectedImage || currentProduct.images[0]?.url}
+                      src={selectedImage || currentProduct?.images[0]?.url}
                       alt=""
                       className="mainImg img-fluid border bg-light"
                       style={{
@@ -85,11 +85,11 @@ const ProductDetail = ({ currentPage }) => {
               <Description currentProduct={currentProduct} />
               <div className="row mt-4 mxP-1">
                 <div className="col-lg-12 col-sm-12">
-                  {/* <ProductReview
+                  <ProductReview
                     allReviews={false}
                     id={id}
                     currentProduct={currentProduct}
-                  /> */}
+                  />
                 </div>
               </div>
             </section>
@@ -97,11 +97,11 @@ const ProductDetail = ({ currentPage }) => {
         )
       ) : (
         <>
-          {/* <ProductReview
+          <ProductReview
             allReviews={true}
             id={id}
             currentProduct={currentProduct}
-          /> */}
+          />
         </>
       )}
     </>
