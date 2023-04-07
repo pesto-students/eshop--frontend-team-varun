@@ -156,7 +156,7 @@ const Checkout = ({ currentPage }) => {
             {currentPage === "checkout" ? (
               <div className="shipping-data">
                 <p className="p-0 mb-0 h4 fw-semibold">Shipping Address</p>
-                <div className="personal-data">
+                <div className="personal-data"> 
                   <div className="fname-text w-100">
                     <label
                       htmlFor="exampleFormControlInput1"

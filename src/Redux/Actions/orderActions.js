@@ -38,12 +38,6 @@ export const getAllOrders = () => async (dispatch) => {
 
 export const createOrder = async (order) => {
   try {
-    const config = {
-      headers: {
-        "Content-Type": "application/json",
-        authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-    };
     const { data } = await axios.post(
       "http://localhost:4000/api/v1/order/new",
       {...order},

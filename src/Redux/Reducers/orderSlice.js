@@ -18,7 +18,7 @@ const ordersSlice = createSlice({
     },
     ordersSuccess: (state, action) => {
       state.ordersLoading = false;
-      state.orderItems = action.payload;
+      state.orderItems = action.payload.orders;
       state.orderError = false;
     },
     ordersFailure: (state, action) => {
