@@ -8,22 +8,9 @@ import { getMyOrders } from "../../Redux/Actions/orderActions";
 
 const MyOrders = () => {
   const dispatch = useDispatch();
-  //   const searchSubmitHandler = (e) => {
-  //     if (keyword.trim()) {
-  //       dispatch(getProductsUsingFilters(keyword));
-  //     }
-  //   };
-
-  //   const childToParent = (category, minPrice, maxPrice, brand) => {
-  //     console.log(brand);
-  //     dispatch(
-  //       getProductsUsingFilters("", category, [minPrice, maxPrice], 0, brand)
-  //     );
-  //   };
 
   useEffect(() => {
     dispatch(getMyOrders());
-    // dispatch(getProductsUsingFilters());
   }, []);
 
   const { orderItems, ordersLoading, orderError } = useSelector(
@@ -34,24 +21,6 @@ const MyOrders = () => {
 
   return (
     <div className="container mt-5 p-0">
-      <div className="input-group border rounded-2">
-        <input
-          type="text"
-          className="form-control border-0 shadow-none"
-          placeholder="Search order"
-          aria-label="Order Name"
-          aria-describedby="basic-addon2"
-          onChange={(e) => {}}
-        />
-        <span className="input-group-text bg-white border-0" id="basic-addon2">
-          <img
-            src="../assets/search.svg"
-            alt=""
-            //   onClick={searchSubmitHandler}
-          />
-        </span>
-      </div>
-
       {orderItems.map((order) => (
         <div className="container p-2 border border-secondary rounded-2 mt-5 mb-5">
           {order.orderItems.map((o) => (

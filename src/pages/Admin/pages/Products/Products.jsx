@@ -40,9 +40,9 @@ const Products = () => {
   } = useSelector((state) => state.products);
 
   return (
-    <div className="container-fluid mb-5 m-0 p-0">
+    <div className="container-fluid m-0 p-0">
       <div className="m-0">
-        <div className="d-flex w-75">
+        {/* <div className="d-flex w-75">
           <div className="input-group border rounded-2 mb-5">
             <input
               type="text"
@@ -83,39 +83,29 @@ const Products = () => {
               </button>
             </Link>
           </div>
-        </div>
-        <InfiniteScroll
+        </div> */}
+        {/* <InfiniteScroll
           dataLength={products.length}
           next={fetchMoreData}
           hasMore={keyword ? false : products.length !== productsCount}
           loader={<Loader />}
-        >
-          <div className="container">
-            <div className="row">
-              {productsLoading == true ? (
-                <Loader />
-              ) : products.length > 0 ? (
-                products?.map((product) => (
-                  <div className="col-xxl-3 col-xl-3 col-lg-4 col-md-4 col-sm-6 mb-4 p-0 text-dark">
-                    <Dealcards deall={product} />
-                  </div>
-                ))
-              ) : (
-                <p className="text-center">No Products Found</p>
-              )}
-            </div>
+        > */}
+        <div className="container">
+          <div className="row">
+            {productsLoading === true ? (
+              <Loader />
+            ) : products.length > 0 ? (
+              products?.map((product) => (
+                <div className="col-xxl-3 col-xl-3 col-lg-4 col-md-4 col-sm-6 mb-4 p-0 text-dark">
+                  <Dealcards deall={product} />
+                </div>
+              ))
+            ) : (
+              <p className="text-center">No Products Found</p>
+            )}
           </div>
-        </InfiniteScroll>
-        {/* {!productsLoading && products.length > 0 && (
-          <Paginate
-            postsPerPage={resultPerPage}
-            totalPosts={productsCount}
-            currentPage={currentPage}
-            paginate={paginate}
-            previousPage={previousPage}
-            nextPage={nextPage}
-          />
-        )} */}
+        </div>
+        {/* </InfiniteScroll> */}
       </div>
     </div>
   );

@@ -110,14 +110,13 @@ const Dashboard = ({ currentPage }) => {
                           </div>
                         </div>
                       </div>
-
                     ) : (
-                      <div className="col-md-10 col-lg-10 col-xl-10 order-2 order-lg-1 py-4 my-4"></div>
+                      <div className="col-md-10 col-lg-10 col-xl-10 order-2 order-lg-1 py-4 m-0"></div>
                     )}
                   </div>
                 </div>
               </div>
-              <div className="col-lg-12 col-xl-12 mt-3">
+              <div className="col-lg-12 col-xl-12 m-0">
                 {(pageName === "Products" && <Products page="Products" />) ||
                   (pageName === "Orders" && <ListView page="orders" />) ||
                   (pageName === "Users" && <ListView page="users" />) ||
