@@ -3,7 +3,7 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import "./SignIn.css";
 import { useDispatch, useSelector } from "react-redux";
-import { SignInUser } from "../../Redux/Actions/userActions";
+import { SignInUser, clearErrors } from "../../Redux/Actions/userActions";
 import Loader from "../../components/Loader/Loader";
 
 const SignIn = () => {
@@ -14,8 +14,9 @@ const SignIn = () => {
   const [check, setCheck] = useState(false);
 
   // get current signIn user from store
-  const { currentUser, signInLoading, signInError, isAuthenthicated } =
-    useSelector((state) => state.user);
+  const { signInLoading, signInError, isAuthenthicated } = useSelector(
+    (state) => state.user
+  );
 
   const handleClick = async (e) => {
     e.preventDefault();
@@ -23,9 +24,9 @@ const SignIn = () => {
   };
 
   useEffect(() => {
+    setCheck(false);
     if (isAuthenthicated === true) navigate("/");
   }, [isAuthenthicated]);
-
 
   return (
     <div className="row signIn m-0" style={{ backgroundColor: "#f2f4f7" }}>

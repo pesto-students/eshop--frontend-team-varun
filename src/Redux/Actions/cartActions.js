@@ -1,21 +1,22 @@
 import axios from "axios";
 import {
   addToCart,
-  cartFailure,
   removeItemFromCart,
+  resetCart,
+  cartFailure,
 } from "../Reducers/cartSlice";
 
 // Add to cart
 export const AddItemsToCart = (id, quantity) => async (dispatch) => {
   try {
     const { data } = await axios.get(
-      `http://localhost:4000/api/v1/product/${id}`  
+      `http://localhost:4000/api/v1/product/${id}`
     );
 
     const product = {
       productId: data.product._id,
       name: data.product.name,
-      price: data.product.Price,
+      price: data.product.price,
       image: data.product.images[0].url,
       stock: data.product.stock,
       category: data.product.category,
@@ -37,4 +38,11 @@ export const RemoveItemsFromCart = (id) => async (dispatch) => {
   }
 };
 
-
+export const resetCartItems = () => async (dispatch) => {
+  console.log("called reset cart actions");
+  try {
+    dispatch(resetCart);
+  } catch (error) {
+    dispatch(cartFailure(error.response.data.message));
+  }
+};

@@ -22,10 +22,12 @@ import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 
 function App() {
   const [stripeApiKey, setStripeApiKey] = useState("");
-  
+  const { isAuthenthicated } = useSelector((state) => state.user);
+
   async function getStripeApiKey() {
     const { data } = await axios.get(
       "http://localhost:4000/api/v1/stripeapikey",
@@ -35,13 +37,14 @@ function App() {
         },
       }
     );
-    console.log(data);
     setStripeApiKey(data.stripeApiKey);
   }
 
-  useEffect(()=>{
-    getStripeApiKey();
-  })
+  useEffect(() => {
+    if (isAuthenthicated) {
+      getStripeApiKey();
+    }
+  }, [isAuthenthicated]);
 
   return (
     <div>
@@ -60,15 +63,19 @@ function App() {
             <Route path="checkout">
               <Route
                 path=""
-                element={<Elements stripe={loadStripe(stripeApiKey)}>
-                  <Checkout currentPage="checkout" />
-                </Elements>}
+                element={
+                  <Elements stripe={loadStripe(stripeApiKey)}>
+                    <Checkout currentPage="checkout" />
+                  </Elements>
+                }
               />
               <Route
                 path="payment"
-                element={<Elements stripe={loadStripe(stripeApiKey)}>
-                <Checkout currentPage="payment" />
-              </Elements>}
+                element={
+                  <Elements stripe={loadStripe(stripeApiKey)}>
+                    <Checkout currentPage="payment" />
+                  </Elements>
+                }
               />
             </Route>
             <Route path="myorders" element={<MyOrders />} />
@@ -82,7 +89,6 @@ function App() {
                 element={<ProductDetail currentPage="reviews" />}
               />
             </Route>
-            {/* http://localhost:4000/api/v1/password/reset/21d4cdc8c3fcfede93d8664bcad398fd2d23e6c6 */}
             <Route path="password/reset/:token" element={<CreatePassword />} />
             <Route path="admin">
               <Route

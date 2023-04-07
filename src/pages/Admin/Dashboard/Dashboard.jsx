@@ -5,11 +5,10 @@ import "./Dashboard.css";
 import ListView from "../pages/ListView/ListView";
 import { Link, useNavigate } from "react-router-dom";
 import AddProduct from "../pages/AddProduct/AddProduct";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 const Dashboard = ({ currentPage }) => {
   const pageName = currentPage.charAt(0).toUpperCase() + currentPage.slice(1);
-  const dispatch = useDispatch();
   const navigate = useNavigate();
   const { currentUser } = useSelector((state) => state.user);
 
@@ -57,34 +56,38 @@ const Dashboard = ({ currentPage }) => {
                         <div className="container justify-content-center mt-4 mb-3">
                           <div className="row">
                             <div className="col-md-10 d-flex justify-content-start ">
-                              <div className="input-group mb-3 bg-light border border-1 rounded">
-                                <input
-                                  type="text"
-                                  className="form-control input-text border border-0 shadow-none"
-                                  placeholder={`Search  ${currentPage.slice(
-                                    0,
-                                    currentPage.length - 1
-                                  )}... `}
-                                  aria-label="Recipient's username"
-                                  aria-describedby="basic-addon2"
-                                />
+                              {currentPage === "products" ? (
+                                <div className="input-group mb-3 bg-light border border-1 rounded">
+                                  <input
+                                    type="text"
+                                    className="form-control input-text border border-0 shadow-none"
+                                    placeholder={`Search  ${currentPage.slice(
+                                      0,
+                                      currentPage.length - 1
+                                    )}... `}
+                                    aria-label="Recipient's username"
+                                    aria-describedby="basic-addon2"
+                                  />
 
-                                <div className="input-group-append">
-                                  <button
-                                    className="btn btn-lg border border-0 bg-light"
-                                    style={{
-                                      outline: "#52057B",
-                                      backgroundColor: "white",
-                                    }}
-                                    type="button"
-                                  >
-                                    <i
-                                      className="fa fa-search"
-                                      style={{ color: "#52057B" }}
-                                    ></i>
-                                  </button>
+                                  <div className="input-group-append">
+                                    <button
+                                      className="btn btn-lg border border-0 bg-light"
+                                      style={{
+                                        outline: "#52057B",
+                                        backgroundColor: "white",
+                                      }}
+                                      type="button"
+                                    >
+                                      <i
+                                        className="fa fa-search"
+                                        style={{ color: "#52057B" }}
+                                      ></i>
+                                    </button>
+                                  </div>
                                 </div>
-                              </div>
+                              ) : (
+                                <div className="col-md-10 col-lg-10 col-xl-10 p-4 mt-3"></div>
+                              )}
                               {currentPage === "products" && (
                                 <div className="mx-4">
                                   <Link to="/admin/addProduct">
