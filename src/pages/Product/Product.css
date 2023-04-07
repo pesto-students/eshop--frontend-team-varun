@@ -15,13 +15,9 @@
 }
 
 .product-list-header .input-group{
-    width: 75%;
+    width: 50%;
     margin-left: 22px;
 }
-
-/* Pagination css start */
-
-/* Pagination css end */
 
 .product-list-body {
     display: flex;

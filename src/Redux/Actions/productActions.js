@@ -48,12 +48,12 @@ export const clearErrors = () => async (dispatch) => {
 export const getProductsUsingFilters =
   (keyword = "", category = "", price = [0, 2500000], page, brand = "") =>
   async (dispatch) => {
+    console.log(page);
     try {
       dispatch(addProductsRequest());
-
       if (category) {
         const res = await axios.get(
-          `http://localhost:4000/api/v1/products?keyword=${keyword}&category=${category}&price[gte]=${price[0]}&price[lte]=${price[1]}&page=${page}&brand=${brand}`
+          `http://localhost:4000/api/v1/products?keyword=${keyword}&category=${category}`
         );
         dispatch(addProductsSuccess(res.data));
       } else if (brand) {
@@ -145,6 +145,7 @@ export const getUserCoordinates = () => {
         axios
           .request(options)
           .then(function (response) {
+            // console.log(`${response.data.location.name}, ${response.data.location.region}`);
             return `${response.data.location.name}, ${response.data.location.region}`;
           })
           .catch(function (error) {

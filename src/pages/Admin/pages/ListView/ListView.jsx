@@ -69,10 +69,10 @@ const ListView = ({ page }) => {
   };
 
   return (
-    <div className="container-fluid mb-5">
+    <div className="container-fluid mb-5 mt-5">
       <div className="m-0">
         <div className="row">
-          <div className="col-md-12">
+          <div className="col-md-12 m-0 p-0">
             {loading === true ? (
               <Loader />
             ) : (
@@ -94,7 +94,7 @@ const ListView = ({ page }) => {
                     }}
                   ></div>
                 </thead>
-
+ 
                 <tbody>
                   {rawdata?.map((data) => (
                     <>

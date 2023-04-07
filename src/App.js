@@ -22,9 +22,11 @@ import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 
 function App() {
   const [stripeApiKey, setStripeApiKey] = useState("");
+  const { isAuthenthicated } = useSelector((state) => state.user);
   
   async function getStripeApiKey() {
     const { data } = await axios.get(
@@ -40,7 +42,10 @@ function App() {
   }
 
   useEffect(()=>{
-    getStripeApiKey();
+    if(isAuthenthicated){
+      getStripeApiKey();
+    }
+    
   })
 
   return (

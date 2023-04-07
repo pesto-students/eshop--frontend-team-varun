@@ -1,5 +1,4 @@
 import React from "react";
-import { features, otherFeatures } from "../Constants/constants";
 
 const Description = ({ currentProduct }) => {
   return (
