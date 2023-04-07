@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   AddItemsToCart,
   RemoveItemsFromCart,
@@ -10,6 +10,7 @@ import "./Cart.css";
 const Cart = () => {
   const { cartItems } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handlePlus = (id, quantity, stock) => {
     const netQty = quantity + 1;
@@ -154,14 +155,14 @@ const Cart = () => {
                         </table>
                       </div>
                     ) : (
-                      <>
-                        <h4 className="py-2 text-uppercase text-center">
+                      <div className="d-flex justify-content-center align-content-center py-5 ">
+                        <h4 className="py-2 text-uppercase text-center opacity-50">
                           Your cart is Empty add Some Products
                         </h4>
-                      </>
+                      </div>
                     )}
 
-                    <div className="d-flex justify-content-left mb-lg-4 mt-5">
+                    {/* <div className="d-flex justify-content-left mb-lg-4 mt-5">
                       <Link
                         to="/products"
                         className="nav-link text-white"
@@ -178,7 +179,7 @@ const Cart = () => {
                           Continue Shopping
                         </button>
                       </Link>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               </div>
@@ -201,7 +202,7 @@ const Cart = () => {
                       <ul className="list-unstyled mb-4">
                         {/* <li className="d-flex justify-content-between py-3 border-bottom">
                           <strong className="text-muted">Order Subtotal</strong>
-                          <strong>{` ₹ ${cartItems??.reduce(
+                          <strong>{` ₹ ${cartItems?.reduce(
                             (acc, item) => acc + item.quantity * item.price,
                             0
                           )}`}</strong>
@@ -211,8 +212,8 @@ const Cart = () => {
                             Shipping and handling
                           </strong>
                           <strong>₹0.00</strong>
-                        </li>
-                        <li className="d-flex justify-content-between py-3 border-bottom">
+                        </li> */}
+                        {/* <li className="d-flex justify-content-between py-3 border-bottom">
                           <strong className="text-muted">Tax</strong>
                           <strong>₹0.00</strong>
                         </li> */}
@@ -229,23 +230,19 @@ const Cart = () => {
                       </ul>
                     </div>
 
-                    <div className="d-flex justify-content-left mb-lg-4">
-                      <Link
-                        to="/checkout"
-                        className="nav-link text-white"
-                        style={{ textDecoration: "none" }}
+                    <div className="d-flex justify-content-center mb-lg-4">
+                      <button
+                        disabled={cartItems.length === 0 ? true : false}
+                        type="button"
+                        className="btn text-nowrap btn-md px-5"
+                        style={{
+                          backgroundColor: "#52057B",
+                          color: "white",
+                        }}
+                        onClick={(e) => navigate("/checkout")}
                       >
-                        <button
-                          type="button"
-                          className="btn text-nowrap btn-md px-5"
-                          style={{
-                            backgroundColor: "#52057B",
-                            color: "white",
-                          }}
-                        >
-                          Procceed to checkout
-                        </button>
-                      </Link>
+                        Procceed to checkout
+                      </button>
                     </div>
                   </div>
                 </div>
