@@ -6,20 +6,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 import { useSelector, useDispatch } from "react-redux";
 import Loader from "../../components/Loader/Loader";
-import axios from "axios";
 import Paginate from "../../components/Pagination/Pagination";
-import {
-  getProducts,
-  getProductsUsingFilters,
-  getUserCoordinates,
-} from "../../Redux/Actions/productActions";
+import { getProductsUsingFilters } from "../../Redux/Actions/productActions";
 
 const Product = () => {
   const dispatch = useDispatch();
 
   const [keyword, setKeyword] = useState("");
-  const [userAddress, setUserAddress] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
+  const [filter, setFilter] = useState(false);
 
   const paginate = (pageNumber) => {
     dispatch(getProductsUsingFilters("", "", [0, 9999999], pageNumber));
@@ -41,18 +36,11 @@ const Product = () => {
   };
 
   useEffect(() => {
-    setUserAddress(getUserCoordinates());
     dispatch(getProductsUsingFilters());
-    // dispatch(getProductsUsingFilters());
   }, []);
 
-  const {
-    products,
-    productsError,
-    productsLoading,
-    productsCount,
-    resultPerPage,
-  } = useSelector((state) => state.products);
+  const { products, productsLoading, productsCount, resultPerPage } =
+    useSelector((state) => state.products);
 
   const searchSubmitHandler = (e) => {
     if (keyword.trim()) {
@@ -60,8 +48,8 @@ const Product = () => {
     }
   };
 
-  const childToParent = (category, minPrice, maxPrice, brand) => {
-    console.log(brand);
+  const childToParent = (category, minPrice, maxPrice, brand, filter) => {
+    setFilter(filter);
     dispatch(
       getProductsUsingFilters("", category, [minPrice, maxPrice], 0, brand)
     );
@@ -71,8 +59,8 @@ const Product = () => {
     <section className="product-list">
       <div className="product-list-header pt-5">
         <div className="user-loc d-flex align-items-center gap-2">
-          <img src="../assets/location.svg" alt="" />
-          <p className="m-0 p-0">{userAddress}</p>
+          {/* <img src="../assets/location.svg" alt="" />
+          <p className="m-0 p-0">{userAddress}</p> */}
         </div>
         <div className="input-group border rounded-2">
           <input
@@ -134,15 +122,17 @@ const Product = () => {
               <>
                 <Loader />
               </>
-            ) : (
+            ) : products.length > 0 ? (
               products?.map((product) => (
                 <div className="col-xxl-3 col-xl-3 col-lg-4 col-md-4 col-sm-6 mb-4 p-0 text-dark">
                   <Dealcards deall={product} />
                 </div>
               ))
+            ) : (
+              <p className="text-center">No Products Found</p>
             )}
           </div>
-          {!productsLoading && (
+          {!productsLoading && products.length > 0 && !filter && (
             <Paginate
               postsPerPage={resultPerPage}
               totalPosts={productsCount}

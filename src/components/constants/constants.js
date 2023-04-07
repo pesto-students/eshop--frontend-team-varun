@@ -127,19 +127,6 @@ export const dailyDeals = [
   },
 ];
 
-export const brands = [
-  "../assets/intel.png",
-  "../assets/boat.png",
-  "../assets/hp.png",
-  "../assets/noise.png",
-  "../assets/microsoft.png",
-  "../assets/dell.png",
-  "../assets/sony.png",
-  "../assets/bose.png",
-  "../assets/samsung.png",
-  "../assets/lg.png",
-];
-
 export const features = [
   {
     name: "Brand",

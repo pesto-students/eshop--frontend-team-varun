@@ -1,7 +1,19 @@
 import React from "react";
 import "./topBrands.css";
-import { brands } from "../Constants/constants";
 import Marquee from "react-fast-marquee";
+
+const brands = [
+  "../assets/intel.png",
+  "../assets/boat.png",
+  "../assets/hp.png",
+  "../assets/noise.png",
+  "../assets/microsoft.png",
+  "../assets/dell.png",
+  "../assets/sony.png",
+  "../assets/bose.png",
+  "../assets/samsung.png",
+  "../assets/lg.png",
+];
 
 const TopBrands = () => {
   return (

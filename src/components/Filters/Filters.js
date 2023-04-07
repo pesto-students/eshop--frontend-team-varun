@@ -13,7 +13,7 @@ const Filters = ({ childToParent }) => {
     <div className="filter-card text-start px-3 pb-4 mb-3">
       <div className="filter-card-title mt-4 mb-3 d-flex align-items-center justify-content-between me-3">
         <p className="mb-0 p-0 fw-semibold fs-5">Filters</p>
-        {category || minPrice > 0 || maxPrice > 0 ? (
+        {category || minPrice > 0 || maxPrice > 0 || brand ? (
           <FontAwesomeIcon
             icon={faClose}
             className="bg-secondary p-2 text-white"
@@ -22,7 +22,7 @@ const Filters = ({ childToParent }) => {
               setMinPrice("");
               setMaxPrice("");
               setBrand("");
-              childToParent("", 0, 9999999, "");
+              childToParent("", 0, 9999999, "", false);
             }}
           />
         ) : (
@@ -41,7 +41,7 @@ const Filters = ({ childToParent }) => {
             checked={category === "Mobile"}
             onClick={() => {
               setCategory("Mobile");
-              childToParent("Mobile", 0, 9999999, "");
+              childToParent("Mobile", 0, 9999999, "", true);
             }}
           />
           Mobile
@@ -54,8 +54,8 @@ const Filters = ({ childToParent }) => {
             id="latestUploads"
             checked={category === "Television"}
             onClick={() => {
-              setCategory("Television");
-              childToParent("Television", 0, 9999999, "");
+              setCategory("Tv");
+              childToParent("Tv", 0, 9999999, "", true);
             }}
           />
           Television
@@ -69,7 +69,7 @@ const Filters = ({ childToParent }) => {
             checked={category === "Laptop"}
             onClick={() => {
               setCategory("Laptop");
-              childToParent("Laptop", 0, 9999999, "");
+              childToParent("Laptop", 0, 9999999, "", true);
             }}
           />
           Laptop
@@ -87,7 +87,7 @@ const Filters = ({ childToParent }) => {
             checked={brand === "Lenovo"}
             onClick={() => {
               setBrand("Lenovo");
-              childToParent("", 0, 9999999, "Lenovo");
+              childToParent("", 0, 9999999, "Lenovo", true);
             }}
           />
           Lenovo
@@ -101,7 +101,7 @@ const Filters = ({ childToParent }) => {
             checked={brand === "Samsung"}
             onClick={() => {
               setBrand("Samsung");
-              childToParent("", 0, 9999999, "Samsung");
+              childToParent("", 0, 9999999, "Samsung", true);
             }}
           />
           Samsung
@@ -115,7 +115,7 @@ const Filters = ({ childToParent }) => {
             checked={brand === "LG"}
             onClick={() => {
               setBrand("LG");
-              childToParent("", 0, 9999999, "LG");
+              childToParent("", 0, 9999999, "LG", true);
             }}
           />
           LG
@@ -145,7 +145,7 @@ const Filters = ({ childToParent }) => {
         <button
           className="btn btn-primary border-0 mb-4"
           style={{ backgroundColor: "#52057B" }}
-          onClick={() => childToParent(category, minPrice, maxPrice, brand)}
+          onClick={() => childToParent(category, minPrice, maxPrice, brand, true)}
         >
           Submit
         </button>
