@@ -50,11 +50,13 @@ const Checkout = ({ currentPage }) => {
       setFirstName(currentUser.firstname);
       setLastName(currentUser.lastname);
       setPhoneNo(currentUser.phoneNo);
-      setAddress(shippingInfo.address);
-      setCountry(shippingInfo.country);
-      setState(shippingInfo.state);
-      setCity(shippingInfo.city);
-      setPinCode(shippingInfo.pinCode);
+      if(shippingInfo){
+        setAddress(shippingInfo.address);
+        setCountry(shippingInfo.country);
+        setState(shippingInfo.state);
+        setCity(shippingInfo.city);
+        setPinCode(shippingInfo.pinCode);
+      }
     }
 
     // setAddress(shippingInfo.address);

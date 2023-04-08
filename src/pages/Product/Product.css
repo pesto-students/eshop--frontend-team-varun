@@ -5,7 +5,6 @@
 .product-list-header {
     display: flex;
     align-items: center;
-    padding-top: 24px;
     padding-left: 24px;
 }
 
@@ -23,7 +22,7 @@
     display: flex;
     align-items: center;
     align-items: flex-start;
-    margin-top: 24px;
+    padding-top: 24px;
     padding-left: 24px;
     gap: 32px;
 }
@@ -45,7 +44,7 @@
 
     .product-list-body,
     .product-list-header{
-        padding-left: 16px;
+        padding-left: 0;
     }
 
     .product-list-header .input-group{
@@ -56,6 +55,7 @@
     .product-filter-mobile{
         display: flex;
         flex-direction: column;
+        margin-left: 16px;
     }
 
     .product-filters{
@@ -64,6 +64,11 @@
 
     .product-list-body .container{
         margin-right: auto;
+    }
+
+    .input-group{
+        margin-left: 16px;
+        width: 100%;
     }
 }
 

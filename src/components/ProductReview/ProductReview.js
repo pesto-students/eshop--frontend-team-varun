@@ -20,7 +20,7 @@ const ProductReview = ({ allReviews, id, currentProduct }) => {
   useEffect(() => {
     function starsPer() {
       const counts = {};
-      for (const num of currentProduct?.reviews) {
+      for (const num of currentProduct.reviews) {
         counts[num.rating] = counts[num.rating] ? counts[num.rating] + 1 : 1;
       }
       setFive(counts[5] === undefined ? 0 : counts[5]);
@@ -240,12 +240,12 @@ const ProductReview = ({ allReviews, id, currentProduct }) => {
                 </div>
               </div>
             </div>
-            {currentProduct.reviews.length > 0 &&
+            {currentProduct?.reviews.length > 0 &&
               [
                 ...Array(
                   !allReviews
-                    ? currentProduct.reviews.length
-                    : currentProduct.reviews.length
+                    ? currentProduct?.reviews.length
+                    : currentProduct?.reviews.length
                 ),
               ].map((e, index) => {
                 return (
