@@ -19,7 +19,7 @@ const MyOrders = () => {
 
   return (
     <div className="container mt-5 p-0">
-      {orderItems.map((order) => (
+      {orderItems.map((orderItem) => (
         <div className="container p-2 border border-secondary rounded-2 mt-5 mb-5">
           <div className="d-flex justify-content-between align-items-center m-0 mx-5 mt-2">
             <div className="order-status m-0">
@@ -64,6 +64,7 @@ const MyOrders = () => {
               </Link>
             </div>
           ))}
+
         </div>
       ))}
     </div>

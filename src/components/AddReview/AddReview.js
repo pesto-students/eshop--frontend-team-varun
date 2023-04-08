@@ -7,13 +7,22 @@ import "./AddReview.css";
 import { addReview } from "../../Redux/Actions/reviewActions";
 import { useState } from "react";
 import { toast } from "react-toastify";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const AddReview = ({ id }) => {
   const [review, setReview] = useState("");
   const [rating, setRating] = useState(0);
+  const { isAuthenthicated } = useSelector((state) => state.user);
+  const navigate = useNavigate();
 
   const ratingChanged = (newRating) => {
     setRating(newRating);
+  };
+
+  const handleAddReview = () => {
+    if (isAuthenthicated === false) navigate("/signin");
+    addReview(id, rating, review);
   };
 
   return (
@@ -46,10 +55,7 @@ const AddReview = ({ id }) => {
             backgroundColor: "#52057B",
             color: "white",
           }}
-          onClick={() => {
-            toast.success("Review Added");
-            addReview(id, rating, review);
-          }}
+          onClick={handleAddReview}
         >
           Submit
         </button>

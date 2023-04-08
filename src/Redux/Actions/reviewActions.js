@@ -1,8 +1,10 @@
 import axios from "axios";
+import { useSelector } from "react-redux";
+import { toast } from "react-toastify";
 
 export const addReview = async (productId, rating, comment) => {
+  
   try {
-    console.log(localStorage.getItem("token")); 
     const res = await axios.put(
       "http://localhost:4000/api/v1/review",
       {
@@ -16,9 +18,8 @@ export const addReview = async (productId, rating, comment) => {
         },
       }
     );
-
-    console.log(res);
+    toast.success("Review Added");
   } catch (error) {
-    console.log(error);
+    toast.error("Something went wrong");
   }
 };

@@ -39,7 +39,7 @@ const ProductDetail = ({ currentPage }) => {
           <Loader />
         ) : (
           <div
-            className="product-details container-xxl"
+            className="product-details container-fluid"
             style={{ backgroundColor: "#f2f4f7" }}
           >
             <section className="container-fluid pt-3 m-0">
@@ -51,6 +51,7 @@ const ProductDetail = ({ currentPage }) => {
                   <div className="container p-3">
                     <img
                       src={selectedImage || currentProduct?.images[0]?.url}
+                      // src=""
                       alt=""
                       className="mainImg img-fluid border bg-light"
                       style={{

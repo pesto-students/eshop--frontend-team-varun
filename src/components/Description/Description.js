@@ -34,10 +34,6 @@ const Description = ({ currentProduct }) => {
           <div className="col-4 fw-semibold mt-2">Stock</div>
           <div className="col-4 mt-2">{currentProduct?.stock}</div>
         </div>
-        <div className="row">
-          <div className="col-4 fw-semibold mt-2">Category</div>
-          <div className="col-4 mt-2">{currentProduct?.category}</div>
-        </div>
       </div>
       <hr className="m-0 mt-4" />
       <p className="fw-semibold fs-6 mt-4">About this item</p>

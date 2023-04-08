@@ -10,10 +10,11 @@ const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [open, setopen] = useState(false);
-  
+
   const handelLogOut = () => {
     dispatch(signOut());
     localStorage.removeItem("token");
+    localStorage.removeItem("shippingInfo");
     navigate("/");
   };
 
@@ -100,7 +101,7 @@ const Header = () => {
                 onClick={() => setopen(!open)}
               >
                 <div className="m-1" style={{ color: "white" }}>
-                  {`Hello  ${currentUser.name}`}
+                  {`Hello  ${currentUser.firstname}`}
                 </div>
                 {open && (
                   <div className="menu-options">
