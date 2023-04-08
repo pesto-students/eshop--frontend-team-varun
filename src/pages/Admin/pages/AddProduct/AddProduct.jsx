@@ -14,19 +14,21 @@ const AddProduct = () => {
   const [brand, setBrand] = useState("");
   const [category, setCategory] = useState("");
   const [tags, setTags] = useState([]);
+  const [featured, setFeatured] = useState(false);
   const [images, setImages] = useState([]);
   const [fileObj, setFileObj] = useState([]);
   const [fileArray, setFileArray] = useState([]);
   const [selectedImage, setSelectedImage] = useState("");
   const [validationError, setValidationError] = useState("");
 
-  // console.log("productName => " + productName);
-  // console.log("description => " + description);
-  // console.log("normalPrice => " + normalPrice);
-  // console.log("salesPrice => " + salesPrice);
-  // console.log("brand => " + brand);
-  // console.log("category => " + category);
-  // console.log("tags => " + tags);
+  // console.log("productName => " , productName);
+  // console.log("description => " , description);
+  // console.log("normalPrice => " , normalPrice);
+  // console.log("salesPrice => " , salesPrice);
+  // console.log("brand => " , brand);
+  // console.log("category => " , category);
+  // console.log("tags => ", tags);
+  console.log("featured => ", featured);
 
   function handleKeyDown(e) {
     if (e.key !== "Enter") return;
@@ -64,6 +66,7 @@ const AddProduct = () => {
     }
 
     try {
+      console.log(productName);
       const res = await axios.post(
         "http://localhost:4000/api/v1/admin/product/new",
         {
@@ -76,7 +79,13 @@ const AddProduct = () => {
           category,
           tags,
           images,
+          featured,
           user: currentUser,
+        },
+        {
+          headers: {
+            authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
         }
       );
 
@@ -183,8 +192,9 @@ const AddProduct = () => {
                     Product Price :
                   </label>
                 </div>
-                <div className="col-9 d-flex justify-content-between bg-light border border-1 rounded-3">
-                  <div className="col-6 ">
+                <div className="col-9 d-flex justify-content-between gap-2">
+                  {/* <div className=""> */}
+                  <div className="col-6 border border-1 rounded-3">
                     <input
                       type="number"
                       id="form3Example3"
@@ -194,7 +204,7 @@ const AddProduct = () => {
                       style={{ border: "none" }}
                     />
                   </div>
-                  <div className="col-6 ">
+                  {/* <div className="col-6">
                     <input
                       type="number"
                       id="form3Example3"
@@ -203,7 +213,15 @@ const AddProduct = () => {
                       className="form-control input-text rounded-2 shadow-none"
                       style={{ border: "none" }}
                     />
-                  </div>
+                    <select
+                      className="form-select shadow-none"
+                      aria-label="Default select example"
+                      onChange={(e) => setFeatured(e.target.value)}
+                    >
+                      <option value="False">False</option>
+                      <option value="True">True</option>
+                    </select>
+                  </div> */}
                 </div>
               </div>
 
@@ -223,6 +241,25 @@ const AddProduct = () => {
                       className="form-control input-text rounded-2 shadow-none"
                       style={{ border: "none" }}
                     />
+                  </div>
+                </div>
+              </div>
+              <div className="form-outline m-4 d-flex align-items-center">
+                <div className="col-3">
+                  <label className="form-label" for="form3Example3">
+                    Featured :
+                  </label>
+                </div>
+                <div className="col-9 d-flex justify-content-between ">
+                  <div className="col-6 bg-light rounded-3">
+                    <select
+                      className="form-select shadow-none"
+                      aria-label="Default select example"
+                      onChange={(e) => setFeatured(e.target.value)}
+                    >
+                      <option value="False">False</option>
+                      <option value="True">True</option>
+                    </select>
                   </div>
                 </div>
               </div>
@@ -261,7 +298,7 @@ const AddProduct = () => {
                 </div>
               </div>
 
-              <div className="form-outline m-4 d-flex align-items-center">
+              {/* <div className="form-outline m-4 d-flex align-items-center">
                 <div className="col-3">
                   <label className="form-label" for="form3Example3">
                     Tags :
@@ -327,7 +364,7 @@ const AddProduct = () => {
                     />
                   </div>
                 </div>
-              </div>
+              </div> */}
             </form>
           </div>
         </section>
