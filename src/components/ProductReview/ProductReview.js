@@ -20,7 +20,7 @@ const ProductReview = ({ allReviews, id, currentProduct }) => {
   useEffect(() => {
     function starsPer() {
       const counts = {};
-      for (const num of currentProduct?.reviews) {
+      for (const num of currentProduct.reviews) {
         counts[num.rating] = counts[num.rating] ? counts[num.rating] + 1 : 1;
       }
       setFive(counts[5] === undefined ? 0 : counts[5]);

@@ -50,6 +50,7 @@ const Checkout = ({ currentPage }) => {
       setFirstName(currentUser.firstname);
       setLastName(currentUser.lastname);
       setPhoneNo(currentUser.phoneNo);
+
       setAddress(shippingInfo?.address);
       setCountry(shippingInfo?.country);
       setState(shippingInfo?.state);

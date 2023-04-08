@@ -1,22 +1,25 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Sidebar from "../components/Sidebar";
 import Products from "../pages/Products/Products";
 import "./Dashboard.css";
 import ListView from "../pages/ListView/ListView";
 import { Link, useNavigate } from "react-router-dom";
 import AddProduct from "../pages/AddProduct/AddProduct";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { getProductsUsingFilters } from "../../../Redux/Actions/productActions";
 
 const Dashboard = ({ currentPage }) => {
   const pageName = currentPage.charAt(0).toUpperCase() + currentPage.slice(1);
   const navigate = useNavigate();
   const { currentUser } = useSelector((state) => state.user);
+  const [keyword, setKeyword] = useState("");
+  const dispatch = useDispatch();
 
-  useEffect(() => {
-    if (currentUser === "null" || currentUser?.role !== "admin") {
-      navigate("/");
+  const searchSubmitHandler = (e) => {
+    if (keyword.trim()) {
+      dispatch(getProductsUsingFilters(keyword));
     }
-  });
+  };
 
   return (
     <div
@@ -53,9 +56,9 @@ const Dashboard = ({ currentPage }) => {
                       <div className="col-md-10 col-lg-10 col-xl-10 order-2 order-lg-1">
                         <div className="container justify-content-center mt-4 mb-3">
                           <div className="row">
-                            <div className="col-md-10 d-flex justify-content-start ">
+                            <div className="col-md-10 d-flex justify-content-start m-0 p-0">
                               {currentPage === "products" ? (
-                                <div className="input-group mb-3 bg-light border border-1 rounded">
+                                <div className="input-group mb-3 bg-white border border-1 rounded py-1">
                                   <input
                                     type="text"
                                     className="form-control input-text border border-0 shadow-none"
@@ -65,23 +68,24 @@ const Dashboard = ({ currentPage }) => {
                                     )}... `}
                                     aria-label="Recipient's username"
                                     aria-describedby="basic-addon2"
+                                    onChange={(e) => {
+                                      if(e.target.value === ""){
+                                        dispatch(getProductsUsingFilters());
+                                      }
+                                      return setKeyword(e.target.value);
+                                    }}
                                   />
 
-                                  <div className="input-group-append">
-                                    <button
-                                      className="btn btn-lg border border-0 bg-light"
-                                      style={{
-                                        outline: "#52057B",
-                                        backgroundColor: "white",
-                                      }}
-                                      type="button"
-                                    >
-                                      <i
-                                        className="fa fa-search"
-                                        style={{ color: "#52057B" }}
-                                      ></i>
-                                    </button>
-                                  </div>
+                                  <span
+                                    className="input-group-text bg-white border-0"
+                                    id="basic-addon2"
+                                  >
+                                    <img
+                                      src="../assets/search.svg"
+                                      alt=""
+                                      onClick={searchSubmitHandler}
+                                    />
+                                  </span>
                                 </div>
                               ) : (
                                 <div className="col-md-10 col-lg-10 col-xl-10 p-4 mt-3"></div>
@@ -117,7 +121,7 @@ const Dashboard = ({ currentPage }) => {
                 </div>
               </div>
               <div className="col-lg-12 col-xl-12 m-0">
-                {(pageName === "Products" && <Products page="Products" />) ||
+                {(pageName === "Products" && <Products page="Products" keyword={keyword} searchSubmitHandler={searchSubmitHandler}/>) ||
                   (pageName === "Orders" && <ListView page="orders" />) ||
                   (pageName === "Users" && <ListView page="users" />) ||
                   (pageName === "Add Product" && <AddProduct />)}

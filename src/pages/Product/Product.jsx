@@ -6,8 +6,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 import { useSelector, useDispatch } from "react-redux";
 import Loader from "../../components/Loader/Loader";
-import Paginate from "../../components/Pagination/Pagination";
 import { getProductsUsingFilters } from "../../Redux/Actions/productActions";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 const Product = () => {
   const dispatch = useDispatch();
@@ -35,6 +35,11 @@ const Product = () => {
     }
   };
 
+  const fetchMoreData = () => {
+    dispatch(getProductsUsingFilters("", "", [0, 9999999], currentPage + 1));
+    setCurrentPage(currentPage + 1);
+  };
+
   useEffect(() => {
     dispatch(getProductsUsingFilters());
   }, []);
@@ -57,38 +62,6 @@ const Product = () => {
 
   return (
     <section className="product-list">
-      <div className="product-list-header pt-5">
-        <div className="user-loc d-flex align-items-center gap-2">
-          {/* <img src="../assets/location.svg" alt="" />
-          <p className="m-0 p-0">{userAddress}</p> */}
-        </div>
-        <div className="input-group border rounded-2">
-          <input
-            type="text"
-            className="form-control border-0 shadow-none"
-            placeholder="Search Product"
-            aria-label="Recipient's username"
-            aria-describedby="basic-addon2"
-            onChange={(e) => {
-              if (e.target.value === "") {
-                dispatch(getProductsUsingFilters());
-              }
-
-              return setKeyword(e.target.value);
-            }}
-          />
-          <span
-            className="input-group-text bg-white border-0"
-            id="basic-addon2"
-          >
-            <img
-              src="../assets/search.svg"
-              alt=""
-              onClick={searchSubmitHandler}
-            />
-          </span>
-        </div>
-      </div>
       <div className="product-list-body">
         <div className="product-filter-mobile">
           <p>
@@ -116,32 +89,58 @@ const Product = () => {
           <Filters childToParent={childToParent} />
         </div>
 
-        <div className="container-fluid m-0 p-0 d-flex flex-column justify-content-between">
-          <div className="row">
-            {productsLoading ? (
-              <>
-                <Loader />
-              </>
-            ) : products?.length > 0 ? (
-              products?.map((product) => (
-                <div className="col-xxl-3 col-xl-3 col-lg-4 col-md-4 col-sm-6 mb-4 p-0 text-dark">
-                  <Dealcards deall={product} />
-                </div>
-              ))
-            ) : (
-              <p className="text-center">No Products Found</p>
-            )}
-          </div>
-          {!productsLoading && products.length > 0 && !filter && (
-            <Paginate
-              postsPerPage={resultPerPage}
-              totalPosts={productsCount}
-              currentPage={currentPage}
-              paginate={paginate}
-              previousPage={previousPage}
-              nextPage={nextPage}
+        <div className="container-fluid m-0 p-0">
+          <div className="input-group border rounded-2 w-50">
+            <input
+              type="text"
+              className="form-control border-0 shadow-none"
+              placeholder="Search Product"
+              aria-label="Recipient's username"
+              aria-describedby="basic-addon2"
+              onChange={(e) => {
+                if (e.target.value === "") {
+                  dispatch(getProductsUsingFilters());
+                }
+
+                return setKeyword(e.target.value);
+              }}
+
             />
-          )}
+            <span
+              className="input-group-text bg-white border-0"
+              id="basic-addon2"
+            >
+              <img
+                src="../assets/search.svg"
+                alt=""
+                onClick={searchSubmitHandler}
+              />
+            </span>
+          </div>
+          <InfiniteScroll
+            dataLength={products.length}
+            next={fetchMoreData}
+            hasMore={keyword ? false : products.length !== productsCount}
+            loader={<Loader />}
+          >
+            <div className="container">
+              <div className="row mt-3 mx-auto">
+                {productsLoading ? (
+                  <>
+                    <Loader />
+                  </>
+                ) : products?.length > 0 ? (
+                  products?.map((product) => (
+                    <div className="col-xxl-3 col-xl-3 col-lg-4 col-md-4 col-sm-6 mb-4 p-0 text-dark">
+                      <Dealcards deall={product} />
+                    </div>
+                  ))
+                ) : (
+                  <p className="text-center">No Products Found</p>
+                )}
+              </div>
+            </div>
+          </InfiniteScroll>
         </div>
       </div>
     </section>
