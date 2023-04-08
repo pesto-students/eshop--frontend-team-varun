@@ -23,6 +23,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
+import Page404 from "./pages/Page404./Page404";
 
 function App() {
   const [stripeApiKey, setStripeApiKey] = useState("");
@@ -45,7 +46,6 @@ function App() {
       getStripeApiKey();
     }
   }, [isAuthenthicated]);
-
 
   return (
     <div>
@@ -110,6 +110,7 @@ function App() {
                 element={<Dashboard currentPage={"Add Product"} />}
               />
             </Route>
+            <Route path="*" element={<Page404 />} />
           </Route>
         </Routes>
         <Footer />
