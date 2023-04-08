@@ -50,11 +50,11 @@ const Checkout = ({ currentPage }) => {
       setFirstName(currentUser.firstname);
       setLastName(currentUser.lastname);
       setPhoneNo(currentUser.phoneNo);
-      setAddress(shippingInfo.address);
-      setCountry(shippingInfo.country);
-      setState(shippingInfo.state);
-      setCity(shippingInfo.city);
-      setPinCode(shippingInfo.pinCode);
+      setAddress(shippingInfo?.address);
+      setCountry(shippingInfo?.country);
+      setState(shippingInfo?.state);
+      setCity(shippingInfo?.city);
+      setPinCode(shippingInfo?.pinCode);
     }
 
     // setAddress(shippingInfo.address);
@@ -183,7 +183,7 @@ const Checkout = ({ currentPage }) => {
             {currentPage === "checkout" ? (
               <form className="shipping-data">
                 <p className="p-0 mb-0 h4 fw-semibold">Shipping Address</p>
-                <div className="personal-data"> 
+                <div className="personal-data">
                   <div className="fname-text w-100">
                     <label
                       htmlFor="exampleFormControlInput1"

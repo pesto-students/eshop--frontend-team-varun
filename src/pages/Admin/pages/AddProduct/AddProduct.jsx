@@ -123,7 +123,7 @@ const AddProduct = () => {
   };
 
   return (
-    <div className="row mb-3">
+    <div className="row mt-5">
       <div
         className="col-9 mt-2 mb-5 border border-0 rounded-3"
         style={{ backgroundColor: "white" }}
