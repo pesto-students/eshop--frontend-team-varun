@@ -21,21 +21,17 @@ const MyOrders = () => {
 
   return (
     <div className="container mt-5 p-0">
-      {orderItems.map((order) => (
+      {orderItems.map((orderItem) => (
         <div className="container p-2 border border-secondary rounded-2 mt-5 mb-5">
-          {order.orderItems.map((o) => (
+          {orderItem.orderItems.map((order) => (
             <div className="d-flex order-details align-items-center justify-content-between mx-5">
-              <img
-                src="assets/productDetails/laptop1.png"
-                alt=""
-                style={{ width: "15%" }}
-              />
-              <p className="m-0 p-0 fw-semibold">{o.name}</p>
-              <p className="m-0 p-0 fw-semibold">₹{o.price}</p>
+              <img src={order.image} alt="" style={{ width: "15%" }} />
+              <p className="m-0 p-0 fw-semibold">{order.name}</p>
+              <p className="m-0 p-0 fw-semibold">₹{order.price}</p>
             </div>
           ))}
           <p className="m-0 p-0 text-success fw-bold text-center mt-3">
-            {order.orderStatus}
+            {orderItem.orderStatus}
           </p>
         </div>
       ))}

@@ -122,7 +122,7 @@ const Product = () => {
               <>
                 <Loader />
               </>
-            ) : products.length > 0 ? (
+            ) : products?.length > 0 ? (
               products?.map((product) => (
                 <div className="col-xxl-3 col-xl-3 col-lg-4 col-md-4 col-sm-6 mb-4 p-0 text-dark">
                   <Dealcards deall={product} />

@@ -240,12 +240,13 @@ const ProductReview = ({ allReviews, id, currentProduct }) => {
                 </div>
               </div>
             </div>
-            {currentProduct.reviews.length > 0 &&
+
+            {currentProduct?.reviews?.length > 0 &&
               [
                 ...Array(
                   !allReviews
-                    ? currentProduct.reviews.length
-                    : currentProduct.reviews.length
+                    ? currentProduct?.reviews.length
+                    : currentProduct?.reviews.length
                 ),
               ].map((e, index) => {
                 return (
@@ -254,7 +255,8 @@ const ProductReview = ({ allReviews, id, currentProduct }) => {
                   </div>
                 );
               })}
-            {!allReviews && currentProduct?.reviews.length > 4 ? (
+
+            {!allReviews && currentProduct?.reviews?.length > 4 ? (
               <Link
                 to={`/product/${id}/allReviews`}
                 className="text-decoration-none"
