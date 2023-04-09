@@ -24,17 +24,17 @@ const MyOrders = () => {
           <div className="d-flex justify-content-between align-items-center m-0 mx-5 mt-2">
             <div className="order-status m-0">
               <p className="fw-semibold fs-6 mb-0 text-success">
-                Order {order.orderStatus}
+                Order {orderItem.orderStatus}
               </p>
-              <p className="mb-0 fs-5">{order.paidAt.slice(0, 10)}</p>
+              <p className="mb-0 fs-5">{orderItem.paidAt.slice(0, 10)}</p>
             </div>
             <div className="order-status">
               <p className="fw-semibold fs-6 mb-0">Total</p>
-              <p className="mb-0  fs-5">₹{order.totalPrice}</p>
+              <p className="mb-0  fs-5">₹{orderItem.totalPrice}</p>
             </div>
           </div>
           <hr />
-          {order.orderItems.map((o) => (
+          {orderItem.orderItems.map((o) => (
             <div className="d-flex order-details align-items-center justify-content-between mx-5 mt-3">
               <img
                 src={o.image}
@@ -64,7 +64,6 @@ const MyOrders = () => {
               </Link>
             </div>
           ))}
-
         </div>
       ))}
     </div>

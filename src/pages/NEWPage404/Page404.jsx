@@ -1,5 +1,6 @@
 import React from "react";
 import "./Page404.css";
+import { Link } from "react-router-dom";
 
 const Page404 = () => {
   return (
@@ -13,9 +14,9 @@ const Page404 = () => {
               width="300px"
               alt=""
             />
-            <a href="/" class="btn-go-home" target="">
+            <Link to="/" class="btn-go-home" target="">
               GO BACK HOME
-            </a>
+            </Link>
           </div>
           <div class="objects">
             <img

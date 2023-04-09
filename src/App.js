@@ -23,7 +23,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import Page404 from "./pages/Page404./Page404";
+import Page404 from "./pages/NEWPage404/Page404";
 
 function App() {
   const [stripeApiKey, setStripeApiKey] = useState("");
