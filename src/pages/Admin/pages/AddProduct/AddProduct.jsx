@@ -94,16 +94,6 @@ const AddProduct = () => {
       console.log(err);
       toast.error("Something went wrong. Try later");
     }
-
-    // if (images.length > 4) {
-    //   alert("You can upload max 4 photos. Please reselect your photos.");
-    //   return;
-    // } else if (images.length === 0) {
-    //   alert("Add atleast 1 photo");
-    //   return;
-    // } else {
-    //   alert("data submitted");
-    // }
   };
 
   const validateFields = () => {
@@ -123,7 +113,15 @@ const AddProduct = () => {
       setValidationError("Please enter product brand");
       return false;
     } else if (category === "") {
-      setValidationError("Please enter product categorg");
+      setValidationError("Please enter product category");
+      return false;
+    } else if (images.length > 4) {
+      setValidationError(
+        "You can upload max 4 photos. Please reselect your photos"
+      );
+      return false;
+    } else if (images.length === 0) {
+      setValidationError("Add atleast 1 photo");
       return false;
     } else {
       setValidationError("");
@@ -429,6 +427,7 @@ const AddProduct = () => {
                       type="file"
                       className="form-control mb-3"
                       onChange={uploadMultipleFiles}
+                      accept="image/*"
                       multiple
                     />
                   </div>
