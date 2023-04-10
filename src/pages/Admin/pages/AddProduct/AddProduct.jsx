@@ -9,7 +9,6 @@ const AddProduct = () => {
   const [description, setDescription] = useState("");
   const [productName, setProductName] = useState("");
   const [normalPrice, setNormalPrice] = useState("");
-  const [salesPrice, setSalesPrice] = useState("");
   const [stock, setStock] = useState("");
   const [brand, setBrand] = useState("");
   const [category, setCategory] = useState("");
@@ -20,6 +19,7 @@ const AddProduct = () => {
   const [fileArray, setFileArray] = useState([]);
   const [selectedImage, setSelectedImage] = useState("");
   const [validationError, setValidationError] = useState("");
+  const [imagesArray, setImagesArray] = useState([]);
 
   // console.log("productName => " , productName);
   // console.log("description => " , description);
@@ -28,7 +28,7 @@ const AddProduct = () => {
   // console.log("brand => " , brand);
   // console.log("category => " , category);
   // console.log("tags => ", tags);
-  console.log("featured => ", featured);
+  // console.log("featured => ", featured);
 
   function handleKeyDown(e) {
     if (e.key !== "Enter") return;
@@ -50,9 +50,12 @@ const AddProduct = () => {
     setFileObj([]);
 
     fileObj.push(e.target.files);
+    setImagesArray(e.target.files);
+
     for (let i = 0; i < fileObj[0].length; i++) {
       fileArray.push(URL.createObjectURL(fileObj[0][i]));
     }
+
     setImages(fileArray);
     setSelectedImage(fileArray[0]);
   }
@@ -66,19 +69,37 @@ const AddProduct = () => {
     }
 
     try {
-      console.log(productName);
+      const list = await Promise.all(
+        Object.values(imagesArray).map(async (file) => {
+          const data = new FormData();
+          data.append("file", file);
+          data.append("upload_preset", "products");
+
+          const uploadRes = await axios.post(
+            "https://api.cloudinary.com/v1_1/shubhamsaticloud/image/upload",
+            data
+          );
+
+          const value = {
+            public_id: uploadRes.data.url,
+            url: uploadRes.data.secure_url,
+          };
+
+          return value;
+        })
+      );
+
       const res = await axios.post(
         "http://localhost:4000/api/v1/admin/product/new",
         {
           name: productName,
           description,
           price: normalPrice,
-          salesPrice,
           stock,
           brand,
           category,
           tags,
-          images,
+          images: list,
           featured,
           user: currentUser,
         },
