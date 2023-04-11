@@ -26,7 +26,7 @@ const AddReview = ({ id }) => {
   };
 
   return (
-    <div className="container ms-5 ">
+    <div className="container">
       <p className="m-0 fw-semibold fs-4 p-0">Add Your Review</p>
       <form className="mb-3">
         {/* <TextField label="Name" idfor="name" type="text" hint="Your Name"/>
@@ -49,7 +49,7 @@ const AddReview = ({ id }) => {
           activeColor="#ffd700"
         />
         <button
-          type="button"
+          type="Submit"
           className="btn text-nowrap btn-md px-5 mt-4"
           style={{
             backgroundColor: "#52057B",

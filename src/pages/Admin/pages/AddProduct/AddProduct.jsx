@@ -40,8 +40,8 @@ const AddProduct = () => {
 
   function removeTag(index) {
     setTags(tags.filter((el, i) => i !== index));
-  }
-
+  }  
+    
   function uploadMultipleFiles(e) {
     e.preventDefault();
 

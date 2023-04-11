@@ -69,38 +69,7 @@ const ProductInfo = ({ currentProduct }) => {
           {currentProduct?.stock < 1 ? "OutOfStock" : "InStock"}
         </p>
       </section>
-
-      <div className="choose-memory d-flex align-items-center border-top border-bottom mt-3 me-3">
-        <p className="m-0 p-0 me-auto">Memory (RAM)</p>
-        <div className="memory-box d-flex gap-2">
-          <p
-            className="px-3 py-1 mb-0"
-            onClick={() => chooseMemory("8GB")}
-            style={{
-              border:
-                memory === "8GB" ? "2px solid #52057B" : "2px solid #E2E2E2",
-              borderRadius: "4px",
-              cursor: "Pointer",
-            }}
-          >
-            8GB
-          </p>
-
-          <p
-            className="px-3 py-1 mb-0"
-            onClick={() => chooseMemory("16GB")}
-            style={{
-              border:
-                memory === "16GB" ? "2px solid #52057B" : "2px solid #E2E2E2",
-              borderRadius: "4px",
-              cursor: "Pointer",
-            }}
-          >
-            16GB
-          </p>
-        </div>
-      </div>
-      <div className="quantity d-flex align-items-center border-bottom me-3">
+      <div className="quantity d-flex align-items-center border-top border-bottom me-3">
         <p className="m-0 p-0 me-auto">Quantity</p>
         <div className="quantity-box d-flex gap-3 align-items-center">
           <FontAwesomeIcon
@@ -138,10 +107,10 @@ const ProductInfo = ({ currentProduct }) => {
 
         <button
           type="button"
-          className="btn d-flex  w-100 border-dark rounded-2 justify-content-center gap-1 m-0 p-3"
+          className="addtocart-btn btn d-flex w-100 border-dark rounded-2 justify-content-center gap-1 m-0 p-3"
           onClick={AddItemToCart}
         >
-          <img src="../assets/productDetails/cart.svg" alt="" /> Add to cart
+          <img src="../assets/productDetails/cart.svg" alt=""/> Add to cart
         </button>
       </section>
       <div
