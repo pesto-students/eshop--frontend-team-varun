@@ -18,7 +18,7 @@ const topDealsSlice = createSlice({
     },
     addTopDealsSuccess: (state, action) => {
       state.topDealsLoading = false;
-      state.topDeals = action.payload.product;
+      state.topDeals = action.payload.products;
       state.topDealError = null;
     },
     addTopDealsFailure: (state, action) => {

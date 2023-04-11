@@ -117,9 +117,9 @@ const Product = () => {
             </span>
           </div>
           <InfiniteScroll
-            dataLength={products.length}
+            dataLength={products?.length}
             next={fetchMoreData}
-            hasMore={keyword ? false : products.length !== productsCount}
+            hasMore={keyword ? false : products?.length !== productsCount}
             loader={<Loader />}
           >
             <div className="container">

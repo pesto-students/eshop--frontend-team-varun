@@ -14,7 +14,7 @@ const Description = ({ currentProduct }) => {
       <div className="d-flex justify-content-between ">
         <p className="fw-semibold fs-6">Description</p>
         <Link
-          to={`/admin/update-product/${currentProduct._id}`}
+          to={`/admin/update-product/${currentProduct?._id}`}
           className="text-decoration-none text-dark"
         >
           {isAuthenthicated && currentUser.role === "admin" && <p>Edit</p>}
