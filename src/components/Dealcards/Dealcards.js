@@ -13,7 +13,7 @@ const Dealcards = (props) => {
           <img
             src={props.deall.images[0]?.url}
             alt="Not found"
-            className="img-fluid "
+            className="img-fluid"
           />
         </div>
         <div className="deal-content">

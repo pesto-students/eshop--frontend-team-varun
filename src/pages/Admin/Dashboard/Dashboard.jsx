@@ -69,7 +69,7 @@ const Dashboard = ({ currentPage }) => {
                                     aria-label="Recipient's username"
                                     aria-describedby="basic-addon2"
                                     onChange={(e) => {
-                                      if(e.target.value === ""){
+                                      if (e.target.value === "") {
                                         dispatch(getProductsUsingFilters());
                                       }
                                       return setKeyword(e.target.value);
@@ -121,7 +121,13 @@ const Dashboard = ({ currentPage }) => {
                 </div>
               </div>
               <div className="col-lg-12 col-xl-12 m-0">
-                {(pageName === "Products" && <Products page="Products" keyword={keyword} searchSubmitHandler={searchSubmitHandler}/>) ||
+                {(pageName === "Products" && (
+                  <Products
+                    page="Products"
+                    keyword={keyword}
+                    searchSubmitHandler={searchSubmitHandler}
+                  />
+                )) ||
                   (pageName === "Orders" && <ListView page="orders" />) ||
                   (pageName === "Users" && <ListView page="users" />) ||
                   (pageName === "Add Product" && <AddProduct />)}

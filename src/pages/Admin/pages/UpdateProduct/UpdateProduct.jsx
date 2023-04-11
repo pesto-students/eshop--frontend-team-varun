@@ -1,11 +1,12 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ReactQuill from "react-quill";
-import "react-quill/dist/quill.snow.css";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
-const AddProduct = () => {
+const UpdateProduct = () => {
+  const navigate = useNavigate();
   const [description, setDescription] = useState("");
   const [productName, setProductName] = useState("");
   const [normalPrice, setNormalPrice] = useState("");
@@ -20,15 +21,24 @@ const AddProduct = () => {
   const [selectedImage, setSelectedImage] = useState("");
   const [validationError, setValidationError] = useState("");
   const [imagesArray, setImagesArray] = useState([]);
+  const { currentProduct } = useSelector((state) => state.currentProduct);
+  const { currentUser } = useSelector((state) => state.user);
+  //   console.log("productName => ", productName);
+  //   console.log("description => ", description);
+  //   console.log("normalPrice => ", normalPrice);
+  //   console.log("brand => ", brand);
+  //   console.log("category => ", category);
+  //   console.log("featured => ", featured);
 
-  // console.log("productName => " , productName);
-  // console.log("description => " , description);
-  // console.log("normalPrice => " , normalPrice);
-  // console.log("salesPrice => " , salesPrice);
-  // console.log("brand => " , brand);
-  // console.log("category => " , category);
-  // console.log("tags => ", tags);
-  // console.log("featured => ", featured);
+  useEffect(() => {
+    setDescription(currentProduct.description);
+    setProductName(currentProduct.name);
+    setNormalPrice(currentProduct.price);
+    setStock(currentProduct.stock);
+    setBrand(currentProduct.brand);
+    setCategory(currentProduct.category);
+    setFeatured(currentProduct.featured);
+  }, []);
 
   function handleKeyDown(e) {
     if (e.key !== "Enter") return;
@@ -60,7 +70,6 @@ const AddProduct = () => {
     setSelectedImage(fileArray[0]);
   }
 
-  const { currentUser } = useSelector((state) => state.user);
   const handleClick = async (e) => {
     e.preventDefault();
 
@@ -89,8 +98,8 @@ const AddProduct = () => {
         })
       );
 
-      const res = await axios.post(
-        "http://localhost:4000/api/v1/admin/product/new",
+      const res = await axios.put(
+        `http://localhost:4000/api/v1/admin/product/${currentProduct._id}`,
         {
           name: productName,
           description,
@@ -98,6 +107,7 @@ const AddProduct = () => {
           stock,
           brand,
           category,
+          tags,
           images: list,
           featured,
           user: currentUser,
@@ -110,6 +120,7 @@ const AddProduct = () => {
       );
 
       toast.success("Product added successfully");
+      navigate(`/product/${currentProduct._id}`);
     } catch (err) {
       console.log(err);
       toast.error("Something went wrong. Try later");
@@ -140,9 +151,6 @@ const AddProduct = () => {
         "You can upload max 4 photos. Please reselect your photos"
       );
       return false;
-    } else if (images.length === 0) {
-      setValidationError("Add atleast 1 photo");
-      return false;
     } else {
       setValidationError("");
       return true;
@@ -150,7 +158,7 @@ const AddProduct = () => {
   };
 
   return (
-    <div className="row mt-5">
+    <div className="col d-flex justify-content-center mt-5 container-md">
       <div
         className="col-9 mt-2 mb-5 border border-0 rounded-3"
         style={{ backgroundColor: "white" }}
@@ -167,6 +175,7 @@ const AddProduct = () => {
                 <div className="col-9 border border-0">
                   <input
                     type="text"
+                    value={productName}
                     placeholder="Product Name"
                     id="form3Example3"
                     onChange={(e) => setProductName(e.target.value)}
@@ -211,35 +220,17 @@ const AddProduct = () => {
                   </label>
                 </div>
                 <div className="col-9 d-flex justify-content-between gap-2">
-                  {/* <div className=""> */}
                   <div className="col-6 border border-1 rounded-3">
                     <input
                       type="number"
                       id="form3Example3"
                       placeholder="Normal Price"
+                      value={normalPrice}
                       onChange={(e) => setNormalPrice(e.target.value)}
                       className="form-control input-text rounded-2 shadow-none"
                       style={{ border: "none" }}
                     />
                   </div>
-                  {/* <div className="col-6">
-                    <input
-                      type="number"
-                      id="form3Example3"
-                      placeholder="Sale Price"
-                      onChange={(e) => setSalesPrice(e.target.value)}
-                      className="form-control input-text rounded-2 shadow-none"
-                      style={{ border: "none" }}
-                    />
-                    <select
-                      className="form-select shadow-none"
-                      aria-label="Default select example"
-                      onChange={(e) => setFeatured(e.target.value)}
-                    >
-                      <option value="False">False</option>
-                      <option value="True">True</option>
-                    </select>
-                  </div> */}
                 </div>
               </div>
 
@@ -253,6 +244,7 @@ const AddProduct = () => {
                   <div className="col-6 bg-light border border-1 rounded-3">
                     <input
                       type="number"
+                      value={stock}
                       id="form3Example3"
                       placeholder="Stock"
                       onChange={(e) => setStock(e.target.value)}
@@ -271,6 +263,7 @@ const AddProduct = () => {
                 <div className="col-9 d-flex justify-content-between ">
                   <div className="col-6 bg-light rounded-3">
                     <select
+                      value={featured}
                       className="form-select shadow-none"
                       aria-label="Default select example"
                       onChange={(e) => setFeatured(e.target.value)}
@@ -292,6 +285,7 @@ const AddProduct = () => {
                   <input
                     type="text"
                     placeholder="Brand"
+                    value={brand}
                     id="form3Example3"
                     onChange={(e) => setBrand(e.target.value)}
                     className="form-control input-text rounded-2 shadow-none"
@@ -308,6 +302,7 @@ const AddProduct = () => {
                 <div className="col-9 border border-0">
                   <input
                     type="text"
+                    value={category}
                     placeholder="Category"
                     id="form3Example3"
                     onChange={(e) => setCategory(e.target.value)}
@@ -317,78 +312,81 @@ const AddProduct = () => {
               </div>
 
               {/* <div className="form-outline m-4 d-flex align-items-center">
-                <div className="col-3">
-                  <label className="form-label" for="form3Example3">
-                    Tags :
-                  </label>
-                </div>
-                <div className="col-9 border border-0">
-                  <div
-                    className="d-flex flex-column"
-                    style={{
-                      border: "1.3px solid lightgray",
-                      padding: ".5em",
-                      borderRadius: "3px",
-                      marginTop: "1em",
-                      display: "flex",
-                      alignItems: "center",
-                      flexWrap: "wrap",
-                      gap: ".5em",
-                    }}
-                  >
-                    <div className="d-flex flex-wrap gap-2 mb-2">
-                      {tags.map((tag, index) => (
-                        <div
-                          style={{
-                            backgroundColor: "rgb(218, 216, 216)",
-                            display: "inline-block",
-                            padding: ".5em .75em",
-                            borderRadius: "20px",
-                          }}
-                          key={index}
-                        >
-                          <span className="text">{tag}</span>
-
-                          <span
-                            style={{
-                              height: "20px",
-                              width: "20px",
-                              backgroundColor: "#52057B",
-                              color: "#fff",
-                              borderRadius: "50%",
-                              display: "inline-flex",
-                              justifyContent: "center",
-                              alignItems: "center",
-                              marginLeft: ".5em",
-                              fontSize: "18px",
-                              cursor: "pointer",
-                            }}
-                            onClick={() => removeTag(index)}
-                          >
-                            &times;
-                          </span>
-                        </div>
-                      ))}
-                    </div>
-                    <input
-                      type="text"
-                      onKeyDown={handleKeyDown}
-                      placeholder="Type some tags...."
-                      className="form-control input-text rounded-2 shadow-none"
+            <div className="col-3">
+              <label className="form-label" for="form3Example3">
+                Tags :
+              </label>
+            </div>
+            <div className="col-9 border border-0">
+              <div
+                className="d-flex flex-column"
+                style={{
+                  border: "1.3px solid lightgray",
+                  padding: ".5em",
+                  borderRadius: "3px",
+                  marginTop: "1em",
+                  display: "flex",
+                  alignItems: "center",
+                  flexWrap: "wrap",
+                  gap: ".5em",
+                }}
+              >
+                <div className="d-flex flex-wrap gap-2 mb-2">
+                  {tags.map((tag, index) => (
+                    <div
                       style={{
-                        flexGrow: "1",
-                        outline: "none",
+                        backgroundColor: "rgb(218, 216, 216)",
+                        display: "inline-block",
+                        padding: ".5em .75em",
+                        borderRadius: "20px",
                       }}
-                    />
-                  </div>
+                      key={index}
+                    >
+                      <span className="text">{tag}</span>
+
+                      <span
+                        style={{
+                          height: "20px",
+                          width: "20px",
+                          backgroundColor: "#52057B",
+                          color: "#fff",
+                          borderRadius: "50%",
+                          display: "inline-flex",
+                          justifyContent: "center",
+                          alignItems: "center",
+                          marginLeft: ".5em",
+                          fontSize: "18px",
+                          cursor: "pointer",
+                        }}
+                        onClick={() => removeTag(index)}
+                      >
+                        &times;
+                      </span>
+                    </div>
+                  ))}
                 </div>
-              </div> */}
+                <input
+                  type="text"
+                  onKeyDown={handleKeyDown}
+                  placeholder="Type some tags...."
+                  className="form-control input-text rounded-2 shadow-none"
+                  style={{
+                    flexGrow: "1",
+                    outline: "none",
+                  }}
+                />
+              </div>
+            </div>
+          </div> */}
             </form>
           </div>
         </section>
       </div>
 
-      <div className="col-3 mt-2 px-4 pt-0 my-5" style={{ height: "300px" }}>
+      <div
+        className="col-3 mt-4 px-4 p-3 border border-1 rounded-2"
+        style={{ height: "max-content" }}
+      >
         <section className="">
           <div
             className="row d-flex py-2 justify-content-center align-items-center border border-0 rounded-3"
@@ -453,9 +451,9 @@ const AddProduct = () => {
                   </div>
                 </form>
               </div>
-              {/* make upload button here to upload only four images */}
             </div>
           </div>
+
           <div className="col-12 my-5 d-flex flex-column gap-2 justify-content-center">
             <label style={{ fontSize: "14px", color: "red" }}>
               {validationError}
@@ -465,12 +463,10 @@ const AddProduct = () => {
               style={{
                 backgroundColor: "#52057B",
                 color: "white",
-                width: "120px",
-                height: "2.8rem",
               }}
               onClick={handleClick}
             >
-              Add Product
+              Update Product
             </button>
           </div>
         </section>
@@ -479,4 +475,4 @@ const AddProduct = () => {
   );
 };
 
-export default AddProduct;
+export default UpdateProduct;

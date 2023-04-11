@@ -30,8 +30,6 @@ const ProductDetail = ({ currentPage }) => {
   const { currentProduct, currentProductLoading, currentProductError } =
     useSelector((state) => state.currentProduct);
 
-    console.log(currentProduct);
-
   return (
     <>
       {currentPage === "productDetails" ? (

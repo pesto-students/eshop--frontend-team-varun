@@ -2,9 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import "./todaysDeal.css";
 import Dealcards from "../Dealcards/Dealcards";
 import SectionHeader from "../SectionHeader/SectionHeader";
-// import { products } from "../../localFiles/ProductsFile";
-// import { useSelector } from "react-redux";
-import Loader from './../Loader/Loader';
+import Loader from "./../Loader/Loader";
 
 const TodaysDeal = ({ title, isEnd, products, error, loading }) => {
   const Ref = useRef(null);
@@ -69,7 +67,9 @@ const TodaysDeal = ({ title, isEnd, products, error, loading }) => {
       </div>
 
       {loading ? (
-        <><Loader /></>
+        <>
+          <Loader />
+        </>
       ) : (
         <div className="deal-cards pb-3 px-5">
           {products?.map((deal) => (

@@ -24,6 +24,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import Page404 from "./pages/NEWPage404/Page404";
+import UpdateProduct from "./pages/Admin/pages/UpdateProduct/UpdateProduct";
 
 function App() {
   const [stripeApiKey, setStripeApiKey] = useState("");
@@ -92,6 +93,7 @@ function App() {
             </Route>
             <Route path="password/reset/:token" element={<CreatePassword />} />
             <Route path="admin">
+              <Route path="update-product/:id" element={<UpdateProduct />} />
               <Route
                 path="products"
                 element={<Dashboard currentPage="products" />}

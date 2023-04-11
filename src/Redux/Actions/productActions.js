@@ -48,7 +48,6 @@ export const clearErrors = () => async (dispatch) => {
 export const getProductsUsingFilters =
   (keyword = "", category = "", price = [0, 2500000], page, brand = "") =>
   async (dispatch) => {
-    console.log(page);
     try {
       dispatch(addProductsRequest());
       if (category) {

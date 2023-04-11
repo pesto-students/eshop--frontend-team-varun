@@ -104,7 +104,6 @@ const Product = () => {
 
                 return setKeyword(e.target.value);
               }}
-
             />
             <span
               className="input-group-text bg-white border-0"

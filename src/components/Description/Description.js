@@ -1,12 +1,25 @@
 import React from "react";
+import { useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
 
 const Description = ({ currentProduct }) => {
+  const { isAuthenthicated, currentUser } = useSelector((state) => state.user);
+  const navigate = useNavigate();
+
   return (
     <div
       className="border border-secondary-subtle rounded my-4 px-4 py-4 mx-5"
       style={{ background: "white" }}
     >
-      <p className="fw-semibold fs-6">Description</p>
+      <div className="d-flex justify-content-between ">
+        <p className="fw-semibold fs-6">Description</p>
+        <Link
+          to={`/admin/update-product/${currentProduct._id}`}
+          className="text-decoration-none text-dark"
+        >
+          {isAuthenthicated && currentUser.role === "admin" && <p>Edit</p>}
+        </Link>
+      </div>
       <div className="col">
         <div className="row">
           <div className="col-4 fw-semibold mt-2">Brand</div>
