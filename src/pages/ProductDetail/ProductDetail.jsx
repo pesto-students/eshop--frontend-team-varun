@@ -9,7 +9,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { getProductDetails } from "../../Redux/Actions/productActions";
 import Loader from "../../components/Loader/Loader";
 import { toast } from "react-toastify";
-import { addReview } from "../../Redux/Actions/reviewActions";
 
 const ProductDetail = ({ currentPage }) => {
   const location = useLocation();
@@ -77,12 +76,12 @@ const ProductDetail = ({ currentPage }) => {
                   </div>
                 </div>
 
-                <div className="col-lg-7 col-xs-12 mt-3 ">
+                <div className="col-lg-6 col-xs-12 mt-5">
                   <ProductInfo currentProduct={currentProduct} />
                 </div>
               </div>
             </section>
-            <section className="container p-0 m-0">
+            <section className="container-fluid p-0 m-0">
               <Description currentProduct={currentProduct} />
               <div className="row mt-4 mxP-1">
                 <div className="col-lg-12 col-sm-12">

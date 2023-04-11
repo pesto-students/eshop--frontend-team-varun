@@ -7,4 +7,8 @@
 
 .quantity .quantity-box{
     margin: 20px;
+} 
+
+.addtocart-btn:hover{
+    background-color: #e2e2e2 !important;
 }
