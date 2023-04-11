@@ -14,26 +14,6 @@ const Product = () => {
 
   const [keyword, setKeyword] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const [filter, setFilter] = useState(false);
-
-  const paginate = (pageNumber) => {
-    dispatch(getProductsUsingFilters("", "", [0, 9999999], pageNumber));
-    setCurrentPage(pageNumber);
-  };
-
-  const previousPage = () => {
-    if (currentPage !== 1) {
-      dispatch(getProductsUsingFilters("", "", [0, 9999999], currentPage - 1));
-      setCurrentPage(currentPage - 1);
-    }
-  };
-
-  const nextPage = () => {
-    if (currentPage !== Math.ceil(productsCount / resultPerPage)) {
-      dispatch(getProductsUsingFilters("", "", [0, 9999999], currentPage + 1));
-      setCurrentPage(currentPage + 1);
-    }
-  };
 
   const fetchMoreData = () => {
     dispatch(getProductsUsingFilters("", "", [0, 9999999], currentPage + 1));
@@ -42,10 +22,11 @@ const Product = () => {
 
   useEffect(() => {
     dispatch(getProductsUsingFilters());
-  }, []);
+  }, []); // eslint-disable-next-line react-hooks/exhaustive-deps
 
-  const { products, productsLoading, productsCount, resultPerPage } =
-    useSelector((state) => state.products);
+  const { products, productsLoading, productsCount } = useSelector(
+    (state) => state.products
+  );
 
   const searchSubmitHandler = (e) => {
     if (keyword.trim()) {
@@ -53,8 +34,7 @@ const Product = () => {
     }
   };
 
-  const childToParent = (category, minPrice, maxPrice, brand, filter) => {
-    setFilter(filter);
+  const childToParent = (category, minPrice, maxPrice, brand) => {
     dispatch(
       getProductsUsingFilters("", category, [minPrice, maxPrice], 0, brand)
     );
@@ -122,7 +102,7 @@ const Product = () => {
             hasMore={keyword ? false : products.length !== productsCount}
             loader={<Loader />}
           >
-            <div className="container">
+            <div className="container p-0">
               <div className="row mt-3 mx-auto">
                 {productsLoading ? (
                   <>
