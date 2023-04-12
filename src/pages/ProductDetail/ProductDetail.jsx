@@ -14,8 +14,9 @@ const ProductDetail = ({ currentPage }) => {
   const location = useLocation();
   const id = location.pathname.split("/")[2];
   const dispatch = useDispatch();
-
   const [selectedImage, setSelectedImage] = useState("");
+  const { currentProduct, currentProductLoading, currentProductError } =
+    useSelector((state) => state.currentProduct);
 
   useEffect(() => {
     if (currentProductError) {
@@ -25,9 +26,6 @@ const ProductDetail = ({ currentPage }) => {
     dispatch(getProductDetails(id));
     // Fetch Product Details
   }, [dispatch]);
-
-  const { currentProduct, currentProductLoading, currentProductError } =
-    useSelector((state) => state.currentProduct);
 
   return (
     <>
