@@ -18,7 +18,7 @@ const dealsOfMonthsSlice = createSlice({
     },
     dealsOfMonthSuccess: (state, action) => {
       state.dealsOfMonthLoading = false;
-      state.dealsOfMonth = action.payload.product;
+      state.dealsOfMonth = action.payload.products;
       state.dealsOfMonthError = null;
     },
     dealsOfMonthFailure: (state, action) => {

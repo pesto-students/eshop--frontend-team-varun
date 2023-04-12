@@ -21,8 +21,11 @@ const AddReview = ({ id }) => {
   };
 
   const handleAddReview = () => {
-    if (isAuthenthicated === false) navigate("/signin");
-    addReview(id, rating, review);
+    if (isAuthenthicated === false) {
+      navigate("/signin");
+    } else {
+      addReview(id, rating, review);
+    }
   };
 
   return (
