@@ -58,38 +58,6 @@ const Recommends = ({ products, loading, error }) => {
                     </div>
                   </div>
                 </div>
-
-                {/* {index < products.length - 5 && (
-                  <div className="deal-card">
-                    <Link
-                      to={`/product/${product._id}`}
-                      className="text-decoration-none text-dark"
-                    >
-                      <div className="deal-image p-2">
-                        <img
-                          src={products[index + 5].images[0]?.url}
-                          alt="Not found"
-                          className="img-fluid "
-                        />
-                      </div>
-                      <div className="deal-content px-2">
-                        <button className="btn btn-primary mt-2">
-                          Add to cart
-                        </button>
-                        <p className="deal-title">{products[index + 5].name}</p>
-                        <div className="deal-body">
-                          <h5 className="deal-price mb-0">{`₹ ${
-                            products[index + 5].Price
-                          }`}</h5>
-                          <div className="deal-rating d-flex gap-1 align-items-center">
-                            <img src="../assets/star.png" alt="" />
-                            <p className="m-0">{products[index + 5].ratings}</p>
-                          </div>
-                        </div>
-                      </div>
-                    </Link>
-                  </div>
-                )} */}
               </div>
             );
           })

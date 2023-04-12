@@ -34,7 +34,7 @@ const ProductDetail = ({ currentPage }) => {
           <Loader />
         ) : (
           <div
-            className="product-details container-fluid"
+            className="product-details container-fluid mt-5"
             style={{ backgroundColor: "#f2f4f7" }}
           >
             <section className="container-fluid pt-3 m-0">

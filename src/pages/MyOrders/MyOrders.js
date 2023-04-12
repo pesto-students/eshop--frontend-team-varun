@@ -3,6 +3,7 @@ import "./MyOrders.css";
 import { useSelector, useDispatch } from "react-redux";
 import { getMyOrders } from "../../Redux/Actions/orderActions";
 import { Link } from "react-router-dom";
+import Loader from "../../components/Loader/Loader";
 
 const MyOrders = () => {
   const dispatch = useDispatch();
@@ -18,9 +19,9 @@ const MyOrders = () => {
   console.log(orderItems);
 
   return (
-    <div className="container mt-5 p-0">
-      {orderItems.map((orderItem) => (
-        <div className="container p-2 border border-secondary rounded-2 mt-5 mb-5">
+    <div className="container myorders">
+      {ordersLoading ? <Loader /> : orderItems.map((orderItem) => (
+        <div className="container p-2 border border-secondary rounded-2 mb-5">
           <div className="d-flex justify-content-between align-items-center m-0 mx-5 mt-2">
             <div className="order-status m-0">
               <p className="fw-semibold fs-6 mb-0 text-success">
@@ -58,7 +59,6 @@ const MyOrders = () => {
                   backgroundColor: "#52057B",
                   color: "white",
                 }}
-                // onClick={handleClick}
               >
                 Product Review or Ratings
               </Link>

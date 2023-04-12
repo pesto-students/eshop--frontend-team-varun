@@ -9,6 +9,7 @@ import "./Cart.css";
 
 const Cart = () => {
   const { cartItems } = useSelector((state) => state.cart);
+  const { isAuthenthicated } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -31,7 +32,7 @@ const Cart = () => {
   };
 
   return (
-    <div className="row cart m-0">
+    <div className="row cart m-0 mt-5">
       <div className="col-md-8 cart">
         <section className="">
           <div className="row d-flex justify-content-start align-items-start h-100">
@@ -239,7 +240,13 @@ const Cart = () => {
                           backgroundColor: "#52057B",
                           color: "white",
                         }}
-                        onClick={(e) => navigate("/checkout")}
+                        onClick={(e) => {
+                          if (!isAuthenthicated) {
+                            return navigate("/signIn");
+                          } else {
+                            return navigate("/checkout");
+                          }
+                        }}
                       >
                         Procceed to checkout
                       </button>

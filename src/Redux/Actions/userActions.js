@@ -66,6 +66,7 @@ export const forgotPassword = (email) => async (dispatch) => {
         config,
       }
     );
+    console.log(res.data.message);
 
     dispatch(forgotPasswordSuccess(res.data.message));
     toast.success("Email has been sent to given email address.");

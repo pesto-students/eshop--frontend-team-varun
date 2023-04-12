@@ -14,6 +14,10 @@ const Product = () => {
 
   const [keyword, setKeyword] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
+  const [category, setCategory] = useState("");
+  const [brand, setBrand] = useState("");
+  const [minPrice, setMinPrice] = useState(0);
+  const [maxPrice, setMaxPrice] = useState(9999999);
 
   const fetchMoreData = () => {
     dispatch(getProductsUsingFilters("", "", [0, 9999999], currentPage + 1));
@@ -35,6 +39,10 @@ const Product = () => {
   };
 
   const childToParent = (category, minPrice, maxPrice, brand) => {
+    setCategory(category);
+    setBrand(brand);
+    setMinPrice(minPrice);
+    setMaxPrice(maxPrice);
     dispatch(
       getProductsUsingFilters("", category, [minPrice, maxPrice], 0, brand)
     );
@@ -99,7 +107,8 @@ const Product = () => {
           <InfiniteScroll
             dataLength={products?.length}
             next={fetchMoreData}
-            hasMore={keyword ? false : products?.length !== productsCount}
+            hasMore={(keyword || category || minPrice > 0 || maxPrice < 999999 || brand) ? false : products.length !== productsCount}
+
             loader={<Loader />}
           >
             <div className="container p-0">
@@ -115,7 +124,7 @@ const Product = () => {
                     </div>
                   ))
                 ) : (
-                  <p className="text-center">No Products Found</p>
+                  <p className="noproducts">No Products Found</p>
                 )}
               </div>
             </div>

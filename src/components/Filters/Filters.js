@@ -126,7 +126,7 @@ const Filters = ({ childToParent }) => {
         <p className="m-0 my-3 fw-semibold fs-6">Price</p>
         <input
           type="number"
-          className="form-control"
+          className="form-control shadow-none border border-none"
           id="exampleFormControlInput1"
           placeholder="Min"
           style={{ marginBottom: "12px" }}
@@ -135,7 +135,7 @@ const Filters = ({ childToParent }) => {
         />
         <input
           type="number"
-          className="form-control"
+          className="form-control shadow-none border border-none"
           id="exampleFormControlInput1"
           placeholder="Max"
           style={{ marginBottom: "12px" }}

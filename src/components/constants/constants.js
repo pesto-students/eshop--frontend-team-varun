@@ -4,6 +4,10 @@ export const cates = [
     title: "What's New",
   },
   {
+    icon: "../assets/smartphone.png",
+    title: "Mobile",
+  },
+  {
     icon: "../assets/tv.png",
     title: "Television",
   },
@@ -14,14 +18,6 @@ export const cates = [
   {
     icon: "../assets/headphone.png",
     title: "Audio",
-  },
-  {
-    icon: "../assets/ac.png",
-    title: "Air Conditioner",
-  },
-  {
-    icon: "../assets/fridge.png",
-    title: "Refrigerator",
   },
   {
     icon: "../assets/mobile.png",

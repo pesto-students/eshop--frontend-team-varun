@@ -71,7 +71,7 @@ const CreateAccount = () => {
 
   return (
     <div
-      className="row createAccount m-0"
+      className="row createAccount m-0 mt-5"
       style={{ backgroundColor: "#f2f4f7" }}
     >
       <div className="d-flex flex-column">
@@ -88,11 +88,11 @@ const CreateAccount = () => {
           <div className="col-md-6">
             <section className="">
               <div className="row d-flex justify-content-end align-items-end h-100">
-                <div className="col-lg-12  col-xl-10">
-                  <div className="card-body p-md-5 p-sm-5 ">
+                <div className="col-lg-12 col-xl-10">
+                  <div className="card-body p-md-5 p-sm-5">
                     <div className="row justify-content-end ">
                       <div className="col-md-10 col-lg-10 col-xl-10 order-2 order-lg-1">
-                        <p className="text-left fw-bold mt-4">
+                        <p className="text-left fw-bold">
                           Personal Information
                         </p>
                         <form>
@@ -104,7 +104,7 @@ const CreateAccount = () => {
                               <input
                                 type="text"
                                 id="firstName"
-                                className="form-control shadow-none"
+                                className="form-control shadow-none border border-none"
                                 onChange={(e) => setFirstName(e.target.value)}
                               />
                             </div>
@@ -117,7 +117,7 @@ const CreateAccount = () => {
                               <input
                                 type="text"
                                 id="lastName"
-                                className="form-control shadow-none"
+                                className="form-control shadow-none border border-none"
                                 onChange={(e) => setLastName(e.target.value)}
                               />
                             </div>
@@ -130,7 +130,7 @@ const CreateAccount = () => {
                               <input
                                 type="number"
                                 id="phoneNo"
-                                className="form-control shadow-none"
+                                className="form-control shadow-none border border-none"
                                 onChange={(e) => setPhoneNo(e.target.value)}
                               />
                             </div>
@@ -150,7 +150,7 @@ const CreateAccount = () => {
                   <div className="card-body p-md-5 p-sm-5">
                     <div className="row justify-content-left">
                       <div className="col-md-10 col-lg-10 col-xl-10 order-2 order-lg-1">
-                        <p className="text-left fw-bold mt-4">
+                        <p className="text-left fw-bold">
                           SignIn Information
                         </p>
                         <form>
@@ -165,7 +165,7 @@ const CreateAccount = () => {
                               <input
                                 type="email"
                                 id="form3Example3c"
-                                className="form-control shadow-none"
+                                className="form-control shadow-none border border-none"
                                 onChange={(e) => setEmail(e.target.value)}
                               />
                             </div>
@@ -181,7 +181,7 @@ const CreateAccount = () => {
                               <input
                                 type="password"
                                 id="form3Example4c"
-                                className="form-control shadow-none"
+                                className="form-control shadow-none border border-none"
                                 onChange={(e) => setPassword(e.target.value)}
                               />
                             </div>
@@ -198,7 +198,7 @@ const CreateAccount = () => {
                               <input
                                 type="password"
                                 id="form3Example4cd"
-                                className="form-control shadow-none"
+                                className="form-control shadow-none border border-none"
                                 onChange={(e) =>
                                   setConfirmPassword(e.target.value)
                                 }
@@ -207,7 +207,7 @@ const CreateAccount = () => {
                           </div>
                           <div class="form-check">
                             <input
-                              class="form-check-input shadow-none"
+                              class="form-check-input shadow-none border border-none"
                               type="checkbox"
                               value=""
                               id="flexCheckChecked"
