@@ -23,7 +23,7 @@ const Dashboard = ({ currentPage }) => {
 
   return (
     <div
-      className="row dashboard m-0 p-0"
+      className="row dashboard m-0 p-0 mt-5"
       style={{ backgroundColor: "#f2f4f7" }}
     >
       <div className="row pt-3">

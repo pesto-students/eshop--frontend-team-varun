@@ -33,7 +33,7 @@ const cartSlice = createSlice({
       );
     },
 
-    resetCart: (state, action) => {
+    resetCart: (state) => {
       state.cartItems = [];
       state.cartLoading = false;
       state.cartError = null;

@@ -64,7 +64,7 @@ const ForgotPassword = () => {
                             <input
                               type="email"
                               id="form3Example3c"
-                              className="form-control"
+                              className="form-control shadow-none border border-none"
                               onChange={(e) => setEmail(e.target.value)}
                             />
                           </div>

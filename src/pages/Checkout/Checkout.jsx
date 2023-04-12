@@ -18,6 +18,7 @@ import {
 } from "@stripe/react-stripe-js";
 import { createOrder } from "../../Redux/Actions/orderActions";
 import { resetCartItems } from "../../Redux/Actions/cartActions";
+import { resetCart } from "../../Redux/Reducers/cartSlice";
 
 const Checkout = ({ currentPage }) => {
   const { cartItems } = useSelector((state) => state.cart);
@@ -40,9 +41,6 @@ const Checkout = ({ currentPage }) => {
   const elements = useElements();
 
   useEffect(() => {
-    if (!isAuthenthicated) {
-      navigate("/signIn");
-    }
     setPrice(
       cartItems?.reduce((acc, item) => acc + item.quantity * item.price, 0)
     );
@@ -162,6 +160,7 @@ const Checkout = ({ currentPage }) => {
           order.shippingInfo = shipping;
 
           dispatch(createOrder(order));
+          dispatch(resetCart([]));
           navigate("/myorders");
           // navigate to new page which show order confirm
         } else {
@@ -178,7 +177,7 @@ const Checkout = ({ currentPage }) => {
 
   return (
     <>
-      <div className="checkout-page ">
+      <div className="checkout-page mt-5">
         <div className="container pt-4">
           <div className="checkout-page-1">
             {currentPage === "checkout" ? (

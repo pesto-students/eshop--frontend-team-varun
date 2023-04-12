@@ -21,12 +21,15 @@ const AddReview = ({ id }) => {
   };
 
   const handleAddReview = () => {
-    if (isAuthenthicated === false) navigate("/signin");
-    addReview(id, rating, review);
+    if (isAuthenthicated === false) {
+      navigate("/signin");
+    } else {
+      addReview(id, rating, review);
+    }
   };
 
   return (
-    <div className="container">
+    <div className="container mt-5">
       <p className="m-0 fw-semibold fs-4 p-0">Add Your Review</p>
       <form className="mb-3">
         {/* <TextField label="Name" idfor="name" type="text" hint="Your Name"/>

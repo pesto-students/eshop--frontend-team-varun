@@ -47,7 +47,7 @@ const Home = () => {
   }, [dispatch]);
 
   return (
-    <>
+    <div className="mt-5">
       <CarouselSlider />
 
       {topDealsLoading ? (
@@ -84,7 +84,7 @@ const Home = () => {
           error={recommendationsError}
         />
       )}
-    </>
+    </div>
   );
 };
 

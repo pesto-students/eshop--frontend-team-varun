@@ -21,7 +21,7 @@ const ListView = ({ page }) => {
       })
       .then((res) => {
         toast.success("Record has been deleted");
-
+        window.location.reload(false);
         reFetch();
       })
       .catch((err) => {
@@ -42,6 +42,7 @@ const ListView = ({ page }) => {
       );
 
       toast.success("Role changed Successfully.");
+      window.location.reload(false);
 
       reFetch();
     } catch (err) {
@@ -62,6 +63,7 @@ const ListView = ({ page }) => {
       );
 
       toast.success("Status changed Successfully.");
+      window.location.reload(false);
       reFetch();
     } catch (err) {
       toast.error("Something went wrong. Try Later.");

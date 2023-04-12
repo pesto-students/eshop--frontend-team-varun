@@ -10,6 +10,7 @@ const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [open, setopen] = useState(false);
+  const href = window.location.pathname;
 
   const handelLogOut = () => {
     dispatch(signOut());
@@ -18,8 +19,9 @@ const Header = () => {
     navigate("/");
   };
 
+
   return (
-    <nav className="navbar navbar-expand-lg bg-body-tertiary bg-black">
+    <nav className="navbar navbar-expand-lg bg-body-tertiary bg-black fixed-top">
       <div className="container-fluid">
         <Link
           to="/"
@@ -52,6 +54,7 @@ const Header = () => {
               >
                 Home
               </Link>
+              {href === "/" && <div className="tab-indicator"></div>}
             </li>
             {currentUser !== "null" && currentUser?.role === "admin" && (
               <li className="nav-item">
@@ -62,6 +65,7 @@ const Header = () => {
                 >
                   Dashboard
                 </Link>
+                {href === "/admin/products" && <div className="tab-indicator"></div>}
               </li>
             )}
             <li className="nav-item">
@@ -72,6 +76,7 @@ const Header = () => {
               >
                 Products
               </Link>
+              {href === "/products" && <div className="tab-indicator"></div>}
             </li>
             <li className="nav-item">
               <Link
@@ -81,6 +86,7 @@ const Header = () => {
               >
                 Cart
               </Link>
+              {href === "/cart" && <div className="tab-indicator"></div>}
             </li>
             <li className="nav-item">
               <Link
@@ -90,6 +96,7 @@ const Header = () => {
               >
                 Contact Us
               </Link>
+              {href === "/contact" && <div className="tab-indicator"></div>}
             </li>
           </ul>
 

@@ -1,5 +1,6 @@
 .product-list {
     background-color: #F2F4F7;
+    padding-top: 80px;
 }
 
 .product-list-header {
@@ -29,6 +30,12 @@
 
 .product-filter-mobile{
     display: none;
+}
+
+.noproducts{
+    display: grid;
+    place-items: center;
+    height: 60vh;
 }
 
 @media screen and (max-width: 460px) {

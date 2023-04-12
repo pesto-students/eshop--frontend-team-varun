@@ -28,7 +28,7 @@ const SignIn = () => {
   }, [isAuthenthicated]);
 
   return (
-    <div className="row signIn m-0" style={{ backgroundColor: "#f2f4f7" }}>
+    <div className="row signIn m-0 mt-5" style={{ backgroundColor: "#f2f4f7" }}>
       {signInLoading ? (
         <Loader />
       ) : (
@@ -57,7 +57,7 @@ const SignIn = () => {
                                 name="email"
                                 type="email"
                                 id="email"
-                                className="form-control"
+                                className="form-control shadow-none border border-none"
                                 onChange={(e) => setEmail(e.target.value)}
                               />
                             </div>
@@ -71,7 +71,7 @@ const SignIn = () => {
                                 name="password"
                                 type="password"
                                 id="password"
-                                className="form-control"
+                                className="form-control shadow-none border border-none"
                                 onChange={(e) => setPassword(e.target.value)}
                               />
                             </div>
