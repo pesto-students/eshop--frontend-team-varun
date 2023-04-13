@@ -30,7 +30,7 @@ const CreatePassword = () => {
     }
 
     if (resetPasswordSuccessMessage) {
-      toast.success(resetPasswordSuccessMessage);
+      toast.success("Password has been reset. Please Login Again.");
       dispatch(clearErrors());
       navigate("/signIn");
     }

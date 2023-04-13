@@ -23,9 +23,12 @@ const SignIn = () => {
   };
 
   useEffect(() => {
-    // dispatch(clearErrors());
-    setCheck(false);
-    if (isAuthenthicated === true) navigate("/");
+    if (signInError === true) {
+      dispatch(clearErrors());
+    } else {
+      setCheck(false);
+      if (isAuthenthicated === true) navigate("/");
+    }
   }, [isAuthenthicated]);
 
   return (

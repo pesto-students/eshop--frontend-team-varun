@@ -44,6 +44,7 @@ const Checkout = ({ currentPage }) => {
     setPrice(
       cartItems?.reduce((acc, item) => acc + item.quantity * item.price, 0)
     );
+    
     if (isAuthenthicated) {
       setFirstName(currentUser.firstname);
       setLastName(currentUser.lastname);
