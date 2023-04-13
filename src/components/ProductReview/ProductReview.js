@@ -10,6 +10,7 @@ import AddReview from "./../AddReview/AddReview";
 import "./productReview.css";
 
 const ProductReview = ({ allReviews, id, currentProduct }) => {
+  console.log(currentProduct);
   const idCSS = "hello";
   let [five, setFive] = useState(0);
   let [four, setFour] = useState(0);
@@ -20,7 +21,7 @@ const ProductReview = ({ allReviews, id, currentProduct }) => {
   useEffect(() => {
     function starsPer() {
       const counts = {};
-      for (const num of currentProduct.reviews) {
+      for (const num of currentProduct?.reviews) {
         counts[num.rating] = counts[num.rating] ? counts[num.rating] + 1 : 1;
       }
       setFive(counts[5] === undefined ? 0 : counts[5]);
@@ -70,7 +71,7 @@ const ProductReview = ({ allReviews, id, currentProduct }) => {
                       fontWeight: "600",
                     }}
                   >
-                    <p>{currentProduct?.rating.toFixed(1)}</p>
+                    <p>{currentProduct?.rating?.toFixed(1)}</p>
                   </div>
                 </CircularProgressbarWithChildren>
               </div>
@@ -92,7 +93,7 @@ const ProductReview = ({ allReviews, id, currentProduct }) => {
                           background:
                             "linear-gradient(90deg, #E65C00 0%, #F9D423 100%)",
                           width: `${(
-                            (five / currentProduct?.reviews.length) *
+                            (five / currentProduct?.reviews?.length) *
                             100
                           ).toFixed(0)}%`,
                         }}
@@ -102,7 +103,7 @@ const ProductReview = ({ allReviews, id, currentProduct }) => {
                     <p className="m-0 ms-3 text-secondary">
                       {five !== 0
                         ? (
-                            (five / currentProduct?.reviews.length) *
+                            (five / currentProduct?.reviews?.length) *
                             100
                           ).toFixed(2)
                         : 0}
@@ -125,7 +126,7 @@ const ProductReview = ({ allReviews, id, currentProduct }) => {
                           background:
                             "linear-gradient(90deg, #E65C00 0%, #F9D423 100%)",
                           width: `${(
-                            (four / currentProduct?.reviews.length) *
+                            (four / currentProduct?.reviews?.length) *
                             100
                           ).toFixed(0)}%`,
                         }}
@@ -134,7 +135,7 @@ const ProductReview = ({ allReviews, id, currentProduct }) => {
                     <p className="m-0 ms-3 text-secondary">
                       {four !== 0
                         ? (
-                            (four / currentProduct?.reviews.length) *
+                            (four / currentProduct?.reviews?.length) *
                             100
                           ).toFixed(2)
                         : 0}
@@ -157,7 +158,7 @@ const ProductReview = ({ allReviews, id, currentProduct }) => {
                           background:
                             "linear-gradient(90deg, #E65C00 0%, #F9D423 100%)",
                           width: `${(
-                            (three / currentProduct?.reviews.length) *
+                            (three / currentProduct?.reviews?.length) *
                             100
                           ).toFixed(0)}%`,
                         }}
@@ -166,7 +167,7 @@ const ProductReview = ({ allReviews, id, currentProduct }) => {
                     <p className="m-0 ms-3 text-secondary">
                       {three !== 0
                         ? (
-                            (three / currentProduct?.reviews.length) *
+                            (three / currentProduct?.reviews?.length) *
                             100
                           ).toFixed(2)
                         : 0}
@@ -189,7 +190,7 @@ const ProductReview = ({ allReviews, id, currentProduct }) => {
                           background:
                             "linear-gradient(90deg, #E65C00 0%, #F9D423 100%)",
                           width: `${(
-                            (two / currentProduct?.reviews.length) *
+                            (two / currentProduct?.reviews?.length) *
                             100
                           ).toFixed(0)}%`,
                         }}
@@ -198,7 +199,7 @@ const ProductReview = ({ allReviews, id, currentProduct }) => {
                     <p className="m-0 ms-3 text-secondary">
                       {two !== 0
                         ? (
-                            (two / currentProduct?.reviews.length) *
+                            (two / currentProduct?.reviews?.length) *
                             100
                           ).toFixed(2)
                         : 0}
@@ -221,7 +222,7 @@ const ProductReview = ({ allReviews, id, currentProduct }) => {
                           background:
                             "linear-gradient(90deg, #E65C00 0%, #F9D423 100%)",
                           width: `${(
-                            (one / currentProduct?.reviews.length) *
+                            (one / currentProduct?.reviews?.length) *
                             100
                           ).toFixed(0)}%`,
                         }}
@@ -230,7 +231,7 @@ const ProductReview = ({ allReviews, id, currentProduct }) => {
                     <p className="m-0 ms-3 text-secondary">
                       {one !== 0
                         ? (
-                            (one / currentProduct?.reviews.length) *
+                            (one / currentProduct?.reviews?.length) *
                             100
                           ).toFixed(2)
                         : 0}
@@ -241,20 +242,22 @@ const ProductReview = ({ allReviews, id, currentProduct }) => {
               </div>
             </div>
 
-            {currentProduct?.reviews?.length > 0 &&
-              [
-                ...Array(
-                  !allReviews
-                    ? currentProduct?.reviews.length
-                    : currentProduct?.reviews.length
-                ),
-              ].map((e, index) => {
-                return (
-                  <div key={index}>
-                    <Reviews review={currentProduct?.reviews[index]} />
-                  </div>
-                );
-              })}
+            <div className="mt-5">
+              {currentProduct?.reviews?.length > 0 &&
+                [
+                  ...Array(
+                    !allReviews
+                      ? currentProduct?.reviews?.length
+                      : currentProduct?.reviews?.length
+                  ),
+                ].map((e, index) => {
+                  return (
+                    <div key={index}>
+                      <Reviews review={currentProduct?.reviews[index]} />
+                    </div>
+                  );
+                })}
+            </div>
 
             {!allReviews && currentProduct?.reviews?.length > 4 ? (
               <Link
