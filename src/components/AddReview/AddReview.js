@@ -29,11 +29,9 @@ const AddReview = ({ id }) => {
   };
 
   return (
-    <div className="container mt-5">
+    <div className="container">
       <p className="m-0 fw-semibold fs-4 p-0">Add Your Review</p>
       <form className="mb-3">
-        {/* <TextField label="Name" idfor="name" type="text" hint="Your Name"/>
-                <TextField label="Email" idfor="email" type="email" hint="Your Email"/> */}
         <textarea
           className="form-control mt-3 mb-2 shadow-none border border-secondary-subtle"
           id="review"

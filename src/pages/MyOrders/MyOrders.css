@@ -1,3 +1,10 @@
 .myorders{
     margin-top: 120px;
 }
+
+.no-orders{
+    height: 70vh;
+    width: 100vw;
+    display: grid;
+    place-items: center;
+}

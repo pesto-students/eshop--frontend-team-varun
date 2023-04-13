@@ -17,10 +17,10 @@ const Dealcards = (props) => {
           />
         </div>
         <div className="deal-content">
-          <p className="deal-title">{`${props.deall.name?.substring(
+          <p className="deal-title">{`${props.deall.name.length > 40 ? `${props.deall.name?.substring(
             0,
             40
-          )}...`}</p>
+          )}...` : props.deall.name}`}</p>
           <div className="deal-body">
             <h5 className="deal-price mb-0">{`₹ ${props.deall.price}`}</h5>
             <div className="deal-rating d-flex gap-1 align-items-center">
