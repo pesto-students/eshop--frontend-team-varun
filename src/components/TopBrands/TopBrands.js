@@ -22,8 +22,8 @@ const TopBrands = () => {
         <p>Top Brands</p>
       </div>
       <Marquee className="brands_img" gradient={false}>
-        {brands.map((b) => (
-          <div className="mx-4">
+        {brands.map((b, index) => (
+          <div key={index} className="mx-4">
             <img src={b} alt="" />
           </div>
         ))}

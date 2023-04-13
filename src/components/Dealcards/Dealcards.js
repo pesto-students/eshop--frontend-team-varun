@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./dealcards.css";
+import ImageNotFound from "../../assets/image_not_found.jpeg";
 
 const Dealcards = (props) => {
   return (
@@ -11,16 +12,17 @@ const Dealcards = (props) => {
       >
         <div className="deal-image p-2">
           <img
-            src={props.deall.images[0]?.url}
+            src={props.deall.images[0]?.url || ImageNotFound}
             alt="Not found"
             className="img-fluid"
           />
         </div>
         <div className="deal-content">
-          <p className="deal-title">{`${props.deall.name.length > 40 ? `${props.deall.name?.substring(
-            0,
-            40
-          )}...` : props.deall.name}`}</p>
+          <p className="deal-title">{`${
+            props.deall.name.length > 40
+              ? `${props.deall.name?.substring(0, 40)}...`
+              : props.deall.name
+          }`}</p>
           <div className="deal-body">
             <h5 className="deal-price mb-0">{`₹ ${props.deall.price}`}</h5>
             <div className="deal-rating d-flex gap-1 align-items-center">

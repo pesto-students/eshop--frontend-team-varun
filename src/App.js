@@ -48,7 +48,6 @@ function App() {
     }
   }, [isAuthenthicated]);
 
-  console.log(stripeApiKey);
   return (
     <div>
       <Router>

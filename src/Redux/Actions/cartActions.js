@@ -25,6 +25,7 @@ export const AddItemsToCart = (id, quantity) => async (dispatch) => {
 
     dispatch(addToCart(product));
   } catch (error) {
+    console.log(error);
     dispatch(cartFailure(error.response.data.message));
   }
 };

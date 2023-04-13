@@ -11,7 +11,6 @@ import InfiniteScroll from "react-infinite-scroll-component";
 
 const Product = () => {
   const dispatch = useDispatch();
-
   const [keyword, setKeyword] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [category, setCategory] = useState("");
@@ -32,6 +31,14 @@ const Product = () => {
     (state) => state.products
   );
 
+  const handleEnter = (e) => {
+    if (e.key === "Enter") {
+      searchSubmitHandler();
+    } else {
+      return;
+    }
+  };
+
   const searchSubmitHandler = (e) => {
     if (keyword.trim()) {
       dispatch(getProductsUsingFilters(keyword));
@@ -41,6 +48,8 @@ const Product = () => {
   const childToParent = (category, minPrice, maxPrice, brand) => {
     setCategory(category);
     setBrand(brand);
+    console.log(minPrice);
+    console.log(maxPrice);
     setMinPrice(minPrice);
     setMaxPrice(maxPrice);
     dispatch(
@@ -92,6 +101,7 @@ const Product = () => {
 
                 return setKeyword(e.target.value);
               }}
+              onKeyDown={handleEnter}
             />
             <span
               className="input-group-text bg-white border-0"
