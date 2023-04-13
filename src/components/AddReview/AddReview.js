@@ -13,7 +13,8 @@ import { useNavigate } from "react-router-dom";
 const AddReview = ({ id }) => {
   const [review, setReview] = useState("");
   const [rating, setRating] = useState(0);
-  const { isAuthenthicated } = useSelector((state) => state.user);
+  const { isAuthenthicated, currentUser } = useSelector((state) => state.user);
+  const name = currentUser?.firstname + " " + currentUser?.lastname;
   const navigate = useNavigate();
 
   const ratingChanged = (newRating) => {
@@ -24,7 +25,7 @@ const AddReview = ({ id }) => {
     if (isAuthenthicated === false) {
       navigate("/signin");
     } else {
-      addReview(id, rating, review);
+      addReview(id, name, rating, review);
     }
   };
 
@@ -47,7 +48,7 @@ const AddReview = ({ id }) => {
           emptyIcon={<FontAwesomeIcon icon={faStar} />}
           halfIcon={<FontAwesomeIcon icon={faStarHalfStroke} />}
           fullIcon={<FontAwesomeIcon icon={faStar} />}
-          activeColor="#ffd700"
+          activeColor="#FFA500"
         />
         <button
           type="Submit"
