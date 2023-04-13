@@ -27,6 +27,8 @@ import {
   addTopDealsSuccess,
 } from "../Reducers/topDealsSlice";
 import { addReview } from "./reviewActions";
+import { addCategories, categoriesFailure } from "../Reducers/categorySlice";
+import { addBrands, brandsFailure } from "../Reducers/brandSlice";
 
 // Get All Products
 export const getProducts = () => async (dispatch) => {
@@ -104,13 +106,29 @@ export const getRecommendations = () => async (dispatch) => {
     const res = await axios.get(`http://localhost:4000/api/v1/shuffleproducts`);
 
     dispatch(addRecommendationsSuccess(res.data));
+
+    // getting all the category of all the products
+    let categoryList = res.data.product.map((product) => {
+      return product.category;
+    });
+
+    categoryList = [...new Set(categoryList)];
+    dispatch(addCategories(categoryList));
+
+    // Getting all the brands of all the products
+    let brandList = res.data.product.map((product) => {
+      return product.brand;
+    });
+    brandList = [...new Set(brandList)];
+    dispatch(addBrands(brandList));
   } catch (error) {
     dispatch(addRecommendationsFailure(error));
+    dispatch(categoriesFailure(error));
+    dispatch(brandsFailure(error));
   }
 };
 
 // Get current Product Details
-
 export const getProductDetails = (id) => async (dispatch) => {
   try {
     dispatch(getCurrentProductRequestStart());

@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import { AddItemsToCart } from "../../Redux/Actions/cartActions";
 import Loader from "../Loader/Loader";
 import "./recommends.css";
+import ImageNotFound from "../../assets/image_not_found.jpeg";
 
 const Recommends = ({ products, loading, error }) => {
   const dispatch = useDispatch();
@@ -26,7 +27,7 @@ const Recommends = ({ products, loading, error }) => {
         ) : (
           products?.map((product, index) => {
             return (
-              <div className="rec_rows">
+              <div key={index} className="rec_rows">
                 <div className="deal-card me-2">
                   <div className="deal-image p-2">
                     <Link
@@ -34,7 +35,7 @@ const Recommends = ({ products, loading, error }) => {
                       className="text-decoration-none text-dark"
                     >
                       <img
-                        src={product.images[0]?.url}
+                        src={product.images[0]?.url || ImageNotFound}
                         alt="Not found"
                         className="img-fluid "
                       />

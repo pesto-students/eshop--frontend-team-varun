@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getProductDetails } from "../../Redux/Actions/productActions";
 import Loader from "../../components/Loader/Loader";
 import { toast } from "react-toastify";
+import ImageNotFound from "../../assets/image_not_found.jpeg";
 
 const ProductDetail = ({ currentPage }) => {
   const location = useLocation();
@@ -45,7 +46,11 @@ const ProductDetail = ({ currentPage }) => {
                 >
                   <div className="container p-3">
                     <img
-                      src={selectedImage || currentProduct?.images[0]?.url}
+                      src={
+                        selectedImage ||
+                        currentProduct?.images[0]?.url ||
+                        ImageNotFound
+                      }
                       // src=""
                       alt=""
                       className="mainImg img-fluid border bg-light"

@@ -13,9 +13,8 @@ const SignIn = () => {
   const [check, setCheck] = useState(false);
 
   // get current signIn user from store
-  const { signInLoading, signInError, isAuthenthicated } = useSelector(
-    (state) => state.user
-  );
+  const { signInLoading, signInError, SignInError, isAuthenthicated } =
+    useSelector((state) => state.user);
 
   const handleClick = async (e) => {
     e.preventDefault();
@@ -23,7 +22,7 @@ const SignIn = () => {
   };
 
   useEffect(() => {
-    if (signInError === true) {
+    if (signInError === true || SignInError === true) {
       dispatch(clearErrors());
     } else {
       setCheck(false);

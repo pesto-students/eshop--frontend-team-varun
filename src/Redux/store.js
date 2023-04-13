@@ -20,6 +20,8 @@ import recommendationReducer from "./Reducers/recommendationSlice";
 import currentProductReducer from "./Reducers/currentProductSlice";
 import ordersReducers from "./Reducers/orderSlice";
 import resetPasswordReducer from "./Reducers/resetPasswordSlice";
+import categoriesReducer from "./Reducers/categorySlice";
+import brandsReducer from "./Reducers/brandSlice";
 
 const persistConfig = {
   key: "root",
@@ -37,6 +39,8 @@ const rootReducer = combineReducers({
   currentProduct: currentProductReducer,
   orders: ordersReducers,
   resetPassword: resetPasswordReducer,
+  categories: categoriesReducer,
+  brands: brandsReducer,
 });
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 

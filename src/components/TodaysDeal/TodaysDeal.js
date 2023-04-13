@@ -72,8 +72,8 @@ const TodaysDeal = ({ title, isEnd, products, error, loading }) => {
         </>
       ) : (
         <div className="deal-cards pb-3 px-5">
-          {products?.map((deal) => (
-            <Dealcards deall={deal} />
+          {products?.map((deal, index) => (
+            <Dealcards key={index} deall={deal} />
           ))}
         </div>
       )}

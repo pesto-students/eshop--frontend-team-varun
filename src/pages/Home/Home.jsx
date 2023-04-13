@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import CarouselSlider from "../../components/Carousel/Carousel";
 import Category from "../../components/ChoiceCategory/Category";
 
-import { cates } from "../../components/constants/constants";
+import { cates } from "../../components/Constants/constants";
 import Loader from "../../components/Loader/Loader";
 import Recommends from "../../components/Recommends/Recommends";
 import Services from "../../components/Services/Services";
@@ -15,6 +15,7 @@ import {
   getTopDeals,
 } from "../../Redux/Actions/productActions";
 import { toast } from "react-toastify";
+import produce from "immer";
 
 const Home = () => {
   const dispatch = useDispatch();
