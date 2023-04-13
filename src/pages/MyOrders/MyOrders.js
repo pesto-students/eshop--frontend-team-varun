@@ -19,8 +19,8 @@ const MyOrders = () => {
   console.log(orderItems);
 
   return (
-    <div className="container myorders">
-      {ordersLoading ? <Loader /> : orderItems.map((orderItem) => (
+    <div className="container-fluid myorders p-0">
+      {ordersLoading ? <Loader /> : orderItems.length > 0 ? orderItems.map((orderItem) => (
         <div className="container p-2 border border-secondary rounded-2 mb-5">
           <div className="d-flex justify-content-between align-items-center m-0 mx-5 mt-2">
             <div className="order-status m-0">
@@ -65,7 +65,7 @@ const MyOrders = () => {
             </div>
           ))}
         </div>
-      ))}
+      )) : <p className="no-orders">No Orders Found</p>}
     </div>
   );
 };
