@@ -63,8 +63,9 @@ const ProductDetail = ({ currentPage }) => {
                   </div>
 
                   <div className=" img-row d-flex align-items-center my-3 justify-content-around">
-                    {currentProduct?.images?.map((imageItem) => (
+                    {currentProduct?.images?.map((imageItem, index) => (
                       <img
+                        key={index}
                         src={imageItem?.url}
                         alt=""
                         className="img-fluid col-3 border border-1 rounded-2 p-1"

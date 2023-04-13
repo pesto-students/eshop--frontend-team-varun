@@ -10,7 +10,6 @@ import AddReview from "./../AddReview/AddReview";
 import "./productReview.css";
 
 const ProductReview = ({ allReviews, id, currentProduct }) => {
-  console.log(currentProduct);
   const idCSS = "hello";
   let [five, setFive] = useState(0);
   let [four, setFour] = useState(0);
