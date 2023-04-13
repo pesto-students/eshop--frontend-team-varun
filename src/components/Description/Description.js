@@ -1,10 +1,9 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Description = ({ currentProduct }) => {
   const { isAuthenthicated, currentUser } = useSelector((state) => state.user);
-  const navigate = useNavigate();
 
   return (
     <div

@@ -107,8 +107,11 @@ const Product = () => {
           <InfiniteScroll
             dataLength={products?.length}
             next={fetchMoreData}
-            hasMore={(keyword || category || minPrice > 0 || maxPrice < 999999 || brand) ? false : products.length !== productsCount}
-
+            hasMore={
+              keyword || category || minPrice > 0 || maxPrice < 999999 || brand
+                ? false
+                : products?.length !== productsCount
+            }
             loader={<Loader />}
           >
             <div className="container p-0">

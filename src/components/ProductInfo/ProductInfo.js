@@ -19,32 +19,39 @@ import { toast } from "react-toastify";
 
 const ProductInfo = ({ currentProduct }) => {
   const dispatch = useDispatch();
-  const [color, chooseColor] = useState("");
-  const [memory, chooseMemory] = useState("");
   const [qty, setQty] = useState(1);
   const navigate = useNavigate();
 
   const AddItemToCart = () => {
-    dispatch(AddItemsToCart(currentProduct?._id, qty));
-    toast.success("Item Added to cart Successfully.");
+    if (currentProduct.stock === 0) {
+      toast.warn("This product is currently out of Stock");
+    } else {
+      dispatch(AddItemsToCart(currentProduct?._id, qty));
+      toast.success("Item Added to cart Successfully.");
+    }
   };
 
   const buyNowHandel = () => {
-    dispatch(AddItemsToCart(currentProduct?._id, qty));
-    navigate("/checkout");
+    if (currentProduct.stock === 0) {
+      toast.warn("This product is currently out of Stock");
+      return;
+    } else {
+      dispatch(AddItemsToCart(currentProduct?._id, qty));
+      navigate("/checkout");
+    }
   };
 
   return (
     <div className="ms-5">
       <p className="fw-semibold fs-2 m-0">{currentProduct?.name}</p>
       <section className="d-flex align-items-center mt-2">
-      <ReactStars
+        <ReactStars
           count={5}
           edit={false}
           size={24}
           value={currentProduct?.rating}
           isHalf={true}
-          activeColor="#ffd700"
+          activeColor="#FFA500"
         />
         <div className="d-flex gap-4 align-items-center">
           <p className="m-0 ms-2 p-0 d-flex gap-2">
@@ -103,14 +110,12 @@ const ProductInfo = ({ currentProduct }) => {
           Buy Now
         </button>
 
-        {/* change the text color to white when hover in below button */}
-
         <button
           type="button"
           className="addtocart-btn btn d-flex w-100 border-dark rounded-2 justify-content-center gap-1 m-0 p-3"
           onClick={AddItemToCart}
         >
-          <img src="../assets/productDetails/cart.svg" alt=""/> Add to cart
+          <img src="../assets/productDetails/cart.svg" alt="" /> Add to cart
         </button>
       </section>
       <div
@@ -123,7 +128,7 @@ const ProductInfo = ({ currentProduct }) => {
               src="../assets/productDetails/original.png"
               alt=""
               style={{ width: "24px", marginRight: "8px" }}
-            />{" "}
+            />
             Original store product
           </div>
           <div className="col-lg-6 mb-3">
@@ -131,7 +136,7 @@ const ProductInfo = ({ currentProduct }) => {
               src="../assets/productDetails/warranty.png"
               alt=""
               style={{ width: "24px", marginRight: "8px" }}
-            />{" "}
+            />
             Long term warranty
           </div>
           <div className="col-lg-6 mb-3">
@@ -139,7 +144,7 @@ const ProductInfo = ({ currentProduct }) => {
               src="../assets/productDetails/trusted.png"
               alt=""
               style={{ width: "24px", marginRight: "8px" }}
-            />{" "}
+            />
             100% trusted shop
           </div>
           <div className="col-lg-6 mb-3">
@@ -147,7 +152,7 @@ const ProductInfo = ({ currentProduct }) => {
               src="../assets/productDetails/monthly.png"
               alt=""
               style={{ width: "24px", marginRight: "8px" }}
-            />{" "}
+            />
             Monthly installment
           </div>
         </div>

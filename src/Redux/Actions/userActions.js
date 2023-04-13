@@ -34,7 +34,6 @@ export const SignInUser = (email, password) => async (dispatch) => {
 
 export const registerUser =
   (firstname, lastname, phoneNo, email, password) => async (dispatch) => {
-    // console.log( , )
     try {
       dispatch(registerStart());
 
@@ -66,12 +65,10 @@ export const forgotPassword = (email) => async (dispatch) => {
         config,
       }
     );
-    console.log(res.data.message);
 
     dispatch(forgotPasswordSuccess(res.data.message));
     toast.success("Email has been sent to given email address.");
   } catch (error) {
-    console.log(error);
     dispatch(forgotPasswordFailure(error.response.data.message));
   }
 };
