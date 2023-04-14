@@ -29,7 +29,7 @@ const AddReview = ({ id }) => {
   };
 
   return (
-    <div className="container-fluid">
+    <div className="addReview">
       <p className="m-0 fw-semibold fs-4 p-0">Add Your Review</p>
       <form className="mb-3">
         <textarea

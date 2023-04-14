@@ -13,9 +13,7 @@ const MyOrders = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const { orderItems, ordersLoading } = useSelector(
-    (state) => state.orders
-  );
+  const { orderItems, ordersLoading } = useSelector((state) => state.orders);
 
   console.log(orderItems);
 
@@ -40,13 +38,18 @@ const MyOrders = () => {
             </div>
             <hr />
             {orderItem.orderItems.map((o) => (
-              <div className="order-details mx-5 mt-3" style={{backgroundColor: "#f2f4f7"}}>
-                <img
-                  src={o.image}
-                  alt=""
-                  style={{ width: "100px" }}
-                  className="p-2"
-                />
+              <div
+                className="order-details mx-5 mt-3"
+                style={{ backgroundColor: "#f2f4f7" }}
+              >
+                {(o.image || o.image === "") && (
+                  <img
+                    src={o.image}
+                    alt=""
+                    style={{ width: "100px" }}
+                    className="p-2"
+                  />
+                )}
                 <div>
                   <p className="m-0 p-0 fw-semibold fs-5">
                     {`${

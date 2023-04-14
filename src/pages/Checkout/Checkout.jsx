@@ -38,15 +38,17 @@ const Checkout = ({ currentPage }) => {
   const stripe = useStripe();
   const elements = useElements();
 
+  console.log(currentUser);
+
   useEffect(() => {
     setPrice(
       cartItems?.reduce((acc, item) => acc + item.quantity * item.price, 0)
     );
 
     if (isAuthenthicated) {
-      setFirstName(currentUser.firstname);
-      setLastName(currentUser.lastname);
-      setPhoneNo(currentUser.phoneNo);
+      setFirstName(currentUser?.firstname);
+      setLastName(currentUser?.lastname);
+      setPhoneNo(currentUser?.phoneNo);
 
       setAddress(shippingInfo?.address);
       setCountry(shippingInfo?.country);

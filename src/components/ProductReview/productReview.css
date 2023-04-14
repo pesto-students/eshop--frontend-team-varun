@@ -10,3 +10,14 @@
     gap: 20px;
     margin: 20px 0;
 }
+
+.review-section{
+    margin: 0 40px;
+}
+
+@media screen and (max-width: 460px){
+    .reviews-grid{
+        flex-direction: column;
+        margin: 0 40px;
+    }
+}

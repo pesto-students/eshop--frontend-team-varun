@@ -12,9 +12,9 @@ import { toast } from "react-toastify";
 import ImageNotFound from "../../assets/image_not_found.jpeg";
 
 const ProductDetail = ({ currentPage }) => {
+  const dispatch = useDispatch();
   const location = useLocation();
   const id = location.pathname.split("/")[2];
-  const dispatch = useDispatch();
   const [selectedImage, setSelectedImage] = useState("");
   const { currentProduct, currentProductLoading, currentProductError } =
     useSelector((state) => state.currentProduct);
@@ -23,11 +23,9 @@ const ProductDetail = ({ currentPage }) => {
     if (currentProductError) {
       toast.error(`${currentProductError}`);
     }
-
     dispatch(getProductDetails(id));
-    // Fetch Product Details
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dispatch]);
+  }, []);
 
   return (
     <>
@@ -36,11 +34,11 @@ const ProductDetail = ({ currentPage }) => {
           <Loader />
         ) : (
           <div
-            className="product-details container-fluid mt-5"
+            className="product-details mt-5"
             style={{ backgroundColor: "#f2f4f7" }}
           >
             <section className="container-fluid pt-3 m-0">
-              <div className="row m-0 mx-5">
+              <div className="row m-0 justify-content-evenly">
                 <div
                   className="product-images col-lg-4 col-xs-12 my-4 p-0"
                   style={{ width: "493px" }}
@@ -48,7 +46,7 @@ const ProductDetail = ({ currentPage }) => {
                   <div className="container p-3">
                     <img
                       src={
-                        selectedImage ||
+                        selectedImage !== "" ||
                         currentProduct?.images[0]?.url ||
                         ImageNotFound
                       }

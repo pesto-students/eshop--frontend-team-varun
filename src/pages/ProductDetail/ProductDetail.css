@@ -1,6 +1,7 @@
-.container-xxl{
-    min-width: 1500px;
+.productDetails{
+    
 }
+
 
 @media only screen and (min-width: 990px){
     .recommend-cards{

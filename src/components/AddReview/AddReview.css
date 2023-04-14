@@ -2,3 +2,9 @@ input[required] > label:after {
     content: '*';
     color: red;
 }
+
+@media screen and (max-width: 460px){
+    .addReview{
+        margin: 24px 40px 0 40px;
+    }
+}
