@@ -4,3 +4,9 @@
     border: 1px solid #383838;
     transform: rotate(90deg);
 }
+
+.reviews-grid{
+    display: flex;
+    gap: 20px;
+    margin: 20px 0;
+}

@@ -35,11 +35,11 @@ const ProductReview = ({ allReviews, id, currentProduct }) => {
 
   return (
     <div
-      className={allReviews ? "container" : "container m-0 p-0 ms-5"}
+      className={allReviews ? "container" : "container m-0 p-0"}
       style={{ marginTop: "24px" }}
     >
-      <div className="container w-100 p-0">
-        <div className="row p-0 justify-content-between">
+      <div className="container w-100 p-0 ps-5">
+        <div className="row p-0">
           <div className="col-lg-6 col-sm-12">
             <p
               className={`m-0 fw-semibold fs-4 p-0 ${allReviews ? "ms-4" : ""}`}
@@ -240,8 +240,12 @@ const ProductReview = ({ allReviews, id, currentProduct }) => {
                 </div>
               </div>
             </div>
-
-            <div className="mt-5">
+          </div>
+          <div className="col-lg-5 col-sm-12">
+            <AddReview id={id} />
+          </div>
+          <div className="mx-auto">
+            <div className="reviews-grid">
               {currentProduct?.reviews?.length > 0 &&
                 [
                   ...Array(
@@ -251,7 +255,7 @@ const ProductReview = ({ allReviews, id, currentProduct }) => {
                   ),
                 ].map((e, index) => {
                   return (
-                    <div key={index}>
+                    <div key={index} className="w-100">
                       <Reviews review={currentProduct?.reviews[index]} />
                     </div>
                   );
@@ -273,9 +277,6 @@ const ProductReview = ({ allReviews, id, currentProduct }) => {
             ) : (
               <></>
             )}
-          </div>
-          <div className="col-lg-5 col-sm-12">
-            <AddReview id={id} />
           </div>
         </div>
       </div>

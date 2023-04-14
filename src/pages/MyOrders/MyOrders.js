@@ -19,12 +19,12 @@ const MyOrders = () => {
   console.log(orderItems);
 
   return (
-    <div className="container-fluid myorders p-0">
+    <div className="myorders">
       {ordersLoading ? (
         <Loader />
       ) : orderItems.length > 0 ? (
         orderItems.map((orderItem) => (
-          <div className="container p-2 border border-secondary rounded-2 mb-5">
+          <div className="container p-2 border border-secondary rounded-2">
             <div className="d-flex justify-content-between align-items-center m-0 mx-5 mt-2">
               <div className="order-status m-0">
                 <p className="fw-semibold fs-6 mb-0 text-success">
@@ -39,16 +39,18 @@ const MyOrders = () => {
             </div>
             <hr />
             {orderItem.orderItems.map((o) => (
-              <div className="d-flex order-details align-items-center justify-content-between mx-5 mt-3">
+              <div className="order-details mx-5 mt-3" style={{backgroundColor: "#f2f4f7"}}>
                 <img
                   src={o.image}
                   alt=""
-                  style={{ width: "10%" }}
-                  className="bg-secondary-subtle p-2"
+                  style={{ width: "100px" }}
+                  className="p-2"
                 />
                 <div>
                   <p className="m-0 p-0 fw-semibold fs-5">
-                    {o.name.slice(0, 60)}
+                    {`${
+                      o.name.length > 20 ? `${o.name?.slice(0, 20)}...` : o.name
+                    }`}
                   </p>
                   <p className="m-0 p-0">{o.productId}</p>
                 </div>
@@ -57,7 +59,7 @@ const MyOrders = () => {
                 <Link
                   type="button"
                   to={`/product/${o.productId}`}
-                  className="btn text-nowrap btn-md px-5"
+                  className="btn text-nowrap review-button"
                   style={{
                     backgroundColor: "#52057B",
                     color: "white",
@@ -70,8 +72,8 @@ const MyOrders = () => {
           </div>
         ))
       ) : (
-        <h4 className="py-2 text-uppercase text-center opacity-50">
-          Your cart is Empty add Some Products
+        <h4 className="py-2 text-uppercase text-center opacity-50 no-orders">
+          No Orders Available
         </h4>
       )}
     </div>

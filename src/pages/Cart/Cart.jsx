@@ -196,7 +196,7 @@ const Cart = () => {
                 <div className="row justify-content-left">
                   <div className="col-md-11 col-lg-11 col-xl-11 order-2 order-lg-1">
                     <div className="text-left mt-5 pt-5">
-                      <p className="text-left fw-bold mt-2">Your Cart Total</p>
+                      <p className="text-left fw-semibold mt-2 ms-3">Your Cart Total</p>
                     </div>
 
                     <div className="p-4">
@@ -219,7 +219,7 @@ const Cart = () => {
                           <strong>₹0.00</strong>
                         </li> */}
                         <li className="d-flex justify-content-between py-3 border-bottom">
-                          <strong className="text-muted">Total</strong>
+                          <strong className="fw-semibold">Total</strong>
                           <h5
                             className="font-weight-bold"
                             style={{ color: "green" }}

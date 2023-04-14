@@ -44,9 +44,9 @@ export const registerUser =
         phoneNo,
         email,
         password,
-        config,
+        config
       });
-
+        console.log(res);
       dispatch(registerSuccess(res.data.user));
     } catch (error) {
       console.log(error);
