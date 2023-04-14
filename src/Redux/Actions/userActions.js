@@ -12,14 +12,14 @@ import {
   forgotPasswordFailure,
   forgotPasswordSuccess,
 } from "../Reducers/userSlice";
-import base_url from "./helper/helper";
+import { BASE_URL } from "../../Services/helper";
 
 export const SignInUser = (email, password) => async (dispatch) => {
   try {
     dispatch(signInStart());
 
     const config = { headers: { "Content-Type": "application/json" } };
-    const res = await axios.post(`${base_url}/login`, {
+    const res = await axios.post(`${BASE_URL}/login`, {
       email,
       password,
       config,
@@ -39,7 +39,7 @@ export const registerUser =
       dispatch(registerStart());
 
       const config = { headers: { "Content-Type": "application/json" } };
-      const res = await axios.post("${base_url}/register", {
+      const res = await axios.post("${BASE_URL}/register", {
         firstname,
         lastname,
         phoneNo,
@@ -59,7 +59,7 @@ export const forgotPassword = (email) => async (dispatch) => {
   try {
     dispatch(forgotPasswordStart());
     const config = { headers: { "Content-Type": "application/json" } };
-    const res = await axios.post("${base_url}/password/forgot", {
+    const res = await axios.post("${BASE_URL}/password/forgot", {
       email,
       config,
     });

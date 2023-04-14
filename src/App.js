@@ -25,14 +25,14 @@ import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import Page404 from "./pages/NEWPage404/Page404";
 import UpdateProduct from "./pages/Admin/pages/UpdateProduct/UpdateProduct";
-import base_url from "./helper/helper";
+import { BASE_URL } from "./Services/helper";
 
 function App() {
   const [stripeApiKey, setStripeApiKey] = useState("");
   const { isAuthenthicated } = useSelector((state) => state.user);
 
   async function getStripeApiKey() {
-    const { data } = await axios.get(`${base_url}/stripeapikey`, {
+    const { data } = await axios.get(`${BASE_URL}/stripeapikey`, {
       headers: {
         authorization: `Bearer ${localStorage.getItem("token")}`,
       },

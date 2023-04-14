@@ -4,7 +4,7 @@ import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import base_url from "./helper/helper";
+import { BASE_URL } from "../../../../Services/helper";
 
 const AddProduct = () => {
   const [description, setDescription] = useState("");
@@ -91,7 +91,7 @@ const AddProduct = () => {
       );
 
       const res = await axios.post(
-        `${base_url}/admin/product/new`,
+        `${BASE_URL}/admin/product/new`,
         {
           name: productName,
           description,

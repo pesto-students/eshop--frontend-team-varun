@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import Loader from "../../components/Loader/Loader";
 import axios from "axios";
-import base_url from "./helper/helper";
+import { BASE_URL } from "../../Services/helper";
 
 const Contact = () => {
   const [subjectLine, setSubjectLine] = useState("");
@@ -26,7 +26,7 @@ const Contact = () => {
       setLoading(true);
       try {
         const res = await axios.post(
-          `${base_url}/mailtoadmin`,
+          `${BASE_URL}/mailtoadmin`,
           {
             email: currentUser.email,
             subject: subjectLine,

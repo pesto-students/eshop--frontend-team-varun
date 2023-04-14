@@ -4,18 +4,18 @@ import "./ListView.css";
 import Loader from "../../../../components/Loader/Loader";
 import axios from "axios";
 import { toast } from "react-toastify";
-import base_url from "./helper/helper";
+import { BASE_URL } from "../../../../Services/helper";
 
 const ListView = ({ page }) => {
   const { data, loading, error, reFetch } = useFetch(
-    `${base_url}/admin/${page}`
+    `${BASE_URL}/admin/${page}`
   );
 
   const rawdata = page === "orders" ? data.orders : data.users;
 
   const handleDelete = (id) => {
     axios
-      .delete(`${base_url}/admin/${page.slice(0, -1)}/${id}`, {
+      .delete(`${BASE_URL}/admin/${page.slice(0, -1)}/${id}`, {
         headers: {
           authorization: `Bearer ${localStorage.getItem("token")}`,
         },
@@ -33,7 +33,7 @@ const ListView = ({ page }) => {
   const handleRoleChange = (id, role) => {
     try {
       axios.put(
-        `${base_url}/admin/${page.slice(0, -1)}/${id}`,
+        `${BASE_URL}/admin/${page.slice(0, -1)}/${id}`,
         { role },
         {
           headers: {
@@ -54,7 +54,7 @@ const ListView = ({ page }) => {
   const handleOrderStatusChange = (id, status) => {
     try {
       axios.put(
-        `${base_url}/admin/${page.slice(0, -1)}/${id}`,
+        `${BASE_URL}/admin/${page.slice(0, -1)}/${id}`,
         { status },
         {
           headers: {

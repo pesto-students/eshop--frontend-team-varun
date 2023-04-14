@@ -19,7 +19,7 @@ import {
 import { createOrder } from "../../Redux/Actions/orderActions";
 import { resetCartItems } from "../../Redux/Actions/cartActions";
 import { resetCart } from "../../Redux/Reducers/cartSlice";
-import base_url from "./helper/helper";
+import { BASE_URL } from "../../Services/helper";
 
 const Checkout = ({ currentPage }) => {
   const { cartItems } = useSelector((state) => state.cart);
@@ -121,7 +121,7 @@ const Checkout = ({ currentPage }) => {
 
     try {
       const { data } = await axios.post(
-        `${base_url}/payment/process`,
+        `${BASE_URL}/payment/process`,
         { amount: Math.round(totalPrice * 100) },
         {
           headers: {
