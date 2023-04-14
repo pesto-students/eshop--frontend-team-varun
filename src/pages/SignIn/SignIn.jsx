@@ -29,7 +29,7 @@ const SignIn = () => {
       setCheck(false);
       if (isAuthenthicated === true) navigate("/");
     }
-  }, [isAuthenthicated]);
+  }, [isAuthenthicated,signInError,SignInError]);
 
   return (
     <div className="row signIn m-0 mt-5" style={{ backgroundColor: "#f2f4f7" }}>
