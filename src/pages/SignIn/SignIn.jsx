@@ -22,7 +22,7 @@ const SignIn = () => {
   };
 
   useEffect(() => {
-    dispatch(clearErrors());
+    // dispatch(clearErrors());
     if (signInError === true || SignInError === true) {
       dispatch(clearErrors());
     } else {
