@@ -1,13 +1,10 @@
 import React, { useEffect, useState } from "react";
 import "./Products.css";
 import Dealcards from "../../../../components/Dealcards/Dealcards";
-import useFetch from "../../../../hooks/useFetch";
 import Loader from "../../../../components/Loader/Loader";
-import Paginate from "../../../../components/Pagination/Pagination";
 import { useDispatch, useSelector } from "react-redux";
 import { getProductsUsingFilters } from "../../../../Redux/Actions/productActions";
 import InfiniteScroll from "react-infinite-scroll-component";
-import { Link } from "react-router-dom";
 
 const Products = ({ keyword, searchSubmitHandler }) => {
   const dispatch = useDispatch();
@@ -25,14 +22,13 @@ const Products = ({ keyword, searchSubmitHandler }) => {
       dispatch(getProductsUsingFilters());
       setCurrentPage(currentPage + 1);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const {
     products,
-    productsError,
     productsLoading,
     productsCount,
-    resultPerPage,
   } = useSelector((state) => state.products);
 
   return (

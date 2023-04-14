@@ -26,6 +26,7 @@ const ProductDetail = ({ currentPage }) => {
 
     dispatch(getProductDetails(id));
     // Fetch Product Details
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch]);
 
   return (

@@ -17,7 +17,6 @@ import ScrollToTop from "./ScrollToTop";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import MyOrders from "./pages/MyOrders/MyOrders";
-import Payment from "./pages/Payment/Payment";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import axios from "axios";

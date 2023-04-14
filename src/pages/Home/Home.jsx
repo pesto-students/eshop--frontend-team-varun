@@ -15,7 +15,6 @@ import {
   getTopDeals,
 } from "../../Redux/Actions/productActions";
 import { toast } from "react-toastify";
-import produce from "immer";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -45,6 +44,7 @@ const Home = () => {
     dispatch(getDealsOfMonth());
     // Fetch recommendations products { products above 4.0 rating }
     dispatch(getRecommendations());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch]);
 
   return (

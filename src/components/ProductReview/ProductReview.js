@@ -31,6 +31,7 @@ const ProductReview = ({ allReviews, id, currentProduct }) => {
     }
 
     starsPer();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

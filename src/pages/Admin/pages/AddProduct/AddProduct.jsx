@@ -13,7 +13,6 @@ const AddProduct = () => {
   const [stock, setStock] = useState("");
   const [brand, setBrand] = useState("");
   const [category, setCategory] = useState("");
-  const [tags, setTags] = useState([]);
   const [featured, setFeatured] = useState("False");
   const [images, setImages] = useState([]);
   const [fileObj, setFileObj] = useState([]);
@@ -21,27 +20,6 @@ const AddProduct = () => {
   const [selectedImage, setSelectedImage] = useState("");
   const [validationError, setValidationError] = useState("");
   const [imagesArray, setImagesArray] = useState([]);
-
-  // console.log("productName => " , productName);
-  // console.log("description => " , description);
-  // console.log("normalPrice => " , normalPrice);
-  // console.log("salesPrice => " , salesPrice);
-  // console.log("brand => " , brand);
-  // console.log("category => " , category);
-  // console.log("tags => ", tags);
-  // console.log("featured => ", featured);
-
-  function handleKeyDown(e) {
-    if (e.key !== "Enter") return;
-    const value = e.target.value;
-    if (!value.trim()) return;
-    setTags([...tags, value]);
-    e.target.value = "";
-  }
-
-  function removeTag(index) {
-    setTags(tags.filter((el, i) => i !== index));
-  }
 
   function uploadMultipleFiles(e) {
     e.preventDefault();
@@ -110,6 +88,7 @@ const AddProduct = () => {
         }
       );
 
+      console.log(res);
       toast.success("Product added successfully");
       window.location.reload(false);
     } catch (err) {

@@ -1,5 +1,4 @@
 import axios from "axios";
-import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { BASE_URL } from "../../Services/helper";
 
@@ -19,6 +18,7 @@ export const addReview = async (productId, name, rating, comment) => {
         },
       }
     );
+    console.log(res);
     toast.success("Review Added");
   } catch (error) {
     toast.error("Something went wrong");

@@ -14,7 +14,6 @@ const UpdateProduct = () => {
   const [stock, setStock] = useState("");
   const [brand, setBrand] = useState("");
   const [category, setCategory] = useState("");
-  const [tags, setTags] = useState([]);
   const [featured, setFeatured] = useState("False");
   const [images, setImages] = useState([]);
   const [fileObj, setFileObj] = useState([]);
@@ -24,12 +23,6 @@ const UpdateProduct = () => {
   const [imagesArray, setImagesArray] = useState([]);
   const { currentProduct } = useSelector((state) => state.currentProduct);
   const { currentUser } = useSelector((state) => state.user);
-  //   console.log("productName => ", productName);
-  //   console.log("description => ", description);
-  //   console.log("normalPrice => ", normalPrice);
-  //   console.log("brand => ", brand);
-  //   console.log("category => ", category);
-  //   console.log("featured => ", featured);
 
   useEffect(() => {
     setDescription(currentProduct.description);
@@ -39,19 +32,8 @@ const UpdateProduct = () => {
     setBrand(currentProduct.brand);
     setCategory(currentProduct.category);
     setFeatured(currentProduct.featured);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  function handleKeyDown(e) {
-    if (e.key !== "Enter") return;
-    const value = e.target.value;
-    if (!value.trim()) return;
-    setTags([...tags, value]);
-    e.target.value = "";
-  }
-
-  function removeTag(index) {
-    setTags(tags.filter((el, i) => i !== index));
-  }
 
   function uploadMultipleFiles(e) {
     e.preventDefault();
@@ -108,7 +90,6 @@ const UpdateProduct = () => {
           stock,
           brand,
           category,
-          tags,
           images: list,
           featured,
           user: currentUser,
@@ -119,6 +100,8 @@ const UpdateProduct = () => {
           },
         }
       );
+
+      console.log(res);
 
       toast.success("Product added successfully");
       navigate(`/product/${currentProduct._id}`);

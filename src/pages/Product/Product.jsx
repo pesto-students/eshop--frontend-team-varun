@@ -25,7 +25,8 @@ const Product = () => {
 
   useEffect(() => {
     dispatch(getProductsUsingFilters());
-  }, []); // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const { products, productsLoading, productsCount } = useSelector(
     (state) => state.products

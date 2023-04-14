@@ -39,7 +39,7 @@ export const registerUser =
       dispatch(registerStart());
 
       const config = { headers: { "Content-Type": "application/json" } };
-      const res = await axios.post("${BASE_URL}/register", {
+      const res = await axios.post(`${BASE_URL}/register`, {
         firstname,
         lastname,
         phoneNo,
@@ -59,7 +59,7 @@ export const forgotPassword = (email) => async (dispatch) => {
   try {
     dispatch(forgotPasswordStart());
     const config = { headers: { "Content-Type": "application/json" } };
-    const res = await axios.post("${BASE_URL}/password/forgot", {
+    const res = await axios.post(`${BASE_URL}/password/forgot`, {
       email,
       config,
     });

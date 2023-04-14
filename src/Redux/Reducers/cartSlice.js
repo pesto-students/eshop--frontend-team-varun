@@ -4,7 +4,6 @@ const initialState = {
   cartItems: [],
   cartLoading: false,
   cartError: null,
-  cartError: null,
 };
 
 const cartSlice = createSlice({
@@ -36,7 +35,6 @@ const cartSlice = createSlice({
     resetCart: (state) => {
       state.cartItems = [];
       state.cartLoading = false;
-      state.cartError = null;
       state.cartError = null;
     },
 

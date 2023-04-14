@@ -62,11 +62,12 @@ const CreateAccount = () => {
   };
 
   // get current signIn user from store
-  const { currentUser, signInLoading, registerError, isAuthenthicated } =
+  const { registerError, isAuthenthicated } =
     useSelector((state) => state.user);
 
   useEffect(() => {
     if (isAuthenthicated === true) navigate("/");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isAuthenthicated]);
 
   return (

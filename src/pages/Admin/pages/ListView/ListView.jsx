@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import useFetch from "../../../../hooks/useFetch";
 import "./ListView.css";
 import Loader from "../../../../components/Loader/Loader";
@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 import { BASE_URL } from "../../../../Services/helper";
 
 const ListView = ({ page }) => {
-  const { data, loading, error, reFetch } = useFetch(
+  const { data, loading, reFetch } = useFetch(
     `${BASE_URL}/admin/${page}`
   );
 

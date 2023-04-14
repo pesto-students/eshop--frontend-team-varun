@@ -26,7 +26,6 @@ import {
   addTopDealsRequest,
   addTopDealsSuccess,
 } from "../Reducers/topDealsSlice";
-import { addReview } from "./reviewActions";
 import { addCategories, categoriesFailure } from "../Reducers/categorySlice";
 import { addBrands, brandsFailure } from "../Reducers/brandSlice";
 import { BASE_URL } from "../../Services/helper";

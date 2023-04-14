@@ -3,15 +3,13 @@ import Sidebar from "../components/Sidebar";
 import Products from "../pages/Products/Products";
 import "./Dashboard.css";
 import ListView from "../pages/ListView/ListView";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import AddProduct from "../pages/AddProduct/AddProduct";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { getProductsUsingFilters } from "../../../Redux/Actions/productActions";
 
 const Dashboard = ({ currentPage }) => {
   const pageName = currentPage.charAt(0).toUpperCase() + currentPage.slice(1);
-  const navigate = useNavigate();
-  const { currentUser } = useSelector((state) => state.user);
   const [keyword, setKeyword] = useState("");
   const dispatch = useDispatch();
 

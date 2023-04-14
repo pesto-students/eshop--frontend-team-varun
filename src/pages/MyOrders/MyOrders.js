@@ -10,9 +10,10 @@ const MyOrders = () => {
 
   useEffect(() => {
     dispatch(getMyOrders());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const { orderItems, ordersLoading, orderError } = useSelector(
+  const { orderItems, ordersLoading } = useSelector(
     (state) => state.orders
   );
 

@@ -39,7 +39,7 @@ export const getAllOrders = () => async (dispatch) => {
 export const createOrder = (order) => async (dispatch) => {
   try {
     const { data } = await axios.post(
-      "${BASE_URL}/order/new",
+      `${BASE_URL}/order/new`,
       { ...order },
       {
         headers: {
@@ -47,6 +47,8 @@ export const createOrder = (order) => async (dispatch) => {
         },
       }
     );
+
+    console.log(data);
 
     toast.success("Order Placed Successfully");
     sessionStorage.removeItem("orderInfo");

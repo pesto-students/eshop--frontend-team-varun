@@ -3,9 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "./Checkout.css";
-import Payment from "../Payment/Payment";
-import { Elements, useElements, useStripe } from "@stripe/react-stripe-js";
-import { loadStripe } from "@stripe/stripe-js";
+import { useElements, useStripe } from "@stripe/react-stripe-js";
 import {
   savePaymentInfo,
   saveShippingInfo,
@@ -17,7 +15,6 @@ import {
   CardNumberElement,
 } from "@stripe/react-stripe-js";
 import { createOrder } from "../../Redux/Actions/orderActions";
-import { resetCartItems } from "../../Redux/Actions/cartActions";
 import { resetCart } from "../../Redux/Reducers/cartSlice";
 import { BASE_URL } from "../../Services/helper";
 
@@ -59,6 +56,7 @@ const Checkout = ({ currentPage }) => {
     }
 
     // setAddress(shippingInfo.address);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cartItems]);
 
   const deliveryCharge = price > 1000 ? 0 : 200;
@@ -117,7 +115,6 @@ const Checkout = ({ currentPage }) => {
     e.preventDefault();
 
     const shipping = JSON.parse(localStorage.getItem("shippingInfo"));
-    const orderinfo = sessionStorage.getItem("orderInfo");
 
     try {
       const { data } = await axios.post(

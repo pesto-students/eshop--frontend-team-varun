@@ -6,7 +6,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./AddReview.css";
 import { addReview } from "../../Redux/Actions/reviewActions";
 import { useState } from "react";
-import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import Loader from "../../components/Loader/Loader";
 import { forgotPassword } from "../../Redux/Actions/userActions";
@@ -32,6 +31,7 @@ const ForgotPassword = () => {
     if (forgetPasswordMessage) {
       toast.success(forgetPasswordMessage);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch, forgetPasswordError]);
 
   return (

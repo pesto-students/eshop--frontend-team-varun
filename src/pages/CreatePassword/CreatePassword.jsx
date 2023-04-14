@@ -15,7 +15,6 @@ const CreatePassword = () => {
   const navigate = useNavigate();
   const [error, setError] = useState("");
   const {
-    resetPasswordLoading,
     resetPasswordSuccessMessage,
     resetPasswordError,
   } = useSelector((state) => state.resetPassword);
@@ -34,6 +33,8 @@ const CreatePassword = () => {
       dispatch(clearErrors());
       navigate("/signIn");
     }
+    setError("");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch, resetPasswordError, resetPasswordSuccessMessage]);
 
   const handleResetPassword = (e) => {

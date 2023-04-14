@@ -45,6 +45,7 @@ const TodaysDeal = ({ title, isEnd, products, error, loading }) => {
 
   useEffect(() => {
     onClickReset();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const onClickReset = () => {
