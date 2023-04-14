@@ -7,9 +7,7 @@ import { toast } from "react-toastify";
 import { BASE_URL } from "../../../../Services/helper";
 
 const ListView = ({ page }) => {
-  const { data, loading, reFetch } = useFetch(
-    `${BASE_URL}/admin/${page}`
-  );
+  const { data, loading, reFetch } = useFetch(`${BASE_URL}/admin/${page}`);
 
   const rawdata = page === "orders" ? data.orders : data.users;
 
