@@ -25,7 +25,6 @@ const AddReview = ({ id }) => {
       navigate("/signin");
     } else {
       addReview(id, name, rating, review);
-      window.location.reload(false);
     }
   };
 
