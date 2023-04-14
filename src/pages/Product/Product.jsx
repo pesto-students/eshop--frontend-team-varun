@@ -58,7 +58,7 @@ const Product = () => {
   };
 
   return (
-    <section className="product-list">
+    <section className="product-list container-fluid">
       <div className="product-list-body">
         <div className="product-filter-mobile">
           <p>
@@ -86,7 +86,7 @@ const Product = () => {
           <Filters childToParent={childToParent} />
         </div>
 
-        <div className="list-column">
+        <div className="list-column w-100">
           <div className="input-group border rounded-2 w-75 ms-2">
             <input
               type="text"
@@ -124,17 +124,19 @@ const Product = () => {
             }
             loader={<Loader />}
           >
-            <div className="products-grid w-100 container-fluid">
+            <div className="">
               {productsLoading ? (
                 <>
                   <Loader />
                 </>
               ) : products?.length > 0 ? (
-                products?.map((product, index) => (
-                  <div className="prods-list" key={index}>
-                    <Dealcards deall={product} />
-                  </div>
-                ))
+                <div className="products-grid">
+                  {products?.map((product, index) => (
+                    <div className="prods-list" key={index}>
+                      <Dealcards deall={product} />
+                    </div>
+                  ))}
+                </div>
               ) : (
                 <p className="noproducts">No Products Found</p>
               )}
