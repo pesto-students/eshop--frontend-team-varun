@@ -4,6 +4,7 @@ import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
+import base_url from "./helper/helper";
 
 const AddProduct = () => {
   const [description, setDescription] = useState("");
@@ -40,8 +41,8 @@ const AddProduct = () => {
 
   function removeTag(index) {
     setTags(tags.filter((el, i) => i !== index));
-  }  
-    
+  }
+
   function uploadMultipleFiles(e) {
     e.preventDefault();
 
@@ -90,7 +91,7 @@ const AddProduct = () => {
       );
 
       const res = await axios.post(
-        "http://localhost:4000/api/v1/admin/product/new",
+        `${base_url}/admin/product/new`,
         {
           name: productName,
           description,

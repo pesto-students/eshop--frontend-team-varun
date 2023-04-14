@@ -29,12 +29,13 @@ import {
 import { addReview } from "./reviewActions";
 import { addCategories, categoriesFailure } from "../Reducers/categorySlice";
 import { addBrands, brandsFailure } from "../Reducers/brandSlice";
+import base_url from "./helper/helper";
 
 // Get All Products
 export const getProducts = () => async (dispatch) => {
   try {
     dispatch(addProductsRequest());
-    const res = await axios.get(`http://localhost:4000/api/v1/products`);
+    const res = await axios.get(`${base_url}/products`);
 
     dispatch(addProductsSuccess(res.data));
   } catch (error) {
@@ -54,18 +55,18 @@ export const getProductsUsingFilters =
       dispatch(addProductsRequest());
       if (category) {
         const res = await axios.get(
-          `http://localhost:4000/api/v1/products?keyword=${keyword}&category=${category}&price[gte]=${price[0]}&price[lte]=${price[1]}&page=${page}`
+          `${base_url}/products?keyword=${keyword}&category=${category}&price[gte]=${price[0]}&price[lte]=${price[1]}&page=${page}`
         );
         dispatch(addProductsSuccess(res.data));
       } else if (brand) {
         const res = await axios.get(
-          `http://localhost:4000/api/v1/products?brand=${brand}&price[gte]=${price[0]}&price[lte]=${price[1]}&page=${page}`
+          `${base_url}/products?brand=${brand}&price[gte]=${price[0]}&price[lte]=${price[1]}&page=${page}`
         );
 
         dispatch(addProductsSuccess(res.data));
       } else {
         const res = await axios.get(
-          `http://localhost:4000/api/v1/products?keyword=${keyword}&price[gte]=${price[0]}&price[lte]=${price[1]}&page=${page}`
+          `${base_url}/products?keyword=${keyword}&price[gte]=${price[0]}&price[lte]=${price[1]}&page=${page}`
         );
         dispatch(addProductsSuccess(res.data));
       }
@@ -79,7 +80,7 @@ export const getProductsUsingFilters =
 export const getTopDeals = () => async (dispatch) => {
   try {
     dispatch(addTopDealsRequest());
-    const res = await axios.get(`http://localhost:4000/api/v1/topdeals`);
+    const res = await axios.get(`${base_url}/topdeals`);
 
     dispatch(addTopDealsSuccess(res.data));
   } catch (error) {
@@ -91,7 +92,7 @@ export const getTopDeals = () => async (dispatch) => {
 export const getDealsOfMonth = () => async (dispatch) => {
   try {
     dispatch(dealsOfMonthRequest());
-    const res = await axios.get(`http://localhost:4000/api/v1/monthlytopdeals`);
+    const res = await axios.get(`${base_url}/monthlytopdeals`);
 
     dispatch(dealsOfMonthSuccess(res.data));
   } catch (error) {
@@ -103,7 +104,7 @@ export const getDealsOfMonth = () => async (dispatch) => {
 export const getRecommendations = () => async (dispatch) => {
   try {
     dispatch(addRecommendationsRequest());
-    const res = await axios.get(`http://localhost:4000/api/v1/shuffleproducts`);
+    const res = await axios.get(`${base_url}/shuffleproducts`);
 
     dispatch(addRecommendationsSuccess(res.data));
 
@@ -132,7 +133,7 @@ export const getRecommendations = () => async (dispatch) => {
 export const getProductDetails = (id) => async (dispatch) => {
   try {
     dispatch(getCurrentProductRequestStart());
-    const res = await axios.get(`http://localhost:4000/api/v1/product/${id}`);
+    const res = await axios.get(`${base_url}/product/${id}`);
 
     dispatch(getCurrentProductSuccess(res.data));
   } catch (error) {

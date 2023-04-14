@@ -4,6 +4,7 @@ import ReactQuill from "react-quill";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import base_url from "./helper/helper";
 
 const UpdateProduct = () => {
   const navigate = useNavigate();
@@ -99,7 +100,7 @@ const UpdateProduct = () => {
       );
 
       const res = await axios.put(
-        `http://localhost:4000/api/v1/admin/product/${currentProduct._id}`,
+        `${base_url}/admin/product/${currentProduct._id}`,
         {
           name: productName,
           description,

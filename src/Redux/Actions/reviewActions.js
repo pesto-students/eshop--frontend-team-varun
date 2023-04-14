@@ -1,11 +1,12 @@
 import axios from "axios";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
+import base_url from "./helper/helper";
 
 export const addReview = async (productId, name, rating, comment) => {
   try {
     const res = await axios.put(
-      "http://localhost:4000/api/v1/review",
+      `${base_url}/review`,
       {
         rating,
         name,

@@ -25,20 +25,18 @@ import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import Page404 from "./pages/NEWPage404/Page404";
 import UpdateProduct from "./pages/Admin/pages/UpdateProduct/UpdateProduct";
+import base_url from "./helper/helper";
 
 function App() {
   const [stripeApiKey, setStripeApiKey] = useState("");
   const { isAuthenthicated } = useSelector((state) => state.user);
 
   async function getStripeApiKey() {
-    const { data } = await axios.get(
-      "http://localhost:4000/api/v1/stripeapikey",
-      {
-        headers: {
-          authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      }
-    );
+    const { data } = await axios.get(`${base_url}/stripeapikey`, {
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    });
     setStripeApiKey(data.stripeApiKey);
   }
 

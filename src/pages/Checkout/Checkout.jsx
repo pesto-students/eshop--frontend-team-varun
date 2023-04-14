@@ -19,6 +19,7 @@ import {
 import { createOrder } from "../../Redux/Actions/orderActions";
 import { resetCartItems } from "../../Redux/Actions/cartActions";
 import { resetCart } from "../../Redux/Reducers/cartSlice";
+import base_url from "./helper/helper";
 
 const Checkout = ({ currentPage }) => {
   const { cartItems } = useSelector((state) => state.cart);
@@ -44,7 +45,7 @@ const Checkout = ({ currentPage }) => {
     setPrice(
       cartItems?.reduce((acc, item) => acc + item.quantity * item.price, 0)
     );
-    
+
     if (isAuthenthicated) {
       setFirstName(currentUser.firstname);
       setLastName(currentUser.lastname);
@@ -120,7 +121,7 @@ const Checkout = ({ currentPage }) => {
 
     try {
       const { data } = await axios.post(
-        "http://localhost:4000/api/v1/payment/process",
+        `${base_url}/payment/process`,
         { amount: Math.round(totalPrice * 100) },
         {
           headers: {

@@ -5,13 +5,12 @@ import {
   resetCart,
   cartFailure,
 } from "../Reducers/cartSlice";
+import base_url from "./helper/helper";
 
 // Add to cart
 export const AddItemsToCart = (id, quantity) => async (dispatch) => {
   try {
-    const { data } = await axios.get(
-      `http://localhost:4000/api/v1/product/${id}`
-    );
+    const { data } = await axios.get(`${base_url}/product/${id}`);
 
     const product = {
       productId: data.product._id,

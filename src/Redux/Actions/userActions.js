@@ -12,13 +12,14 @@ import {
   forgotPasswordFailure,
   forgotPasswordSuccess,
 } from "../Reducers/userSlice";
+import base_url from "./helper/helper";
 
 export const SignInUser = (email, password) => async (dispatch) => {
   try {
     dispatch(signInStart());
 
     const config = { headers: { "Content-Type": "application/json" } };
-    const res = await axios.post("http://localhost:4000/api/v1/login", {
+    const res = await axios.post(`${base_url}/login`, {
       email,
       password,
       config,
@@ -38,15 +39,15 @@ export const registerUser =
       dispatch(registerStart());
 
       const config = { headers: { "Content-Type": "application/json" } };
-      const res = await axios.post("http://localhost:4000/api/v1/register", {
+      const res = await axios.post("${base_url}/register", {
         firstname,
         lastname,
         phoneNo,
         email,
         password,
-        config
+        config,
       });
-        console.log(res);
+      console.log(res);
       dispatch(registerSuccess(res.data.user));
     } catch (error) {
       console.log(error);
@@ -58,13 +59,10 @@ export const forgotPassword = (email) => async (dispatch) => {
   try {
     dispatch(forgotPasswordStart());
     const config = { headers: { "Content-Type": "application/json" } };
-    const res = await axios.post(
-      "http://localhost:4000/api/v1/password/forgot",
-      {
-        email,
-        config,
-      }
-    );
+    const res = await axios.post("${base_url}/password/forgot", {
+      email,
+      config,
+    });
 
     dispatch(forgotPasswordSuccess(res.data.message));
     toast.success("Email has been sent to given email address.");

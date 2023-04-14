@@ -6,18 +6,16 @@ import {
   resetPasswordFailure,
   clearError,
 } from "../Reducers/resetPasswordSlice";
+import base_url from "./helper/helper";
 
 export const resetPassword = (token, passwords) => async (dispatch) => {
   try {
     dispatch(resetPasswordStart());
     console.log(token);
 
-    const res = await axios.put(
-      `http://localhost:4000/api/v1/password/reset/${token}`,
-      {
-        passwords,
-      }
-    );
+    const res = await axios.put(`${base_url}/password/reset/${token}`, {
+      passwords,
+    });
 
     dispatch(resetPasswordSuccess(res.data.success));
     toast.success();
