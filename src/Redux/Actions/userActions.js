@@ -47,7 +47,8 @@ export const registerUser =
         password,
         config,
       });
-      console.log(res);
+      console.log(res.data.token);
+      localStorage.setItem("token", res.data.token);
       dispatch(registerSuccess(res.data.user));
     } catch (error) {
       console.log(error);

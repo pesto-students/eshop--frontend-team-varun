@@ -42,9 +42,9 @@ const ProductInfo = ({ currentProduct }) => {
   };
 
   return (
-    <div className="ms-5">
-      <p className="fw-semibold fs-2 m-0">{currentProduct?.name}</p>
-      <section className="d-flex align-items-center mt-2">
+    <div className="product-info">
+      <p className="fw-semibold fs-2 m-0 product-title">{currentProduct?.name}</p>
+      <section className="rating-section d-flex align-items-center mt-2">
         <ReactStars
           count={5}
           edit={false}

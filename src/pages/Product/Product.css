@@ -96,7 +96,15 @@
     }
 }
 
-@media screen and (max-width: 540px){
+@media screen and (width: 540px){
+    .products-grid{
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+        grid-template-rows: repeat(1, minmax(0, 1fr));
+        gap: 23px;
+    }
+}
+
+@media screen and (width: 280px){
     .products-grid{
         grid-template-columns: repeat(1, minmax(0, 1fr));
         grid-template-rows: repeat(1, minmax(0, 1fr));

@@ -20,8 +20,10 @@ const ProductReview = ({ allReviews, id, currentProduct }) => {
   useEffect(() => {
     function starsPer() {
       const counts = {};
-      for (const num of currentProduct?.reviews) {
-        counts[num.rating] = counts[num.rating] ? counts[num.rating] + 1 : 1;
+      if (currentProduct?.reviews) {
+        for (const num of currentProduct?.reviews) {
+          counts[num.rating] = counts[num.rating] ? counts[num.rating] + 1 : 1;
+        }
       }
       setFive(counts[5] === undefined ? 0 : counts[5]);
       setFour(counts[4] === undefined ? 0 : counts[4]);
@@ -39,9 +41,9 @@ const ProductReview = ({ allReviews, id, currentProduct }) => {
       className={allReviews ? "container" : "container m-0 p-0"}
       style={{ marginTop: "24px" }}
     >
-      <div className="container w-100 p-0 ps-5">
-        <div className="row p-0">
-          <div className="col-lg-6 col-sm-12">
+      <div className="container w-100 p-0">
+        <div className="row p-0 justify-content-between">
+          <div className="col-lg-6 col-sm-12 ms-5">
             <p
               className={`m-0 fw-semibold fs-4 p-0 ${allReviews ? "ms-4" : ""}`}
             >

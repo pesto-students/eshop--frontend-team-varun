@@ -1,5 +1,5 @@
 import "./App.css";
-import { Routes, Route, HashRouter } from "react-router-dom";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import Contact from "./pages/Contact/Contact";
 import Cart from "./pages/Cart/Cart";
@@ -47,7 +47,7 @@ function App() {
 
   return (
     <div>
-      <HashRouter>
+      <BrowserRouter>
         <ScrollToTop />
         <Header />
         <Routes>
@@ -78,16 +78,16 @@ function App() {
               />
             </Route>
             <Route path="myorders" element={<MyOrders />} />
-            <Route path="product">
+            
               <Route
-                path=":id"
-                element={<ProductDetail currentPage="productDetails" />}
+                path="product/:id"
+                element={<ProductDetail currentPage="productDetails" key=":id"/>}
               />
-              <Route
+              {/* <Route
                 path=":id/allReviews"
-                element={<ProductDetail currentPage="reviews" />}
-              />
-            </Route>
+                element={<ProductDetail currentPage="reviews" key=":id"/>}
+              /> */}
+            
             <Route path="password/reset/:token" element={<CreatePassword />} />
             <Route path="admin">
               <Route path="update-product/:id" element={<UpdateProduct />} />
@@ -113,7 +113,7 @@ function App() {
           </Route>
         </Routes>
         <Footer />
-      </HashRouter>
+      </BrowserRouter>
       <ToastContainer autoClose={3000} theme="colored" newestOnTop={true} />
     </div>
   );

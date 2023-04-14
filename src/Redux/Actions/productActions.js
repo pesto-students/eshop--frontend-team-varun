@@ -133,11 +133,13 @@ export const getRecommendations = () => async (dispatch) => {
 // Get current Product Details
 export const getProductDetails = (id) => async (dispatch) => {
   try {
+    console.log(id);
     dispatch(getCurrentProductRequestStart());
     const res = await axios.get(`${BASE_URL}/product/${id}`);
 
     dispatch(getCurrentProductSuccess(res.data));
   } catch (error) {
+    console.log(error);
     dispatch(getCurrentProductFailure(error));
   }
 };

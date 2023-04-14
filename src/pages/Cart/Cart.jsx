@@ -201,23 +201,6 @@ const Cart = () => {
 
                     <div className="p-4">
                       <ul className="list-unstyled mb-4">
-                        {/* <li className="d-flex justify-content-between py-3 border-bottom">
-                          <strong className="text-muted">Order Subtotal</strong>
-                          <strong>{` ₹ ${cartItems?.reduce(
-                            (acc, item) => acc + item.quantity * item.price,
-                            0
-                          )}`}</strong>
-                        </li> */}
-                        {/* <li className="d-flex justify-content-between py-3 border-bottom">
-                          <strong className="text-muted">
-                            Shipping and handling
-                          </strong>
-                          <strong>₹0.00</strong>
-                        </li> */}
-                        {/* <li className="d-flex justify-content-between py-3 border-bottom">
-                          <strong className="text-muted">Tax</strong>
-                          <strong>₹0.00</strong>
-                        </li> */}
                         <li className="d-flex justify-content-between py-3 border-bottom">
                           <strong className="fw-semibold">Total</strong>
                           <h5
@@ -231,7 +214,7 @@ const Cart = () => {
                       </ul>
                     </div>
 
-                    <div className="d-flex justify-content-center mb-lg-4">
+                    <div className="d-flex justify-content-center mb-lg-4 mb-4">
                       <button
                         disabled={cartItems.length === 0 ? true : false}
                         type="button"
