@@ -4,6 +4,7 @@ import "./SignIn.css";
 import { useDispatch, useSelector } from "react-redux";
 import { SignInUser, clearErrors } from "../../Redux/Actions/userActions";
 import Loader from "../../components/Loader/Loader";
+import { dirxml } from "console";
 
 const SignIn = () => {
   const [email, setEmail] = useState(null);
@@ -29,7 +30,7 @@ const SignIn = () => {
       setCheck(false);
       if (isAuthenthicated === true) navigate("/");
     }
-  }, [isAuthenthicated,signInError,SignInError]);
+  }, [isAuthenthicated, dispatch]);
 
   return (
     <div className="row signIn m-0 mt-5" style={{ backgroundColor: "#f2f4f7" }}>
