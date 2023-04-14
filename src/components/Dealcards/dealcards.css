@@ -1,10 +1,8 @@
 .deal-card {
   background: #FFFFFF;
   border-radius: 8px;
-  border: 1px solid #E2E2E2;
+  border: 1px solid transparent;
   width: 234px;
-  border-top-right-radius: 8px;
-  border-top-left-radius: 8px;
 }
 
 .deal-image img {
@@ -76,5 +74,7 @@
     margin: auto;
     width: 100%;
     margin-bottom: 16px;
+    margin-top: 16px;
+    padding: 0 16px;
   }
 }

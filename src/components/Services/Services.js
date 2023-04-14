@@ -3,7 +3,8 @@ import "./services.css";
 
 const Services = () => {
     return (
-        <div className="row-grid">
+        <>
+            <div className="row-grid">
             <div
                 className="card-1"
                 style={{
@@ -53,6 +54,7 @@ const Services = () => {
                 <p>Quick support</p>
             </div>
         </div>
+        </>
         
     )
 }

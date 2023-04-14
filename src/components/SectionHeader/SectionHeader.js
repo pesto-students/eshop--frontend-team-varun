@@ -3,7 +3,7 @@ import "./sectionHeader.css"
 
 const SectionHeader = (props) => {
   return (
-    <p className="section-header-title mx-5">{props.title}</p>
+    <p className="section-header-title mb-0" style={{marginLeft: "40px"}}>{props.title}</p>
   )
 }
 

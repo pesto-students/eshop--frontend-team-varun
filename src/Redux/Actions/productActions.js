@@ -54,12 +54,12 @@ export const getProductsUsingFilters =
       dispatch(addProductsRequest());
       if (category) {
         const res = await axios.get(
-          `http://localhost:4000/api/v1/products?keyword=${keyword}&category=${category}`
+          `http://localhost:4000/api/v1/products?keyword=${keyword}&category=${category}&price[gte]=${price[0]}&price[lte]=${price[1]}&page=${page}`
         );
         dispatch(addProductsSuccess(res.data));
       } else if (brand) {
         const res = await axios.get(
-          `http://localhost:4000/api/v1/products?brand=${brand}`
+          `http://localhost:4000/api/v1/products?brand=${brand}&price[gte]=${price[0]}&price[lte]=${price[1]}&page=${page}`
         );
 
         dispatch(addProductsSuccess(res.data));

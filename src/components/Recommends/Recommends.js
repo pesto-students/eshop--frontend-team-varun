@@ -17,7 +17,7 @@ const Recommends = ({ products, loading, error }) => {
   };
 
   return (
-    <div className="recommend mb-4">
+    <div className="recommend">
       <p className="rec_title">Our Recommendation For You</p>
       <div className="rows_recom">
         {loading ? (

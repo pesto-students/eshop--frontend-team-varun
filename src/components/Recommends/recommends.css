@@ -1,11 +1,12 @@
 .recommend {
-  margin: 64px 0 0 0;
+  padding: 64px 0 64px 0;
+  background-color: #f9f9f9;
 }
 
 .recommend .rec_title {
   font-size: 24px;
   font-weight: 600;
-  padding: 0 0 0 40px;
+  padding: 0 0 40px 40px;
 }
 
 .recommend .btn {

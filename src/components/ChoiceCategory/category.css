@@ -5,6 +5,10 @@
   width: 100%;
 }
 
+.choice-category-brands{
+  padding: 0 40px;
+}
+
 .choice-category-brands::-webkit-scrollbar {
   display: none;
 }
@@ -18,13 +22,19 @@
   justify-content: space-between;
 }
 
-.brands img {
+.brand-img {
   background: #f9f9f9;
   border-radius: 50%;
   margin-bottom: 16px;
   width: 106px;
   height: 106px;
   padding: 30px;
+  display: grid;
+  place-items: center;
+}
+
+.brand-img img{
+  max-width: 40px;
 }
 
 .brands p {

@@ -4,6 +4,10 @@
     background-color: white;
 }
 
+.hello-user{
+    padding-right: 40px;
+}
+
 @media only screen and (max-width: 990px){
     .tab-indicator{
         height: 2px;

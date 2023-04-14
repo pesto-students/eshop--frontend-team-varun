@@ -52,8 +52,8 @@ const TodaysDeal = ({ title, isEnd, products, error, loading }) => {
   };
 
   return (
-    <div className="todays-deal mb-2">
-      <div className="todays-deal-header d-flex align-items-center justify-content-between mt-5 mb-4">
+    <div className="todays-deal">
+      <div className="todays-deal-header d-flex align-items-center justify-content-between mb-4">
         <SectionHeader title={title} />
         {isEnd === "true" && (
           <>
@@ -71,7 +71,7 @@ const TodaysDeal = ({ title, isEnd, products, error, loading }) => {
           <Loader />
         </>
       ) : (
-        <div className="deal-cards pb-3 px-5">
+        <div className="deal-cards">
           {products?.map((deal, index) => (
             <Dealcards key={index} deall={deal} />
           ))}
