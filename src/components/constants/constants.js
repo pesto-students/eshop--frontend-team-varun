@@ -16,7 +16,7 @@ export const cates = [
     title: "Laptop",
   },
   {
-    icon: "../assets/headphone.png",
+    icon: "../assets/dealcards/headphones.png",
     title: "Audio",
   },
   {

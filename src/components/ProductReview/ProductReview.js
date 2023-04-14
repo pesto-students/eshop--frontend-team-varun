@@ -39,7 +39,7 @@ const ProductReview = ({ allReviews, id, currentProduct }) => {
       style={{ marginTop: "24px" }}
     >
       <div className="container w-100 p-0">
-        <div className="row p-0">
+        <div className="row p-0 justify-content-between">
           <div className="col-lg-6 col-sm-12">
             <p
               className={`m-0 fw-semibold fs-4 p-0 ${allReviews ? "ms-4" : ""}`}

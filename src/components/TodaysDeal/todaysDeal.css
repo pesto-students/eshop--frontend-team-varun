@@ -1,3 +1,8 @@
+.todays-deal{
+  background-color: #f9f9f9;
+  padding: 64px 0;
+}
+
 .todays-deal-endsin {
   font-size: 16px;
   font-weight: 600;
@@ -21,8 +26,9 @@
 .deal-cards {
   display: flex;
   overflow-x: scroll;
-  margin: 40px 0 59px 0;
+  margin: 40px 0 0 0;
   gap: 32px;
+  padding: 0 40px;
 }
 
 .deal-cards::-webkit-scrollbar {

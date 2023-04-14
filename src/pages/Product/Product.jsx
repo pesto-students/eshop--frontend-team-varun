@@ -72,7 +72,7 @@ const Product = () => {
             >
               <p className="fw-semibold mb-0">
                 Filters
-                <span>
+                <span className="ms-1">
                   <FontAwesomeIcon icon={faAngleDown} />
                 </span>
               </p>
@@ -86,8 +86,8 @@ const Product = () => {
           <Filters childToParent={childToParent} />
         </div>
 
-        <div className="container-fluid m-0 p-0">
-          <div className="input-group border rounded-2 w-50">
+        <div className="list-column">
+          <div className="input-group border rounded-2 w-75 ms-2">
             <input
               type="text"
               className="form-control border-0 shadow-none"
@@ -124,22 +124,20 @@ const Product = () => {
             }
             loader={<Loader />}
           >
-            <div className="container p-0">
-              <div className="row mt-3 mx-auto">
-                {productsLoading ? (
-                  <>
-                    <Loader />
-                  </>
-                ) : products?.length > 0 ? (
-                  products?.map((product) => (
-                    <div className="col-xxl-3 col-xl-3 col-lg-4 col-md-4 col-sm-6 mb-4 p-0 text-dark">
-                      <Dealcards deall={product} />
-                    </div>
-                  ))
-                ) : (
-                  <p className="noproducts">No Products Found</p>
-                )}
-              </div>
+            <div className="products-grid w-100 container-fluid">
+              {productsLoading ? (
+                <>
+                  <Loader />
+                </>
+              ) : products?.length > 0 ? (
+                products?.map((product, index) => (
+                  <div className="prods-list" key={index}>
+                    <Dealcards deall={product} />
+                  </div>
+                ))
+              ) : (
+                <p className="noproducts">No Products Found</p>
+              )}
             </div>
           </InfiniteScroll>
         </div>

@@ -28,6 +28,7 @@ const Filters = ({ childToParent }) => {
               setMinPrice("");
               setMaxPrice("");
               setBrand("");
+              setBrandCheck("");
               childToParent("", 0, 9999999, "", false);
             }}
           />

@@ -6,10 +6,12 @@ const Category = ({ cates }) => {
   return (
     <div className="choice-category">
       <SectionHeader title="Choice Category" />
-      <div className="choice-category-brands d-flex align-items-center gap-5 overflow-x-auto px-5">
+      <div className="choice-category-brands d-flex align-items-center gap-5 overflow-x-auto">
         {cates?.map((cat, index) => (
           <div key={index} className="brands">
-            <img src={cat.icon} alt="" />
+            <div className="brand-img">
+              <img src={cat.icon} alt="" />
+            </div>
             <p>{cat.title}</p>
           </div>
         ))}

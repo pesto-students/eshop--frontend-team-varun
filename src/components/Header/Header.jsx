@@ -22,11 +22,11 @@ const Header = () => {
 
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary bg-black fixed-top">
-      <div className="container-fluid">
+      <div className="container-fluid p-0">
         <Link
           to="/"
-          className="nav-link navbar-brand text-white mx-5 pl-5 fw-bolder fs-4"
-          style={{ textDecoration: "none" }}
+          className="nav-link navbar-brand text-white pl-5 fw-bolder fs-4"
+          style={{ textDecoration: "none", marginLeft: "40px" }}
         >
           E-Shop
         </Link>
@@ -100,15 +100,15 @@ const Header = () => {
             </li>
           </ul>
 
-          <div className="me-5">
+          <div className="hello-user">
             {currentUser ? (
               <div
-                className="col border border-2 rounded-4 px-3 d-flex justify-content-center align-items-center"
+                className="col border border-0 rounded-2 px-3 py-1 d-flex justify-content-center align-items-center"
                 style={{ background: "#52057B", cursor: "pointer" }}
                 onClick={() => setopen(!open)}
               >
                 <div className="m-1" style={{ color: "white" }}>
-                  {`Hello  ${currentUser.firstname}`}
+                  {`Hello  ${currentUser.name}`}
                 </div>
                 {open && (
                   <div className="menu-options">
