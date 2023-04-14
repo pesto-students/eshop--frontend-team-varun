@@ -10,7 +10,9 @@ const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [open, setopen] = useState(false);
-  const href = window.location.pathname;
+  const href = window.location.hash;
+
+  console.log("dad: ", href);
 
   const handelLogOut = () => {
     dispatch(signOut());
@@ -53,7 +55,7 @@ const Header = () => {
               >
                 Home
               </Link>
-              {href === "/" && <div className="tab-indicator"></div>}
+              {href === "#/" && <div className="tab-indicator"></div>}
             </li>
             {currentUser !== "null" && currentUser?.role === "admin" && (
               <li className="nav-item">
@@ -64,7 +66,7 @@ const Header = () => {
                 >
                   Dashboard
                 </Link>
-                {href === "/admin/products" && (
+                {href === "#/admin/products" && (
                   <div className="tab-indicator"></div>
                 )}
               </li>
@@ -77,7 +79,7 @@ const Header = () => {
               >
                 Products
               </Link>
-              {href === "/products" && <div className="tab-indicator"></div>}
+              {href === "#/products" && <div className="tab-indicator"></div>}
             </li>
             <li className="nav-item">
               <Link
@@ -87,7 +89,7 @@ const Header = () => {
               >
                 Cart
               </Link>
-              {href === "/cart" && <div className="tab-indicator"></div>}
+              {href === "#/cart" && <div className="tab-indicator"></div>}
             </li>
             <li className="nav-item">
               <Link
@@ -97,7 +99,7 @@ const Header = () => {
               >
                 Contact Us
               </Link>
-              {href === "/contact" && <div className="tab-indicator"></div>}
+              {href === "#/contact" && <div className="tab-indicator"></div>}
             </li>
           </ul>
 
