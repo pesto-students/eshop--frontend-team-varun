@@ -19,7 +19,6 @@ const Header = () => {
     navigate("/");
   };
 
-
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary bg-black fixed-top">
       <div className="container-fluid p-0">
@@ -65,7 +64,9 @@ const Header = () => {
                 >
                   Dashboard
                 </Link>
-                {href === "/admin/products" && <div className="tab-indicator"></div>}
+                {href === "/admin/products" && (
+                  <div className="tab-indicator"></div>
+                )}
               </li>
             )}
             <li className="nav-item">
@@ -108,7 +109,7 @@ const Header = () => {
                 onClick={() => setopen(!open)}
               >
                 <div className="m-1" style={{ color: "white" }}>
-                  {`Hello  ${currentUser.name}`}
+                  {`Hello  ${currentUser.firstname}`}
                 </div>
                 {open && (
                   <div className="menu-options">
