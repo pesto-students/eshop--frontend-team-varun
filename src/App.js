@@ -1,5 +1,5 @@
 import "./App.css";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Routes, Route, HashRouter } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import Contact from "./pages/Contact/Contact";
 import Cart from "./pages/Cart/Cart";
@@ -47,7 +47,7 @@ function App() {
 
   return (
     <div>
-      <Router>
+      <HashRouter>
         <ScrollToTop />
         <Header />
         <Routes>
@@ -113,7 +113,7 @@ function App() {
           </Route>
         </Routes>
         <Footer />
-      </Router>
+      </HashRouter>
       <ToastContainer autoClose={3000} theme="colored" newestOnTop={true} />
     </div>
   );
