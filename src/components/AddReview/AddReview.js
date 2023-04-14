@@ -25,6 +25,7 @@ const AddReview = ({ id }) => {
       navigate("/signin");
     } else {
       addReview(id, name, rating, review);
+      window.location.reload(false);
     }
   };
 
@@ -50,7 +51,7 @@ const AddReview = ({ id }) => {
           activeColor="#FFA500"
         />
         <button
-          type="Submit"
+          type="button"
           className="btn text-nowrap btn-md px-5 mt-4"
           style={{
             backgroundColor: "#52057B",
