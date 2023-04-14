@@ -4,7 +4,6 @@ import "./SignIn.css";
 import { useDispatch, useSelector } from "react-redux";
 import { SignInUser, clearErrors } from "../../Redux/Actions/userActions";
 import Loader from "../../components/Loader/Loader";
-import { dirxml } from "console";
 
 const SignIn = () => {
   const [email, setEmail] = useState(null);
