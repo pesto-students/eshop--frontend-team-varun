@@ -51,7 +51,7 @@ const Header = () => {
                 className="nav-link text-white"
                 style={{ textDecoration: "none" }}
               >
-                Home
+                Home page
               </Link>
               {href === "/" && <div className="tab-indicator"></div>}
             </li>
