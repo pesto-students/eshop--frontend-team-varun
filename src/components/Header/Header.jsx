@@ -27,7 +27,7 @@ const Header = () => {
           className="nav-link navbar-brand text-white pl-5 fw-bolder fs-4"
           style={{ textDecoration: "none", marginLeft: "40px" }}
         >
-          E-Shop
+          <img src="assets/icon.png" alt="" style={{width: "38px"}}/> E-Shop
         </Link>
         <button
           className="navbar-toggler custom-toggler bg-light mt-auto mr-3 mx-4"
