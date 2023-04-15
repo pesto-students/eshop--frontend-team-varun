@@ -1,5 +1,4 @@
-import React from "react";
-import useFetch from "../../../../hooks/useFetch";
+import React, { useEffect, useState } from "react";
 import "./ListView.css";
 import Loader from "../../../../components/Loader/Loader";
 import axios from "axios";
@@ -7,7 +6,27 @@ import { toast } from "react-toastify";
 import { BASE_URL } from "../../../../Services/helper";
 
 const ListView = ({ page }) => {
-  const { data, loading, reFetch } = useFetch(`${BASE_URL}/admin/${page}`);
+  const [loading, setLoading] = useState(false);
+  const [data, setData] = useState([]);
+  const [error, setError] = useState(false);
+  // const { data, loading, reFetch } = useFetch(
+  //   `${BASE_URL}/admin/${page}`
+  // );
+
+  const fetchData = async () => {
+    setLoading(true);
+    try {
+      const res = await axios.get(`${BASE_URL}/admin/${page}`, {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
+      setData(res.data);
+    } catch (err) {
+      setError(err);
+    }
+    setLoading(false);
+  };
 
   const rawdata = page === "orders" ? data.orders : data.users;
 
@@ -20,8 +39,7 @@ const ListView = ({ page }) => {
       })
       .then((res) => {
         toast.success("Record has been deleted");
-        window.location.reload(false);
-        reFetch();
+        fetchData();
       })
       .catch((err) => {
         toast.error("Something went wrong. Try Later.");
@@ -41,9 +59,7 @@ const ListView = ({ page }) => {
       );
 
       toast.success("Role changed Successfully.");
-      window.location.reload(false);
-
-      reFetch();
+      fetchData();
     } catch (err) {
       toast.error("Something went wrong. Try Later.");
     }
@@ -62,12 +78,15 @@ const ListView = ({ page }) => {
       );
 
       toast.success("Status changed Successfully.");
-      window.location.reload(false);
-      reFetch();
+      fetchData();
     } catch (err) {
       toast.error("Something went wrong. Try Later.");
     }
   };
+
+  useEffect(()=>{
+    fetchData();
+  }, [page]);
 
   return (
     <div className="container-fluid m-0">
@@ -155,10 +174,12 @@ const ListView = ({ page }) => {
                                     : "#12b2f1",
                               }}
                               onChange={(e) =>
-                                handleOrderStatusChange(
-                                  data._id,
-                                  e.target.value
-                                )
+                                {
+                                  handleOrderStatusChange(
+                                    data._id,
+                                    e.target.value
+                                  );
+                                }
                               }
                             >
                               <option selected>{data.orderStatus}</option>
@@ -202,7 +223,9 @@ const ListView = ({ page }) => {
                               class="form-select form-select-sm shadow-none"
                               aria-label=".form-select-sm example"
                               onChange={(e) =>
-                                handleRoleChange(data._id, e.target.value)
+                                {
+                                  handleRoleChange(data._id, e.target.value);
+                                }
                               }
                             >
                               <option selected>{data.role}</option>

@@ -34,17 +34,17 @@ const Products = ({ keyword, searchSubmitHandler }) => {
   return (
     <div className="container-fluid m-0 p-0">
       <div className="m-0">
-        <InfiniteScroll
-          dataLength={products.length}
+        {products && <InfiniteScroll
+          dataLength={products?.length}
           next={fetchMoreData}
-          hasMore={keyword ? false : products.length !== productsCount}
+          hasMore={keyword ? false : products?.length !== productsCount}
           loader={<Loader />}
         >
         <div className="container">
           <div className="row">
             {productsLoading === true ? (
               <Loader />
-            ) : products.length > 0 ? (
+            ) : products?.length > 0 ? (
               products?.map((product) => (
                 <div className="col-xxl-3 col-xl-4 col-lg-4 col-md-4 col-sm-6 mb-4 p-0 text-dark">
                   <Dealcards deall={product} />
@@ -55,7 +55,7 @@ const Products = ({ keyword, searchSubmitHandler }) => {
             )}
           </div>
         </div>
-        </InfiniteScroll>
+        </InfiniteScroll>}
       </div>
     </div>
   );
