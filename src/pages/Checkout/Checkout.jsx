@@ -344,14 +344,14 @@ const Checkout = ({ currentPage }) => {
                 </p>
                 <div className="price d-flex justify-content-between mx-4 mt-4">
                   <p className="mb-0">Price:</p>
-                  <p className="mb-0">{`₹ ${price}`}</p>
+                  <p className="mb-0">{`₹ ${Number(price).toFixed(2)}`}</p>
                 </div>
                 <div className="delivery d-flex justify-content-between mx-4 mt-3">
                   <p className="mb-0">Delivery Charge:</p>
                   {cartItems?.length === 0 ? (
                     <p className="mb-0">{`₹ 0`}</p>
                   ) : (
-                    <p className="mb-0">{`₹ ${deliveryCharge}`}</p>
+                    <p className="mb-0">{`₹ ${deliveryCharge.toFixed(2)}`}</p>
                   )}
                 </div>
                 <div className="tax d-flex justify-content-between mx-4 mt-3">
@@ -359,7 +359,7 @@ const Checkout = ({ currentPage }) => {
                   {cartItems?.length === 0 ? (
                     <p className="mb-0">{`₹ 0`}</p>
                   ) : (
-                    <p className="mb-0">{`₹ ${tax}`}</p>
+                    <p className="mb-0">{`₹ ${tax.toFixed(2)}`}</p>
                   )}
                 </div>
                 <div className="discount d-flex justify-content-between mx-4 mt-3">
@@ -376,7 +376,9 @@ const Checkout = ({ currentPage }) => {
                   {cartItems?.length === 0 ? (
                     <p className="mb-0 fw-semibold">{`₹ ${0} `}</p>
                   ) : (
-                    <p className="mb-0 fw-semibold">{`₹ ${totalPrice} `}</p>
+                    <p className="mb-0 fw-semibold">{`₹ ${totalPrice?.toFixed(
+                      2
+                    )} `}</p>
                   )}
                 </div>
                 <div className="mx-4">
