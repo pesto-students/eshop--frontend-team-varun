@@ -26,6 +26,7 @@ const ListView = ({ page }) => {
       setError(err);
     }
     setLoading(false);
+    console.log(error);
   };
 
   const rawdata = page === "orders" ? data.orders : data.users;
@@ -86,6 +87,7 @@ const ListView = ({ page }) => {
 
   useEffect(()=>{
     fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page]);
 
   return (
