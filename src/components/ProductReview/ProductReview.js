@@ -248,7 +248,7 @@ const ProductReview = ({ allReviews, id, currentProduct }) => {
             <AddReview id={id} />
           </div>
           <div className="mx-auto">
-            <div className="reviews-grid">
+            <div className="reviews-grid m-5">
               {currentProduct?.reviews?.length > 0 &&
                 [
                   ...Array(
