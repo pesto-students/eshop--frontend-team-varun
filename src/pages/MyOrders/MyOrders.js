@@ -14,37 +14,37 @@ const MyOrders = () => {
   }, []);
 
   const { orderItems, ordersLoading } = useSelector((state) => state.orders);
-
-  console.log(orderItems);
-
+  console.log("orderItems ", orderItems);
   return (
     <div className="myorders">
       {ordersLoading ? (
         <Loader />
-      ) : orderItems.length > 0 ? (
-        orderItems.map((orderItem) => (
+      ) : orderItems?.length > 0 ? (
+        orderItems?.map((orderItem) => (
           <div className="container p-2 border border-secondary rounded-2">
             <div className="d-flex justify-content-between align-items-center m-0 mx-5 mt-2">
               <div className="order-status m-0">
                 <p className="fw-semibold fs-6 mb-0 text-success">
-                  Order {orderItem.orderStatus}
+                  {`Order ${orderItem?.orderStatus} ( ~${orderItem?._id} )`}
                 </p>
-                <p className="mb-0 fs-5">{orderItem.paidAt.slice(0, 10)}</p>
+                <p className="mb-0 fs-5">{orderItem?.paidAt.slice(0, 10)}</p>
               </div>
               <div className="order-status">
                 <p className="fw-semibold fs-6 mb-0">Total</p>
-                <p className="mb-0  fs-5">₹{orderItem.totalPrice}</p>
+                <p className="mb-0  fs-5">
+                  ₹{orderItem?.totalPrice.toFixed(2)}
+                </p>
               </div>
             </div>
             <hr />
-            {orderItem.orderItems.map((o) => (
+            {orderItem?.orderItems?.map((o) => (
               <div
                 className="order-details mx-5 mt-3"
                 style={{ backgroundColor: "#f2f4f7" }}
               >
-                {(o.image || o.image === "") && (
+                {(o?.image || o?.image === "") && (
                   <img
-                    src={o.image}
+                    src={o?.image}
                     alt=""
                     style={{ width: "100px" }}
                     className="p-2"
@@ -53,16 +53,24 @@ const MyOrders = () => {
                 <div>
                   <p className="m-0 p-0 fw-semibold fs-5">
                     {`${
-                      o.name.length > 20 ? `${o.name?.slice(0, 20)}...` : o.name
+                      o?.name?.length > 20
+                        ? `${o?.name?.slice(0, 20)}...`
+                        : o?.name
                     }`}
                   </p>
-                  <p className="m-0 p-0">{o.productId}</p>
+                  <p
+                    className="m-0 p-0"
+                    style={{ color: "rgb(82, 5, 123)" }}
+                  >{`prodID: ${o?.productId}`}</p>
                 </div>
-                <p className="m-0 p-0 fw-semibold fs-5">₹{o.price}</p>
+                <p
+                  className="m-0 p-0 fw-semibold fs-5"
+                  style={{ color: "green" }}
+                >{`₹${o?.price} * ( ${o?.quantity} )`}</p>
 
                 <Link
                   type="button"
-                  to={`/product/${o.productId}`}
+                  to={`/product/${o?.productId}`}
                   className="btn text-nowrap review-button"
                   style={{
                     backgroundColor: "#52057B",

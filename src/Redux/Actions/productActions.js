@@ -30,8 +30,6 @@ import { addCategories, categoriesFailure } from "../Reducers/categorySlice";
 import { addBrands, brandsFailure } from "../Reducers/brandSlice";
 import { BASE_URL } from "../../Services/helper";
 
-console.log(BASE_URL);
-
 // Get All Products
 export const getProducts = () => async (dispatch) => {
   try {

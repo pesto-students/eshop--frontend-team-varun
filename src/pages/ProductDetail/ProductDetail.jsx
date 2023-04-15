@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-
 import ProductInfo from "../../components/ProductInfo/ProductInfo";
 import Description from "../../components/Description/Description";
 import ProductReview from "../../components/ProductReview/ProductReview";
@@ -46,7 +45,7 @@ const ProductDetail = ({ currentPage }) => {
                   <div className="container p-3">
                     <img
                       src={
-                        selectedImage !== "" ||
+                        selectedImage ||
                         currentProduct?.images[0]?.url ||
                         ImageNotFound
                       }

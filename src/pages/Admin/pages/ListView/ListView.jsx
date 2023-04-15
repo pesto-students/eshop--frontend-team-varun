@@ -242,7 +242,7 @@ const ListView = ({ page }) => {
 
                         <td>
                           {page === "orders"
-                            ? `${data.totalPrice}`
+                            ? `${data.totalPrice.toFixed(2)}`
                             : data.createdAt?.substring(0, 10)}
                         </td>
 

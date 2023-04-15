@@ -12,8 +12,6 @@ const Header = () => {
   const [open, setopen] = useState(false);
   const href = window.location.hash;
 
-  console.log("dad: ", href);
-
   const handelLogOut = () => {
     dispatch(signOut());
     localStorage.removeItem("token");
