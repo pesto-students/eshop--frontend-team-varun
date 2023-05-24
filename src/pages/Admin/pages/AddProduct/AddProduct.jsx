@@ -119,7 +119,7 @@ const AddProduct = () => {
       );
       return false;
     } else if (images.length === 0) {
-      setValidationError("Add atleast 1 photo");
+      setValidationError("Please add atleast 1 photo");
       return false;
     } else {
       setValidationError("");
