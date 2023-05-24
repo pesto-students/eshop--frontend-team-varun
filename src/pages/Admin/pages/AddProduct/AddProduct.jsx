@@ -68,7 +68,7 @@ const AddProduct = () => {
         })
       );
 
-      const res = await axios.post(
+      await axios.post(
         `${BASE_URL}/admin/product/new`,
         {
           name: productName,
