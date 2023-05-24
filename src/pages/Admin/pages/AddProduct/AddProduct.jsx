@@ -68,7 +68,7 @@ const AddProduct = () => {
         })
       );
 
-      const res = await axios.post(
+      await axios.post(
         `${BASE_URL}/admin/product/new`,
         {
           name: productName,
@@ -119,7 +119,7 @@ const AddProduct = () => {
       );
       return false;
     } else if (images.length === 0) {
-      setValidationError("Add atleast 1 photo");
+      setValidationError("Please add atleast 1 photo");
       return false;
     } else {
       setValidationError("");
