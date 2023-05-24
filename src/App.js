@@ -83,11 +83,6 @@ function App() {
                 path="product/:id"
                 element={<ProductDetail currentPage="productDetails" key=":id"/>}
               />
-              {/* <Route
-                path=":id/allReviews"
-                element={<ProductDetail currentPage="reviews" key=":id"/>}
-              /> */}
-            
             <Route path="password/reset/:token" element={<CreatePassword />} />
             <Route path="admin">
               <Route path="update-product/:id" element={<UpdateProduct />} />
