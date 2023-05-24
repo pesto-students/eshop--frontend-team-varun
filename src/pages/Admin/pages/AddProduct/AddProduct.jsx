@@ -87,12 +87,9 @@ const AddProduct = () => {
           },
         }
       );
-
-      console.log(res);
       toast.success("Product added successfully");
       window.location.reload(false);
     } catch (err) {
-      console.log(err);
       toast.error("Something went wrong. Try later");
     }
   };
