@@ -90,7 +90,7 @@ const AddProduct = () => {
       toast.success("Product added successfully");
       window.location.reload(false);
     } catch (err) {
-      toast.error("Something went wrong. Try later");
+      toast.error("Something went wrong. Try again later");
     }
   };
 
