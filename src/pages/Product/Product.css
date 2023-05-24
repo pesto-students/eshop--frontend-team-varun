@@ -1,0 +1,113 @@
+.product-list {
+    background-color: #F2F4F7;
+    padding-top: 60px;
+}
+
+.product-list-body {
+    display: flex;
+    align-items: center;
+    align-items: flex-start;
+    padding-top: 25px;
+    padding-left: 25px;
+    gap: 32px;
+}
+
+.product-filter-mobile{
+    display: none;
+}
+
+.noproducts{
+    display: grid;
+    place-items: center;
+    height: 60vh;
+}
+
+.products-grid{
+    margin: 24px 0;
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    grid-template-rows: repeat(1, minmax(0, 1fr));
+    gap: 23px;
+    place-items: center;
+}
+
+@media screen and (max-width: 460px) {
+    .product-list,
+    .product-list-header,
+    .product-list-body {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .product-list-body,
+    .product-list-header{
+        padding-left: 0;
+    }
+
+    .product-list-header .input-group{
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .product-filter-mobile{
+        display: flex;
+        flex-direction: column;
+        margin-left: 26px;
+    }
+
+    .product-filters{
+        display: none;
+    }
+
+    .product-list-body .container{
+        margin-right: auto;
+    }
+
+    .prods-list{
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 1480px){
+    .products-grid{
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        grid-template-rows: repeat(1, minmax(0, 1fr));
+        gap: 23px;
+    }
+}
+
+@media screen and (max-width: 1280px){
+    .products-grid{
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-template-rows: repeat(1, minmax(0, 1fr));
+        gap: 23px;
+    }
+}
+
+
+@media screen and (max-width: 1024px){
+    .products-grid{
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-rows: repeat(1, minmax(0, 1fr));
+        gap: 23px;
+    }
+}
+
+@media screen and (width: 540px){
+    .products-grid{
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+        grid-template-rows: repeat(1, minmax(0, 1fr));
+        gap: 23px;
+    }
+}
+
+@media screen and (width: 280px){
+    .products-grid{
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+        grid-template-rows: repeat(1, minmax(0, 1fr));
+        gap: 23px;
+    }
+}

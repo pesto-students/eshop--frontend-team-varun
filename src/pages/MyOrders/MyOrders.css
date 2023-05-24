@@ -1,0 +1,33 @@
+.myorders{
+    padding-top: 120px;
+    padding-bottom: 60px;
+    background-color: #f2f4f7;
+    display: grid;
+    gap: 30px;
+}
+
+.order-details{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.no-orders{
+    height: 70vh;
+    width: 100vw;
+    display: grid;
+    place-items: center;
+}
+
+@media screen and (max-width: 970px){
+    .myorders{
+        padding-top: 120px;
+        padding-left: 24px;
+        padding-right: 24px;
+    }    
+
+    .order-details{
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+}

@@ -1,0 +1,71 @@
+import React from "react";
+import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
+import { AddItemsToCart } from "../../Redux/Actions/cartActions";
+import Loader from "../Loader/Loader";
+import "./recommends.css";
+import ImageNotFound from "../../assets/image_not_found.jpeg";
+
+const Recommends = ({ products, loading, error }) => {
+  const dispatch = useDispatch();
+
+  const AddToCart = (e, _id) => {
+    e.preventDefault();
+    dispatch(AddItemsToCart(_id, 1));
+    toast.success("Item Added to cart Successfully.");
+  };
+
+  return (
+    <div className="recommend">
+      <p className="rec_title">Our Recommendation For You</p>
+      <div className="rows_recom">
+        {loading ? (
+          <>
+            <Loader />
+          </>
+        ) : (
+          products?.map((product, index) => {
+            return (
+              <div key={index} className="rec_rows">
+                <div className="deal-card me-2">
+                  <div className="deal-image p-2">
+                    <Link
+                      to={`/product/${product._id}`}
+                      className="text-decoration-none text-dark"
+                    >
+                      <img
+                        src={product.images[0]?.url || ImageNotFound}
+                        alt="Not found"
+                        className="img-fluid "
+                      />
+                    </Link>
+                  </div>
+                  <div className="deal-content px-2">
+                    <button
+                      className="btn btn-primary mt-3"
+                      onClick={(e) => AddToCart(e, product._id)}
+                    >
+                      Add to cart
+                    </button>
+
+                    <p className="deal-title">{product.name}</p>
+                    <div className="deal-body">
+                      <h5 className="deal-price mb-0">{`₹ ${product.price}`}</h5>
+                      <div className="deal-rating d-flex gap-1 align-items-center">
+                        <img src="../assets/star.png" alt="" />
+                        <p className="m-0">{product.rating}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            );
+          })
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default Recommends;

@@ -1,0 +1,52 @@
+.todays-deal{
+  background-color: #f9f9f9;
+  padding: 64px 0;
+}
+
+.todays-deal-endsin {
+  font-size: 16px;
+  font-weight: 600;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+  margin-right: 40px;
+  margin-bottom: 0;
+}
+
+.todays-deal-endsin span {
+  font-size: 16px;
+  font-weight: 500;
+  color: white;
+  padding: 5px 5px;
+  background-color: #52057B;
+  border-radius: 4px;
+}
+
+.deal-cards {
+  display: flex;
+  overflow-x: scroll;
+  margin: 40px 0 0 0;
+  gap: 32px;
+  padding: 0 40px;
+}
+
+.deal-cards::-webkit-scrollbar {
+  display: none;
+}
+
+@media only screen and (max-width: 400px) {
+
+  .todays-deal-title {
+    font-size: 14px;
+  }
+
+  .todays-deal-endsin{
+    gap: 4px;
+    font-size: 12px;
+  }
+
+  .todays-deal-endsin span {
+    font-size: 12px;
+  }
+}

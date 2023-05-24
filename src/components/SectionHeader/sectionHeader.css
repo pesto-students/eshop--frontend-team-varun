@@ -1,0 +1,10 @@
+.section-header-title {
+  font-weight: 600;
+  font-size: 26px;
+}
+
+@media only screen and (max-width: 400px) {
+  .section-header-title {
+    font-size: 18px;
+  }
+}
