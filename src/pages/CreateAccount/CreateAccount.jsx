@@ -99,7 +99,7 @@ const CreateAccount = () => {
                         <form>
                           <div className="d-flex flex-row align-items-left mb-4">
                             <div className="form-outline flex-fill">
-                              <label className="form-label" for="firstName">
+                              <label className="form-label" htmlFor="firstName">
                                 First Name
                               </label>
                               <input
@@ -112,7 +112,7 @@ const CreateAccount = () => {
                           </div>
                           <div className="d-flex flex-row align-items-center mb-4">
                             <div className="form-outline flex-fill">
-                              <label className="form-label" for="lastName">
+                              <label className="form-label" htmlFor="lastName">
                                 Last Name
                               </label>
                               <input
@@ -125,7 +125,7 @@ const CreateAccount = () => {
                           </div>
                           <div className="d-flex flex-row align-items-center mb-4">
                             <div className="form-outline flex-fill">
-                              <label className="form-label" for="phoneNo">
+                              <label className="form-label" htmlFor="phoneNo">
                                 Phone No.
                               </label>
                               <input
@@ -159,7 +159,7 @@ const CreateAccount = () => {
                             <div className="form-outline flex-fill">
                               <label
                                 className="form-label"
-                                for="form3Example3c"
+                                htmlFor="form3Example3c"
                               >
                                 Your Email
                               </label>
@@ -175,7 +175,7 @@ const CreateAccount = () => {
                             <div className="form-outline flex-fill mb-0">
                               <label
                                 className="form-label"
-                                for="form3Example4c"
+                                htmlFor="form3Example4c"
                               >
                                 Password
                               </label>
@@ -192,7 +192,7 @@ const CreateAccount = () => {
                             <div className="form-outline flex-fill mb-0">
                               <label
                                 className="form-label"
-                                for="form3Example4cd"
+                                htmlFor="form3Example4cd"
                               >
                                 Re-enter your password
                               </label>
@@ -216,7 +216,7 @@ const CreateAccount = () => {
                             />
                             <label
                               class="form-check-label"
-                              for="flexCheckChecked"
+                              htmlFor="flexCheckChecked"
                             >
                               By using this form you agree with the storage and
                               handling of your data by this website.

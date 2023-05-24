@@ -22,6 +22,9 @@ const SignIn = () => {
   };
 
   useEffect(() => {
+    if(isAuthenthicated === false) {
+      localStorage.clear();
+    }
     if (signInError === true || SignInError === true) {
       dispatch(clearErrors());
     } else {
@@ -54,7 +57,7 @@ const SignIn = () => {
                         <form>
                           <div className="d-flex flex-row align-items-center mb-4">
                             <div className="form-outline flex-fill mb-0">
-                              <label className="form-label" for="email">
+                              <label className="form-label" htmlFor="email">
                                 Your Email
                               </label>
                               <input
@@ -68,7 +71,7 @@ const SignIn = () => {
                           </div>
                           <div className="d-flex flex-row align-items-center mb-4">
                             <div className="form-outline flex-fill mb-0">
-                              <label className="form-label" for="password">
+                              <label className="form-label" htmlFor="password">
                                 Password
                               </label>
                               <input
@@ -90,7 +93,7 @@ const SignIn = () => {
                             />
                             <label
                               className="form-check-label ms-2"
-                              for="form2Example3"
+                              htmlFor="form2Example3"
                             >
                               By using this form you agree with the storage and
                               handling of your data by this website.
@@ -146,7 +149,7 @@ const SignIn = () => {
                           faster, keep more than one address, track orders and
                           more.
                         </p>
-                        <div className="d-flex justify-content-left mb-lg-4">
+                        <div className="d-flex justify-content-left">
                           <Link
                             to="/createAccount"
                             className="nav-link text-white"
@@ -163,6 +166,15 @@ const SignIn = () => {
                               Create An Account
                             </button>
                           </Link>
+                        </div>
+                        <div className="container border p-2">
+                          <p className="fw-bold">Credentials:</p>
+                          <p className="fw-semibold">For Admin</p>
+                          <p>Username: pestoproject@gmail.com</p>
+                          <p>password: 1111111</p>
+                          <p className="fw-semibold">For User</p>
+                          <p>Username: pestoprojectuser@gmail.com</p>
+                          <p>password: 1111111</p>
                         </div>
                       </div>
                     </div>
