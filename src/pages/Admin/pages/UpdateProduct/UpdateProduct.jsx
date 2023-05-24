@@ -152,7 +152,7 @@ const UpdateProduct = () => {
             <form className=" border border-0 rounded-3">
               <div className="form-outline m-4 d-flex align-items-center">
                 <div className="col-3">
-                  <label className="form-label" for="form3Example3">
+                  <label className="form-label" htmlFor="form3Example3">
                     Product Name :
                   </label>
                 </div>
@@ -170,7 +170,7 @@ const UpdateProduct = () => {
 
               <div className="form-outline m-4 d-flex align-items-start ">
                 <div className="col-3">
-                  <label className="form-label" for="form3Example3">
+                  <label className="form-label" htmlFor="form3Example3">
                     Product Descriptions :
                   </label>
                 </div>
@@ -199,7 +199,7 @@ const UpdateProduct = () => {
 
               <div className="form-outline m-4 d-flex align-items-center">
                 <div className="col-3">
-                  <label className="form-label" for="form3Example3">
+                  <label className="form-label" htmlFor="form3Example3">
                     Product Price :
                   </label>
                 </div>
@@ -220,7 +220,7 @@ const UpdateProduct = () => {
 
               <div className="form-outline m-4 d-flex align-items-center">
                 <div className="col-3">
-                  <label className="form-label" for="form3Example3">
+                  <label className="form-label" htmlFor="form3Example3">
                     Stock :
                   </label>
                 </div>
@@ -240,7 +240,7 @@ const UpdateProduct = () => {
               </div>
               <div className="form-outline m-4 d-flex align-items-center">
                 <div className="col-3">
-                  <label className="form-label" for="form3Example3">
+                  <label className="form-label" htmlFor="form3Example3">
                     Featured :
                   </label>
                 </div>
@@ -261,7 +261,7 @@ const UpdateProduct = () => {
 
               <div className="form-outline m-4 d-flex align-items-center">
                 <div className="col-3">
-                  <label className="form-label" for="form3Example3">
+                  <label className="form-label" htmlFor="form3Example3">
                     Brand :
                   </label>
                 </div>
@@ -279,7 +279,7 @@ const UpdateProduct = () => {
 
               <div className="form-outline m-4 d-flex align-items-center">
                 <div className="col-3">
-                  <label className="form-label" for="form3Example3">
+                  <label className="form-label" htmlFor="form3Example3">
                     Category :
                   </label>
                 </div>
@@ -297,7 +297,7 @@ const UpdateProduct = () => {
 
               {/* <div className="form-outline m-4 d-flex align-items-center">
             <div className="col-3">
-              <label className="form-label" for="form3Example3">
+              <label className="form-label" htmlFor="form3Example3">
                 Tags :
               </label>
             </div>

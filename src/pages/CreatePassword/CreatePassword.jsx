@@ -83,7 +83,7 @@ const CreatePassword = () => {
                       <div className="d-flex flex-row align-items-center mb-4">
                         <div className="d-flex flex-column form-outline flex-fill mb-0 gap-4">
                           <div>
-                            <label className="form-label" for="form3Example3c">
+                            <label className="form-label" htmlFor="form3Example3c">
                               Password
                             </label>
                             <input
@@ -93,7 +93,7 @@ const CreatePassword = () => {
                             />
                           </div>
                           <div>
-                            <label className="form-label" for="form3Example3c">
+                            <label className="form-label" htmlFor="form3Example3c">
                               Confirm Password
                             </label>
                             <input
